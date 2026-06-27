@@ -102,10 +102,14 @@
         .call-reminder .big{font-size:20px;font-weight:900;color:#4e2b1a;}
         .call-reminder .number{font-size:28px;font-weight:900;color:#b71c1c;}
         
-        .close-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;margin-top:10px;}
+        .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:14px;font-size:17px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;text-decoration:none;}
+        .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
         
-        .order-confirmed{background:#2e7d32;color:#fff;padding:12px;border-radius:12px;text-align:center;margin:12px 0;display:none;}
-        .order-confirmed.show{display:block;}
+        .email-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:14px;font-size:17px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;}
+        .email-btn:hover{background:#6b3f2a;transform:scale(1.02);}
+        
+        .close-btn{width:100%;background:#6d5c4e;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;margin-top:10px;}
+        .close-btn:hover{background:#5a4a3e;}
         
         footer{background:#3e1f12;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
         footer .copy{font-size:11px;opacity:0.7;}
@@ -186,7 +190,7 @@
         <p>📍 <strong>Address:</strong> 123 Main Street, Your City</p>
         <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
         <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
-        <p>📧 <strong>Email:</strong> info@chocolateinn.com</p>
+        <p>📧 <strong>Email:</strong> sakariyeabdiismail@gmail.com</p>
     </div>
     <div class="contact-form">
         <h3>Send a Message</h3>
@@ -205,7 +209,15 @@
         <button class="modal-close" onclick="closePayment()">✕</button>
         
         <h2>🧾 Complete Your Order</h2>
+        
+        <!-- Order Summary -->
         <div id="orderSummary"></div>
+        
+        <!-- Customer Name Input -->
+        <div style="margin:10px 0;">
+            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">👤 Your Name (for order)</label>
+            <input type="text" id="customerName" placeholder="Enter your name" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
+        </div>
         
         <div class="call-reminder">
             <div>📞 <strong>IMPORTANT!</strong></div>
@@ -249,7 +261,17 @@
             ⚠️ <strong>After sending payment, call 3665112 to confirm!</strong> Your order will be prepared after confirmation.
         </div>
         
-        <button class="close-btn" onclick="closePayment()">✅ I've Made Payment — Close</button>
+        <!-- WHATSAPP BUTTON -->
+        <a href="#" id="whatsappLink" target="_blank" class="whatsapp-btn">
+            💬 Message Us on WhatsApp
+        </a>
+        
+        <!-- EMAIL ORDER BUTTON -->
+        <button class="email-btn" onclick="sendOrderEmail()">
+            📧 Send Order to Shop (Email)
+        </button>
+        
+        <button class="close-btn" onclick="closePayment()">✅ Close</button>
     </div>
 </div>
 
@@ -259,6 +281,13 @@
 </footer>
 
 <script>
+// ===== CONFIGURATION =====
+// YOUR WHATSAPP NUMBER
+const WHATSAPP_NUMBER = '252633665112';
+
+// YOUR FORMSPREE URL
+const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
+
 // ===== MENU DATA =====
 const items = [
     {id:1,name:'Caramel Macchiato',price:5.50,inStock:true},
@@ -397,6 +426,69 @@ function openPayment() {
     document.getElementById('btnSLSH').classList.remove('active');
     updateDisplay();
     document.getElementById('paymentModal').classList.add('active');
+    
+    // Update WhatsApp link
+    updateWhatsAppLink();
+    
+    // Clear customer name
+    document.getElementById('customerName').value = '';
+}
+
+// ===== UPDATE WHATSAPP LINK =====
+function updateWhatsAppLink() {
+    const name = document.getElementById('customerName').value || 'Customer';
+    const orderDetails = getOrderSummaryText();
+    const total = document.getElementById('displayAmount').textContent;
+    const message = `Hi! I just placed an order at Chocolate Inn.\n\nOrder: ${orderDetails}\n\nTotal: ${total}\n\nName: ${name}\n\nPayment: ${selectedPayment} to 3665112\n\nI will send payment now.`;
+    const encoded = encodeURIComponent(message);
+    document.getElementById('whatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+}
+
+// ===== GET ORDER SUMMARY TEXT =====
+function getOrderSummaryText() {
+    const arr = Object.values(cart);
+    if(arr.length === 0) return 'No items';
+    let summary = '';
+    arr.forEach(item => {
+        summary += `${item.name} × ${item.qty}, `;
+    });
+    return summary.slice(0, -2);
+}
+
+// ===== SEND ORDER EMAIL =====
+function sendOrderEmail() {
+    const name = document.getElementById('customerName').value || 'Customer';
+    const orderDetails = getOrderSummaryText();
+    const total = document.getElementById('displayAmount').textContent;
+    
+    const data = {
+        name: name,
+        order: orderDetails,
+        total: total,
+        payment: selectedPayment,
+        phone: '3665112',
+        _subject: `🍫 New Order from ${name}`,
+        message: `New order from ${name}!\n\nOrder: ${orderDetails}\nTotal: ${total}\nPayment: ${selectedPayment} to 3665112\n\nCustomer will call 3665112 to confirm payment.`
+    };
+    
+    fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('✅ Order sent to the shop! You will receive a confirmation email.\n\nThank you for ordering from Chocolate Inn! ☕🍫');
+        } else {
+            alert('⚠️ There was an issue sending your order. Please call 3665112 to place your order.');
+        }
+    })
+    .catch(error => {
+        alert('⚠️ There was an issue sending your order. Please call 3665112 to place your order.');
+    });
 }
 
 // ===== SET CURRENCY =====
@@ -427,12 +519,21 @@ function selectPayment(method) {
     document.getElementById('payZAAD').classList.toggle('selected', method === 'ZAAD');
     document.getElementById('payEdahab').classList.toggle('selected', method === 'Edahab');
     document.getElementById('promptMethod').textContent = method;
+    updateWhatsAppLink();
 }
 
 // ===== CLOSE PAYMENT =====
 function closePayment() {
     document.getElementById('paymentModal').classList.remove('active');
 }
+
+// ===== CUSTOMER NAME CHANGE =====
+document.addEventListener('DOMContentLoaded', function() {
+    const nameInput = document.getElementById('customerName');
+    if(nameInput) {
+        nameInput.addEventListener('input', updateWhatsAppLink);
+    }
+});
 
 // ===== INIT =====
 renderMenu();

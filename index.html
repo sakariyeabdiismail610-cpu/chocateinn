@@ -1,22 +1,442 @@
-┌─────────────────────────────────────────────────────────────┐
-│  ┌─────────────────────────────────────────────────────────┐│
-│  │  ✕  ← CLOSE BUTTON (top right)                        ││
-│  │                                                         ││
-│  │  🧾 Complete Your Order                                 ││
-│  │                                                         ││
-│  │  Caramel Macchiato × 2        $11.00                   ││
-│  │  Total                       $17.27                    ││
-│  │                                                         ││
-│  │  📞 IMPORTANT!                                          ││
-│  │  Call 3665112 after payment                            ││
-│  │                                                         ││
-│  │  [USD] [SLSH]                                           ││
-│  │                                                         ││
-│  │  Total Amount to Send                                   ││
-│  │  $17.27                                                 ││
-│  │                                                         ││
-│  │  [ZAAD]  [Edahab]                                       ││
-│  │                                                         ││
-│  │  ✅ I've Made Payment — Close                          ││
-│  └─────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────┘
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chocolate Inn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:Arial,sans-serif;background:#f5efe8;color:#3e2723;width:100%;}
+        
+        header{background:#4e2b1a;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
+        .logo{font-size:20px;font-weight:900;color:#fff;cursor:pointer;}
+        .logo span{color:#d7a86e;}
+        nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;margin:2px;}
+        nav a:hover,nav a.active{background:#d7a86e;color:#3e2723;}
+        
+        .page{display:none;padding:12px;width:100%;}
+        .page.active{display:block;}
+        
+        .hero{background:linear-gradient(135deg,#3e1f12,#6b3f2a);color:#fff;padding:40px 16px;text-align:center;border-radius:0 0 16px 16px;}
+        .hero h1{font-size:28px;}
+        .hero h1 span{color:#d7a86e;}
+        .hero p{font-size:16px;margin:8px auto 16px;}
+        .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:12px 28px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;width:100%;max-width:250px;}
+        .btn:hover{background:#c4955a;transform:scale(1.02);}
+        
+        .featured{padding:20px 0;}
+        .featured h2{font-size:22px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin-bottom:14px;}
+        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .featured-card{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1px solid #ece3d8;}
+        .featured-card .icon{font-size:28px;}
+        .featured-card h3{font-size:14px;color:#4e2b1a;}
+        .featured-card p{font-size:12px;color:#6d5c4e;}
+        
+        .order-cta{background:linear-gradient(135deg,#4e2b1a,#6b3f2a);color:#fff;text-align:center;padding:24px 16px;border-radius:16px;margin:10px 0;}
+        .order-cta h2{font-size:24px;}
+        .order-cta p{font-size:15px;margin:6px 0 14px;}
+        
+        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+        .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;}
+        .menu-item h3{font-size:14px;color:#4e2b1a;}
+        .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;}
+        .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:11px;font-weight:700;margin-top:4px;}
+        .badge.in{background:#2e7d32;color:#fff;}
+        .badge.out{background:#b71c1c;color:#fff;}
+        
+        .btn-sm{background:#4e2b1a;color:#fff;padding:4px 12px;border-radius:20px;border:none;font-weight:700;font-size:11px;cursor:pointer;margin-top:4px;}
+        .btn-sm:hover{background:#6b3f2a;}
+        
+        .cart-col{background:#fff;border-radius:16px;padding:16px;border:1px solid #ece3d8;margin-top:12px;}
+        .cart-col h2{font-size:20px;color:#4e2b1a;border-bottom:2px solid #d7a86e;padding-bottom:8px;margin-bottom:10px;}
+        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #ece3d8;flex-wrap:wrap;gap:4px;}
+        .cart-item .name{font-weight:600;font-size:14px;flex:1;}
+        .cart-item .qty-control{display:flex;align-items:center;gap:4px;}
+        .cart-item .qty-control button{background:#4e2b1a;color:#fff;border:none;width:22px;height:22px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;}
+        .cart-item .qty-control .qty{font-weight:700;font-size:14px;min-width:18px;text-align:center;}
+        .cart-empty{color:#6d5c4e;text-align:center;padding:12px 0;}
+        .cart-totals{margin-top:12px;border-top:2px solid #d7a86e;padding-top:10px;}
+        .cart-totals .row{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
+        .cart-totals .row.total{font-size:18px;font-weight:900;color:#4e2b1a;border-top:2px solid #4e2b1a;padding-top:6px;margin-top:4px;}
+        .checkout-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;margin-top:10px;}
+        .checkout-btn:disabled{background:#a08070;cursor:not-allowed;}
+        
+        .contact-info{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;margin-bottom:12px;}
+        .contact-info h3{font-size:18px;color:#4e2b1a;margin-bottom:6px;}
+        .contact-info p{font-size:14px;padding:3px 0;}
+        .contact-info .phone{font-size:22px;font-weight:900;color:#4e2b1a;background:#f5efe8;padding:6px 14px;border-radius:8px;display:inline-block;border:2px solid #d7a86e;}
+        .open-badge{background:#2e7d32;color:#fff;padding:3px 12px;border-radius:30px;font-weight:700;font-size:13px;display:inline-block;}
+        
+        .contact-form{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;}
+        .contact-form h3{font-size:18px;color:#4e2b1a;margin-bottom:8px;}
+        .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;}
+        .contact-form .btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;}
+        
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;justify-content:center;align-items:center;padding:16px;}
+        .modal.active{display:flex;}
+        .modal-box{background:#fff;border-radius:20px;padding:20px;max-width:400px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+        .modal-box h2{font-size:22px;color:#4e2b1a;text-align:center;border-bottom:3px solid #d7a86e;padding-bottom:10px;margin-bottom:14px;}
+        
+        .modal-close{position:absolute;top:12px;right:16px;font-size:26px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;background:none;border:none;}
+        .modal-close:hover{color:#b71c1c;transform:scale(1.2);}
+        
+        .modal-box .item-line{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
+        .modal-box .total-line{display:flex;justify-content:space-between;font-weight:700;font-size:16px;border-top:2px solid #ece3d8;padding-top:6px;margin-top:6px;}
+        
+        .currency-toggle{display:flex;gap:8px;justify-content:center;margin:10px 0;}
+        .currency-toggle button{padding:6px 16px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:13px;cursor:pointer;}
+        .currency-toggle button.active{background:#4e2b1a;color:#fff;}
+        
+        .amount-display{background:#4e2b1a;color:#fff;padding:12px;border-radius:12px;text-align:center;margin:10px 0;}
+        .amount-display .total{font-size:26px;font-weight:900;color:#d7a86e;}
+        
+        .pay-option{background:#f5efe8;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:2px solid transparent;cursor:pointer;}
+        .pay-option:hover{border-color:#d7a86e;}
+        .pay-option.selected{border-color:#4e2b1a;background:#e8ddd0;}
+        .pay-option .method{font-weight:800;font-size:16px;color:#4e2b1a;}
+        .pay-option .number{font-size:17px;font-weight:700;color:#6b3f2a;}
+        
+        .prompt{background:#f5efe8;padding:12px;border-radius:10px;border-left:4px solid #d7a86e;margin:10px 0;font-size:14px;}
+        .prompt strong{color:#4e2b1a;}
+        
+        .call-reminder{background:#fff3e0;padding:14px;border-radius:12px;border:2px solid #d7a86e;margin:12px 0;text-align:center;}
+        .call-reminder .big{font-size:20px;font-weight:900;color:#4e2b1a;}
+        .call-reminder .number{font-size:28px;font-weight:900;color:#b71c1c;}
+        
+        .close-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;margin-top:10px;}
+        
+        .order-confirmed{background:#2e7d32;color:#fff;padding:12px;border-radius:12px;text-align:center;margin:12px 0;display:none;}
+        .order-confirmed.show{display:block;}
+        
+        footer{background:#3e1f12;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
+        footer .copy{font-size:11px;opacity:0.7;}
+        
+        @media(min-width:768px){
+            .featured-grid{grid-template-columns:repeat(4,1fr);}
+            .menu-grid{grid-template-columns:repeat(4,1fr);}
+            .hero h1{font-size:40px;}
+            .page{padding:0 30px;}
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo" onclick="showPage('home')">🍫 Chocol<span>ate Inn</span></div>
+    <nav>
+        <a class="active" onclick="showPage('home')">Home</a>
+        <a onclick="showPage('menu')">Menu</a>
+        <a onclick="showPage('order')">Order</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+    <div class="hero">
+        <h1>Welcome to <span>Chocolate Inn</span></h1>
+        <p>Premium coffee, sweet treats, and warm vibes.</p>
+        <button class="btn" onclick="showPage('order')">☕ Order Now</button>
+    </div>
+    <div class="featured">
+        <h2>⭐ Why Chocolate Inn?</h2>
+        <div class="featured-grid">
+            <div class="featured-card"><div class="icon">🍫</div><h3>Premium Chocolate</h3><p>Made with love.</p></div>
+            <div class="featured-card"><div class="icon">☕</div><h3>Fresh Coffee</h3><p>Ethically sourced.</p></div>
+            <div class="featured-card"><div class="icon">🧁</div><h3>Sweet Treats</h3><p>Baked daily.</p></div>
+            <div class="featured-card"><div class="icon">❤️</div><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
+        </div>
+    </div>
+    <div class="order-cta">
+        <h2>📱 Ready to Order?</h2>
+        <p>Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
+        <button class="btn" onclick="showPage('order')">📞 Order Now</button>
+    </div>
+</div>
+
+<!-- MENU -->
+<div class="page" id="page-menu">
+    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📋 Our Menu</h2>
+    <div class="menu-grid" id="menuGrid"></div>
+</div>
+
+<!-- ORDER -->
+<div class="page" id="page-order">
+    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
+    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click items to add to your cart.</p>
+    
+    <div class="menu-grid" id="orderMenuGrid"></div>
+    
+    <div class="cart-col">
+        <h2>🛒 Your Cart</h2>
+        <div id="cartItems"><div class="cart-empty">Cart is empty. Add items!</div></div>
+        <div class="cart-totals" id="cartTotals" style="display:none;">
+            <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+            <div class="row"><span>Tax (0.12%)</span><span id="tax">$0.00</span></div>
+            <div class="row total"><span>Total</span><span id="total">$0.00</span></div>
+            <button class="checkout-btn" id="checkoutBtn" disabled onclick="openPayment()">Proceed to Checkout</button>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📞 Contact Us</h2>
+    <div class="contact-info">
+        <h3>Get in Touch</h3>
+        <p>📍 <strong>Address:</strong> 123 Main Street, Your City</p>
+        <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
+        <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
+        <p>📧 <strong>Email:</strong> info@chocolateinn.com</p>
+    </div>
+    <div class="contact-form">
+        <h3>Send a Message</h3>
+        <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message..." required></textarea>
+            <button type="submit" class="btn">📨 Send</button>
+        </form>
+    </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal" id="paymentModal">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closePayment()">✕</button>
+        
+        <h2>🧾 Complete Your Order</h2>
+        <div id="orderSummary"></div>
+        
+        <div class="call-reminder">
+            <div>📞 <strong>IMPORTANT!</strong></div>
+            <div style="margin:6px 0;">After sending payment, please call or WhatsApp:</div>
+            <div class="number">3665112</div>
+            <div style="font-size:13px;margin-top:4px;">To confirm your order and pickup time ☕</div>
+        </div>
+        
+        <div style="margin:12px 0;">
+            <h3 style="text-align:center;color:#4e2b1a;font-size:16px;margin-bottom:8px;">💳 Currency</h3>
+            <div class="currency-toggle">
+                <button id="btnUSD" class="active" onclick="setCurrency('USD')">USD</button>
+                <button id="btnSLSH" onclick="setCurrency('SLSH')">SLSH</button>
+            </div>
+        </div>
+        
+        <div class="amount-display">
+            <div style="font-size:12px;opacity:0.8;">Total Amount to Send</div>
+            <div class="total" id="displayAmount">$0.00</div>
+        </div>
+        
+        <div style="margin:12px 0;">
+            <h3 style="text-align:center;color:#4e2b1a;font-size:16px;margin-bottom:8px;">📱 Choose Payment Method</h3>
+            <div class="pay-option selected" onclick="selectPayment('ZAAD')" id="payZAAD">
+                <div class="method">📱 ZAAD</div>
+                <div class="number">📞 3665112</div>
+                <div style="font-size:12px;color:#6d5c4e;">Send via ZAAD to this number</div>
+            </div>
+            <div class="pay-option" onclick="selectPayment('Edahab')" id="payEdahab">
+                <div class="method">📱 Edahab</div>
+                <div class="number">📞 3665112</div>
+                <div style="font-size:12px;color:#6d5c4e;">Send via Edahab to this number</div>
+            </div>
+        </div>
+        
+        <div class="prompt" id="paymentPrompt">
+            💰 Send <strong id="promptAmount">$0.00</strong> via <strong id="promptMethod">ZAAD</strong> to <strong>3665112</strong>
+        </div>
+        
+        <div style="background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0;font-size:13px;border:1px solid #ffeaa7;">
+            ⚠️ <strong>After sending payment, call 3665112 to confirm!</strong> Your order will be prepared after confirmation.
+        </div>
+        
+        <button class="close-btn" onclick="closePayment()">✅ I've Made Payment — Close</button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
+</footer>
+
+<script>
+// ===== MENU DATA =====
+const items = [
+    {id:1,name:'Caramel Macchiato',price:5.50,inStock:true},
+    {id:2,name:'Mocha Latte',price:5.00,inStock:false},
+    {id:3,name:'Vanilla Frappe',price:6.25,inStock:true},
+    {id:4,name:'Chocolate Croissant',price:4.75,inStock:false},
+    {id:5,name:'Hazelnut Cappuccino',price:5.25,inStock:true},
+    {id:6,name:'Classic Americano',price:4.00,inStock:true},
+    {id:7,name:'Cinna-bun Roll',price:5.50,inStock:true},
+    {id:8,name:'Espresso Shot',price:3.00,inStock:true},
+    {id:9,name:'Chai Latte',price:5.75,inStock:true},
+    {id:10,name:'Iced Coffee',price:4.50,inStock:true}
+];
+
+let cart = {};
+let currentCurrency = 'USD';
+let selectedPayment = 'ZAAD';
+let currentTotal = 0;
+const exchangeRate = 11000;
+
+// ===== SHOW PAGE =====
+function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('header nav a').forEach(link => {
+        link.classList.remove('active');
+        if(link.textContent.toLowerCase() === page) link.classList.add('active');
+    });
+    if(page === 'order') updateCart();
+    window.scrollTo({top:0});
+}
+
+// ===== RENDER MENU =====
+function renderMenu() {
+    const grid = document.getElementById('menuGrid');
+    grid.innerHTML = '';
+    items.forEach(item => {
+        const d = document.createElement('div');
+        d.className = 'menu-item';
+        d.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔ In Stock':'❌ Sold Out'}</span>`;
+        grid.appendChild(d);
+    });
+    
+    const orderGrid = document.getElementById('orderMenuGrid');
+    orderGrid.innerHTML = '';
+    items.forEach(item => {
+        const d = document.createElement('div');
+        d.className = 'menu-item';
+        d.style.cursor = item.inStock ? 'pointer' : 'default';
+        d.style.opacity = item.inStock ? '1' : '0.6';
+        d.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔':'❌'}</span>`;
+        if(item.inStock) d.onclick = function(){ addToCart(item.id); };
+        orderGrid.appendChild(d);
+    });
+}
+
+// ===== ADD TO CART =====
+function addToCart(id) {
+    const item = items.find(i => i.id === id);
+    if(!item || !item.inStock) return;
+    if(cart[id]) cart[id].qty += 1;
+    else cart[id] = {...item, qty: 1};
+    updateCart();
+}
+
+// ===== UPDATE CART =====
+function updateCart() {
+    const container = document.getElementById('cartItems');
+    const totals = document.getElementById('cartTotals');
+    const btn = document.getElementById('checkoutBtn');
+    const arr = Object.values(cart);
+    
+    if(arr.length === 0) {
+        container.innerHTML = '<div class="cart-empty">Cart is empty. Add items!</div>';
+        totals.style.display = 'none';
+        btn.disabled = true;
+        return;
+    }
+    
+    let html = '', subtotal = 0;
+    arr.forEach(item => {
+        const total = item.price * item.qty;
+        subtotal += total;
+        html += `
+            <div class="cart-item">
+                <span class="name">${item.name}</span>
+                <div class="qty-control">
+                    <button onclick="changeQty(${item.id},-1)">−</button>
+                    <span class="qty">${item.qty}</span>
+                    <button onclick="changeQty(${item.id},1)">+</button>
+                </div>
+                <span>$${total.toFixed(2)}</span>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+    totals.style.display = 'block';
+    btn.disabled = false;
+    
+    const tax = subtotal * 0.0012;
+    const total = subtotal + tax;
+    document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+    document.getElementById('tax').textContent = '$' + tax.toFixed(2);
+    document.getElementById('total').textContent = '$' + total.toFixed(2);
+    currentTotal = total;
+}
+
+// ===== CHANGE QTY =====
+function changeQty(id, delta) {
+    if(cart[id]) {
+        cart[id].qty += delta;
+        if(cart[id].qty <= 0) delete cart[id];
+        updateCart();
+    }
+}
+
+// ===== OPEN PAYMENT =====
+function openPayment() {
+    const arr = Object.values(cart);
+    if(arr.length === 0) return;
+    
+    let html = '', subtotal = 0;
+    arr.forEach(item => {
+        const total = item.price * item.qty;
+        subtotal += total;
+        html += `<div class="item-line"><span>${item.name} × ${item.qty}</span><span>$${total.toFixed(2)}</span></div>`;
+    });
+    const tax = subtotal * 0.0012;
+    const total = subtotal + tax;
+    html += `<div class="total-line"><span>Total</span><span>$${total.toFixed(2)}</span></div>`;
+    
+    document.getElementById('orderSummary').innerHTML = html;
+    currentTotal = total;
+    currentCurrency = 'USD';
+    document.getElementById('btnUSD').classList.add('active');
+    document.getElementById('btnSLSH').classList.remove('active');
+    updateDisplay();
+    document.getElementById('paymentModal').classList.add('active');
+}
+
+// ===== SET CURRENCY =====
+function setCurrency(currency) {
+    currentCurrency = currency;
+    document.getElementById('btnUSD').classList.toggle('active', currency === 'USD');
+    document.getElementById('btnSLSH').classList.toggle('active', currency === 'SLSH');
+    updateDisplay();
+}
+
+// ===== UPDATE DISPLAY =====
+function updateDisplay() {
+    const display = document.getElementById('displayAmount');
+    const promptAmt = document.getElementById('promptAmount');
+    let amount = currentTotal;
+    let symbol = '$';
+    if(currentCurrency === 'SLSH') {
+        amount = currentTotal * exchangeRate;
+        symbol = 'SLSH ';
+    }
+    display.textContent = symbol + amount.toFixed(2);
+    promptAmt.textContent = symbol + amount.toFixed(2);
+}
+
+// ===== SELECT PAYMENT =====
+function selectPayment(method) {
+    selectedPayment = method;
+    document.getElementById('payZAAD').classList.toggle('selected', method === 'ZAAD');
+    document.getElementById('payEdahab').classList.toggle('selected', method === 'Edahab');
+    document.getElementById('promptMethod').textContent = method;
+}
+
+// ===== CLOSE PAYMENT =====
+function closePayment() {
+    document.getElementById('paymentModal').classList.remove('active');
+}
+
+// ===== INIT =====
+renderMenu();
+</script>
+
+</body>
+</html>

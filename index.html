@@ -73,7 +73,7 @@
         
         .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;justify-content:center;align-items:center;padding:16px;}
         .modal.active{display:flex;}
-        .modal-box{background:#fff;border-radius:20px;padding:20px;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+        .modal-box{background:#fff;border-radius:20px;padding:20px;max-width:450px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
         .modal-box h2{font-size:22px;color:#4e2b1a;text-align:center;border-bottom:3px solid #d7a86e;padding-bottom:10px;margin-bottom:14px;}
         
         .modal-close{position:absolute;top:12px;right:16px;font-size:26px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;background:none;border:none;}
@@ -106,6 +106,15 @@
         .delivery-option button{padding:10px 20px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:14px;cursor:pointer;transition:0.3s;flex:1;max-width:150px;}
         .delivery-option button.active{background:#4e2b1a;color:#fff;}
         .delivery-option button:hover{transform:scale(1.02);}
+        
+        .location-btn{width:100%;background:#4285F4;color:#fff;border:none;padding:10px;font-size:14px;font-weight:700;border-radius:30px;cursor:pointer;transition:0.3s;margin-top:8px;}
+        .location-btn:hover{background:#3367D6;transform:scale(1.02);}
+        .location-btn:disabled{background:#a0b4d6;cursor:not-allowed;}
+        
+        .location-status{font-size:13px;color:#6d5c4e;margin-top:4px;padding:4px 10px;border-radius:6px;display:inline-block;}
+        .location-status.found{background:#e8f5e9;color:#2e7d32;}
+        .location-status.error{background:#ffebee;color:#c62828;}
+        .location-status.loading{background:#fff3e0;color:#e65100;}
         
         .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:14px;font-size:17px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;text-decoration:none;}
         .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
@@ -223,14 +232,40 @@
             <input type="text" id="customerName" placeholder="Enter your name" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
         </div>
         
-        <!-- Customer Phone (NEW) -->
+        <!-- Customer Phone -->
         <div style="margin:10px 0;">
             <label style="font-weight:600;font-size:14px;color:#4e2b1a;">📱 Your Phone Number</label>
             <input type="tel" id="customerPhone" placeholder="Enter your phone number (e.g., 252XXXXXXXX)" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
             <div style="font-size:12px;color:#6d5c4e;margin-top:3px;">We'll use this to confirm your order</div>
         </div>
         
-        <!-- Delivery Option (NEW) -->
+        <!-- LOCATION FEATURE (NEW) -->
+        <div style="margin:10px 0;border:1px solid #ece3d8;border-radius:12px;padding:14px;background:#f9f6f0;">
+            <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">📍 Location for Delivery</label>
+            
+            <!-- Manual Address Input -->
+            <div style="margin-bottom:8px;">
+                <input type="text" id="manualAddress" placeholder="Type your address manually" style="width:100%;padding:10px 14px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#fff;">
+            </div>
+            
+            <!-- OR Divider -->
+            <div style="text-align:center;color:#6d5c4e;font-size:13px;margin:4px 0;">— OR —</div>
+            
+            <!-- Location Button -->
+            <button class="location-btn" id="getLocationBtn" onclick="getCustomerLocation()">
+                📍 Use My Current Location
+            </button>
+            
+            <!-- Location Status -->
+            <div id="locationStatus" class="location-status" style="display:none;"></div>
+            
+            <!-- Hidden fields for location data -->
+            <input type="hidden" id="customerLat" value="">
+            <input type="hidden" id="customerLng" value="">
+            <input type="hidden" id="locationSource" value="manual">
+        </div>
+        
+        <!-- Delivery Option -->
         <div style="margin:10px 0;">
             <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">🚚 Delivery or Pickup?</label>
             <div class="delivery-option">
@@ -304,6 +339,11 @@
 // ===== CONFIGURATION =====
 const WHATSAPP_NUMBER = '252633665112';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
+
+// ===== LOCATION VARIABLES =====
+let customerLat = '';
+let customerLng = '';
+let locationSource = 'manual';
 
 // ===== MENU DATA =====
 const items = [
@@ -430,6 +470,96 @@ function setDelivery(option) {
     updateWhatsAppLink();
 }
 
+// ===== GET CUSTOMER LOCATION (NEW) =====
+function getCustomerLocation() {
+    const statusDiv = document.getElementById('locationStatus');
+    const btn = document.getElementById('getLocationBtn');
+    
+    // Check if browser supports geolocation
+    if (!navigator.geolocation) {
+        statusDiv.style.display = 'inline-block';
+        statusDiv.className = 'location-status error';
+        statusDiv.textContent = '❌ Your browser doesn\'t support location. Please enter address manually.';
+        return;
+    }
+    
+    // Show loading status
+    statusDiv.style.display = 'inline-block';
+    statusDiv.className = 'location-status loading';
+    statusDiv.textContent = '⏳ Getting your location...';
+    btn.disabled = true;
+    btn.textContent = '⏳ Getting location...';
+    
+    // Get location
+    navigator.geolocation.getCurrentPosition(
+        // Success callback
+        function(position) {
+            customerLat = position.coords.latitude;
+            customerLng = position.coords.longitude;
+            locationSource = 'gps';
+            
+            // Store in hidden fields
+            document.getElementById('customerLat').value = customerLat;
+            document.getElementById('customerLng').value = customerLng;
+            document.getElementById('locationSource').value = 'gps';
+            
+            // Show success
+            statusDiv.className = 'location-status found';
+            statusDiv.textContent = '✅ Location found! (Lat: ' + customerLat.toFixed(6) + ', Lng: ' + customerLng.toFixed(6) + ')';
+            
+            // Update WhatsApp link with location
+            updateWhatsAppLink();
+            
+            btn.disabled = false;
+            btn.textContent = '📍 Update Location';
+        },
+        // Error callback
+        function(error) {
+            let errorMsg = '';
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMsg = '❌ Location access denied. Please enter address manually.';
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMsg = '❌ Location unavailable. Please enter address manually.';
+                    break;
+                case error.TIMEOUT:
+                    errorMsg = '❌ Location request timed out. Please enter address manually.';
+                    break;
+                default:
+                    errorMsg = '❌ Could not get location. Please enter address manually.';
+            }
+            
+            statusDiv.className = 'location-status error';
+            statusDiv.textContent = errorMsg;
+            btn.disabled = false;
+            btn.textContent = '📍 Use My Current Location';
+            
+            // Reset location data
+            customerLat = '';
+            customerLng = '';
+            locationSource = 'manual';
+            document.getElementById('locationSource').value = 'manual';
+        }
+    );
+}
+
+// ===== GET LOCATION TEXT FOR MESSAGE =====
+function getLocationText() {
+    const manualAddress = document.getElementById('manualAddress').value.trim();
+    const lat = document.getElementById('customerLat').value;
+    const lng = document.getElementById('customerLng').value;
+    const source = document.getElementById('locationSource').value;
+    
+    if (source === 'gps' && lat && lng) {
+        return `📍 Location (GPS): https://www.google.com/maps?q=${lat},${lng}`;
+    } else if (manualAddress) {
+        return `📍 Address: ${manualAddress}`;
+    } else {
+        return '📍 Location: Not provided (please ask customer)';
+    }
+}
+
 // ===== OPEN PAYMENT =====
 function openPayment() {
     const arr = Object.values(cart);
@@ -453,11 +583,23 @@ function openPayment() {
     updateDisplay();
     document.getElementById('paymentModal').classList.add('active');
     
+    // Reset fields
     document.getElementById('customerName').value = '';
     document.getElementById('customerPhone').value = '';
+    document.getElementById('manualAddress').value = '';
+    document.getElementById('customerLat').value = '';
+    document.getElementById('customerLng').value = '';
+    document.getElementById('locationSource').value = 'manual';
+    document.getElementById('locationStatus').style.display = 'none';
     deliveryOption = 'Pickup';
     document.getElementById('btnPickup').classList.add('active');
     document.getElementById('btnDelivery').classList.remove('active');
+    
+    // Reset location button
+    const btn = document.getElementById('getLocationBtn');
+    btn.disabled = false;
+    btn.textContent = '📍 Use My Current Location';
+    
     updateWhatsAppLink();
 }
 
@@ -468,12 +610,14 @@ function updateWhatsAppLink() {
     const orderDetails = getOrderSummaryText();
     const total = document.getElementById('displayAmount').textContent;
     const delivery = deliveryOption;
+    const location = getLocationText();
     
     const message = `🍫 New Order from Chocolate Inn!
 
 👤 Name: ${name}
 📱 Phone: ${phone}
 📦 ${delivery}
+${location}
 
 📋 Order:
 ${orderDetails}
@@ -505,6 +649,7 @@ function sendOrderEmail() {
     const orderDetails = getOrderSummaryText();
     const total = document.getElementById('displayAmount').textContent;
     const delivery = deliveryOption;
+    const location = getLocationText();
     
     const data = {
         name: name,
@@ -513,12 +658,14 @@ function sendOrderEmail() {
         total: total,
         payment: selectedPayment,
         delivery: delivery,
+        location: location,
         _subject: `🍫 New Order from ${name}`,
         message: `🍫 NEW ORDER FROM CHOCOLATE INN!
 
 👤 Name: ${name}
 📱 Phone: ${phone}
 📦 ${delivery}
+${location}
 
 📋 Order:
 ${orderDetails}
@@ -594,12 +741,15 @@ function closePayment() {
     document.getElementById('paymentModal').classList.remove('active');
 }
 
-// ===== CUSTOMER NAME/PHONE CHANGE =====
+// ===== CUSTOMER NAME/PHONE/ADDRESS CHANGE =====
 document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
+    const addressInput = document.getElementById('manualAddress');
+    
     if(nameInput) nameInput.addEventListener('input', updateWhatsAppLink);
     if(phoneInput) phoneInput.addEventListener('input', updateWhatsAppLink);
+    if(addressInput) addressInput.addEventListener('input', updateWhatsAppLink);
 });
 
 // ===== INIT =====

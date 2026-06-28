@@ -73,7 +73,7 @@
         
         .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;justify-content:center;align-items:center;padding:16px;}
         .modal.active{display:flex;}
-        .modal-box{background:#fff;border-radius:20px;padding:20px;max-width:400px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+        .modal-box{background:#fff;border-radius:20px;padding:20px;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
         .modal-box h2{font-size:22px;color:#4e2b1a;text-align:center;border-bottom:3px solid #d7a86e;padding-bottom:10px;margin-bottom:14px;}
         
         .modal-close{position:absolute;top:12px;right:16px;font-size:26px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;background:none;border:none;}
@@ -101,6 +101,11 @@
         .call-reminder{background:#fff3e0;padding:14px;border-radius:12px;border:2px solid #d7a86e;margin:12px 0;text-align:center;}
         .call-reminder .big{font-size:20px;font-weight:900;color:#4e2b1a;}
         .call-reminder .number{font-size:28px;font-weight:900;color:#b71c1c;}
+        
+        .delivery-option{display:flex;gap:10px;margin:10px 0;justify-content:center;}
+        .delivery-option button{padding:10px 20px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:14px;cursor:pointer;transition:0.3s;flex:1;max-width:150px;}
+        .delivery-option button.active{background:#4e2b1a;color:#fff;}
+        .delivery-option button:hover{transform:scale(1.02);}
         
         .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:14px;font-size:17px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;text-decoration:none;}
         .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
@@ -210,20 +215,35 @@
         
         <h2>🧾 Complete Your Order</h2>
         
-        <!-- Order Summary -->
         <div id="orderSummary"></div>
         
-        <!-- Customer Name Input -->
+        <!-- Customer Name -->
         <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">👤 Your Name (for order)</label>
+            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">👤 Your Name</label>
             <input type="text" id="customerName" placeholder="Enter your name" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
+        </div>
+        
+        <!-- Customer Phone (NEW) -->
+        <div style="margin:10px 0;">
+            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">📱 Your Phone Number</label>
+            <input type="tel" id="customerPhone" placeholder="Enter your phone number (e.g., 252XXXXXXXX)" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
+            <div style="font-size:12px;color:#6d5c4e;margin-top:3px;">We'll use this to confirm your order</div>
+        </div>
+        
+        <!-- Delivery Option (NEW) -->
+        <div style="margin:10px 0;">
+            <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">🚚 Delivery or Pickup?</label>
+            <div class="delivery-option">
+                <button id="btnPickup" class="active" onclick="setDelivery('Pickup')">🏪 Pickup</button>
+                <button id="btnDelivery" onclick="setDelivery('Delivery')">🚚 Delivery</button>
+            </div>
         </div>
         
         <div class="call-reminder">
             <div>📞 <strong>IMPORTANT!</strong></div>
             <div style="margin:6px 0;">After sending payment, please call or WhatsApp:</div>
             <div class="number">3665112</div>
-            <div style="font-size:13px;margin-top:4px;">To confirm your order and pickup time ☕</div>
+            <div style="font-size:13px;margin-top:4px;">To confirm your order and pickup/delivery time ☕</div>
         </div>
         
         <div style="margin:12px 0;">
@@ -282,10 +302,7 @@
 
 <script>
 // ===== CONFIGURATION =====
-// YOUR WHATSAPP NUMBER
 const WHATSAPP_NUMBER = '252633665112';
-
-// YOUR FORMSPREE URL
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
 // ===== MENU DATA =====
@@ -306,6 +323,7 @@ let cart = {};
 let currentCurrency = 'USD';
 let selectedPayment = 'ZAAD';
 let currentTotal = 0;
+let deliveryOption = 'Pickup';
 const exchangeRate = 11000;
 
 // ===== SHOW PAGE =====
@@ -404,6 +422,14 @@ function changeQty(id, delta) {
     }
 }
 
+// ===== SET DELIVERY =====
+function setDelivery(option) {
+    deliveryOption = option;
+    document.getElementById('btnPickup').classList.toggle('active', option === 'Pickup');
+    document.getElementById('btnDelivery').classList.toggle('active', option === 'Delivery');
+    updateWhatsAppLink();
+}
+
 // ===== OPEN PAYMENT =====
 function openPayment() {
     const arr = Object.values(cart);
@@ -427,19 +453,36 @@ function openPayment() {
     updateDisplay();
     document.getElementById('paymentModal').classList.add('active');
     
-    // Update WhatsApp link
-    updateWhatsAppLink();
-    
-    // Clear customer name
     document.getElementById('customerName').value = '';
+    document.getElementById('customerPhone').value = '';
+    deliveryOption = 'Pickup';
+    document.getElementById('btnPickup').classList.add('active');
+    document.getElementById('btnDelivery').classList.remove('active');
+    updateWhatsAppLink();
 }
 
 // ===== UPDATE WHATSAPP LINK =====
 function updateWhatsAppLink() {
     const name = document.getElementById('customerName').value || 'Customer';
+    const phone = document.getElementById('customerPhone').value || 'Not provided';
     const orderDetails = getOrderSummaryText();
     const total = document.getElementById('displayAmount').textContent;
-    const message = `Hi! I just placed an order at Chocolate Inn.\n\nOrder: ${orderDetails}\n\nTotal: ${total}\n\nName: ${name}\n\nPayment: ${selectedPayment} to 3665112\n\nI will send payment now.`;
+    const delivery = deliveryOption;
+    
+    const message = `🍫 New Order from Chocolate Inn!
+
+👤 Name: ${name}
+📱 Phone: ${phone}
+📦 ${delivery}
+
+📋 Order:
+${orderDetails}
+
+💰 Total: ${total}
+💳 Payment: ${selectedPayment} to 3665112
+
+✅ I will call to confirm payment.`;
+    
     const encoded = encodeURIComponent(message);
     document.getElementById('whatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
 }
@@ -450,26 +493,46 @@ function getOrderSummaryText() {
     if(arr.length === 0) return 'No items';
     let summary = '';
     arr.forEach(item => {
-        summary += `${item.name} × ${item.qty}, `;
+        summary += `  • ${item.name} × ${item.qty}\n`;
     });
-    return summary.slice(0, -2);
+    return summary;
 }
 
 // ===== SEND ORDER EMAIL =====
 function sendOrderEmail() {
     const name = document.getElementById('customerName').value || 'Customer';
+    const phone = document.getElementById('customerPhone').value || 'Not provided';
     const orderDetails = getOrderSummaryText();
     const total = document.getElementById('displayAmount').textContent;
+    const delivery = deliveryOption;
     
     const data = {
         name: name,
+        phone: phone,
         order: orderDetails,
         total: total,
         payment: selectedPayment,
-        phone: '3665112',
+        delivery: delivery,
         _subject: `🍫 New Order from ${name}`,
-        message: `New order from ${name}!\n\nOrder: ${orderDetails}\nTotal: ${total}\nPayment: ${selectedPayment} to 3665112\n\nCustomer will call 3665112 to confirm payment.`
+        message: `🍫 NEW ORDER FROM CHOCOLATE INN!
+
+👤 Name: ${name}
+📱 Phone: ${phone}
+📦 ${delivery}
+
+📋 Order:
+${orderDetails}
+
+💰 Total: ${total}
+💳 Payment: ${selectedPayment} to 3665112
+
+✅ Customer will call 3665112 to confirm payment.`
     };
+    
+    const btn = event ? event.target : document.querySelector('.email-btn');
+    const originalText = btn.textContent;
+    btn.textContent = '⏳ Sending...';
+    btn.disabled = true;
     
     fetch(FORMSPREE_URL, {
         method: 'POST',
@@ -480,6 +543,8 @@ function sendOrderEmail() {
         body: JSON.stringify(data)
     })
     .then(response => {
+        btn.textContent = originalText;
+        btn.disabled = false;
         if (response.ok) {
             alert('✅ Order sent to the shop! You will receive a confirmation email.\n\nThank you for ordering from Chocolate Inn! ☕🍫');
         } else {
@@ -487,6 +552,8 @@ function sendOrderEmail() {
         }
     })
     .catch(error => {
+        btn.textContent = originalText;
+        btn.disabled = false;
         alert('⚠️ There was an issue sending your order. Please call 3665112 to place your order.');
     });
 }
@@ -527,12 +594,12 @@ function closePayment() {
     document.getElementById('paymentModal').classList.remove('active');
 }
 
-// ===== CUSTOMER NAME CHANGE =====
+// ===== CUSTOMER NAME/PHONE CHANGE =====
 document.addEventListener('DOMContentLoaded', function() {
     const nameInput = document.getElementById('customerName');
-    if(nameInput) {
-        nameInput.addEventListener('input', updateWhatsAppLink);
-    }
+    const phoneInput = document.getElementById('customerPhone');
+    if(nameInput) nameInput.addEventListener('input', updateWhatsAppLink);
+    if(phoneInput) phoneInput.addEventListener('input', updateWhatsAppLink);
 });
 
 // ===== INIT =====

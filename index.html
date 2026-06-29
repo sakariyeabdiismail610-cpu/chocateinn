@@ -20,7 +20,7 @@
         .hero h1{font-size:28px;}
         .hero h1 span{color:#d7a86e;}
         .hero p{font-size:16px;margin:8px auto 16px;}
-        .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:12px 28px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;width:100%;max-width:250px;}
+        .btn{display:inline-block;background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:12px 28px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;text-decoration:none;width:100%;max-width:250px;text-align:center;}
         .btn:hover{background:#c4955a;transform:scale(1.02);}
         
         .featured{padding:20px 0;}
@@ -43,23 +43,6 @@
         .badge.in{background:#2e7d32;color:#fff;}
         .badge.out{background:#b71c1c;color:#fff;}
         
-        .btn-sm{background:#4e2b1a;color:#fff;padding:4px 12px;border-radius:20px;border:none;font-weight:700;font-size:11px;cursor:pointer;margin-top:4px;}
-        .btn-sm:hover{background:#6b3f2a;}
-        
-        .cart-col{background:#fff;border-radius:16px;padding:16px;border:1px solid #ece3d8;margin-top:12px;}
-        .cart-col h2{font-size:20px;color:#4e2b1a;border-bottom:2px solid #d7a86e;padding-bottom:8px;margin-bottom:10px;}
-        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #ece3d8;flex-wrap:wrap;gap:4px;}
-        .cart-item .name{font-weight:600;font-size:14px;flex:1;}
-        .cart-item .qty-control{display:flex;align-items:center;gap:4px;}
-        .cart-item .qty-control button{background:#4e2b1a;color:#fff;border:none;width:22px;height:22px;border-radius:50%;font-size:14px;font-weight:700;cursor:pointer;}
-        .cart-item .qty-control .qty{font-weight:700;font-size:14px;min-width:18px;text-align:center;}
-        .cart-empty{color:#6d5c4e;text-align:center;padding:12px 0;}
-        .cart-totals{margin-top:12px;border-top:2px solid #d7a86e;padding-top:10px;}
-        .cart-totals .row{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
-        .cart-totals .row.total{font-size:18px;font-weight:900;color:#4e2b1a;border-top:2px solid #4e2b1a;padding-top:6px;margin-top:4px;}
-        .checkout-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;margin-top:10px;}
-        .checkout-btn:disabled{background:#a08070;cursor:not-allowed;}
-        
         .contact-info{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;margin-bottom:12px;}
         .contact-info h3{font-size:18px;color:#4e2b1a;margin-bottom:6px;}
         .contact-info p{font-size:14px;padding:3px 0;}
@@ -71,62 +54,10 @@
         .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;}
         .contact-form .btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;}
         
-        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;justify-content:center;align-items:center;padding:16px;}
-        .modal.active{display:flex;}
-        .modal-box{background:#fff;border-radius:20px;padding:20px;max-width:450px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
-        .modal-box h2{font-size:22px;color:#4e2b1a;text-align:center;border-bottom:3px solid #d7a86e;padding-bottom:10px;margin-bottom:14px;}
-        
-        .modal-close{position:absolute;top:12px;right:16px;font-size:26px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;background:none;border:none;}
-        .modal-close:hover{color:#b71c1c;transform:scale(1.2);}
-        
-        .modal-box .item-line{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
-        .modal-box .total-line{display:flex;justify-content:space-between;font-weight:700;font-size:16px;border-top:2px solid #ece3d8;padding-top:6px;margin-top:6px;}
-        
-        .currency-toggle{display:flex;gap:8px;justify-content:center;margin:10px 0;}
-        .currency-toggle button{padding:6px 16px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:13px;cursor:pointer;}
-        .currency-toggle button.active{background:#4e2b1a;color:#fff;}
-        
-        .amount-display{background:#4e2b1a;color:#fff;padding:12px;border-radius:12px;text-align:center;margin:10px 0;}
-        .amount-display .total{font-size:26px;font-weight:900;color:#d7a86e;}
-        
-        .pay-option{background:#f5efe8;border-radius:12px;padding:12px 14px;margin-bottom:8px;border:2px solid transparent;cursor:pointer;}
-        .pay-option:hover{border-color:#d7a86e;}
-        .pay-option.selected{border-color:#4e2b1a;background:#e8ddd0;}
-        .pay-option .method{font-weight:800;font-size:16px;color:#4e2b1a;}
-        .pay-option .number{font-size:17px;font-weight:700;color:#6b3f2a;}
-        
-        .prompt{background:#f5efe8;padding:12px;border-radius:10px;border-left:4px solid #d7a86e;margin:10px 0;font-size:14px;}
-        .prompt strong{color:#4e2b1a;}
-        
-        .call-reminder{background:#fff3e0;padding:14px;border-radius:12px;border:2px solid #d7a86e;margin:12px 0;text-align:center;}
-        .call-reminder .big{font-size:20px;font-weight:900;color:#4e2b1a;}
-        .call-reminder .number{font-size:28px;font-weight:900;color:#b71c1c;}
-        
-        .delivery-option{display:flex;gap:10px;margin:10px 0;justify-content:center;}
-        .delivery-option button{padding:10px 20px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:14px;cursor:pointer;transition:0.3s;flex:1;max-width:150px;}
-        .delivery-option button.active{background:#4e2b1a;color:#fff;}
-        .delivery-option button:hover{transform:scale(1.02);}
-        
-        .location-btn{width:100%;background:#4285F4;color:#fff;border:none;padding:10px;font-size:14px;font-weight:700;border-radius:30px;cursor:pointer;transition:0.3s;margin-top:8px;}
-        .location-btn:hover{background:#3367D6;transform:scale(1.02);}
-        .location-btn:disabled{background:#a0b4d6;cursor:not-allowed;}
-        
-        .location-status{font-size:13px;color:#6d5c4e;margin-top:4px;padding:4px 10px;border-radius:6px;display:inline-block;}
-        .location-status.found{background:#e8f5e9;color:#2e7d32;}
-        .location-status.error{background:#ffebee;color:#c62828;}
-        .location-status.loading{background:#fff3e0;color:#e65100;}
-        
-        .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:14px;font-size:17px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;text-decoration:none;}
-        .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
-        
-        .email-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:14px;font-size:17px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;}
-        .email-btn:hover{background:#6b3f2a;transform:scale(1.02);}
-        
-        .close-btn{width:100%;background:#6d5c4e;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;margin-top:10px;}
-        .close-btn:hover{background:#5a4a3e;}
-        
         footer{background:#3e1f12;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
         footer .copy{font-size:11px;opacity:0.7;}
+        footer nav a{color:#d7a86e;text-decoration:none;margin:0 8px;font-size:12px;cursor:pointer;}
+        footer nav a:hover{color:#f5efe8;}
         
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
@@ -143,17 +74,17 @@
     <nav>
         <a class="active" onclick="showPage('home')">Home</a>
         <a onclick="showPage('menu')">Menu</a>
-        <a onclick="showPage('order')">Order</a>
+        <a href="https://chocolateinm.gonnaorder.com" target="_blank">Order</a>
         <a onclick="showPage('contact')">Contact</a>
     </nav>
 </header>
 
-<!-- HOME -->
+<!-- ===== HOME PAGE ===== -->
 <div class="page active" id="page-home">
     <div class="hero">
         <h1>Welcome to <span>Chocolate Inn</span></h1>
         <p>Premium coffee, sweet treats, and warm vibes.</p>
-        <button class="btn" onclick="showPage('order')">☕ Order Now</button>
+        <a href="https://chocolateinm.gonnaorder.com" class="btn" target="_blank">☕ Order Now</a>
     </div>
     <div class="featured">
         <h2>⭐ Why Chocolate Inn?</h2>
@@ -167,184 +98,57 @@
     <div class="order-cta">
         <h2>📱 Ready to Order?</h2>
         <p>Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
-        <button class="btn" onclick="showPage('order')">📞 Order Now</button>
+        <a href="https://chocolateinm.gonnaorder.com" class="btn" target="_blank">📞 Order Now</a>
     </div>
 </div>
 
-<!-- MENU -->
+<!-- ===== MENU PAGE ===== -->
 <div class="page" id="page-menu">
-    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📋 Our Menu</h2>
-    <div class="menu-grid" id="menuGrid"></div>
-</div>
-
-<!-- ORDER -->
-<div class="page" id="page-order">
-    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
-    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click items to add to your cart.</p>
-    
-    <div class="menu-grid" id="orderMenuGrid"></div>
-    
-    <div class="cart-col">
-        <h2>🛒 Your Cart</h2>
-        <div id="cartItems"><div class="cart-empty">Cart is empty. Add items!</div></div>
-        <div class="cart-totals" id="cartTotals" style="display:none;">
-            <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-            <div class="row"><span>Tax (0.12%)</span><span id="tax">$0.00</span></div>
-            <div class="row total"><span>Total</span><span id="total">$0.00</span></div>
-            <button class="checkout-btn" id="checkoutBtn" disabled onclick="openPayment()">Proceed to Checkout</button>
+    <div style="max-width:100%;margin:16px auto;padding:0 12px;">
+        <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📋 Our Menu</h2>
+        <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">To order, click the "Order Now" button below!</p>
+        <div class="menu-grid" id="menuGrid"></div>
+        <div style="text-align:center;margin-top:20px;">
+            <a href="https://chocolateinm.gonnaorder.com" class="btn" target="_blank">📱 Order Now</a>
         </div>
     </div>
 </div>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT PAGE ===== -->
 <div class="page" id="page-contact">
-    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📞 Contact Us</h2>
-    <div class="contact-info">
-        <h3>Get in Touch</h3>
-        <p>📍 <strong>Address:</strong> 123 Main Street, Your City</p>
-        <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
-        <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
-        <p>📧 <strong>Email:</strong> sakariyeabdiismail@gmail.com</p>
-    </div>
-    <div class="contact-form">
-        <h3>Send a Message</h3>
-        <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message..." required></textarea>
-            <button type="submit" class="btn">📨 Send</button>
-        </form>
-    </div>
-</div>
-
-<!-- PAYMENT MODAL -->
-<div class="modal" id="paymentModal">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closePayment()">✕</button>
-        
-        <h2>🧾 Complete Your Order</h2>
-        
-        <div id="orderSummary"></div>
-        
-        <!-- Customer Name -->
-        <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">👤 Your Name</label>
-            <input type="text" id="customerName" placeholder="Enter your name" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
+    <div style="max-width:100%;margin:16px auto;padding:0 12px;">
+        <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📞 Contact Us</h2>
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>📍 <strong>Address:</strong> 123 Main Street, Your City</p>
+            <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
+            <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
+            <p>📧 <strong>Email:</strong> sakariyeabdiismail@gmail.com</p>
         </div>
-        
-        <!-- Customer Phone -->
-        <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">📱 Your Phone Number</label>
-            <input type="tel" id="customerPhone" placeholder="Enter your phone number (e.g., 252XXXXXXXX)" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
-            <div style="font-size:12px;color:#6d5c4e;margin-top:3px;">We'll use this to confirm your order</div>
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message..." required></textarea>
+                <button type="submit" class="btn">📨 Send</button>
+            </form>
         </div>
-        
-        <!-- LOCATION FEATURE (NEW) -->
-        <div style="margin:10px 0;border:1px solid #ece3d8;border-radius:12px;padding:14px;background:#f9f6f0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">📍 Location for Delivery</label>
-            
-            <!-- Manual Address Input -->
-            <div style="margin-bottom:8px;">
-                <input type="text" id="manualAddress" placeholder="Type your address manually" style="width:100%;padding:10px 14px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#fff;">
-            </div>
-            
-            <!-- OR Divider -->
-            <div style="text-align:center;color:#6d5c4e;font-size:13px;margin:4px 0;">— OR —</div>
-            
-            <!-- Location Button -->
-            <button class="location-btn" id="getLocationBtn" onclick="getCustomerLocation()">
-                📍 Use My Current Location
-            </button>
-            
-            <!-- Location Status -->
-            <div id="locationStatus" class="location-status" style="display:none;"></div>
-            
-            <!-- Hidden fields for location data -->
-            <input type="hidden" id="customerLat" value="">
-            <input type="hidden" id="customerLng" value="">
-            <input type="hidden" id="locationSource" value="manual">
-        </div>
-        
-        <!-- Delivery Option -->
-        <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">🚚 Delivery or Pickup?</label>
-            <div class="delivery-option">
-                <button id="btnPickup" class="active" onclick="setDelivery('Pickup')">🏪 Pickup</button>
-                <button id="btnDelivery" onclick="setDelivery('Delivery')">🚚 Delivery</button>
-            </div>
-        </div>
-        
-        <div class="call-reminder">
-            <div>📞 <strong>IMPORTANT!</strong></div>
-            <div style="margin:6px 0;">After sending payment, please call or WhatsApp:</div>
-            <div class="number">3665112</div>
-            <div style="font-size:13px;margin-top:4px;">To confirm your order and pickup/delivery time ☕</div>
-        </div>
-        
-        <div style="margin:12px 0;">
-            <h3 style="text-align:center;color:#4e2b1a;font-size:16px;margin-bottom:8px;">💳 Currency</h3>
-            <div class="currency-toggle">
-                <button id="btnUSD" class="active" onclick="setCurrency('USD')">USD</button>
-                <button id="btnSLSH" onclick="setCurrency('SLSH')">SLSH</button>
-            </div>
-        </div>
-        
-        <div class="amount-display">
-            <div style="font-size:12px;opacity:0.8;">Total Amount to Send</div>
-            <div class="total" id="displayAmount">$0.00</div>
-        </div>
-        
-        <div style="margin:12px 0;">
-            <h3 style="text-align:center;color:#4e2b1a;font-size:16px;margin-bottom:8px;">📱 Choose Payment Method</h3>
-            <div class="pay-option selected" onclick="selectPayment('ZAAD')" id="payZAAD">
-                <div class="method">📱 ZAAD</div>
-                <div class="number">📞 3665112</div>
-                <div style="font-size:12px;color:#6d5c4e;">Send via ZAAD to this number</div>
-            </div>
-            <div class="pay-option" onclick="selectPayment('Edahab')" id="payEdahab">
-                <div class="method">📱 Edahab</div>
-                <div class="number">📞 3665112</div>
-                <div style="font-size:12px;color:#6d5c4e;">Send via Edahab to this number</div>
-            </div>
-        </div>
-        
-        <div class="prompt" id="paymentPrompt">
-            💰 Send <strong id="promptAmount">$0.00</strong> via <strong id="promptMethod">ZAAD</strong> to <strong>3665112</strong>
-        </div>
-        
-        <div style="background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0;font-size:13px;border:1px solid #ffeaa7;">
-            ⚠️ <strong>After sending payment, call 3665112 to confirm!</strong> Your order will be prepared after confirmation.
-        </div>
-        
-        <!-- WHATSAPP BUTTON -->
-        <a href="#" id="whatsappLink" target="_blank" class="whatsapp-btn">
-            💬 Message Us on WhatsApp
-        </a>
-        
-        <!-- EMAIL ORDER BUTTON -->
-        <button class="email-btn" onclick="sendOrderEmail()">
-            📧 Send Order to Shop (Email)
-        </button>
-        
-        <button class="close-btn" onclick="closePayment()">✅ Close</button>
     </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer>
     <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
+    <nav>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('menu')">Menu</a>
+        <a href="https://chocolateinm.gonnaorder.com" target="_blank">Order</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </nav>
 </footer>
 
 <script>
-// ===== CONFIGURATION =====
-const WHATSAPP_NUMBER = '252633665112';
-const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
-
-// ===== LOCATION VARIABLES =====
-let customerLat = '';
-let customerLng = '';
-let locationSource = 'manual';
-
 // ===== MENU DATA =====
 const items = [
     {id:1,name:'Caramel Macchiato',price:5.50,inStock:true},
@@ -359,22 +163,14 @@ const items = [
     {id:10,name:'Iced Coffee',price:4.50,inStock:true}
 ];
 
-let cart = {};
-let currentCurrency = 'USD';
-let selectedPayment = 'ZAAD';
-let currentTotal = 0;
-let deliveryOption = 'Pickup';
-const exchangeRate = 11000;
-
 // ===== SHOW PAGE =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('header nav a').forEach(link => {
+    document.querySelectorAll('header nav a, footer nav a').forEach(link => {
         link.classList.remove('active');
         if(link.textContent.toLowerCase() === page) link.classList.add('active');
     });
-    if(page === 'order') updateCart();
     window.scrollTo({top:0});
 }
 
@@ -388,369 +184,7 @@ function renderMenu() {
         d.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔ In Stock':'❌ Sold Out'}</span>`;
         grid.appendChild(d);
     });
-    
-    const orderGrid = document.getElementById('orderMenuGrid');
-    orderGrid.innerHTML = '';
-    items.forEach(item => {
-        const d = document.createElement('div');
-        d.className = 'menu-item';
-        d.style.cursor = item.inStock ? 'pointer' : 'default';
-        d.style.opacity = item.inStock ? '1' : '0.6';
-        d.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔':'❌'}</span>`;
-        if(item.inStock) d.onclick = function(){ addToCart(item.id); };
-        orderGrid.appendChild(d);
-    });
 }
-
-// ===== ADD TO CART =====
-function addToCart(id) {
-    const item = items.find(i => i.id === id);
-    if(!item || !item.inStock) return;
-    if(cart[id]) cart[id].qty += 1;
-    else cart[id] = {...item, qty: 1};
-    updateCart();
-}
-
-// ===== UPDATE CART =====
-function updateCart() {
-    const container = document.getElementById('cartItems');
-    const totals = document.getElementById('cartTotals');
-    const btn = document.getElementById('checkoutBtn');
-    const arr = Object.values(cart);
-    
-    if(arr.length === 0) {
-        container.innerHTML = '<div class="cart-empty">Cart is empty. Add items!</div>';
-        totals.style.display = 'none';
-        btn.disabled = true;
-        return;
-    }
-    
-    let html = '', subtotal = 0;
-    arr.forEach(item => {
-        const total = item.price * item.qty;
-        subtotal += total;
-        html += `
-            <div class="cart-item">
-                <span class="name">${item.name}</span>
-                <div class="qty-control">
-                    <button onclick="changeQty(${item.id},-1)">−</button>
-                    <span class="qty">${item.qty}</span>
-                    <button onclick="changeQty(${item.id},1)">+</button>
-                </div>
-                <span>$${total.toFixed(2)}</span>
-            </div>
-        `;
-    });
-    container.innerHTML = html;
-    totals.style.display = 'block';
-    btn.disabled = false;
-    
-    const tax = subtotal * 0.0012;
-    const total = subtotal + tax;
-    document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
-    document.getElementById('tax').textContent = '$' + tax.toFixed(2);
-    document.getElementById('total').textContent = '$' + total.toFixed(2);
-    currentTotal = total;
-}
-
-// ===== CHANGE QTY =====
-function changeQty(id, delta) {
-    if(cart[id]) {
-        cart[id].qty += delta;
-        if(cart[id].qty <= 0) delete cart[id];
-        updateCart();
-    }
-}
-
-// ===== SET DELIVERY =====
-function setDelivery(option) {
-    deliveryOption = option;
-    document.getElementById('btnPickup').classList.toggle('active', option === 'Pickup');
-    document.getElementById('btnDelivery').classList.toggle('active', option === 'Delivery');
-    updateWhatsAppLink();
-}
-
-// ===== GET CUSTOMER LOCATION (NEW) =====
-function getCustomerLocation() {
-    const statusDiv = document.getElementById('locationStatus');
-    const btn = document.getElementById('getLocationBtn');
-    
-    // Check if browser supports geolocation
-    if (!navigator.geolocation) {
-        statusDiv.style.display = 'inline-block';
-        statusDiv.className = 'location-status error';
-        statusDiv.textContent = '❌ Your browser doesn\'t support location. Please enter address manually.';
-        return;
-    }
-    
-    // Show loading status
-    statusDiv.style.display = 'inline-block';
-    statusDiv.className = 'location-status loading';
-    statusDiv.textContent = '⏳ Getting your location...';
-    btn.disabled = true;
-    btn.textContent = '⏳ Getting location...';
-    
-    // Get location
-    navigator.geolocation.getCurrentPosition(
-        // Success callback
-        function(position) {
-            customerLat = position.coords.latitude;
-            customerLng = position.coords.longitude;
-            locationSource = 'gps';
-            
-            // Store in hidden fields
-            document.getElementById('customerLat').value = customerLat;
-            document.getElementById('customerLng').value = customerLng;
-            document.getElementById('locationSource').value = 'gps';
-            
-            // Show success
-            statusDiv.className = 'location-status found';
-            statusDiv.textContent = '✅ Location found! (Lat: ' + customerLat.toFixed(6) + ', Lng: ' + customerLng.toFixed(6) + ')';
-            
-            // Update WhatsApp link with location
-            updateWhatsAppLink();
-            
-            btn.disabled = false;
-            btn.textContent = '📍 Update Location';
-        },
-        // Error callback
-        function(error) {
-            let errorMsg = '';
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    errorMsg = '❌ Location access denied. Please enter address manually.';
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    errorMsg = '❌ Location unavailable. Please enter address manually.';
-                    break;
-                case error.TIMEOUT:
-                    errorMsg = '❌ Location request timed out. Please enter address manually.';
-                    break;
-                default:
-                    errorMsg = '❌ Could not get location. Please enter address manually.';
-            }
-            
-            statusDiv.className = 'location-status error';
-            statusDiv.textContent = errorMsg;
-            btn.disabled = false;
-            btn.textContent = '📍 Use My Current Location';
-            
-            // Reset location data
-            customerLat = '';
-            customerLng = '';
-            locationSource = 'manual';
-            document.getElementById('locationSource').value = 'manual';
-        }
-    );
-}
-
-// ===== GET LOCATION TEXT FOR MESSAGE =====
-function getLocationText() {
-    const manualAddress = document.getElementById('manualAddress').value.trim();
-    const lat = document.getElementById('customerLat').value;
-    const lng = document.getElementById('customerLng').value;
-    const source = document.getElementById('locationSource').value;
-    
-    if (source === 'gps' && lat && lng) {
-        return `📍 Location (GPS): https://www.google.com/maps?q=${lat},${lng}`;
-    } else if (manualAddress) {
-        return `📍 Address: ${manualAddress}`;
-    } else {
-        return '📍 Location: Not provided (please ask customer)';
-    }
-}
-
-// ===== OPEN PAYMENT =====
-function openPayment() {
-    const arr = Object.values(cart);
-    if(arr.length === 0) return;
-    
-    let html = '', subtotal = 0;
-    arr.forEach(item => {
-        const total = item.price * item.qty;
-        subtotal += total;
-        html += `<div class="item-line"><span>${item.name} × ${item.qty}</span><span>$${total.toFixed(2)}</span></div>`;
-    });
-    const tax = subtotal * 0.0012;
-    const total = subtotal + tax;
-    html += `<div class="total-line"><span>Total</span><span>$${total.toFixed(2)}</span></div>`;
-    
-    document.getElementById('orderSummary').innerHTML = html;
-    currentTotal = total;
-    currentCurrency = 'USD';
-    document.getElementById('btnUSD').classList.add('active');
-    document.getElementById('btnSLSH').classList.remove('active');
-    updateDisplay();
-    document.getElementById('paymentModal').classList.add('active');
-    
-    // Reset fields
-    document.getElementById('customerName').value = '';
-    document.getElementById('customerPhone').value = '';
-    document.getElementById('manualAddress').value = '';
-    document.getElementById('customerLat').value = '';
-    document.getElementById('customerLng').value = '';
-    document.getElementById('locationSource').value = 'manual';
-    document.getElementById('locationStatus').style.display = 'none';
-    deliveryOption = 'Pickup';
-    document.getElementById('btnPickup').classList.add('active');
-    document.getElementById('btnDelivery').classList.remove('active');
-    
-    // Reset location button
-    const btn = document.getElementById('getLocationBtn');
-    btn.disabled = false;
-    btn.textContent = '📍 Use My Current Location';
-    
-    updateWhatsAppLink();
-}
-
-// ===== UPDATE WHATSAPP LINK =====
-function updateWhatsAppLink() {
-    const name = document.getElementById('customerName').value || 'Customer';
-    const phone = document.getElementById('customerPhone').value || 'Not provided';
-    const orderDetails = getOrderSummaryText();
-    const total = document.getElementById('displayAmount').textContent;
-    const delivery = deliveryOption;
-    const location = getLocationText();
-    
-    const message = `🍫 New Order from Chocolate Inn!
-
-👤 Name: ${name}
-📱 Phone: ${phone}
-📦 ${delivery}
-${location}
-
-📋 Order:
-${orderDetails}
-
-💰 Total: ${total}
-💳 Payment: ${selectedPayment} to 3665112
-
-✅ I will call to confirm payment.`;
-    
-    const encoded = encodeURIComponent(message);
-    document.getElementById('whatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-}
-
-// ===== GET ORDER SUMMARY TEXT =====
-function getOrderSummaryText() {
-    const arr = Object.values(cart);
-    if(arr.length === 0) return 'No items';
-    let summary = '';
-    arr.forEach(item => {
-        summary += `  • ${item.name} × ${item.qty}\n`;
-    });
-    return summary;
-}
-
-// ===== SEND ORDER EMAIL =====
-function sendOrderEmail() {
-    const name = document.getElementById('customerName').value || 'Customer';
-    const phone = document.getElementById('customerPhone').value || 'Not provided';
-    const orderDetails = getOrderSummaryText();
-    const total = document.getElementById('displayAmount').textContent;
-    const delivery = deliveryOption;
-    const location = getLocationText();
-    
-    const data = {
-        name: name,
-        phone: phone,
-        order: orderDetails,
-        total: total,
-        payment: selectedPayment,
-        delivery: delivery,
-        location: location,
-        _subject: `🍫 New Order from ${name}`,
-        message: `🍫 NEW ORDER FROM CHOCOLATE INN!
-
-👤 Name: ${name}
-📱 Phone: ${phone}
-📦 ${delivery}
-${location}
-
-📋 Order:
-${orderDetails}
-
-💰 Total: ${total}
-💳 Payment: ${selectedPayment} to 3665112
-
-✅ Customer will call 3665112 to confirm payment.`
-    };
-    
-    const btn = event ? event.target : document.querySelector('.email-btn');
-    const originalText = btn.textContent;
-    btn.textContent = '⏳ Sending...';
-    btn.disabled = true;
-    
-    fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        if (response.ok) {
-            alert('✅ Order sent to the shop! You will receive a confirmation email.\n\nThank you for ordering from Chocolate Inn! ☕🍫');
-        } else {
-            alert('⚠️ There was an issue sending your order. Please call 3665112 to place your order.');
-        }
-    })
-    .catch(error => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        alert('⚠️ There was an issue sending your order. Please call 3665112 to place your order.');
-    });
-}
-
-// ===== SET CURRENCY =====
-function setCurrency(currency) {
-    currentCurrency = currency;
-    document.getElementById('btnUSD').classList.toggle('active', currency === 'USD');
-    document.getElementById('btnSLSH').classList.toggle('active', currency === 'SLSH');
-    updateDisplay();
-}
-
-// ===== UPDATE DISPLAY =====
-function updateDisplay() {
-    const display = document.getElementById('displayAmount');
-    const promptAmt = document.getElementById('promptAmount');
-    let amount = currentTotal;
-    let symbol = '$';
-    if(currentCurrency === 'SLSH') {
-        amount = currentTotal * exchangeRate;
-        symbol = 'SLSH ';
-    }
-    display.textContent = symbol + amount.toFixed(2);
-    promptAmt.textContent = symbol + amount.toFixed(2);
-}
-
-// ===== SELECT PAYMENT =====
-function selectPayment(method) {
-    selectedPayment = method;
-    document.getElementById('payZAAD').classList.toggle('selected', method === 'ZAAD');
-    document.getElementById('payEdahab').classList.toggle('selected', method === 'Edahab');
-    document.getElementById('promptMethod').textContent = method;
-    updateWhatsAppLink();
-}
-
-// ===== CLOSE PAYMENT =====
-function closePayment() {
-    document.getElementById('paymentModal').classList.remove('active');
-}
-
-// ===== CUSTOMER NAME/PHONE/ADDRESS CHANGE =====
-document.addEventListener('DOMContentLoaded', function() {
-    const nameInput = document.getElementById('customerName');
-    const phoneInput = document.getElementById('customerPhone');
-    const addressInput = document.getElementById('manualAddress');
-    
-    if(nameInput) nameInput.addEventListener('input', updateWhatsAppLink);
-    if(phoneInput) phoneInput.addEventListener('input', updateWhatsAppLink);
-    if(addressInput) addressInput.addEventListener('input', updateWhatsAppLink);
-});
 
 // ===== INIT =====
 renderMenu();

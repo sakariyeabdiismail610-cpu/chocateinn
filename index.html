@@ -186,11 +186,7 @@
             <div class="featured-card"><div class="icon">❤️</div><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
         </div>
     </div>
-    <div class="order-cta">
-        <h2>📱 Ready to Order?</h2>
-        <p>Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
-        <button class="btn" onclick="showPage('order')">📞 Order Now</button>
-    </div>
+    <!-- REMOVED: Bottom Order Now button -->
 </div>
 
 <!-- MENU -->
@@ -204,38 +200,20 @@
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
     <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order. Then click the 🛒 cart button to checkout.</p>
     
-    <!-- ORDER STATUS (Shows after order is placed) -->
+    <!-- ORDER STATUS -->
     <div class="order-status" id="orderStatus" style="display:none;">
         <h3>📦 Your Order Status</h3>
         <div class="status-steps">
-            <div class="status-step">
-                <div class="circle" id="status1">✅</div>
-                <span class="label" id="label1">Ordered</span>
-            </div>
-            <div class="status-step">
-                <div class="circle" id="status2">⏳</div>
-                <span class="label" id="label2">Confirmed</span>
-            </div>
-            <div class="status-step">
-                <div class="circle" id="status3">⏳</div>
-                <span class="label" id="label3">Preparing</span>
-            </div>
-            <div class="status-step">
-                <div class="circle" id="status4">⏳</div>
-                <span class="label" id="label4">Ready</span>
-            </div>
-            <div class="status-step">
-                <div class="circle" id="status5">⏳</div>
-                <span class="label" id="label5">Delivered</span>
-            </div>
+            <div class="status-step"><div class="circle" id="status1">✅</div><span class="label" id="label1">Ordered</span></div>
+            <div class="status-step"><div class="circle" id="status2">⏳</div><span class="label" id="label2">Confirmed</span></div>
+            <div class="status-step"><div class="circle" id="status3">⏳</div><span class="label" id="label3">Preparing</span></div>
+            <div class="status-step"><div class="circle" id="status4">⏳</div><span class="label" id="label4">Ready</span></div>
+            <div class="status-step"><div class="circle" id="status5">⏳</div><span class="label" id="label5">Delivered</span></div>
         </div>
-        
         <div class="tracking-link-box">
             📱 <strong>Your Tracking Link:</strong><br>
             <a href="#" id="trackingLink" target="_blank">Click here to track your order</a>
-            <br><span style="font-size:12px;color:#6d5c4e;">Share this link with us to check your order status</span>
         </div>
-        
         <div style="text-align:center;margin-top:8px;">
             <button class="btn" onclick="updateOrderStatus()" style="max-width:200px;padding:8px 16px;font-size:14px;">🔄 Check Status</button>
         </div>
@@ -288,8 +266,8 @@
         <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
             <label>👤 Your Name</label>
             <input type="text" id="cartName" placeholder="Enter your name">
-            <label>📱 Your Phone Number</label>
-            <input type="tel" id="cartPhone" placeholder="Enter your phone number">
+            <label>📱 Your WhatsApp Number</label>
+            <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number (e.g., 252XXXXXXXX)">
             <label>📍 Delivery Address</label>
             <input type="text" id="cartAddress" placeholder="Type your address">
             <label>🚚 Delivery or Pickup?</label>
@@ -316,7 +294,7 @@
                 <div class="number">📞 3665112</div>
             </div>
             <div class="prompt-cart" id="cartPrompt">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong></div>
-            <div class="call-reminder-cart">📞 <strong>After sending payment, call or WhatsApp:</strong><div class="number">3665112</div><div style="font-size:11px;">To confirm your order ☕</div></div>
+            <div class="call-reminder-cart">📞 <strong>After sending payment, call or WhatsApp:</strong><div class="number">3665112</div></div>
             <a href="#" id="cartWhatsappLink" target="_blank" class="whatsapp-btn">💬 Message Us on WhatsApp</a>
             <button class="email-btn" onclick="sendCartOrder()">📧 Send Order to Shop (Email)</button>
         </div>
@@ -534,7 +512,7 @@ function updateCartPrompt() {
     promptMethod.textContent = cartPayment;
 }
 
-// ===== UPDATE CART WHATSAPP LINK =====
+// ===== UPDATE CART WHATSAPP LINK (FIXED) =====
 function updateCartWhatsAppLink() {
     const name = document.getElementById('cartName').value || 'Customer';
     const phone = document.getElementById('cartPhone').value || 'Not provided';
@@ -546,8 +524,13 @@ function updateCartWhatsAppLink() {
     let symbol = '$';
     if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
     const total = symbol + amount.toFixed(2);
+    
     const message = `🍫 New Order from Chocolate Inn!\n\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Order: ${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\nI will call to confirm payment.`;
-    document.getElementById('cartWhatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    
+    // Fixed WhatsApp link - using the customer's phone number if provided, else use shop number
+    const customerPhone = document.getElementById('cartPhone').value.trim();
+    const whatsappNumber = customerPhone || WHATSAPP_NUMBER;
+    document.getElementById('cartWhatsappLink').href = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
 }
 
 // ===== GENERATE ORDER ID =====
@@ -567,7 +550,7 @@ function openCartCheckout() {
     const name = document.getElementById('cartName').value.trim();
     if(!name) { alert('Please enter your name.'); document.getElementById('cartName').focus(); return; }
     const phone = document.getElementById('cartPhone').value.trim();
-    if(!phone) { alert('Please enter your phone number.'); document.getElementById('cartPhone').focus(); return; }
+    if(!phone) { alert('Please enter your WhatsApp number.'); document.getElementById('cartPhone').focus(); return; }
     if(cartDelivery === 'Delivery') {
         const address = document.getElementById('cartAddress').value.trim();
         if(!address) { alert('Please enter your delivery address.'); document.getElementById('cartAddress').focus(); return; }
@@ -588,7 +571,6 @@ function sendCartOrder() {
     if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
     const total = symbol + amount.toFixed(2);
     
-    // Generate Order ID
     currentOrderId = generateOrderId();
     
     const data = {
@@ -618,19 +600,19 @@ function sendCartOrder() {
         btn.textContent = originalText;
         btn.disabled = false;
         if(response.ok) {
-            // Create tracking link
-            const trackingUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`🍫 Order #${currentOrderId} - ${name}\n📋 ${orderText}\n💰 ${total}\n📱 ${phone}\n📍 ${address}\n📦 ${cartDelivery}\n💳 ${cartPayment}`)}`;
+            // Create tracking link with customer's WhatsApp number
+            const customerPhone = document.getElementById('cartPhone').value.trim() || WHATSAPP_NUMBER;
+            const trackingMessage = `🍫 Order #${currentOrderId} - ${name}\n📋 ${orderText}\n💰 ${total}\n📱 ${phone}\n📍 ${address}\n📦 ${cartDelivery}\n💳 ${cartPayment}`;
+            const trackingUrl = `https://wa.me/${customerPhone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(trackingMessage)}`;
             document.getElementById('trackingLink').href = trackingUrl;
             document.getElementById('trackingLink').textContent = `📱 Click to WhatsApp Order #${currentOrderId}`;
             
-            // Show order status
             orderPlaced = true;
             document.getElementById('orderStatus').style.display = 'block';
             updateOrderStatus();
             
-            alert(`✅ Order #${currentOrderId} sent!\n\nYou will receive a confirmation email.\n\n📱 Share your order number: ${currentOrderId}\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
+            alert(`✅ Order #${currentOrderId} sent!\n\nYou will receive a confirmation email.\n\n📱 Your order number: ${currentOrderId}\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
             
-            // Clear cart
             cart = {};
             updateAll();
             toggleCart();
@@ -647,27 +629,18 @@ function sendCartOrder() {
 
 // ===== UPDATE ORDER STATUS =====
 function updateOrderStatus() {
-    // Simulate status updates (in real system, this would come from backend)
     const statuses = [
         { id: 'status1', label: 'label1', text: '✅ Ordered', active: true },
-        { id: 'status2', label: 'label2', text: '⏳ Confirmed', active: true },
+        { id: 'status2', label: 'label2', text: '✅ Confirmed', active: true },
         { id: 'status3', label: 'label3', text: '⏳ Preparing', active: false },
         { id: 'status4', label: 'label4', text: '⏳ Ready', active: false },
         { id: 'status5', label: 'label5', text: '⏳ Delivered', active: false }
     ];
     
-    // For demo, cycle through statuses
-    // In production, this would check against a database/API
-    const currentStatus = statuses.findIndex(s => s.active === false);
-    if (currentStatus > 0) {
-        statuses[currentStatus - 1].text = '✅ ' + statuses[currentStatus - 1].text.replace('⏳', '✅');
-    }
-    
-    // Update UI
     statuses.forEach((s, index) => {
         const circle = document.getElementById(s.id);
         const label = document.getElementById(s.label);
-        if (s.active || index < statuses.findIndex(s2 => s2.active === false)) {
+        if (s.active) {
             circle.className = 'circle completed';
             circle.textContent = '✅';
             label.className = 'label active';

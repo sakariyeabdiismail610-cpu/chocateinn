@@ -16,10 +16,7 @@
         .page{display:none;padding:12px;width:100%;}
         .page.active{display:block;}
         
-        /* ===== HERO WITH CHOCOLATE BACKGROUND ===== */
         .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center;}
-        
-        /* Chocolate Background Pattern */
         .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:
             radial-gradient(circle at 15% 20%, #5C3A1E 0%, transparent 25%),
             radial-gradient(circle at 85% 30%, #3D2210 0%, transparent 30%),
@@ -28,26 +25,19 @@
             radial-gradient(circle at 90% 75%, #6B4428 0%, transparent 25%),
             radial-gradient(circle at 30% 50%, #4A2A18 0%, transparent 40%);
         background-color:#4A2E1B;}
-        
-        /* Chocolate Bar Shapes */
         .hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:
-            /* Chocolate bars */
             linear-gradient(45deg, transparent 60%, rgba(215,168,110,0.05) 60%, rgba(215,168,110,0.05) 65%, transparent 65%),
             linear-gradient(-45deg, transparent 60%, rgba(215,168,110,0.05) 60%, rgba(215,168,110,0.05) 65%, transparent 65%),
-            /* Truffle circles */
             radial-gradient(circle at 12% 85%, rgba(215,168,110,0.08) 0%, transparent 15%),
             radial-gradient(circle at 88% 15%, rgba(215,168,110,0.08) 0%, transparent 20%),
             radial-gradient(circle at 5% 40%, rgba(215,168,110,0.06) 0%, transparent 10%),
             radial-gradient(circle at 95% 60%, rgba(215,168,110,0.06) 0%, transparent 12%),
-            /* Grid patterns for chocolate bars */
             repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(215,168,110,0.04) 20px, rgba(215,168,110,0.04) 21px),
             repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(215,168,110,0.04) 20px, rgba(215,168,110,0.04) 21px);
         background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 80px 80px;
         background-position:0 0, 0 0, 0 0, 0 0, 0 0, 0 0, center center;}
-        
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
         
-        /* LOGO SVG */
         .logo-svg{max-width:500px;width:100%;height:auto;display:block;margin:0 auto;}
         
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
@@ -97,7 +87,6 @@
         footer{background:#4A2E1B;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
         footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;}
         
-        /* ===== CART ===== */
         .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
         .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
         .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
@@ -189,7 +178,7 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <!-- ===== LOGO SVG (Close Together) ===== -->
+            <!-- ===== LOGO SVG ===== -->
             <svg class="logo-svg" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <style>
@@ -199,47 +188,31 @@
                     </style>
                 </defs>
                 
-                <!-- ===== "CHOCOLATE" (no spaces between letters) ===== -->
-                <!-- C -->
-                <text x="5" y="75" class="logo-text" font-size="56" letter-spacing="-1">C</text>
-                <!-- h -->
-                <text x="52" y="75" class="logo-text" font-size="56" letter-spacing="-1">h</text>
-                <!-- o -->
-                <text x="95" y="75" class="logo-text" font-size="56" letter-spacing="-1">o</text>
-                <!-- c -->
-                <text x="138" y="75" class="logo-text" font-size="56" letter-spacing="-1">c</text>
-                <!-- o -->
-                <text x="176" y="75" class="logo-text" font-size="56" letter-spacing="-1">o</text>
-                <!-- l (with chocolate bar on top) -->
-                <text x="214" y="75" class="logo-text" font-size="56" letter-spacing="-1">l</text>
+                <!-- ===== "Chocolate" - ALL TOGETHER (no spaces) ===== -->
+                <text x="10" y="75" class="logo-text" font-size="56" letter-spacing="-2">Chocolate</text>
                 
                 <!-- ===== CHOCOLATE BAR ICON (ON TOP of the 'l') ===== -->
-                <g transform="translate(222, 28)">
-                    <!-- Chocolate bar tilted at 45 degrees -->
+                <!-- The 'l' is in "Chocolate" at position ~148 -->
+                <g transform="translate(148, 30)">
                     <g transform="rotate(45)">
-                        <!-- Main chocolate bar shape -->
                         <path d="M-6,-2 L16,-2 L16,5 L10,5 L10,16 L4,16 L4,9 L-6,9 Z" fill="#FCD12A"/>
-                        <!-- Grid lines (inside the bar) -->
                         <line x1="-3" y1="2" x2="8" y2="2" stroke="#4A2E1B" stroke-width="1.2"/>
                         <line x1="-3" y1="7" x2="8" y2="7" stroke="#4A2E1B" stroke-width="1.2"/>
                         <line x1="-3" y1="12" x2="8" y2="12" stroke="#4A2E1B" stroke-width="1.2"/>
                         <line x1="2" y1="-2" x2="2" y2="5" stroke="#4A2E1B" stroke-width="1.2"/>
                         <line x1="7" y1="5" x2="7" y2="12" stroke="#4A2E1B" stroke-width="1.2"/>
-                        <!-- Bite mark (rounded corner at top-right) -->
                         <circle cx="13" cy="-4" r="5" fill="#4A2E1B"/>
                     </g>
                 </g>
                 
-                <!-- ===== "ate" (no spaces) ===== -->
-                <text x="262" y="75" class="logo-text" font-size="56" letter-spacing="-1">a</text>
-                <text x="302" y="75" class="logo-text" font-size="56" letter-spacing="-1">t</text>
-                <text x="340" y="75" class="logo-text" font-size="56" letter-spacing="-1">e</text>
+                <!-- ===== SPACE between "Chocolate" and "Inn" ===== -->
+                <text x="215" y="75" class="logo-text" font-size="56" letter-spacing="-2"> </text>
                 
-                <!-- ===== "Inn" (no spaces) ===== -->
-                <text x="386" y="75" class="logo-text" font-size="56" letter-spacing="-1">Inn</text>
+                <!-- ===== "Inn" - ALL TOGETHER ===== -->
+                <text x="225" y="75" class="logo-text" font-size="56" letter-spacing="-2">Inn</text>
                 
                 <!-- ===== DIVIDER ===== -->
-                <line x1="80" y1="95" x2="520" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
+                <line x1="100" y1="95" x2="500" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
                 
                 <!-- ===== TAGLINE ===== -->
                 <text x="300" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
@@ -395,7 +368,6 @@ let cartTotal = 0;
 const exchangeRate = 11000;
 let currentOrderId = '';
 
-// ===== SHOW PAGE =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
@@ -406,7 +378,6 @@ function showPage(page) {
     window.scrollTo({top:0});
 }
 
-// ===== RENDER MENU =====
 function renderMenu() {
     const grid = document.getElementById('menuGrid');
     grid.innerHTML = '';

@@ -20,7 +20,7 @@
         .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:1;max-width:700px;width:100%;}
         
-        /* LOGO SVG */
+        /* LOGO SVG - Font ONLY changed here */
         .logo-svg{max-width:480px;width:100%;height:auto;display:block;margin:0 auto;}
         
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
@@ -162,39 +162,82 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <!-- YOUR EXACT LOGO -->
-            <svg class="logo-svg" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+            <!-- ===== LOGO SVG ===== -->
+            <svg class="logo-svg" viewBox="0 0 620 150" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;display=swap');
-                        .logo-text { font-family: 'Comfortaa', cursive, sans-serif; font-weight: 700; fill: #FCD12A; }
-                        .tagline { font-family: Arial, Helvetica, sans-serif; font-weight: 300; fill: #FCD12A; letter-spacing: 3px; }
+                        /* ===== GEOMETRIC FONT STYLES ===== */
+                        .letter-c { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        .letter-o { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        .letter-a { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        .letter-t { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        .letter-l { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        .letter-e { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        .letter-space { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        
+                        .letter-inn { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
+                        
+                        .tagline { font-family: 'Inter', 'Helvetica', sans-serif; font-weight: 300; fill: #FCD12A; letter-spacing: 4px; }
                     </style>
                 </defs>
                 
-                <!-- Main Text: "Ch" -->
-                <text x="215" y="75" text-anchor="middle" class="logo-text" font-size="52" letter-spacing="2">Ch</text>
+                <!-- ===== "CHOCOLATE" ===== -->
+                <!-- C -->
+                <text x="10" y="75" class="letter-c" font-size="54" letter-spacing="1">C</text>
                 
-                <!-- Chocolate Bar Icon (replacing the "o") -->
-                <g transform="translate(270, 35)">
+                <!-- h -->
+                <text x="58" y="75" class="letter-c" font-size="54" letter-spacing="1">h</text>
+                
+                <!-- o -->
+                <text x="100" y="75" class="letter-o" font-size="54" letter-spacing="1">o</text>
+                
+                <!-- c -->
+                <text x="140" y="75" class="letter-c" font-size="54" letter-spacing="1">c</text>
+                
+                <!-- o -->
+                <text x="178" y="75" class="letter-o" font-size="54" letter-spacing="1">o</text>
+                
+                <!-- l (with chocolate bar on top) -->
+                <!-- The letter 'l' sits at x=216, y=75 -->
+                <text x="216" y="75" class="letter-l" font-size="54" letter-spacing="1">l</text>
+                
+                <!-- ===== CHOCOLATE BAR ICON (sits ON TOP of the 'l') ===== -->
+                <g transform="translate(222, 28)">
+                    <!-- Chocolate bar tilted at 45 degrees -->
                     <g transform="rotate(45)">
-                        <path d="M-5,0 L15,0 L15,5 L10,5 L10,15 L5,15 L5,10 L-5,10 Z" fill="#FCD12A"/>
-                        <line x1="-2" y1="3" x2="8" y2="3" stroke="#4A2E1B" stroke-width="0.8"/>
-                        <line x1="-2" y1="7" x2="8" y2="7" stroke="#4A2E1B" stroke-width="0.8"/>
-                        <line x1="3" y1="0" x2="3" y2="5" stroke="#4A2E1B" stroke-width="0.8"/>
-                        <line x1="8" y1="5" x2="8" y2="10" stroke="#4A2E1B" stroke-width="0.8"/>
-                        <circle cx="12" cy="-2" r="4" fill="#4A2E1B"/>
+                        <!-- Main chocolate bar shape -->
+                        <path d="M-6,-2 L16,-2 L16,5 L10,5 L10,16 L4,16 L4,9 L-6,9 Z" fill="#FCD12A"/>
+                        <!-- Grid lines (inside the bar) -->
+                        <line x1="-3" y1="2" x2="8" y2="2" stroke="#4A2E1B" stroke-width="1.2"/>
+                        <line x1="-3" y1="7" x2="8" y2="7" stroke="#4A2E1B" stroke-width="1.2"/>
+                        <line x1="-3" y1="12" x2="8" y2="12" stroke="#4A2E1B" stroke-width="1.2"/>
+                        <line x1="2" y1="-2" x2="2" y2="5" stroke="#4A2E1B" stroke-width="1.2"/>
+                        <line x1="7" y1="5" x2="7" y2="12" stroke="#4A2E1B" stroke-width="1.2"/>
+                        <!-- Bite mark (rounded corner at top-right) -->
+                        <circle cx="13" cy="-4" r="5" fill="#4A2E1B"/>
                     </g>
                 </g>
                 
-                <!-- Rest of the text -->
-                <text x="350" y="75" text-anchor="middle" class="logo-text" font-size="52" letter-spacing="2">colate Inn</text>
+                <!-- a -->
+                <text x="262" y="75" class="letter-a" font-size="54" letter-spacing="1">a</text>
                 
-                <!-- Divider -->
-                <line x1="150" y1="95" x2="450" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
+                <!-- t -->
+                <text x="302" y="75" class="letter-t" font-size="54" letter-spacing="1">t</text>
                 
-                <!-- Tagline -->
-                <text x="300" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
+                <!-- e -->
+                <text x="340" y="75" class="letter-e" font-size="54" letter-spacing="1">e</text>
+                
+                <!-- ===== SPACE ===== -->
+                <text x="378" y="75" class="letter-space" font-size="54" letter-spacing="1"> </text>
+                
+                <!-- ===== "INN" ===== -->
+                <text x="386" y="75" class="letter-inn" font-size="54" letter-spacing="1">Inn</text>
+                
+                <!-- ===== DIVIDER ===== -->
+                <line x1="80" y1="95" x2="540" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
+                
+                <!-- ===== TAGLINE ===== -->
+                <text x="310" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
             </svg>
             
             <button class="btn" onclick="showPage('order')">☕ Order Now</button>
@@ -259,11 +302,10 @@
     </div>
 </div>
 
-<!-- ===== FLOATING CART ===== -->
+<!-- ===== CART ===== -->
 <button class="cart-float" id="cartFloat" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></button>
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-<!-- ===== SLIDE-IN CART ===== -->
 <div class="cart-side" id="cartSide">
     <div class="cart-side-header">
         <h2>🛒 Your Order</h2>

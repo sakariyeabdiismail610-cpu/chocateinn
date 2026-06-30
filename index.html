@@ -5,151 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:Arial,sans-serif;background:#f5efe8;color:#3e2723;width:100%;}
+        body{font-family:'Georgia',serif;background:#f5efe8;color:#3e2723;width:100%;}
         
-        header{background:#4e2b1a;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
-        .logo{font-size:20px;font-weight:900;color:#fff;cursor:pointer;}
+        header{background:#4A2E1B;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
+        .logo{font-size:18px;font-weight:900;color:#fff;cursor:pointer;font-family:'Georgia',serif;display:flex;align-items:center;gap:6px;}
         .logo span{color:#d7a86e;}
-        nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;margin:2px;}
+        nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;margin:2px;}
         nav a:hover,nav a.active{background:#d7a86e;color:#3e2723;}
         
         .page{display:none;padding:12px;width:100%;}
         .page.active{display:block;}
         
-        /* ===== PROFESSIONAL HERO ===== */
-        .hero{background:linear-gradient(135deg,#3e1f12,#6b3f2a);color:#f5efe8;padding:60px 20px 50px;text-align:center;border-radius:0 0 30px 30px;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center;}
-        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="20" cy="20" r="15"/><circle cx="80" cy="80" r="20"/><circle cx="50" cy="50" r="30"/></svg>') repeat;background-size:200px 200px;}
-        .hero-content{position:relative;z-index:1;max-width:700px;}
-        .hero-brand{font-size:52px;font-weight:900;letter-spacing:8px;color:#f5efe8;text-shadow:0 4px 20px rgba(0,0,0,0.3);margin-bottom:8px;}
-        .hero-brand span{color:#d7a86e;}
-        .hero-tagline{font-size:18px;font-weight:300;letter-spacing:12px;color:#d7a86e;margin-bottom:20px;text-transform:uppercase;opacity:0.9;}
-        .hero-sub{font-size:15px;font-weight:300;letter-spacing:4px;color:#f5efe8;opacity:0.7;margin-bottom:25px;text-transform:uppercase;}
-        .hero-divider{width:80px;height:3px;background:#d7a86e;margin:16px auto;border-radius:2px;}
-        .hero .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:14px 40px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;width:100%;max-width:220px;text-transform:uppercase;letter-spacing:2px;}
-        .hero .btn:hover{background:#c4955a;transform:scale(1.05);box-shadow:0 8px 25px rgba(215,168,110,0.3);}
+        /* ===== HERO WITH LOGO ===== */
+        .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;}
+        .hero-content{position:relative;z-index:1;max-width:700px;width:100%;}
+        
+        /* LOGO SVG */
+        .logo-svg{max-width:480px;width:100%;height:auto;display:block;margin:0 auto;}
+        
+        .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
+        .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
         
         .featured{padding:30px 12px;max-width:1200px;margin:0 auto;}
-        .featured h2{font-size:22px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:14px;margin-bottom:18px;}
+        .featured h2{font-size:22px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:14px;margin-bottom:18px;font-family:'Georgia',serif;}
         .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
         .featured-card{background:#fff;border-radius:16px;padding:18px 14px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
-        .featured-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,0.08);}
-        .featured-card .icon{font-size:32px;margin-bottom:4px;}
-        .featured-card h3{font-size:15px;color:#4e2b1a;}
-        .featured-card p{font-size:12px;color:#6d5c4e;}
+        .featured-card:hover{transform:translateY(-4px);}
+        .featured-card .icon{font-size:32px;}
+        .featured-card h3{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
+        .featured-card p{font-size:12px;color:#6d5c4e;font-family:'Arial',sans-serif;}
         
-        .order-cta{background:linear-gradient(135deg,#4e2b1a,#6b3f2a);color:#f5efe8;text-align:center;padding:30px 16px;border-radius:20px;margin:16px 0;border:1px solid rgba(215,168,110,0.2);}
-        .order-cta h2{font-size:26px;}
+        .order-cta{background:#4A2E1B;color:#f5efe8;text-align:center;padding:30px 16px;border-radius:20px;margin:16px 0;border:1px solid rgba(215,168,110,0.15);}
+        .order-cta h2{font-size:26px;font-family:'Georgia',serif;}
         .order-cta h2 span{color:#d7a86e;}
-        .order-cta p{font-size:15px;margin:6px 0 14px;opacity:0.8;}
-        .order-cta .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;max-width:220px;}
+        .order-cta p{font-size:15px;margin:6px 0 14px;opacity:0.8;font-family:'Arial',sans-serif;}
+        .order-cta .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;}
         .order-cta .btn:hover{background:#c4955a;transform:scale(1.05);}
         
         .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
         .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
-        .menu-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
-        .menu-item h3{font-size:14px;color:#4e2b1a;}
-        .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;}
-        .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:10px;font-weight:700;margin-top:4px;}
+        .menu-item:hover{transform:translateY(-3px);}
+        .menu-item h3{font-size:14px;color:#4A2E1B;font-family:'Georgia',serif;}
+        .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;font-family:'Arial',sans-serif;}
+        .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:10px;font-weight:700;margin-top:4px;font-family:'Arial',sans-serif;}
         .badge.in{background:#2e7d32;color:#fff;}
         .badge.out{background:#b71c1c;color:#fff;}
         
-        .add-btn{background:#4e2b1a;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:11px;cursor:pointer;transition:0.3s;margin-top:6px;}
+        .add-btn{background:#4A2E1B;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:11px;cursor:pointer;transition:0.3s;margin-top:6px;font-family:'Arial',sans-serif;}
         .add-btn:hover{background:#6b3f2a;transform:scale(1.05);}
-        .add-btn:disabled{background:#a08070;cursor:not-allowed;transform:none;}
+        .add-btn:disabled{background:#a08070;cursor:not-allowed;}
         
         .contact-info{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;margin-bottom:12px;}
-        .contact-info h3{font-size:18px;color:#4e2b1a;margin-bottom:6px;}
-        .contact-info p{font-size:14px;padding:3px 0;color:#6d5c4e;}
-        .contact-info .phone{font-size:22px;font-weight:900;color:#4e2b1a;background:#f5efe8;padding:6px 14px;border-radius:8px;display:inline-block;border:2px solid #d7a86e;}
-        .open-badge{background:#2e7d32;color:#fff;padding:3px 12px;border-radius:30px;font-weight:700;font-size:13px;display:inline-block;}
+        .contact-info h3{font-size:18px;color:#4A2E1B;margin-bottom:6px;font-family:'Georgia',serif;}
+        .contact-info p{font-size:14px;padding:3px 0;color:#6d5c4e;font-family:'Arial',sans-serif;}
+        .contact-info .phone{font-size:22px;font-weight:900;color:#4A2E1B;background:#f5efe8;padding:6px 14px;border-radius:8px;display:inline-block;border:2px solid #d7a86e;}
+        .open-badge{background:#2e7d32;color:#fff;padding:3px 12px;border-radius:30px;font-weight:700;font-size:13px;display:inline-block;font-family:'Arial',sans-serif;}
         
         .contact-form{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;}
-        .contact-form h3{font-size:18px;color:#4e2b1a;margin-bottom:8px;}
-        .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;}
-        .contact-form .btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;}
+        .contact-form h3{font-size:18px;color:#4A2E1B;margin-bottom:8px;font-family:'Georgia',serif;}
+        .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;font-family:'Arial',sans-serif;}
+        .contact-form .btn{width:100%;background:#4A2E1B;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;font-family:'Arial',sans-serif;}
         .contact-form .btn:hover{background:#6b3f2a;}
         
-        footer{background:#3e1f12;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
-        footer .copy{font-size:11px;opacity:0.7;}
+        footer{background:#4A2E1B;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
+        footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;}
         
-        /* ===== FLOATING CART ===== */
-        .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4e2b1a;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
+        /* ===== CART ===== */
+        .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
         .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
         .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
         
-        /* ===== SLIDE-IN CART ===== */
         .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 30px rgba(0,0,0,0.25);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
-        
         .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d7a86e;padding-bottom:12px;margin-bottom:14px;}
-        .cart-side-header h2{font-size:20px;color:#4e2b1a;}
+        .cart-side-header h2{font-size:20px;color:#4A2E1B;font-family:'Georgia',serif;}
         .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#6d5c4e;transition:0.3s;padding:0 8px;}
         .cart-close:hover{color:#b71c1c;transform:rotate(90deg);}
         
         .cart-side-scroll{flex:1;overflow-y:auto;padding-right:4px;}
         .cart-side-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ebe5;}
-        .cart-side-item .name{font-weight:600;font-size:14px;color:#4e2b1a;flex:1;}
-        .cart-side-item .qty-control{display:flex;align-items:center;gap:6px;margin:0 10px;}
-        .cart-side-item .qty-control button{background:#4e2b1a;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;transition:0.3s;display:flex;align-items:center;justify-content:center;}
+        .cart-side-item .name{font-weight:600;font-size:14px;color:#4A2E1B;flex:1;font-family:'Georgia',serif;}
+        .cart-side-item .qty-control{display:flex;align-items:center;gap:6px;}
+        .cart-side-item .qty-control button{background:#4A2E1B;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;}
         .cart-side-item .qty-control button:hover{background:#6b3f2a;}
         .cart-side-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
         .cart-side-item .item-total{font-weight:700;color:#6b3f2a;font-size:14px;min-width:55px;text-align:right;}
-        .cart-side-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;line-height:1.8;}
+        .cart-side-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;}
         
         .cart-checkout-fields{margin-top:12px;border-top:2px solid #d7a86e;padding-top:14px;}
-        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4e2b1a;display:block;margin-bottom:3px;}
-        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#f9f6f0;transition:0.3s;}
+        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4A2E1B;display:block;margin-bottom:3px;font-family:'Georgia',serif;}
+        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#f9f6f0;}
         .cart-checkout-fields input:focus{border-color:#d7a86e;outline:none;background:#fff;}
         
         .delivery-option-cart{display:flex;gap:10px;margin-bottom:10px;}
-        .delivery-option-cart button{padding:8px 16px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;}
-        .delivery-option-cart button.active{background:#4e2b1a;color:#fff;}
+        .delivery-option-cart button{padding:8px 16px;border-radius:30px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;}
+        .delivery-option-cart button.active{background:#4A2E1B;color:#fff;}
         
         .currency-toggle-cart{display:flex;gap:8px;margin-bottom:10px;justify-content:center;}
-        .currency-toggle-cart button{padding:6px 16px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;}
-        .currency-toggle-cart button.active{background:#4e2b1a;color:#fff;}
+        .currency-toggle-cart button{padding:6px 16px;border-radius:30px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;font-weight:700;font-size:13px;cursor:pointer;}
+        .currency-toggle-cart button.active{background:#4A2E1B;color:#fff;}
         
-        .pay-option-cart{background:#f9f6f0;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:2px solid transparent;cursor:pointer;transition:0.3s;}
+        .pay-option-cart{background:#f9f6f0;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:2px solid transparent;cursor:pointer;}
         .pay-option-cart:hover{border-color:#d7a86e;}
-        .pay-option-cart.selected{border-color:#4e2b1a;background:#e8ddd0;}
-        .pay-option-cart .method{font-weight:800;font-size:15px;color:#4e2b1a;}
+        .pay-option-cart.selected{border-color:#4A2E1B;background:#e8ddd0;}
+        .pay-option-cart .method{font-weight:800;font-size:15px;color:#4A2E1B;}
         .pay-option-cart .number{font-size:15px;font-weight:700;color:#6b3f2a;}
         
         .cart-side-totals{border-top:2px solid #d7a86e;padding-top:12px;margin-top:10px;}
         .cart-side-totals .row{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
-        .cart-side-totals .row.total{font-size:18px;font-weight:900;color:#4e2b1a;border-top:2px solid #4e2b1a;padding-top:8px;margin-top:4px;}
+        .cart-side-totals .row.total{font-size:18px;font-weight:900;color:#4A2E1B;border-top:2px solid #4A2E1B;padding-top:8px;margin-top:4px;}
         
-        .cart-side .place-order-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:14px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;}
+        .cart-side .place-order-btn{width:100%;background:#4A2E1B;color:#fff;border:none;padding:14px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;}
         .cart-side .place-order-btn:hover{background:#6b3f2a;transform:scale(1.02);}
-        .cart-side .place-order-btn:disabled{background:#a08070;cursor:not-allowed;transform:none;}
+        .cart-side .place-order-btn:disabled{background:#a08070;cursor:not-allowed;}
         
         .call-reminder-cart{background:#fff3e0;padding:10px;border-radius:10px;border:1px solid #d7a86e;margin:10px 0;text-align:center;font-size:13px;}
         .call-reminder-cart .number{font-size:22px;font-weight:900;color:#b71c1c;}
         .prompt-cart{background:#f5efe8;padding:10px;border-radius:10px;border-left:4px solid #d7a86e;margin:8px 0;font-size:13px;}
-        .prompt-cart strong{color:#4e2b1a;}
-        .amount-display-cart{background:#4e2b1a;color:#fff;padding:10px;border-radius:12px;text-align:center;margin:8px 0;}
+        .amount-display-cart{background:#4A2E1B;color:#fff;padding:10px;border-radius:12px;text-align:center;margin:8px 0;}
         .amount-display-cart .total{font-size:24px;font-weight:900;color:#d7a86e;}
         
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
         .order-confirmed{background:#e8f5e9;border:2px solid #2e7d32;border-radius:12px;padding:16px;margin:16px 0;text-align:center;}
-        .order-confirmed h3{color:#2e7d32;font-size:18px;margin-bottom:6px;}
-        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4e2b1a;}
+        .order-confirmed h3{color:#2e7d32;font-size:18px;}
+        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4A2E1B;}
         
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .hero-brand{font-size:72px;letter-spacing:12px;}
-            .hero-tagline{font-size:22px;letter-spacing:16px;}
-            .hero{padding:80px 40px 70px;min-height:500px;}
+            .logo-svg{max-width:550px;}
+            .hero{padding:60px 40px 55px;min-height:420px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .hero-brand{font-size:34px;letter-spacing:4px;}
-            .hero-tagline{font-size:13px;letter-spacing:6px;}
-            .hero-sub{font-size:11px;letter-spacing:2px;}
+            .logo-svg{max-width:300px;}
+            .hero{padding:30px 16px 25px;min-height:280px;}
         }
     </style>
 </head>
@@ -169,10 +162,41 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <div class="hero-brand">CHOCOLATE<span>INN</span></div>
-            <div class="hero-tagline">INDULGE. RELAX. ENJOY.</div>
-            <div class="hero-divider"></div>
-            <div class="hero-sub">A Journey of Rich Flavors and Sweet Moments</div>
+            <!-- YOUR EXACT LOGO -->
+            <svg class="logo-svg" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;display=swap');
+                        .logo-text { font-family: 'Comfortaa', cursive, sans-serif; font-weight: 700; fill: #FCD12A; }
+                        .tagline { font-family: Arial, Helvetica, sans-serif; font-weight: 300; fill: #FCD12A; letter-spacing: 3px; }
+                    </style>
+                </defs>
+                
+                <!-- Main Text: "Ch" -->
+                <text x="215" y="75" text-anchor="middle" class="logo-text" font-size="52" letter-spacing="2">Ch</text>
+                
+                <!-- Chocolate Bar Icon (replacing the "o") -->
+                <g transform="translate(270, 35)">
+                    <g transform="rotate(45)">
+                        <path d="M-5,0 L15,0 L15,5 L10,5 L10,15 L5,15 L5,10 L-5,10 Z" fill="#FCD12A"/>
+                        <line x1="-2" y1="3" x2="8" y2="3" stroke="#4A2E1B" stroke-width="0.8"/>
+                        <line x1="-2" y1="7" x2="8" y2="7" stroke="#4A2E1B" stroke-width="0.8"/>
+                        <line x1="3" y1="0" x2="3" y2="5" stroke="#4A2E1B" stroke-width="0.8"/>
+                        <line x1="8" y1="5" x2="8" y2="10" stroke="#4A2E1B" stroke-width="0.8"/>
+                        <circle cx="12" cy="-2" r="4" fill="#4A2E1B"/>
+                    </g>
+                </g>
+                
+                <!-- Rest of the text -->
+                <text x="350" y="75" text-anchor="middle" class="logo-text" font-size="52" letter-spacing="2">colate Inn</text>
+                
+                <!-- Divider -->
+                <line x1="150" y1="95" x2="450" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
+                
+                <!-- Tagline -->
+                <text x="300" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
+            </svg>
+            
             <button class="btn" onclick="showPage('order')">☕ Order Now</button>
         </div>
     </div>
@@ -196,21 +220,19 @@
 
 <!-- ===== MENU PAGE ===== -->
 <div class="page" id="page-menu">
-    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📋 Our Menu</h2>
+    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📋 Our Menu</h2>
     <div class="menu-grid" id="menuGrid"></div>
 </div>
 
 <!-- ===== ORDER PAGE ===== -->
 <div class="page" id="page-order">
-    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
-    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order. Then click the 🛒 cart button to checkout.</p>
+    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📱 Order Online</h2>
+    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order.</p>
     
     <div class="order-confirmed" id="orderConfirmed" style="display:none;">
         <h3>✅ Order Placed Successfully!</h3>
         <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
-        <p style="margin-top:6px;font-size:14px;">📱 We've sent you a WhatsApp message with your order details.</p>
-        <p style="font-size:14px;">📧 The shop has also received your order via email.</p>
-        <p style="margin-top:6px;font-size:13px;color:#6d5c4e;">Please check your WhatsApp to confirm your order.</p>
+        <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
     </div>
     
     <div class="menu-grid" id="orderMenuGrid"></div>
@@ -218,7 +240,7 @@
 
 <!-- ===== CONTACT PAGE ===== -->
 <div class="page" id="page-contact">
-    <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📞 Contact Us</h2>
+    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📞 Contact Us</h2>
     <div class="contact-info">
         <h3>Get in Touch</h3>
         <p>📍 <strong>Address:</strong> 123 Main Street, Your City</p>
@@ -228,7 +250,7 @@
     </div>
     <div class="contact-form">
         <h3>Send a Message</h3>
-        <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+        <form onsubmit="alert('✅ Message sent!');return false;">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
             <textarea placeholder="Your Message..." required></textarea>
@@ -248,7 +270,7 @@
         <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
     <div class="cart-side-scroll">
-        <div id="cartSideItems"><div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div></div>
+        <div id="cartSideItems"><div class="cart-side-empty">Your cart is empty. ☕</div></div>
         <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
             <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
             <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
@@ -258,10 +280,8 @@
         <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
             <label>👤 Your Name</label>
             <input type="text" id="cartName" placeholder="Enter your name">
-            
             <label>📱 Your WhatsApp Number</label>
-            <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number (e.g., 252XXXXXXXX)">
-            
+            <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number">
             <label>📍 Delivery Address</label>
             <input type="text" id="cartAddress" placeholder="Type your address">
             
@@ -278,7 +298,7 @@
             </div>
             
             <div class="amount-display-cart">
-                <div style="font-size:12px;opacity:0.8;">Total Amount to Send</div>
+                <div style="font-size:12px;opacity:0.8;">Total Amount</div>
                 <div class="total" id="cartDisplayAmount">$0.00</div>
             </div>
             
@@ -293,8 +313,7 @@
             </div>
             
             <div class="prompt-cart" id="cartPrompt">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong></div>
-            
-            <div class="call-reminder-cart">📞 <strong>After sending payment, call or WhatsApp:</strong><div class="number">3665112</div></div>
+            <div class="call-reminder-cart">📞 After payment, call or WhatsApp: <span class="number">3665112</span></div>
         </div>
         <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">🛒 Place Order</button>
     </div>
@@ -366,7 +385,6 @@ function renderMenu() {
     });
 }
 
-// ===== ADD TO CART =====
 function addToCart(id) {
     const item = items.find(i => i.id === id);
     if(!item || !item.inStock) return;
@@ -400,7 +418,7 @@ function updateSideCart() {
     const container = document.getElementById('cartSideItems');
     const arr = Object.values(cart);
     if(arr.length === 0) {
-        container.innerHTML = '<div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div>';
+        container.innerHTML = '<div class="cart-side-empty">Your cart is empty. ☕</div>';
         return;
     }
     let html = '';
@@ -434,8 +452,7 @@ function updateCartTotals() {
 }
 
 function updatePlaceOrderBtn() {
-    const arr = Object.values(cart);
-    document.getElementById('placeOrderBtn').disabled = arr.length === 0;
+    document.getElementById('placeOrderBtn').disabled = Object.values(cart).length === 0;
 }
 
 function toggleCart() {
@@ -485,17 +502,13 @@ function updateCartPrompt() {
     promptMethod.textContent = cartPayment;
 }
 
-// ===== GENERATE ORDER ID =====
 function generateOrderId() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let result = '';
-    for (let i = 0; i < 6; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
+    for (let i = 0; i < 6; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
     return result;
 }
 
-// ===== OPEN CART CHECKOUT =====
 function openCartCheckout() {
     const arr = Object.values(cart);
     if(arr.length === 0) return;
@@ -510,7 +523,6 @@ function openCartCheckout() {
     sendOrder();
 }
 
-// ===== SEND ORDER =====
 function sendOrder() {
     const name = document.getElementById('cartName').value || 'Customer';
     const phone = document.getElementById('cartPhone').value || 'Not provided';
@@ -525,7 +537,6 @@ function sendOrder() {
     
     currentOrderId = generateOrderId();
     
-    // Email data
     const emailData = {
         orderId: currentOrderId,
         name: name,
@@ -539,7 +550,6 @@ function sendOrder() {
         _subject: `🍫 New Order #${currentOrderId} from ${name}`
     };
     
-    // WhatsApp message for customer
     const whatsappMessage = `🍫 Thank you for your order from Chocolate Inn!
 
 📋 Order #${currentOrderId}
@@ -553,7 +563,7 @@ ${orderText}
 💰 Total: ${total}
 💳 Payment: ${cartPayment} to 3665112
 
-✅ Your order has been received and is being prepared.
+✅ Your order has been received.
 
 📞 Call us: 3665112
 
@@ -564,7 +574,6 @@ Thank you! ☕🍫`;
     btn.textContent = '⏳ Sending...';
     btn.disabled = true;
     
-    // Send Email
     fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json','Accept': 'application/json'},
@@ -574,30 +583,25 @@ Thank you! ☕🍫`;
         btn.textContent = originalText;
         btn.disabled = false;
         
-        // Show confirmation
         document.getElementById('confirmOrderId').textContent = currentOrderId;
         document.getElementById('orderConfirmed').style.display = 'block';
         
-        // Open WhatsApp with customer
         const customerPhone = document.getElementById('cartPhone').value.trim();
         const whatsappNumber = customerPhone.replace(/[^0-9]/g, '');
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(whatsappUrl, '_blank');
         
-        alert(`✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp message sent to you.\n📧 The shop has received your order via email.\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
+        alert(`✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp sent to you.\n📧 Shop received your order via email.\n\nThank you! ☕🍫`);
         
         cart = {};
         updateAll();
         toggleCart();
-        
-        setTimeout(() => {
-            document.getElementById('orderConfirmed').style.display = 'none';
-        }, 10000);
+        setTimeout(() => { document.getElementById('orderConfirmed').style.display = 'none'; }, 8000);
     })
     .catch(() => {
         btn.textContent = originalText;
         btn.disabled = false;
-        alert('⚠️ Issue sending order. Please call 3665112 to place your order.');
+        alert('⚠️ Issue sending order. Please call 3665112.');
     });
 }
 

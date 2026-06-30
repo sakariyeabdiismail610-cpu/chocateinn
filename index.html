@@ -119,23 +119,16 @@
         
         .cart-side .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:8px;text-decoration:none;}
         .cart-side .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
+        
         .cart-side .email-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:6px;}
         .cart-side .email-btn:hover{background:#6b3f2a;transform:scale(1.02);}
+        
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
-        .order-status{background:#fff;border-radius:16px;padding:20px;border:1px solid #ece3d8;margin:20px 0;}
-        .order-status h3{font-size:18px;color:#4e2b1a;margin-bottom:14px;}
-        .status-steps{display:flex;justify-content:space-between;align-items:center;position:relative;padding:0 10px;}
-        .status-steps::before{content:'';position:absolute;top:22px;left:30px;right:30px;height:3px;background:#ece3d8;z-index:0;}
-        .status-step{display:flex;flex-direction:column;align-items:center;z-index:1;flex:1;}
-        .status-step .circle{width:44px;height:44px;border-radius:50%;border:3px solid #ece3d8;display:flex;align-items:center;justify-content:center;background:#fff;font-size:18px;transition:0.4s;}
-        .status-step .circle.completed{border-color:#2e7d32;background:#2e7d32;color:#fff;}
-        .status-step .label{font-size:11px;color:#6d5c4e;margin-top:4px;text-align:center;font-weight:600;}
-        .status-step .label.active{color:#2e7d32;}
-        
-        .tracking-link-box{background:#f5efe8;padding:12px 16px;border-radius:10px;margin:16px 0;border-left:4px solid #d7a86e;word-break:break-all;font-size:13px;}
-        .tracking-link-box a{color:#4e2b1a;font-weight:700;text-decoration:none;}
+        .order-confirmed{background:#e8f5e9;border:2px solid #2e7d32;border-radius:12px;padding:16px;margin:16px 0;text-align:center;}
+        .order-confirmed h3{color:#2e7d32;font-size:18px;margin-bottom:6px;}
+        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4e2b1a;}
         
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
@@ -143,7 +136,7 @@
             .hero h1{font-size:40px;}
             .page{padding:0 30px;}
         }
-        @media(max-width:480px){.cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}.status-steps{flex-wrap:wrap;gap:8px;}.status-steps::before{display:none;}}
+        @media(max-width:480px){.cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}}
     </style>
 </head>
 <body>
@@ -187,22 +180,13 @@
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
     <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order. Then click the 🛒 cart button to checkout.</p>
     
-    <div class="order-status" id="orderStatus" style="display:none;">
-        <h3>📦 Your Order Status</h3>
-        <div class="status-steps">
-            <div class="status-step"><div class="circle" id="status1">✅</div><span class="label" id="label1">Ordered</span></div>
-            <div class="status-step"><div class="circle" id="status2">⏳</div><span class="label" id="label2">Confirmed</span></div>
-            <div class="status-step"><div class="circle" id="status3">⏳</div><span class="label" id="label3">Preparing</span></div>
-            <div class="status-step"><div class="circle" id="status4">⏳</div><span class="label" id="label4">Ready</span></div>
-            <div class="status-step"><div class="circle" id="status5">⏳</div><span class="label" id="label5">Delivered</span></div>
-        </div>
-        <div class="tracking-link-box">
-            📱 <strong>Your Tracking Link:</strong><br>
-            <a href="#" id="trackingLink" target="_blank">Click here to track your order</a>
-        </div>
-        <div style="text-align:center;margin-top:8px;">
-            <button class="btn" onclick="updateOrderStatus()" style="max-width:200px;padding:8px 16px;font-size:14px;">🔄 Check Status</button>
-        </div>
+    <!-- ORDER CONFIRMATION (shows after order placed) -->
+    <div class="order-confirmed" id="orderConfirmed" style="display:none;">
+        <h3>✅ Order Placed Successfully!</h3>
+        <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
+        <p style="margin-top:6px;font-size:14px;">📱 We've sent you a WhatsApp message with your order details.</p>
+        <p style="font-size:14px;">📧 The shop has also received your order via email.</p>
+        <p style="margin-top:6px;font-size:13px;color:#6d5c4e;">Please check your WhatsApp to confirm your order.</p>
     </div>
     
     <div class="menu-grid" id="orderMenuGrid"></div>
@@ -287,11 +271,6 @@
             <div class="prompt-cart" id="cartPrompt">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong></div>
             
             <div class="call-reminder-cart">📞 <strong>After sending payment, call or WhatsApp:</strong><div class="number">3665112</div></div>
-            
-            <!-- WHATSAPP BUTTON - Opens YOUR shop number -->
-            <a href="#" id="cartWhatsappLink" target="_blank" class="whatsapp-btn">💬 Message Us on WhatsApp</a>
-            
-            <button class="email-btn" onclick="sendCartOrder()">📧 Send Order to Shop (Email)</button>
         </div>
         <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">🛒 Place Order</button>
     </div>
@@ -302,6 +281,7 @@
 <script>
 // ===== CONFIGURATION =====
 const SHOP_WHATSAPP = '252633665112';
+const SHOP_EMAIL = 'sakariyeabdiismail@gmail.com';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
 // ===== MENU DATA =====
@@ -324,7 +304,6 @@ let cartPayment = 'ZAAD';
 let cartDelivery = 'Pickup';
 let cartTotal = 0;
 const exchangeRate = 11000;
-let orderPlaced = false;
 let currentOrderId = '';
 
 // ===== SHOW PAGE =====
@@ -336,11 +315,6 @@ function showPage(page) {
         if(link.textContent.toLowerCase() === page) link.classList.add('active');
     });
     window.scrollTo({top:0});
-    if(page === 'order' && orderPlaced) {
-        document.getElementById('orderStatus').style.display = 'block';
-    } else if(page === 'order') {
-        document.getElementById('orderStatus').style.display = 'none';
-    }
 }
 
 // ===== RENDER MENU =====
@@ -390,7 +364,6 @@ function updateAll() {
     updateCartCount();
     updateSideCart();
     updateCartTotals();
-    updateCheckoutFields();
     updatePlaceOrderBtn();
 }
 
@@ -437,10 +410,6 @@ function updateCartTotals() {
     updateCartDisplayAmount();
 }
 
-function updateCheckoutFields() {
-    updateCartPrompt();
-    updateCartWhatsAppLink();
-}
 function updatePlaceOrderBtn() {
     const arr = Object.values(cart);
     document.getElementById('placeOrderBtn').disabled = arr.length === 0;
@@ -458,7 +427,6 @@ function setCartDelivery(option) {
     cartDelivery = option;
     document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup');
     document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery');
-    updateCartWhatsAppLink();
 }
 
 function setCartCurrency(currency) {
@@ -482,7 +450,6 @@ function setCartPayment(method) {
     document.getElementById('cartPayZAAD').classList.toggle('selected', method === 'ZAAD');
     document.getElementById('cartPayEdahab').classList.toggle('selected', method === 'Edahab');
     updateCartPrompt();
-    updateCartWhatsAppLink();
 }
 
 function updateCartPrompt() {
@@ -495,25 +462,7 @@ function updateCartPrompt() {
     promptMethod.textContent = cartPayment;
 }
 
-// ===== WHATSAPP LINK - ALWAYS OPENS SHOP NUMBER =====
-function updateCartWhatsAppLink() {
-    const name = document.getElementById('cartName').value || 'Customer';
-    const phone = document.getElementById('cartPhone').value || 'Not provided';
-    const address = document.getElementById('cartAddress').value || 'Not provided';
-    const arr = Object.values(cart);
-    let orderText = '';
-    arr.forEach(item => { orderText += `${item.name} × ${item.qty}, `; });
-    let amount = cartTotal;
-    let symbol = '$';
-    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
-    const total = symbol + amount.toFixed(2);
-    
-    const message = `🍫 New Order from Chocolate Inn!\n\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Order: ${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\nI will call to confirm payment.`;
-    
-    // ALWAYS use SHOP number
-    document.getElementById('cartWhatsAppLink').href = `https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(message)}`;
-}
-
+// ===== GENERATE ORDER ID =====
 function generateOrderId() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let result = '';
@@ -523,6 +472,7 @@ function generateOrderId() {
     return result;
 }
 
+// ===== OPEN CART CHECKOUT =====
 function openCartCheckout() {
     const arr = Object.values(cart);
     if(arr.length === 0) return;
@@ -534,10 +484,11 @@ function openCartCheckout() {
         const address = document.getElementById('cartAddress').value.trim();
         if(!address) { alert('Please enter your delivery address.'); document.getElementById('cartAddress').focus(); return; }
     }
-    sendCartOrder();
+    sendOrder();
 }
 
-function sendCartOrder() {
+// ===== SEND ORDER (BOTH WHATSAPP & EMAIL) =====
+function sendOrder() {
     const name = document.getElementById('cartName').value || 'Customer';
     const phone = document.getElementById('cartPhone').value || 'Not provided';
     const address = document.getElementById('cartAddress').value || 'Not provided';
@@ -551,7 +502,8 @@ function sendCartOrder() {
     
     currentOrderId = generateOrderId();
     
-    const data = {
+    // ===== 1. SEND EMAIL TO SHOP =====
+    const emailData = {
         orderId: currentOrderId,
         name: name,
         phone: phone,
@@ -561,41 +513,66 @@ function sendCartOrder() {
         total: total,
         payment: cartPayment,
         currency: cartCurrency,
-        _subject: `🍫 Order #${currentOrderId} from ${name}`
+        _subject: `🍫 New Order #${currentOrderId} from ${name}`
     };
     
+    // ===== 2. CREATE WHATSAPP MESSAGE FOR CUSTOMER =====
+    const whatsappMessage = `🍫 Thank you for your order from Chocolate Inn!
+
+📋 Order #${currentOrderId}
+👤 Name: ${name}
+📱 Phone: ${phone}
+📍 Address: ${address}
+📦 ${cartDelivery}
+
+📋 Items:
+${orderText}
+💰 Total: ${total}
+💳 Payment: ${cartPayment} to 3665112
+
+✅ Your order has been received and is being prepared.
+
+📞 Call us: 3665112
+
+Thank you! ☕🍫`;
+    
+    // ===== 3. SEND BOTH =====
     const btn = document.querySelector('.place-order-btn');
     const originalText = btn.textContent;
     btn.textContent = '⏳ Sending...';
     btn.disabled = true;
     
+    // Send Email
     fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json','Accept': 'application/json'},
-        body: JSON.stringify(data)
+        body: JSON.stringify(emailData)
     })
     .then(response => {
         btn.textContent = originalText;
         btn.disabled = false;
-        if(response.ok) {
-            // Tracking link uses SHOP number
-            const trackingMessage = `🍫 Order #${currentOrderId} - ${name}\n📋 ${orderText}\n💰 ${total}\n📱 ${phone}\n📍 ${address}\n📦 ${cartDelivery}\n💳 ${cartPayment}`;
-            const trackingUrl = `https://wa.me/${SHOP_WHATSAPP}?text=${encodeURIComponent(trackingMessage)}`;
-            document.getElementById('trackingLink').href = trackingUrl;
-            document.getElementById('trackingLink').textContent = `📱 Click to WhatsApp Order #${currentOrderId}`;
-            
-            orderPlaced = true;
-            document.getElementById('orderStatus').style.display = 'block';
-            updateOrderStatus();
-            
-            alert(`✅ Order #${currentOrderId} sent!\n\n📱 Message us on WhatsApp to confirm your order.\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
-            
-            cart = {};
-            updateAll();
-            toggleCart();
-        } else {
-            alert('⚠️ Issue sending order. Please call 3665112 to place your order.');
-        }
+        
+        // Show order confirmation
+        document.getElementById('confirmOrderId').textContent = currentOrderId;
+        document.getElementById('orderConfirmed').style.display = 'block';
+        
+        // Open WhatsApp with customer message (sent to customer's number)
+        const customerPhone = document.getElementById('cartPhone').value.trim();
+        const whatsappNumber = customerPhone.replace(/[^0-9]/g, '');
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappUrl, '_blank');
+        
+        alert(`✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp message sent to you.\n📧 The shop has received your order via email.\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
+        
+        // Clear cart
+        cart = {};
+        updateAll();
+        toggleCart();
+        
+        // Hide confirmation after 10 seconds (user can still see it)
+        setTimeout(() => {
+            document.getElementById('orderConfirmed').style.display = 'none';
+        }, 10000);
     })
     .catch(() => {
         btn.textContent = originalText;
@@ -604,37 +581,7 @@ function sendCartOrder() {
     });
 }
 
-function updateOrderStatus() {
-    const statuses = [
-        { id: 'status1', label: 'label1', text: '✅ Ordered', active: true },
-        { id: 'status2', label: 'label2', text: '✅ Confirmed', active: true },
-        { id: 'status3', label: 'label3', text: '⏳ Preparing', active: false },
-        { id: 'status4', label: 'label4', text: '⏳ Ready', active: false },
-        { id: 'status5', label: 'label5', text: '⏳ Delivered', active: false }
-    ];
-    
-    statuses.forEach((s, index) => {
-        const circle = document.getElementById(s.id);
-        const label = document.getElementById(s.label);
-        if (s.active) {
-            circle.className = 'circle completed';
-            circle.textContent = '✅';
-            label.className = 'label active';
-            label.textContent = s.text.replace('✅', '').trim();
-        } else {
-            circle.className = 'circle';
-            circle.textContent = '⏳';
-            label.className = 'label';
-            label.textContent = s.text.replace('⏳', '').trim();
-        }
-    });
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    ['cartName','cartPhone','cartAddress'].forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.addEventListener('input', updateCartWhatsAppLink);
-    });
     renderMenu();
     updateAll();
 });

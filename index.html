@@ -16,40 +16,50 @@
         .page{display:none;padding:12px;width:100%;}
         .page.active{display:block;}
         
-        .hero{background:linear-gradient(135deg,#3e1f12,#6b3f2a);color:#fff;padding:40px 16px;text-align:center;border-radius:0 0 16px 16px;}
-        .hero h1{font-size:28px;}
-        .hero h1 span{color:#d7a86e;}
-        .hero p{font-size:16px;margin:8px auto 16px;}
-        .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:12px 28px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;width:100%;max-width:250px;}
-        .btn:hover{background:#c4955a;transform:scale(1.02);}
+        /* ===== PROFESSIONAL HERO ===== */
+        .hero{background:linear-gradient(135deg,#3e1f12,#6b3f2a);color:#f5efe8;padding:60px 20px 50px;text-align:center;border-radius:0 0 30px 30px;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center;}
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><circle cx="20" cy="20" r="15"/><circle cx="80" cy="80" r="20"/><circle cx="50" cy="50" r="30"/></svg>') repeat;background-size:200px 200px;}
+        .hero-content{position:relative;z-index:1;max-width:700px;}
+        .hero-brand{font-size:52px;font-weight:900;letter-spacing:8px;color:#f5efe8;text-shadow:0 4px 20px rgba(0,0,0,0.3);margin-bottom:8px;}
+        .hero-brand span{color:#d7a86e;}
+        .hero-tagline{font-size:18px;font-weight:300;letter-spacing:12px;color:#d7a86e;margin-bottom:20px;text-transform:uppercase;opacity:0.9;}
+        .hero-sub{font-size:15px;font-weight:300;letter-spacing:4px;color:#f5efe8;opacity:0.7;margin-bottom:25px;text-transform:uppercase;}
+        .hero-divider{width:80px;height:3px;background:#d7a86e;margin:16px auto;border-radius:2px;}
+        .hero .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:14px 40px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;width:100%;max-width:220px;text-transform:uppercase;letter-spacing:2px;}
+        .hero .btn:hover{background:#c4955a;transform:scale(1.05);box-shadow:0 8px 25px rgba(215,168,110,0.3);}
         
-        .featured{padding:20px 0;}
-        .featured h2{font-size:22px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin-bottom:14px;}
-        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-        .featured-card{background:#fff;border-radius:12px;padding:14px;text-align:center;border:1px solid #ece3d8;}
-        .featured-card .icon{font-size:28px;}
-        .featured-card h3{font-size:14px;color:#4e2b1a;}
+        .featured{padding:30px 12px;max-width:1200px;margin:0 auto;}
+        .featured h2{font-size:22px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:14px;margin-bottom:18px;}
+        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+        .featured-card{background:#fff;border-radius:16px;padding:18px 14px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
+        .featured-card:hover{transform:translateY(-4px);box-shadow:0 8px 25px rgba(0,0,0,0.08);}
+        .featured-card .icon{font-size:32px;margin-bottom:4px;}
+        .featured-card h3{font-size:15px;color:#4e2b1a;}
         .featured-card p{font-size:12px;color:#6d5c4e;}
         
-        .order-cta{background:linear-gradient(135deg,#4e2b1a,#6b3f2a);color:#fff;text-align:center;padding:24px 16px;border-radius:16px;margin:10px 0;}
-        .order-cta h2{font-size:24px;}
-        .order-cta p{font-size:15px;margin:6px 0 14px;}
+        .order-cta{background:linear-gradient(135deg,#4e2b1a,#6b3f2a);color:#f5efe8;text-align:center;padding:30px 16px;border-radius:20px;margin:16px 0;border:1px solid rgba(215,168,110,0.2);}
+        .order-cta h2{font-size:26px;}
+        .order-cta h2 span{color:#d7a86e;}
+        .order-cta p{font-size:15px;margin:6px 0 14px;opacity:0.8;}
+        .order-cta .btn{background:#d7a86e;color:#3e2723;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;max-width:220px;}
+        .order-cta .btn:hover{background:#c4955a;transform:scale(1.05);}
         
         .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
-        .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;}
+        .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
+        .menu-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
         .menu-item h3{font-size:14px;color:#4e2b1a;}
         .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;}
-        .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:11px;font-weight:700;margin-top:4px;}
+        .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:10px;font-weight:700;margin-top:4px;}
         .badge.in{background:#2e7d32;color:#fff;}
         .badge.out{background:#b71c1c;color:#fff;}
         
-        .add-btn{background:#4e2b1a;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer;transition:0.3s;margin-top:6px;}
+        .add-btn{background:#4e2b1a;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:11px;cursor:pointer;transition:0.3s;margin-top:6px;}
         .add-btn:hover{background:#6b3f2a;transform:scale(1.05);}
         .add-btn:disabled{background:#a08070;cursor:not-allowed;transform:none;}
         
         .contact-info{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;margin-bottom:12px;}
         .contact-info h3{font-size:18px;color:#4e2b1a;margin-bottom:6px;}
-        .contact-info p{font-size:14px;padding:3px 0;}
+        .contact-info p{font-size:14px;padding:3px 0;color:#6d5c4e;}
         .contact-info .phone{font-size:22px;font-weight:900;color:#4e2b1a;background:#f5efe8;padding:6px 14px;border-radius:8px;display:inline-block;border:2px solid #d7a86e;}
         .open-badge{background:#2e7d32;color:#fff;padding:3px 12px;border-radius:30px;font-weight:700;font-size:13px;display:inline-block;}
         
@@ -57,14 +67,17 @@
         .contact-form h3{font-size:18px;color:#4e2b1a;margin-bottom:8px;}
         .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;}
         .contact-form .btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;}
+        .contact-form .btn:hover{background:#6b3f2a;}
         
         footer{background:#3e1f12;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
         footer .copy{font-size:11px;opacity:0.7;}
         
+        /* ===== FLOATING CART ===== */
         .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4e2b1a;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
         .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
         .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
         
+        /* ===== SLIDE-IN CART ===== */
         .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 30px rgba(0,0,0,0.25);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
         
@@ -117,12 +130,6 @@
         .amount-display-cart{background:#4e2b1a;color:#fff;padding:10px;border-radius:12px;text-align:center;margin:8px 0;}
         .amount-display-cart .total{font-size:24px;font-weight:900;color:#d7a86e;}
         
-        .cart-side .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:8px;text-decoration:none;}
-        .cart-side .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
-        
-        .cart-side .email-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:6px;}
-        .cart-side .email-btn:hover{background:#6b3f2a;transform:scale(1.02);}
-        
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
@@ -133,10 +140,17 @@
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .hero h1{font-size:40px;}
+            .hero-brand{font-size:72px;letter-spacing:12px;}
+            .hero-tagline{font-size:22px;letter-spacing:16px;}
+            .hero{padding:80px 40px 70px;min-height:500px;}
             .page{padding:0 30px;}
         }
-        @media(max-width:480px){.cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}}
+        @media(max-width:480px){
+            .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
+            .hero-brand{font-size:34px;letter-spacing:4px;}
+            .hero-tagline{font-size:13px;letter-spacing:6px;}
+            .hero-sub{font-size:11px;letter-spacing:2px;}
+        }
     </style>
 </head>
 <body>
@@ -151,13 +165,18 @@
     </nav>
 </header>
 
-<!-- HOME -->
+<!-- ===== HOME PAGE ===== -->
 <div class="page active" id="page-home">
     <div class="hero">
-        <h1>Welcome to <span>Chocolate Inn</span></h1>
-        <p>Premium coffee, sweet treats, and warm vibes.</p>
-        <button class="btn" onclick="showPage('order')">☕ Order Now</button>
+        <div class="hero-content">
+            <div class="hero-brand">CHOCOLATE<span>INN</span></div>
+            <div class="hero-tagline">INDULGE. RELAX. ENJOY.</div>
+            <div class="hero-divider"></div>
+            <div class="hero-sub">A Journey of Rich Flavors and Sweet Moments</div>
+            <button class="btn" onclick="showPage('order')">☕ Order Now</button>
+        </div>
     </div>
+    
     <div class="featured">
         <h2>⭐ Why Chocolate Inn?</h2>
         <div class="featured-grid">
@@ -167,20 +186,25 @@
             <div class="featured-card"><div class="icon">❤️</div><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
         </div>
     </div>
+    
+    <div class="order-cta">
+        <h2>📱 Ready to Order?</h2>
+        <p>Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
+        <button class="btn" onclick="showPage('order')">📞 Order Now</button>
+    </div>
 </div>
 
-<!-- MENU -->
+<!-- ===== MENU PAGE ===== -->
 <div class="page" id="page-menu">
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📋 Our Menu</h2>
     <div class="menu-grid" id="menuGrid"></div>
 </div>
 
-<!-- ORDER -->
+<!-- ===== ORDER PAGE ===== -->
 <div class="page" id="page-order">
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
     <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order. Then click the 🛒 cart button to checkout.</p>
     
-    <!-- ORDER CONFIRMATION (shows after order placed) -->
     <div class="order-confirmed" id="orderConfirmed" style="display:none;">
         <h3>✅ Order Placed Successfully!</h3>
         <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
@@ -192,7 +216,7 @@
     <div class="menu-grid" id="orderMenuGrid"></div>
 </div>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT PAGE ===== -->
 <div class="page" id="page-contact">
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📞 Contact Us</h2>
     <div class="contact-info">
@@ -281,7 +305,6 @@
 <script>
 // ===== CONFIGURATION =====
 const SHOP_WHATSAPP = '252633665112';
-const SHOP_EMAIL = 'sakariyeabdiismail@gmail.com';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
 // ===== MENU DATA =====
@@ -487,7 +510,7 @@ function openCartCheckout() {
     sendOrder();
 }
 
-// ===== SEND ORDER (BOTH WHATSAPP & EMAIL) =====
+// ===== SEND ORDER =====
 function sendOrder() {
     const name = document.getElementById('cartName').value || 'Customer';
     const phone = document.getElementById('cartPhone').value || 'Not provided';
@@ -502,7 +525,7 @@ function sendOrder() {
     
     currentOrderId = generateOrderId();
     
-    // ===== 1. SEND EMAIL TO SHOP =====
+    // Email data
     const emailData = {
         orderId: currentOrderId,
         name: name,
@@ -516,7 +539,7 @@ function sendOrder() {
         _subject: `🍫 New Order #${currentOrderId} from ${name}`
     };
     
-    // ===== 2. CREATE WHATSAPP MESSAGE FOR CUSTOMER =====
+    // WhatsApp message for customer
     const whatsappMessage = `🍫 Thank you for your order from Chocolate Inn!
 
 📋 Order #${currentOrderId}
@@ -536,7 +559,6 @@ ${orderText}
 
 Thank you! ☕🍫`;
     
-    // ===== 3. SEND BOTH =====
     const btn = document.querySelector('.place-order-btn');
     const originalText = btn.textContent;
     btn.textContent = '⏳ Sending...';
@@ -552,11 +574,11 @@ Thank you! ☕🍫`;
         btn.textContent = originalText;
         btn.disabled = false;
         
-        // Show order confirmation
+        // Show confirmation
         document.getElementById('confirmOrderId').textContent = currentOrderId;
         document.getElementById('orderConfirmed').style.display = 'block';
         
-        // Open WhatsApp with customer message (sent to customer's number)
+        // Open WhatsApp with customer
         const customerPhone = document.getElementById('cartPhone').value.trim();
         const whatsappNumber = customerPhone.replace(/[^0-9]/g, '');
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -564,12 +586,10 @@ Thank you! ☕🍫`;
         
         alert(`✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp message sent to you.\n📧 The shop has received your order via email.\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
         
-        // Clear cart
         cart = {};
         updateAll();
         toggleCart();
         
-        // Hide confirmation after 10 seconds (user can still see it)
         setTimeout(() => {
             document.getElementById('orderConfirmed').style.display = 'none';
         }, 10000);

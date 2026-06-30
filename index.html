@@ -16,12 +16,39 @@
         .page{display:none;padding:12px;width:100%;}
         .page.active{display:block;}
         
-        /* ===== HERO WITH LOGO ===== */
-        .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;}
-        .hero-content{position:relative;z-index:1;max-width:700px;width:100%;}
+        /* ===== HERO WITH CHOCOLATE BACKGROUND ===== */
+        .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center;}
         
-        /* LOGO SVG - Font ONLY changed here */
-        .logo-svg{max-width:480px;width:100%;height:auto;display:block;margin:0 auto;}
+        /* Chocolate Background Pattern */
+        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:
+            radial-gradient(circle at 15% 20%, #5C3A1E 0%, transparent 25%),
+            radial-gradient(circle at 85% 30%, #3D2210 0%, transparent 30%),
+            radial-gradient(circle at 50% 80%, #5C3A1E 0%, transparent 35%),
+            radial-gradient(circle at 10% 70%, #3D2210 0%, transparent 20%),
+            radial-gradient(circle at 90% 75%, #6B4428 0%, transparent 25%),
+            radial-gradient(circle at 30% 50%, #4A2A18 0%, transparent 40%);
+        background-color:#4A2E1B;}
+        
+        /* Chocolate Bar Shapes */
+        .hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:
+            /* Chocolate bars */
+            linear-gradient(45deg, transparent 60%, rgba(215,168,110,0.05) 60%, rgba(215,168,110,0.05) 65%, transparent 65%),
+            linear-gradient(-45deg, transparent 60%, rgba(215,168,110,0.05) 60%, rgba(215,168,110,0.05) 65%, transparent 65%),
+            /* Truffle circles */
+            radial-gradient(circle at 12% 85%, rgba(215,168,110,0.08) 0%, transparent 15%),
+            radial-gradient(circle at 88% 15%, rgba(215,168,110,0.08) 0%, transparent 20%),
+            radial-gradient(circle at 5% 40%, rgba(215,168,110,0.06) 0%, transparent 10%),
+            radial-gradient(circle at 95% 60%, rgba(215,168,110,0.06) 0%, transparent 12%),
+            /* Grid patterns for chocolate bars */
+            repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(215,168,110,0.04) 20px, rgba(215,168,110,0.04) 21px),
+            repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(215,168,110,0.04) 20px, rgba(215,168,110,0.04) 21px);
+        background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 80px 80px;
+        background-position:0 0, 0 0, 0 0, 0 0, 0 0, 0 0, center center;}
+        
+        .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
+        
+        /* LOGO SVG */
+        .logo-svg{max-width:500px;width:100%;height:auto;display:block;margin:0 auto;}
         
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
@@ -135,14 +162,14 @@
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .logo-svg{max-width:550px;}
-            .hero{padding:60px 40px 55px;min-height:420px;}
+            .logo-svg{max-width:560px;}
+            .hero{padding:60px 40px 55px;min-height:440px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .logo-svg{max-width:300px;}
-            .hero{padding:30px 16px 25px;min-height:280px;}
+            .logo-svg{max-width:320px;}
+            .hero{padding:30px 16px 25px;min-height:300px;}
         }
     </style>
 </head>
@@ -162,46 +189,31 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <!-- ===== LOGO SVG ===== -->
-            <svg class="logo-svg" viewBox="0 0 620 150" xmlns="http://www.w3.org/2000/svg">
+            <!-- ===== LOGO SVG (Close Together) ===== -->
+            <svg class="logo-svg" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <style>
-                        /* ===== GEOMETRIC FONT STYLES ===== */
-                        .letter-c { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        .letter-o { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        .letter-a { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        .letter-t { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        .letter-l { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        .letter-e { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        .letter-space { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        
-                        .letter-inn { font-family: 'Arial Black', 'Helvetica', sans-serif; font-weight: 900; fill: #FCD12A; }
-                        
-                        .tagline { font-family: 'Inter', 'Helvetica', sans-serif; font-weight: 300; fill: #FCD12A; letter-spacing: 4px; }
+                        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;display=swap');
+                        .logo-text { font-family: 'Comfortaa', cursive, sans-serif; font-weight: 700; fill: #FCD12A; }
+                        .tagline { font-family: Arial, Helvetica, sans-serif; font-weight: 300; fill: #FCD12A; letter-spacing: 3px; }
                     </style>
                 </defs>
                 
-                <!-- ===== "CHOCOLATE" ===== -->
+                <!-- ===== "CHOCOLATE" (no spaces between letters) ===== -->
                 <!-- C -->
-                <text x="10" y="75" class="letter-c" font-size="54" letter-spacing="1">C</text>
-                
+                <text x="5" y="75" class="logo-text" font-size="56" letter-spacing="-1">C</text>
                 <!-- h -->
-                <text x="58" y="75" class="letter-c" font-size="54" letter-spacing="1">h</text>
-                
+                <text x="52" y="75" class="logo-text" font-size="56" letter-spacing="-1">h</text>
                 <!-- o -->
-                <text x="100" y="75" class="letter-o" font-size="54" letter-spacing="1">o</text>
-                
+                <text x="95" y="75" class="logo-text" font-size="56" letter-spacing="-1">o</text>
                 <!-- c -->
-                <text x="140" y="75" class="letter-c" font-size="54" letter-spacing="1">c</text>
-                
+                <text x="138" y="75" class="logo-text" font-size="56" letter-spacing="-1">c</text>
                 <!-- o -->
-                <text x="178" y="75" class="letter-o" font-size="54" letter-spacing="1">o</text>
-                
+                <text x="176" y="75" class="logo-text" font-size="56" letter-spacing="-1">o</text>
                 <!-- l (with chocolate bar on top) -->
-                <!-- The letter 'l' sits at x=216, y=75 -->
-                <text x="216" y="75" class="letter-l" font-size="54" letter-spacing="1">l</text>
+                <text x="214" y="75" class="logo-text" font-size="56" letter-spacing="-1">l</text>
                 
-                <!-- ===== CHOCOLATE BAR ICON (sits ON TOP of the 'l') ===== -->
+                <!-- ===== CHOCOLATE BAR ICON (ON TOP of the 'l') ===== -->
                 <g transform="translate(222, 28)">
                     <!-- Chocolate bar tilted at 45 degrees -->
                     <g transform="rotate(45)">
@@ -218,26 +230,19 @@
                     </g>
                 </g>
                 
-                <!-- a -->
-                <text x="262" y="75" class="letter-a" font-size="54" letter-spacing="1">a</text>
+                <!-- ===== "ate" (no spaces) ===== -->
+                <text x="262" y="75" class="logo-text" font-size="56" letter-spacing="-1">a</text>
+                <text x="302" y="75" class="logo-text" font-size="56" letter-spacing="-1">t</text>
+                <text x="340" y="75" class="logo-text" font-size="56" letter-spacing="-1">e</text>
                 
-                <!-- t -->
-                <text x="302" y="75" class="letter-t" font-size="54" letter-spacing="1">t</text>
-                
-                <!-- e -->
-                <text x="340" y="75" class="letter-e" font-size="54" letter-spacing="1">e</text>
-                
-                <!-- ===== SPACE ===== -->
-                <text x="378" y="75" class="letter-space" font-size="54" letter-spacing="1"> </text>
-                
-                <!-- ===== "INN" ===== -->
-                <text x="386" y="75" class="letter-inn" font-size="54" letter-spacing="1">Inn</text>
+                <!-- ===== "Inn" (no spaces) ===== -->
+                <text x="386" y="75" class="logo-text" font-size="56" letter-spacing="-1">Inn</text>
                 
                 <!-- ===== DIVIDER ===== -->
-                <line x1="80" y1="95" x2="540" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
+                <line x1="80" y1="95" x2="520" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
                 
                 <!-- ===== TAGLINE ===== -->
-                <text x="310" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
+                <text x="300" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
             </svg>
             
             <button class="btn" onclick="showPage('order')">☕ Order Now</button>

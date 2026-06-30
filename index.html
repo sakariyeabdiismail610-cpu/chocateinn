@@ -36,7 +36,7 @@
         .order-cta p{font-size:15px;margin:6px 0 14px;}
         
         .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
-        .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;position:relative;}
+        .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;}
         .menu-item h3{font-size:14px;color:#4e2b1a;}
         .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;}
         .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:11px;font-weight:700;margin-top:4px;}
@@ -67,34 +67,70 @@
         .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
         
         /* ===== SLIDE-IN CART ===== */
-        .cart-side{position:fixed;top:0;right:-450px;width:420px;max-width:90%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 20px rgba(0,0,0,0.2);transition:right 0.4s ease;overflow-y:auto;padding:20px;display:flex;flex-direction:column;}
+        .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 30px rgba(0,0,0,0.25);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
         
-        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d7a86e;padding-bottom:12px;margin-bottom:16px;}
+        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d7a86e;padding-bottom:12px;margin-bottom:14px;}
         .cart-side-header h2{font-size:20px;color:#4e2b1a;}
-        .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#6d5c4e;transition:0.3s;}
+        .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#6d5c4e;transition:0.3s;padding:0 8px;}
         .cart-close:hover{color:#b71c1c;transform:rotate(90deg);}
         
-        .cart-side-items{flex:1;overflow-y:auto;}
-        .cart-side-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #ece3d8;}
-        .cart-side-item .name{font-weight:600;font-size:14px;color:#4e2b1a;}
-        .cart-side-item .qty-control{display:flex;align-items:center;gap:8px;}
-        .cart-side-item .qty-control button{background:#4e2b1a;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;transition:0.3s;}
+        .cart-side-scroll{flex:1;overflow-y:auto;padding-right:4px;}
+        
+        .cart-side-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ebe5;}
+        .cart-side-item .name{font-weight:600;font-size:14px;color:#4e2b1a;flex:1;}
+        .cart-side-item .qty-control{display:flex;align-items:center;gap:6px;margin:0 10px;}
+        .cart-side-item .qty-control button{background:#4e2b1a;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;transition:0.3s;display:flex;align-items:center;justify-content:center;}
         .cart-side-item .qty-control button:hover{background:#6b3f2a;}
-        .cart-side-item .qty-control .qty{font-weight:700;font-size:16px;min-width:20px;text-align:center;}
-        .cart-side-item .item-total{font-weight:700;color:#6b3f2a;font-size:14px;}
+        .cart-side-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
+        .cart-side-item .item-total{font-weight:700;color:#6b3f2a;font-size:14px;min-width:55px;text-align:right;}
         
-        .cart-side-empty{color:#6d5c4e;text-align:center;padding:30px 0;font-size:16px;}
+        .cart-side-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;line-height:1.8;}
         
-        .cart-side-totals{border-top:2px solid #d7a86e;padding-top:12px;margin-top:12px;}
-        .cart-side-totals .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14px;}
+        /* ===== CHECKOUT FIELDS IN CART ===== */
+        .cart-checkout-fields{margin-top:12px;border-top:2px solid #d7a86e;padding-top:14px;}
+        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4e2b1a;display:block;margin-bottom:3px;}
+        .cart-checkout-fields input,.cart-checkout-fields select{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#f9f6f0;transition:0.3s;}
+        .cart-checkout-fields input:focus{border-color:#d7a86e;outline:none;background:#fff;}
+        
+        .delivery-option-cart{display:flex;gap:10px;margin-bottom:10px;}
+        .delivery-option-cart button{padding:8px 16px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;}
+        .delivery-option-cart button.active{background:#4e2b1a;color:#fff;}
+        .delivery-option-cart button:hover{transform:scale(1.02);}
+        
+        .currency-toggle-cart{display:flex;gap:8px;margin-bottom:10px;justify-content:center;}
+        .currency-toggle-cart button{padding:6px 16px;border-radius:30px;border:2px solid #4e2b1a;background:#fff;color:#4e2b1a;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;}
+        .currency-toggle-cart button.active{background:#4e2b1a;color:#fff;}
+        
+        .pay-option-cart{background:#f9f6f0;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:2px solid transparent;cursor:pointer;transition:0.3s;}
+        .pay-option-cart:hover{border-color:#d7a86e;}
+        .pay-option-cart.selected{border-color:#4e2b1a;background:#e8ddd0;}
+        .pay-option-cart .method{font-weight:800;font-size:15px;color:#4e2b1a;}
+        .pay-option-cart .number{font-size:15px;font-weight:700;color:#6b3f2a;}
+        
+        .cart-side-totals{border-top:2px solid #d7a86e;padding-top:12px;margin-top:10px;}
+        .cart-side-totals .row{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
         .cart-side-totals .row.total{font-size:18px;font-weight:900;color:#4e2b1a;border-top:2px solid #4e2b1a;padding-top:8px;margin-top:4px;}
         
-        .cart-side .checkout-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:14px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:12px;}
-        .cart-side .checkout-btn:hover{background:#6b3f2a;transform:scale(1.02);}
-        .cart-side .checkout-btn:disabled{background:#a08070;cursor:not-allowed;transform:none;}
+        .cart-side .place-order-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:14px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;}
+        .cart-side .place-order-btn:hover{background:#6b3f2a;transform:scale(1.02);}
+        .cart-side .place-order-btn:disabled{background:#a08070;cursor:not-allowed;transform:none;}
         
-        /* Overlay */
+        .call-reminder-cart{background:#fff3e0;padding:10px;border-radius:10px;border:1px solid #d7a86e;margin:10px 0;text-align:center;font-size:13px;}
+        .call-reminder-cart .number{font-size:22px;font-weight:900;color:#b71c1c;}
+        
+        .prompt-cart{background:#f5efe8;padding:10px;border-radius:10px;border-left:4px solid #d7a86e;margin:8px 0;font-size:13px;}
+        .prompt-cart strong{color:#4e2b1a;}
+        
+        .amount-display-cart{background:#4e2b1a;color:#fff;padding:10px;border-radius:12px;text-align:center;margin:8px 0;}
+        .amount-display-cart .total{font-size:24px;font-weight:900;color:#d7a86e;}
+        
+        .cart-side .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25D366;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:8px;text-decoration:none;}
+        .cart-side .whatsapp-btn:hover{background:#128C7E;transform:scale(1.02);}
+        
+        .cart-side .email-btn{width:100%;background:#4e2b1a;color:#fff;border:none;padding:12px;font-size:16px;font-weight:700;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:6px;}
+        .cart-side .email-btn:hover{background:#6b3f2a;transform:scale(1.02);}
+        
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
@@ -151,7 +187,7 @@
 <!-- ORDER -->
 <div class="page" id="page-order">
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
-    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order.</p>
+    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order. Then click the 🛒 cart button to checkout.</p>
     <div class="menu-grid" id="orderMenuGrid"></div>
 </div>
 
@@ -185,95 +221,97 @@
 <!-- ===== CART OVERLAY ===== -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-<!-- ===== SLIDE-IN CART ===== -->
+<!-- ===== SLIDE-IN CART (All Checkout Inside) ===== -->
 <div class="cart-side" id="cartSide">
     <div class="cart-side-header">
-        <h2>🛒 Your Cart</h2>
+        <h2>🛒 Your Order</h2>
         <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
-    <div class="cart-side-items" id="cartSideItems">
-        <div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div>
-    </div>
-    <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
-        <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
-        <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
-        <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
-        <button class="checkout-btn" id="sideCheckoutBtn" disabled onclick="openPayment()">Proceed to Checkout</button>
-    </div>
-</div>
-
-<!-- ===== PAYMENT MODAL ===== -->
-<div class="modal" id="paymentModal">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closePayment()">✕</button>
-        <h2>🧾 Complete Your Order</h2>
-        <div id="orderSummary"></div>
-        
-        <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">👤 Your Name</label>
-            <input type="text" id="customerName" placeholder="Enter your name" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
+    <div class="cart-side-scroll">
+        <!-- Cart Items -->
+        <div id="cartSideItems">
+            <div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div>
         </div>
         
-        <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;">📱 Your Phone Number</label>
-            <input type="tel" id="customerPhone" placeholder="Enter your phone number" style="width:100%;padding:10px 14px;margin-top:4px;border:1px solid #ece3d8;border-radius:10px;font-size:15px;background:#f5efe8;">
+        <!-- Cart Totals -->
+        <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
+            <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
+            <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
+            <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
         </div>
         
-        <div style="margin:10px 0;border:1px solid #ece3d8;border-radius:12px;padding:14px;background:#f9f6f0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">📍 Delivery Address</label>
-            <input type="text" id="manualAddress" placeholder="Type your address" style="width:100%;padding:10px 14px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#fff;">
-        </div>
-        
-        <div style="margin:10px 0;">
-            <label style="font-weight:600;font-size:14px;color:#4e2b1a;display:block;margin-bottom:6px;">🚚 Delivery or Pickup?</label>
-            <div class="delivery-option">
-                <button id="btnPickup" class="active" onclick="setDelivery('Pickup')">🏪 Pickup</button>
-                <button id="btnDelivery" onclick="setDelivery('Delivery')">🚚 Delivery</button>
+        <!-- ===== CHECKOUT FIELDS (All inside cart) ===== -->
+        <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
+            <!-- Name -->
+            <label>👤 Your Name</label>
+            <input type="text" id="cartName" placeholder="Enter your name">
+            
+            <!-- Phone -->
+            <label>📱 Your Phone Number</label>
+            <input type="tel" id="cartPhone" placeholder="Enter your phone number">
+            
+            <!-- Address -->
+            <label>📍 Delivery Address</label>
+            <input type="text" id="cartAddress" placeholder="Type your address">
+            
+            <!-- Delivery or Pickup -->
+            <label>🚚 Delivery or Pickup?</label>
+            <div class="delivery-option-cart">
+                <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
+                <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
             </div>
-        </div>
-        
-        <div class="call-reminder">
-            <div>📞 <strong>IMPORTANT!</strong></div>
-            <div style="margin:6px 0;">After sending payment, call or WhatsApp:</div>
-            <div class="number">3665112</div>
-        </div>
-        
-        <div style="margin:12px 0;">
-            <h3 style="text-align:center;color:#4e2b1a;font-size:16px;margin-bottom:8px;">💳 Currency</h3>
-            <div class="currency-toggle">
-                <button id="btnUSD" class="active" onclick="setCurrency('USD')">USD</button>
-                <button id="btnSLSH" onclick="setCurrency('SLSH')">SLSH</button>
+            
+            <!-- Currency -->
+            <label>💳 Currency</label>
+            <div class="currency-toggle-cart">
+                <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
+                <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
             </div>
-        </div>
-        
-        <div class="amount-display">
-            <div style="font-size:12px;opacity:0.8;">Total Amount to Send</div>
-            <div class="total" id="displayAmount">$0.00</div>
-        </div>
-        
-        <div style="margin:12px 0;">
-            <h3 style="text-align:center;color:#4e2b1a;font-size:16px;margin-bottom:8px;">📱 Payment Method</h3>
-            <div class="pay-option selected" onclick="selectPayment('ZAAD')" id="payZAAD">
+            
+            <!-- Amount Display -->
+            <div class="amount-display-cart">
+                <div style="font-size:12px;opacity:0.8;">Total Amount to Send</div>
+                <div class="total" id="cartDisplayAmount">$0.00</div>
+            </div>
+            
+            <!-- Payment Method -->
+            <label>📱 Payment Method</label>
+            <div class="pay-option-cart selected" onclick="setCartPayment('ZAAD')" id="cartPayZAAD">
                 <div class="method">📱 ZAAD</div>
                 <div class="number">📞 3665112</div>
             </div>
-            <div class="pay-option" onclick="selectPayment('Edahab')" id="payEdahab">
+            <div class="pay-option-cart" onclick="setCartPayment('Edahab')" id="cartPayEdahab">
                 <div class="method">📱 Edahab</div>
                 <div class="number">📞 3665112</div>
             </div>
+            
+            <!-- Payment Prompt -->
+            <div class="prompt-cart" id="cartPrompt">
+                💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong>
+            </div>
+            
+            <!-- Call Reminder -->
+            <div class="call-reminder-cart">
+                📞 <strong>After sending payment, call or WhatsApp:</strong>
+                <div class="number">3665112</div>
+                <div style="font-size:11px;">To confirm your order ☕</div>
+            </div>
+            
+            <!-- WhatsApp Button -->
+            <a href="#" id="cartWhatsappLink" target="_blank" class="whatsapp-btn">
+                💬 Message Us on WhatsApp
+            </a>
+            
+            <!-- Email Button -->
+            <button class="email-btn" onclick="sendCartOrderEmail()">
+                📧 Send Order to Shop (Email)
+            </button>
         </div>
         
-        <div class="prompt" id="paymentPrompt">
-            💰 Send <strong id="promptAmount">$0.00</strong> via <strong id="promptMethod">ZAAD</strong> to <strong>3665112</strong>
-        </div>
-        
-        <div style="background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0;font-size:13px;border:1px solid #ffeaa7;">
-            ⚠️ <strong>After sending payment, call 3665112 to confirm!</strong>
-        </div>
-        
-        <a href="#" id="whatsappLink" target="_blank" class="whatsapp-btn">💬 Message Us on WhatsApp</a>
-        <button class="email-btn" onclick="sendOrderEmail()">📧 Send Order to Shop (Email)</button>
-        <button class="close-btn" onclick="closePayment()">✅ Close</button>
+        <!-- Place Order Button -->
+        <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">
+            🛒 Proceed to Checkout
+        </button>
     </div>
 </div>
 
@@ -302,10 +340,10 @@ const items = [
 ];
 
 let cart = {};
-let currentCurrency = 'USD';
-let selectedPayment = 'ZAAD';
-let currentTotal = 0;
-let deliveryOption = 'Pickup';
+let cartCurrency = 'USD';
+let cartPayment = 'ZAAD';
+let cartDelivery = 'Pickup';
+let cartTotal = 0;
 const exchangeRate = 11000;
 
 // ===== SHOW PAGE =====
@@ -355,9 +393,25 @@ function addToCart(id) {
     if(!item || !item.inStock) return;
     if(cart[id]) cart[id].qty += 1;
     else cart[id] = {...item, qty: 1};
-    updateCart();
-    updateSideCart();
+    updateAll();
+}
+
+// ===== CHANGE QTY =====
+function changeQty(id, delta) {
+    if(cart[id]) {
+        cart[id].qty += delta;
+        if(cart[id].qty <= 0) delete cart[id];
+        updateAll();
+    }
+}
+
+// ===== UPDATE EVERYTHING =====
+function updateAll() {
     updateCartCount();
+    updateSideCart();
+    updateCartTotals();
+    updateCheckoutFields();
+    updatePlaceOrderBtn();
 }
 
 // ===== UPDATE CART COUNT =====
@@ -367,24 +421,19 @@ function updateCartCount() {
     document.getElementById('cartCount').textContent = total;
 }
 
-// ===== UPDATE SIDE CART =====
+// ===== UPDATE SIDE CART ITEMS =====
 function updateSideCart() {
     const container = document.getElementById('cartSideItems');
-    const totals = document.getElementById('cartSideTotals');
-    const btn = document.getElementById('sideCheckoutBtn');
     const arr = Object.values(cart);
     
     if(arr.length === 0) {
         container.innerHTML = '<div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div>';
-        totals.style.display = 'none';
-        btn.disabled = true;
         return;
     }
     
-    let html = '', subtotal = 0;
+    let html = '';
     arr.forEach(item => {
         const total = item.price * item.qty;
-        subtotal += total;
         html += `
             <div class="cart-side-item">
                 <span class="name">${item.name}</span>
@@ -398,116 +447,195 @@ function updateSideCart() {
         `;
     });
     container.innerHTML = html;
-    totals.style.display = 'block';
-    btn.disabled = false;
+}
+
+// ===== UPDATE CART TOTALS =====
+function updateCartTotals() {
+    const arr = Object.values(cart);
+    const totalsDiv = document.getElementById('cartSideTotals');
+    const checkoutFields = document.getElementById('checkoutFields');
     
+    if(arr.length === 0) {
+        totalsDiv.style.display = 'none';
+        checkoutFields.style.display = 'none';
+        return;
+    }
+    
+    let subtotal = 0;
+    arr.forEach(item => { subtotal += item.price * item.qty; });
     const tax = subtotal * 0.0012;
     const total = subtotal + tax;
+    cartTotal = total;
+    
     document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2);
     document.getElementById('sideTax').textContent = '$' + tax.toFixed(2);
     document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
-    currentTotal = total;
+    
+    totalsDiv.style.display = 'block';
+    checkoutFields.style.display = 'block';
+    updateCartDisplayAmount();
 }
 
-// ===== CHANGE QTY =====
-function changeQty(id, delta) {
-    if(cart[id]) {
-        cart[id].qty += delta;
-        if(cart[id].qty <= 0) delete cart[id];
-        updateCart();
-        updateSideCart();
-        updateCartCount();
-    }
+// ===== UPDATE CHECKOUT FIELDS =====
+function updateCheckoutFields() {
+    // Update payment method display
+    updateCartPrompt();
+    updateCartWhatsAppLink();
 }
 
-// ===== UPDATE CART (for payment) =====
-function updateCart() {
-    // Cart data is stored in 'cart' object
-    // Side cart handles display
+// ===== UPDATE PLACE ORDER BUTTON =====
+function updatePlaceOrderBtn() {
+    const arr = Object.values(cart);
+    const btn = document.getElementById('placeOrderBtn');
+    btn.disabled = arr.length === 0;
 }
 
 // ===== TOGGLE CART =====
 function toggleCart() {
-    document.getElementById('cartSide').classList.toggle('open');
-    document.getElementById('cartOverlay').classList.toggle('active');
+    const side = document.getElementById('cartSide');
+    const overlay = document.getElementById('cartOverlay');
+    side.classList.toggle('open');
+    overlay.classList.toggle('active');
+    if(side.classList.contains('open')) {
+        updateAll();
+    }
 }
 
-// ===== SET DELIVERY =====
-function setDelivery(option) {
-    deliveryOption = option;
-    document.getElementById('btnPickup').classList.toggle('active', option === 'Pickup');
-    document.getElementById('btnDelivery').classList.toggle('active', option === 'Delivery');
+// ===== SET CART DELIVERY =====
+function setCartDelivery(option) {
+    cartDelivery = option;
+    document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup');
+    document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery');
+    updateCartWhatsAppLink();
 }
 
-// ===== OPEN PAYMENT =====
-function openPayment() {
-    const arr = Object.values(cart);
-    if(arr.length === 0) return;
-    
-    // Close side cart
-    toggleCart();
-    
-    let html = '', subtotal = 0;
-    arr.forEach(item => {
-        const total = item.price * item.qty;
-        subtotal += total;
-        html += `<div class="item-line"><span>${item.name} × ${item.qty}</span><span>$${total.toFixed(2)}</span></div>`;
-    });
-    const tax = subtotal * 0.0012;
-    const total = subtotal + tax;
-    html += `<div class="total-line"><span>Total</span><span>$${total.toFixed(2)}</span></div>`;
-    
-    document.getElementById('orderSummary').innerHTML = html;
-    currentTotal = total;
-    currentCurrency = 'USD';
-    document.getElementById('btnUSD').classList.add('active');
-    document.getElementById('btnSLSH').classList.remove('active');
-    updateDisplay();
-    document.getElementById('paymentModal').classList.add('active');
-    document.getElementById('customerName').value = '';
-    document.getElementById('customerPhone').value = '';
-    document.getElementById('manualAddress').value = '';
-    deliveryOption = 'Pickup';
-    document.getElementById('btnPickup').classList.add('active');
-    document.getElementById('btnDelivery').classList.remove('active');
-    updateWhatsAppLink();
+// ===== SET CART CURRENCY =====
+function setCartCurrency(currency) {
+    cartCurrency = currency;
+    document.getElementById('cartUSD').classList.toggle('active', currency === 'USD');
+    document.getElementById('cartSLSH').classList.toggle('active', currency === 'SLSH');
+    updateCartDisplayAmount();
+    updateCartPrompt();
 }
 
-// ===== UPDATE WHATSAPP LINK =====
-function updateWhatsAppLink() {
-    const name = document.getElementById('customerName').value || 'Customer';
-    const phone = document.getElementById('customerPhone').value || 'Not provided';
-    const address = document.getElementById('manualAddress').value || 'Not provided';
+// ===== UPDATE CART DISPLAY AMOUNT =====
+function updateCartDisplayAmount() {
+    const display = document.getElementById('cartDisplayAmount');
+    let amount = cartTotal;
+    let symbol = '$';
+    if(cartCurrency === 'SLSH') {
+        amount = cartTotal * exchangeRate;
+        symbol = 'SLSH ';
+    }
+    display.textContent = symbol + amount.toFixed(2);
+}
+
+// ===== SET CART PAYMENT =====
+function setCartPayment(method) {
+    cartPayment = method;
+    document.getElementById('cartPayZAAD').classList.toggle('selected', method === 'ZAAD');
+    document.getElementById('cartPayEdahab').classList.toggle('selected', method === 'Edahab');
+    updateCartPrompt();
+    updateCartWhatsAppLink();
+}
+
+// ===== UPDATE CART PROMPT =====
+function updateCartPrompt() {
+    const promptAmt = document.getElementById('cartPromptAmount');
+    const promptMethod = document.getElementById('cartPromptMethod');
+    let amount = cartTotal;
+    let symbol = '$';
+    if(cartCurrency === 'SLSH') {
+        amount = cartTotal * exchangeRate;
+        symbol = 'SLSH ';
+    }
+    promptAmt.textContent = symbol + amount.toFixed(2);
+    promptMethod.textContent = cartPayment;
+}
+
+// ===== UPDATE CART WHATSAPP LINK =====
+function updateCartWhatsAppLink() {
+    const name = document.getElementById('cartName').value || 'Customer';
+    const phone = document.getElementById('cartPhone').value || 'Not provided';
+    const address = document.getElementById('cartAddress').value || 'Not provided';
     const arr = Object.values(cart);
     let orderText = '';
     arr.forEach(item => { orderText += `${item.name} × ${item.qty}, `; });
-    const total = document.getElementById('displayAmount').textContent;
-    const message = `🍫 New Order from Chocolate Inn!\n\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${deliveryOption}\n\n📋 Order: ${orderText}\n💰 Total: ${total}\n💳 Payment: ${selectedPayment} to 3665112\n\nI will call to confirm payment.`;
-    document.getElementById('whatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    let amount = cartTotal;
+    let symbol = '$';
+    if(cartCurrency === 'SLSH') {
+        amount = cartTotal * exchangeRate;
+        symbol = 'SLSH ';
+    }
+    const total = symbol + amount.toFixed(2);
+    const message = `🍫 New Order from Chocolate Inn!\n\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Order: ${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\nI will call to confirm payment.`;
+    document.getElementById('cartWhatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-// ===== SEND ORDER EMAIL =====
-function sendOrderEmail() {
-    const name = document.getElementById('customerName').value || 'Customer';
-    const phone = document.getElementById('customerPhone').value || 'Not provided';
-    const address = document.getElementById('manualAddress').value || 'Not provided';
+// ===== OPEN CART CHECKOUT =====
+function openCartCheckout() {
+    const arr = Object.values(cart);
+    if(arr.length === 0) return;
+    
+    // Check if name is filled
+    const name = document.getElementById('cartName').value.trim();
+    if(!name) {
+        alert('Please enter your name.');
+        document.getElementById('cartName').focus();
+        return;
+    }
+    
+    // Check if phone is filled
+    const phone = document.getElementById('cartPhone').value.trim();
+    if(!phone) {
+        alert('Please enter your phone number.');
+        document.getElementById('cartPhone').focus();
+        return;
+    }
+    
+    // For delivery, check if address is filled
+    if(cartDelivery === 'Delivery') {
+        const address = document.getElementById('cartAddress').value.trim();
+        if(!address) {
+            alert('Please enter your delivery address.');
+            document.getElementById('cartAddress').focus();
+            return;
+        }
+    }
+    
+    // All checks passed - send order
+    sendCartOrder();
+}
+
+// ===== SEND CART ORDER =====
+function sendCartOrder() {
+    const name = document.getElementById('cartName').value || 'Customer';
+    const phone = document.getElementById('cartPhone').value || 'Not provided';
+    const address = document.getElementById('cartAddress').value || 'Not provided';
     const arr = Object.values(cart);
     let orderText = '';
     arr.forEach(item => { orderText += `${item.name} × ${item.qty}\n`; });
-    const total = document.getElementById('displayAmount').textContent;
+    let amount = cartTotal;
+    let symbol = '$';
+    if(cartCurrency === 'SLSH') {
+        amount = cartTotal * exchangeRate;
+        symbol = 'SLSH ';
+    }
+    const total = symbol + amount.toFixed(2);
     
     const data = {
         name: name,
         phone: phone,
         address: address,
-        delivery: deliveryOption,
+        delivery: cartDelivery,
         order: orderText,
         total: total,
-        payment: selectedPayment,
+        payment: cartPayment,
+        currency: cartCurrency,
         _subject: `🍫 New Order from ${name}`
     };
     
-    const btn = event ? event.target : document.querySelector('.email-btn');
+    const btn = document.querySelector('.place-order-btn');
     const originalText = btn.textContent;
     btn.textContent = '⏳ Sending...';
     btn.disabled = true;
@@ -520,51 +648,41 @@ function sendOrderEmail() {
     .then(response => {
         btn.textContent = originalText;
         btn.disabled = false;
-        if(response.ok) alert('✅ Order sent! You will receive a confirmation email.\n\nThank you for ordering! ☕🍫');
-        else alert('⚠️ Issue sending order. Please call 3665112.');
+        if(response.ok) {
+            alert('✅ Order sent! You will receive a confirmation email.\n\nThank you for ordering from Chocolate Inn! ☕🍫');
+            // Clear cart
+            cart = {};
+            updateAll();
+            toggleCart();
+        } else {
+            alert('⚠️ Issue sending order. Please call 3665112 to place your order.');
+        }
     })
-    .catch(() => { btn.textContent = originalText; btn.disabled = false; alert('⚠️ Issue sending order. Please call 3665112.'); });
-}
-
-// ===== SET CURRENCY =====
-function setCurrency(currency) {
-    currentCurrency = currency;
-    document.getElementById('btnUSD').classList.toggle('active', currency === 'USD');
-    document.getElementById('btnSLSH').classList.toggle('active', currency === 'SLSH');
-    updateDisplay();
-}
-
-// ===== UPDATE DISPLAY =====
-function updateDisplay() {
-    const display = document.getElementById('displayAmount');
-    const promptAmt = document.getElementById('promptAmount');
-    let amount = currentTotal;
-    let symbol = '$';
-    if(currentCurrency === 'SLSH') { amount = currentTotal * exchangeRate; symbol = 'SLSH '; }
-    display.textContent = symbol + amount.toFixed(2);
-    promptAmt.textContent = symbol + amount.toFixed(2);
-}
-
-// ===== SELECT PAYMENT =====
-function selectPayment(method) {
-    selectedPayment = method;
-    document.getElementById('payZAAD').classList.toggle('selected', method === 'ZAAD');
-    document.getElementById('payEdahab').classList.toggle('selected', method === 'Edahab');
-    document.getElementById('promptMethod').textContent = method;
-    updateWhatsAppLink();
-}
-
-// ===== CLOSE PAYMENT =====
-function closePayment() { document.getElementById('paymentModal').classList.remove('active'); }
-
-// ===== INPUT CHANGES =====
-document.addEventListener('DOMContentLoaded', function() {
-    ['customerName','customerPhone','manualAddress'].forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.addEventListener('input', updateWhatsAppLink);
+    .catch(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        alert('⚠️ Issue sending order. Please call 3665112 to place your order.');
     });
+}
+
+// ===== SEND CART ORDER EMAIL (Alternative button) =====
+function sendCartOrderEmail() {
+    // This is the same as sendCartOrder but triggered by email button
+    sendCartOrder();
+}
+
+// ===== CUSTOMER INPUT CHANGES =====
+document.addEventListener('DOMContentLoaded', function() {
+    const nameInput = document.getElementById('cartName');
+    const phoneInput = document.getElementById('cartPhone');
+    const addressInput = document.getElementById('cartAddress');
+    
+    if(nameInput) nameInput.addEventListener('input', updateCartWhatsAppLink);
+    if(phoneInput) phoneInput.addEventListener('input', updateCartWhatsAppLink);
+    if(addressInput) addressInput.addEventListener('input', updateCartWhatsAppLink);
+    
     renderMenu();
-    updateCartCount();
+    updateAll();
 });
 </script>
 </body>

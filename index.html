@@ -87,10 +87,9 @@
         
         .cart-side-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;line-height:1.8;}
         
-        /* ===== CHECKOUT FIELDS IN CART ===== */
         .cart-checkout-fields{margin-top:12px;border-top:2px solid #d7a86e;padding-top:14px;}
         .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4e2b1a;display:block;margin-bottom:3px;}
-        .cart-checkout-fields input,.cart-checkout-fields select{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#f9f6f0;transition:0.3s;}
+        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#f9f6f0;transition:0.3s;}
         .cart-checkout-fields input:focus{border-color:#d7a86e;outline:none;background:#fff;}
         
         .delivery-option-cart{display:flex;gap:10px;margin-bottom:10px;}
@@ -134,13 +133,29 @@
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
+        /* ===== ORDER STATUS ===== */
+        .order-status{background:#fff;border-radius:16px;padding:20px;border:1px solid #ece3d8;margin:20px 0;}
+        .order-status h3{font-size:18px;color:#4e2b1a;margin-bottom:14px;}
+        .status-steps{display:flex;justify-content:space-between;align-items:center;position:relative;padding:0 10px;}
+        .status-steps::before{content:'';position:absolute;top:22px;left:30px;right:30px;height:3px;background:#ece3d8;z-index:0;}
+        .status-step{display:flex;flex-direction:column;align-items:center;z-index:1;flex:1;}
+        .status-step .circle{width:44px;height:44px;border-radius:50%;border:3px solid #ece3d8;display:flex;align-items:center;justify-content:center;background:#fff;font-size:18px;transition:0.4s;}
+        .status-step .circle.active{border-color:#2e7d32;background:#2e7d32;color:#fff;}
+        .status-step .circle.completed{border-color:#2e7d32;background:#2e7d32;color:#fff;}
+        .status-step .label{font-size:11px;color:#6d5c4e;margin-top:4px;text-align:center;font-weight:600;}
+        .status-step .label.active{color:#2e7d32;}
+        
+        .tracking-link-box{background:#f5efe8;padding:12px 16px;border-radius:10px;margin:16px 0;border-left:4px solid #d7a86e;word-break:break-all;font-size:13px;}
+        .tracking-link-box a{color:#4e2b1a;font-weight:700;text-decoration:none;}
+        .tracking-link-box a:hover{text-decoration:underline;}
+        
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
             .hero h1{font-size:40px;}
             .page{padding:0 30px;}
         }
-        @media(max-width:480px){.cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}}
+        @media(max-width:480px){.cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}.status-steps{flex-wrap:wrap;gap:8px;}.status-steps::before{display:none;}}
     </style>
 </head>
 <body>
@@ -188,6 +203,44 @@
 <div class="page" id="page-order">
     <h2 style="font-size:24px;color:#4e2b1a;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;">📱 Order Online</h2>
     <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order. Then click the 🛒 cart button to checkout.</p>
+    
+    <!-- ORDER STATUS (Shows after order is placed) -->
+    <div class="order-status" id="orderStatus" style="display:none;">
+        <h3>📦 Your Order Status</h3>
+        <div class="status-steps">
+            <div class="status-step">
+                <div class="circle" id="status1">✅</div>
+                <span class="label" id="label1">Ordered</span>
+            </div>
+            <div class="status-step">
+                <div class="circle" id="status2">⏳</div>
+                <span class="label" id="label2">Confirmed</span>
+            </div>
+            <div class="status-step">
+                <div class="circle" id="status3">⏳</div>
+                <span class="label" id="label3">Preparing</span>
+            </div>
+            <div class="status-step">
+                <div class="circle" id="status4">⏳</div>
+                <span class="label" id="label4">Ready</span>
+            </div>
+            <div class="status-step">
+                <div class="circle" id="status5">⏳</div>
+                <span class="label" id="label5">Delivered</span>
+            </div>
+        </div>
+        
+        <div class="tracking-link-box">
+            📱 <strong>Your Tracking Link:</strong><br>
+            <a href="#" id="trackingLink" target="_blank">Click here to track your order</a>
+            <br><span style="font-size:12px;color:#6d5c4e;">Share this link with us to check your order status</span>
+        </div>
+        
+        <div style="text-align:center;margin-top:8px;">
+            <button class="btn" onclick="updateOrderStatus()" style="max-width:200px;padding:8px 16px;font-size:14px;">🔄 Check Status</button>
+        </div>
+    </div>
+    
     <div class="menu-grid" id="orderMenuGrid"></div>
 </div>
 
@@ -212,69 +265,47 @@
     </div>
 </div>
 
-<!-- ===== FLOATING CART BUTTON ===== -->
-<button class="cart-float" id="cartFloat" onclick="toggleCart()">
-    🛒
-    <span class="count" id="cartCount">0</span>
-</button>
+<!-- ===== FLOATING CART ===== -->
+<button class="cart-float" id="cartFloat" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></button>
 
 <!-- ===== CART OVERLAY ===== -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-<!-- ===== SLIDE-IN CART (All Checkout Inside) ===== -->
+<!-- ===== SLIDE-IN CART ===== -->
 <div class="cart-side" id="cartSide">
     <div class="cart-side-header">
         <h2>🛒 Your Order</h2>
         <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
     <div class="cart-side-scroll">
-        <!-- Cart Items -->
-        <div id="cartSideItems">
-            <div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div>
-        </div>
-        
-        <!-- Cart Totals -->
+        <div id="cartSideItems"><div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div></div>
         <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
             <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
             <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
             <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
         </div>
         
-        <!-- ===== CHECKOUT FIELDS (All inside cart) ===== -->
         <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
-            <!-- Name -->
             <label>👤 Your Name</label>
             <input type="text" id="cartName" placeholder="Enter your name">
-            
-            <!-- Phone -->
             <label>📱 Your Phone Number</label>
             <input type="tel" id="cartPhone" placeholder="Enter your phone number">
-            
-            <!-- Address -->
             <label>📍 Delivery Address</label>
             <input type="text" id="cartAddress" placeholder="Type your address">
-            
-            <!-- Delivery or Pickup -->
             <label>🚚 Delivery or Pickup?</label>
             <div class="delivery-option-cart">
                 <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
                 <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
             </div>
-            
-            <!-- Currency -->
             <label>💳 Currency</label>
             <div class="currency-toggle-cart">
                 <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
                 <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
             </div>
-            
-            <!-- Amount Display -->
             <div class="amount-display-cart">
                 <div style="font-size:12px;opacity:0.8;">Total Amount to Send</div>
                 <div class="total" id="cartDisplayAmount">$0.00</div>
             </div>
-            
-            <!-- Payment Method -->
             <label>📱 Payment Method</label>
             <div class="pay-option-cart selected" onclick="setCartPayment('ZAAD')" id="cartPayZAAD">
                 <div class="method">📱 ZAAD</div>
@@ -284,41 +315,16 @@
                 <div class="method">📱 Edahab</div>
                 <div class="number">📞 3665112</div>
             </div>
-            
-            <!-- Payment Prompt -->
-            <div class="prompt-cart" id="cartPrompt">
-                💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong>
-            </div>
-            
-            <!-- Call Reminder -->
-            <div class="call-reminder-cart">
-                📞 <strong>After sending payment, call or WhatsApp:</strong>
-                <div class="number">3665112</div>
-                <div style="font-size:11px;">To confirm your order ☕</div>
-            </div>
-            
-            <!-- WhatsApp Button -->
-            <a href="#" id="cartWhatsappLink" target="_blank" class="whatsapp-btn">
-                💬 Message Us on WhatsApp
-            </a>
-            
-            <!-- Email Button -->
-            <button class="email-btn" onclick="sendCartOrderEmail()">
-                📧 Send Order to Shop (Email)
-            </button>
+            <div class="prompt-cart" id="cartPrompt">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong></div>
+            <div class="call-reminder-cart">📞 <strong>After sending payment, call or WhatsApp:</strong><div class="number">3665112</div><div style="font-size:11px;">To confirm your order ☕</div></div>
+            <a href="#" id="cartWhatsappLink" target="_blank" class="whatsapp-btn">💬 Message Us on WhatsApp</a>
+            <button class="email-btn" onclick="sendCartOrder()">📧 Send Order to Shop (Email)</button>
         </div>
-        
-        <!-- Place Order Button -->
-        <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">
-            🛒 Proceed to Checkout
-        </button>
+        <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">🛒 Place Order</button>
     </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-    <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
-</footer>
+<footer><div class="copy">© 2026 Chocolate Inn — All rights reserved.</div></footer>
 
 <script>
 // ===== CONFIGURATION =====
@@ -345,6 +351,8 @@ let cartPayment = 'ZAAD';
 let cartDelivery = 'Pickup';
 let cartTotal = 0;
 const exchangeRate = 11000;
+let orderPlaced = false;
+let currentOrderId = '';
 
 // ===== SHOW PAGE =====
 function showPage(page) {
@@ -355,6 +363,11 @@ function showPage(page) {
         if(link.textContent.toLowerCase() === page) link.classList.add('active');
     });
     window.scrollTo({top:0});
+    if(page === 'order' && orderPlaced) {
+        document.getElementById('orderStatus').style.display = 'block';
+    } else if(page === 'order') {
+        document.getElementById('orderStatus').style.display = 'none';
+    }
 }
 
 // ===== RENDER MENU =====
@@ -364,11 +377,7 @@ function renderMenu() {
     items.forEach(item => {
         const d = document.createElement('div');
         d.className = 'menu-item';
-        d.innerHTML = `
-            <h3>${item.name}</h3>
-            <div class="price">$${item.price.toFixed(2)}</div>
-            <span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔ In Stock':'❌ Sold Out'}</span>
-        `;
+        d.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔ In Stock':'❌ Sold Out'}</span>`;
         grid.appendChild(d);
     });
     
@@ -421,30 +430,18 @@ function updateCartCount() {
     document.getElementById('cartCount').textContent = total;
 }
 
-// ===== UPDATE SIDE CART ITEMS =====
+// ===== UPDATE SIDE CART =====
 function updateSideCart() {
     const container = document.getElementById('cartSideItems');
     const arr = Object.values(cart);
-    
     if(arr.length === 0) {
         container.innerHTML = '<div class="cart-side-empty">Your cart is empty.<br>Add some delicious items! ☕</div>';
         return;
     }
-    
     let html = '';
     arr.forEach(item => {
         const total = item.price * item.qty;
-        html += `
-            <div class="cart-side-item">
-                <span class="name">${item.name}</span>
-                <div class="qty-control">
-                    <button onclick="changeQty(${item.id},-1)">−</button>
-                    <span class="qty">${item.qty}</span>
-                    <button onclick="changeQty(${item.id},1)">+</button>
-                </div>
-                <span class="item-total">$${total.toFixed(2)}</span>
-            </div>
-        `;
+        html += `<div class="cart-side-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty(${item.id},-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty(${item.id},1)">+</button></div><span class="item-total">$${total.toFixed(2)}</span></div>`;
     });
     container.innerHTML = html;
 }
@@ -454,23 +451,19 @@ function updateCartTotals() {
     const arr = Object.values(cart);
     const totalsDiv = document.getElementById('cartSideTotals');
     const checkoutFields = document.getElementById('checkoutFields');
-    
     if(arr.length === 0) {
         totalsDiv.style.display = 'none';
         checkoutFields.style.display = 'none';
         return;
     }
-    
     let subtotal = 0;
     arr.forEach(item => { subtotal += item.price * item.qty; });
     const tax = subtotal * 0.0012;
     const total = subtotal + tax;
     cartTotal = total;
-    
     document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2);
     document.getElementById('sideTax').textContent = '$' + tax.toFixed(2);
     document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
-    
     totalsDiv.style.display = 'block';
     checkoutFields.style.display = 'block';
     updateCartDisplayAmount();
@@ -478,16 +471,12 @@ function updateCartTotals() {
 
 // ===== UPDATE CHECKOUT FIELDS =====
 function updateCheckoutFields() {
-    // Update payment method display
     updateCartPrompt();
     updateCartWhatsAppLink();
 }
-
-// ===== UPDATE PLACE ORDER BUTTON =====
 function updatePlaceOrderBtn() {
     const arr = Object.values(cart);
-    const btn = document.getElementById('placeOrderBtn');
-    btn.disabled = arr.length === 0;
+    document.getElementById('placeOrderBtn').disabled = arr.length === 0;
 }
 
 // ===== TOGGLE CART =====
@@ -496,9 +485,7 @@ function toggleCart() {
     const overlay = document.getElementById('cartOverlay');
     side.classList.toggle('open');
     overlay.classList.toggle('active');
-    if(side.classList.contains('open')) {
-        updateAll();
-    }
+    if(side.classList.contains('open')) updateAll();
 }
 
 // ===== SET CART DELIVERY =====
@@ -523,10 +510,7 @@ function updateCartDisplayAmount() {
     const display = document.getElementById('cartDisplayAmount');
     let amount = cartTotal;
     let symbol = '$';
-    if(cartCurrency === 'SLSH') {
-        amount = cartTotal * exchangeRate;
-        symbol = 'SLSH ';
-    }
+    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
     display.textContent = symbol + amount.toFixed(2);
 }
 
@@ -545,10 +529,7 @@ function updateCartPrompt() {
     const promptMethod = document.getElementById('cartPromptMethod');
     let amount = cartTotal;
     let symbol = '$';
-    if(cartCurrency === 'SLSH') {
-        amount = cartTotal * exchangeRate;
-        symbol = 'SLSH ';
-    }
+    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
     promptAmt.textContent = symbol + amount.toFixed(2);
     promptMethod.textContent = cartPayment;
 }
@@ -563,47 +544,34 @@ function updateCartWhatsAppLink() {
     arr.forEach(item => { orderText += `${item.name} × ${item.qty}, `; });
     let amount = cartTotal;
     let symbol = '$';
-    if(cartCurrency === 'SLSH') {
-        amount = cartTotal * exchangeRate;
-        symbol = 'SLSH ';
-    }
+    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
     const total = symbol + amount.toFixed(2);
     const message = `🍫 New Order from Chocolate Inn!\n\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Order: ${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\nI will call to confirm payment.`;
     document.getElementById('cartWhatsappLink').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+
+// ===== GENERATE ORDER ID =====
+function generateOrderId() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
 }
 
 // ===== OPEN CART CHECKOUT =====
 function openCartCheckout() {
     const arr = Object.values(cart);
     if(arr.length === 0) return;
-    
-    // Check if name is filled
     const name = document.getElementById('cartName').value.trim();
-    if(!name) {
-        alert('Please enter your name.');
-        document.getElementById('cartName').focus();
-        return;
-    }
-    
-    // Check if phone is filled
+    if(!name) { alert('Please enter your name.'); document.getElementById('cartName').focus(); return; }
     const phone = document.getElementById('cartPhone').value.trim();
-    if(!phone) {
-        alert('Please enter your phone number.');
-        document.getElementById('cartPhone').focus();
-        return;
-    }
-    
-    // For delivery, check if address is filled
+    if(!phone) { alert('Please enter your phone number.'); document.getElementById('cartPhone').focus(); return; }
     if(cartDelivery === 'Delivery') {
         const address = document.getElementById('cartAddress').value.trim();
-        if(!address) {
-            alert('Please enter your delivery address.');
-            document.getElementById('cartAddress').focus();
-            return;
-        }
+        if(!address) { alert('Please enter your delivery address.'); document.getElementById('cartAddress').focus(); return; }
     }
-    
-    // All checks passed - send order
     sendCartOrder();
 }
 
@@ -617,13 +585,14 @@ function sendCartOrder() {
     arr.forEach(item => { orderText += `${item.name} × ${item.qty}\n`; });
     let amount = cartTotal;
     let symbol = '$';
-    if(cartCurrency === 'SLSH') {
-        amount = cartTotal * exchangeRate;
-        symbol = 'SLSH ';
-    }
+    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
     const total = symbol + amount.toFixed(2);
     
+    // Generate Order ID
+    currentOrderId = generateOrderId();
+    
     const data = {
+        orderId: currentOrderId,
         name: name,
         phone: phone,
         address: address,
@@ -632,7 +601,7 @@ function sendCartOrder() {
         total: total,
         payment: cartPayment,
         currency: cartCurrency,
-        _subject: `🍫 New Order from ${name}`
+        _subject: `🍫 Order #${currentOrderId} from ${name}`
     };
     
     const btn = document.querySelector('.place-order-btn');
@@ -649,7 +618,18 @@ function sendCartOrder() {
         btn.textContent = originalText;
         btn.disabled = false;
         if(response.ok) {
-            alert('✅ Order sent! You will receive a confirmation email.\n\nThank you for ordering from Chocolate Inn! ☕🍫');
+            // Create tracking link
+            const trackingUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`🍫 Order #${currentOrderId} - ${name}\n📋 ${orderText}\n💰 ${total}\n📱 ${phone}\n📍 ${address}\n📦 ${cartDelivery}\n💳 ${cartPayment}`)}`;
+            document.getElementById('trackingLink').href = trackingUrl;
+            document.getElementById('trackingLink').textContent = `📱 Click to WhatsApp Order #${currentOrderId}`;
+            
+            // Show order status
+            orderPlaced = true;
+            document.getElementById('orderStatus').style.display = 'block';
+            updateOrderStatus();
+            
+            alert(`✅ Order #${currentOrderId} sent!\n\nYou will receive a confirmation email.\n\n📱 Share your order number: ${currentOrderId}\n\nThank you for ordering from Chocolate Inn! ☕🍫`);
+            
             // Clear cart
             cart = {};
             updateAll();
@@ -665,22 +645,48 @@ function sendCartOrder() {
     });
 }
 
-// ===== SEND CART ORDER EMAIL (Alternative button) =====
-function sendCartOrderEmail() {
-    // This is the same as sendCartOrder but triggered by email button
-    sendCartOrder();
+// ===== UPDATE ORDER STATUS =====
+function updateOrderStatus() {
+    // Simulate status updates (in real system, this would come from backend)
+    const statuses = [
+        { id: 'status1', label: 'label1', text: '✅ Ordered', active: true },
+        { id: 'status2', label: 'label2', text: '⏳ Confirmed', active: true },
+        { id: 'status3', label: 'label3', text: '⏳ Preparing', active: false },
+        { id: 'status4', label: 'label4', text: '⏳ Ready', active: false },
+        { id: 'status5', label: 'label5', text: '⏳ Delivered', active: false }
+    ];
+    
+    // For demo, cycle through statuses
+    // In production, this would check against a database/API
+    const currentStatus = statuses.findIndex(s => s.active === false);
+    if (currentStatus > 0) {
+        statuses[currentStatus - 1].text = '✅ ' + statuses[currentStatus - 1].text.replace('⏳', '✅');
+    }
+    
+    // Update UI
+    statuses.forEach((s, index) => {
+        const circle = document.getElementById(s.id);
+        const label = document.getElementById(s.label);
+        if (s.active || index < statuses.findIndex(s2 => s2.active === false)) {
+            circle.className = 'circle completed';
+            circle.textContent = '✅';
+            label.className = 'label active';
+            label.textContent = s.text.replace('✅', '').trim();
+        } else {
+            circle.className = 'circle';
+            circle.textContent = '⏳';
+            label.className = 'label';
+            label.textContent = s.text.replace('⏳', '').trim();
+        }
+    });
 }
 
-// ===== CUSTOMER INPUT CHANGES =====
+// ===== INPUT CHANGES =====
 document.addEventListener('DOMContentLoaded', function() {
-    const nameInput = document.getElementById('cartName');
-    const phoneInput = document.getElementById('cartPhone');
-    const addressInput = document.getElementById('cartAddress');
-    
-    if(nameInput) nameInput.addEventListener('input', updateCartWhatsAppLink);
-    if(phoneInput) phoneInput.addEventListener('input', updateCartWhatsAppLink);
-    if(addressInput) addressInput.addEventListener('input', updateCartWhatsAppLink);
-    
+    ['cartName','cartPhone','cartAddress'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.addEventListener('input', updateCartWhatsAppLink);
+    });
     renderMenu();
     updateAll();
 });

@@ -7,7 +7,6 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Arial',sans-serif;background:#f8f6f4;color:#1a1a1a;width:100%;}
         
-        /* ===== HEADER ===== */
         header{background:#1a1a1a;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:3px solid #c9a87c;position:sticky;top:0;z-index:100;}
         .logo{font-size:24px;font-weight:900;color:#c9a87c;cursor:pointer;font-family:'Georgia',serif;letter-spacing:2px;}
         .logo span{color:#fff;}
@@ -17,17 +16,15 @@
         .header-search input:focus{border-color:#a88960;box-shadow:0 0 0 3px rgba(201,168,124,0.2);}
         
         .header-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-        .header-links a{color:#ccc;text-decoration:none;font-size:12px;font-weight:600;transition:0.3s;letter-spacing:0.5px;}
-        .header-links a:hover{color:#c9a87c;}
+        .header-links a{color:#ccc;text-decoration:none;font-size:12px;font-weight:600;transition:0.3s;letter-spacing:0.5px;cursor:pointer;}
+        .header-links a:hover,.header-links a.active{color:#c9a87c;}
         .header-links .cart{color:#c9a87c;font-size:18px;position:relative;cursor:pointer;}
         .header-links .cart .count{position:absolute;top:-8px;right:-10px;background:#c9a87c;color:#1a1a1a;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
         
-        /* ===== NAV ===== */
         .nav-bar{background:#fff;padding:10px 20px;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;border-bottom:1px solid #e8e0d8;}
-        .nav-bar a{color:#333;text-decoration:none;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:0.3s;padding:4px 0;border-bottom:3px solid transparent;}
+        .nav-bar a{color:#333;text-decoration:none;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:0.3s;padding:4px 0;border-bottom:3px solid transparent;cursor:pointer;}
         .nav-bar a:hover,.nav-bar a.active{border-bottom-color:#c9a87c;color:#c9a87c;}
         
-        /* ===== HERO ===== */
         .hero{background:linear-gradient(135deg,#2d1b1a,#4a2a28);padding:60px 30px;text-align:center;border-bottom:4px solid #c9a87c;}
         .hero h1{font-size:52px;color:#c9a87c;font-family:'Georgia',serif;letter-spacing:3px;font-weight:700;}
         .hero h1 span{color:#fff;}
@@ -36,32 +33,28 @@
         .hero .offer span{color:#c9a87c;font-size:38px;}
         .hero .free-ship{display:inline-block;background:#c9a87c;color:#1a1a1a;padding:8px 30px;border-radius:30px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
         
-        /* ===== SECTION TITLES ===== */
         .section-title{font-size:24px;color:#1a1a1a;font-family:'Georgia',serif;letter-spacing:1px;margin:30px 0 16px;padding-left:16px;border-left:4px solid #c9a87c;}
         .section-sub{font-size:14px;color:#777;margin-bottom:20px;padding-left:16px;}
         
-        /* ===== BRAND GRID ===== */
         .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:16px;padding:0 16px;margin-bottom:30px;}
-        .brand-item{background:#fff;border-radius:12px;padding:20px 10px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
+        .brand-item{background:#fff;border-radius:12px;padding:20px 10px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
         .brand-item:hover{transform:translateY(-4px);border-color:#c9a87c;box-shadow:0 6px 20px rgba(0,0,0,0.06);}
         .brand-item .icon{font-size:30px;display:block;margin-bottom:4px;}
         .brand-item .name{font-size:12px;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:0.5px;}
-        .brand-item .view-link{font-size:11px;color:#c9a87c;text-decoration:none;font-weight:600;}
-        .brand-item .view-link:hover{text-decoration:underline;}
         
-        /* ===== PRODUCT GRID ===== */
         .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:0 16px;}
         .product-card{background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
         .product-card:hover{transform:translateY(-6px);border-color:#c9a87c;box-shadow:0 8px 30px rgba(0,0,0,0.08);}
-        .product-card .emoji{font-size:48px;display:block;margin-bottom:4px;}
+        .product-card .perfume-img{font-size:54px;display:block;margin-bottom:4px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1));}
+        .product-card .perfume-img.bottle{font-size:58px;}
         .product-card h3{font-size:15px;color:#333;font-weight:700;}
+        .product-card .brand-name{font-size:12px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
         .product-card .price{font-size:18px;font-weight:900;color:#c9a87c;margin:4px 0;}
         .product-card .price .old{font-size:14px;color:#999;text-decoration:line-through;font-weight:400;margin-left:6px;}
         .product-card .desc{font-size:12px;color:#777;}
         .add-btn{background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:8px 24px;border-radius:30px;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
         .add-btn:hover{background:#c9a87c;color:#1a1a1a;transform:scale(1.04);}
         
-        /* ===== BANNER ===== */
         .banner{background:#1a1a1a;color:#c9a87c;padding:30px 20px;text-align:center;margin:30px 16px;border-radius:12px;border:2px solid #c9a87c;}
         .banner h2{font-size:32px;font-family:'Georgia',serif;}
         .banner h2 span{color:#fff;}
@@ -69,7 +62,6 @@
         .banner .btn{background:#c9a87c;color:#1a1a1a;padding:12px 40px;border-radius:30px;font-weight:800;font-size:16px;border:none;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
         .banner .btn:hover{transform:scale(1.04);background:#fff;}
         
-        /* ===== CART SIDE ===== */
         .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 40px rgba(0,0,0,0.15);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
         .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #c9a87c;padding-bottom:12px;margin-bottom:14px;}
@@ -103,11 +95,9 @@
         
         .call-reminder-cart{background:#f8f6f4;padding:12px;border-radius:8px;border:1px solid #c9a87c;margin:10px 0;text-align:center;font-size:13px;}
         .call-reminder-cart .number{font-size:22px;font-weight:900;color:#c9a87c;}
-        
         .order-confirmed{background:#e8f5e9;border:2px solid #4caf50;border-radius:12px;padding:16px;margin:16px 0;text-align:center;}
         .order-confirmed h3{color:#2e7d32;font-size:18px;}
         .order-confirmed .order-id{font-size:22px;font-weight:900;color:#1a1a1a;}
-        
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
@@ -128,7 +118,7 @@
         footer{background:#1a1a1a;color:#c9a87c;padding:20px;text-align:center;border-top:4px solid #c9a87c;margin-top:20px;}
         footer .copy{font-size:12px;opacity:0.6;}
         footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:6px 0;}
-        footer .footer-links a{color:#999;text-decoration:none;font-size:12px;transition:0.3s;}
+        footer .footer-links a{color:#999;text-decoration:none;font-size:12px;transition:0.3s;cursor:pointer;}
         footer .footer-links a:hover{color:#c9a87c;}
         
         .page{display:none;width:100%;}
@@ -160,24 +150,25 @@
     <div class="logo" onclick="showPage('home')">SiiNa <span>Perfume</span></div>
     
     <div class="header-search">
-        <input type="text" placeholder="Search ex: Cool Water" id="searchInput" oninput="filterProducts()">
+        <input type="text" placeholder="Search perfumes..." id="searchInput" oninput="filterProducts()">
     </div>
     
     <div class="header-links">
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('shop')">Shop</a>
-        <a href="#" onclick="showPage('contact')">Contact</a>
+        <a class="active" onclick="showPage('home')">Home</a>
+        <a onclick="showPage('shop')">Shop</a>
+        <a onclick="showPage('contact')">Contact</a>
         <span class="cart" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></span>
     </div>
 </header>
 
 <!-- ===== NAV ===== -->
-<div class="nav-bar">
-    <a href="#" class="active" onclick="showPage('home')">Women's Perfume</a>
-    <a href="#" onclick="showPage('shop')">Men's Cologne</a>
-    <a href="#" onclick="showPage('shop')">Bestsellers</a>
-    <a href="#" onclick="showPage('shop')">Gift Sets</a>
-    <a href="#" onclick="showPage('shop')">Brands</a>
+<div class="nav-bar" id="navBar">
+    <a class="active" onclick="filterCategory('all')">All</a>
+    <a onclick="filterCategory('women')">Women's</a>
+    <a onclick="filterCategory('men')">Men's</a>
+    <a onclick="filterCategory('bestseller')">Bestsellers</a>
+    <a onclick="filterCategory('giftset')">Gift Sets</a>
+    <a onclick="filterCategory('luxury')">Luxury</a>
 </div>
 
 <!-- ===== HOME ===== -->
@@ -190,16 +181,17 @@
     </div>
     
     <div style="padding:0 16px;">
-        <h2 class="section-title">✦ Most Popular Perfume &amp; Cologne Brands</h2>
+        <h2 class="section-title">✦ Most Popular Perfume Brands</h2>
         <div class="brand-grid" id="brandGrid">
-            <div class="brand-item"><span class="icon">🌹</span><div class="name">Chanel</div></div>
-            <div class="brand-item"><span class="icon">✨</span><div class="name">Dior</div></div>
-            <div class="brand-item"><span class="icon">🌟</span><div class="name">Gucci</div></div>
-            <div class="brand-item"><span class="icon">💎</span><div class="name">Versace</div></div>
-            <div class="brand-item"><span class="icon">👑</span><div class="name">YSL</div></div>
-            <div class="brand-item"><span class="icon">🌺</span><div class="name">Lancôme</div></div>
+            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">🌹</span><div class="name">Chanel</div></div>
+            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">✨</span><div class="name">Dior</div></div>
+            <div class="brand-item" onclick="filterCategory('men')"><span class="icon">🌟</span><div class="name">Gucci</div></div>
+            <div class="brand-item" onclick="filterCategory('men')"><span class="icon">💎</span><div class="name">Versace</div></div>
+            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">👑</span><div class="name">YSL</div></div>
+            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">🌺</span><div class="name">Lancôme</div></div>
+            <div class="brand-item" onclick="filterCategory('men')"><span class="icon">⚡</span><div class="name">Hugo Boss</div></div>
+            <div class="brand-item" onclick="filterCategory('luxury')"><span class="icon">💫</span><div class="name">Tom Ford</div></div>
         </div>
-        <div style="text-align:right;padding-right:16px;font-size:14px;color:#c9a87c;font-weight:600;cursor:pointer;">VIEW FULL BRAND LIST →</div>
     </div>
     
     <!-- Featured Products -->
@@ -284,14 +276,14 @@
     </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer>
     <div class="footer-links">
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('shop')">Shop</a>
-        <a href="#" onclick="showPage('contact')">Contact</a>
-        <a href="#">Shipping</a>
-        <a href="#">Returns</a>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('shop')">Shop</a>
+        <a onclick="showPage('contact')">Contact</a>
+        <a onclick="filterCategory('women')">Women's</a>
+        <a onclick="filterCategory('men')">Men's</a>
+        <a onclick="filterCategory('bestseller')">Bestsellers</a>
     </div>
     <div class="copy">© 2026 SiiNa Perfume — All rights reserved ✦</div>
 </footer>
@@ -301,41 +293,90 @@
 const SHOP_WHATSAPP = '252634483567';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
-// ===== PRODUCT DATA =====
+// ===== PRODUCT DATA (Worldwide Famous Perfumes) =====
 const products = [
-    {id:1,name:'Rose Oud',price:25,oldPrice:45,emoji:'🌹',desc:'Luxurious blend of rose and oud.'},
-    {id:2,name:'Jasmine Dream',price:20,oldPrice:38,emoji:'🌸',desc:'Sweet jasmine with vanilla.'},
-    {id:3,name:'Saudi Cuud',price:22,oldPrice:40,emoji:'🪵',desc:'Traditional authentic Saudi cuud.'},
-    {id:4,name:'Fresh Bloom',price:15,oldPrice:30,emoji:'🌺',desc:'Fresh floral for everyday wear.'},
-    {id:5,name:'Golden Amber',price:18,oldPrice:35,emoji:'✨',desc:'Warm amber with touch of musk.'},
-    {id:6,name:'Midnight Rose',price:22,oldPrice:42,emoji:'🌙',desc:'Deep mysterious rose fragrance.'}
+    // WOMEN'S PERFUMES
+    {id:1,name:'Chanel No. 5',price:45,oldPrice:75,emoji:'🌸',category:'women',brand:'Chanel',desc:'Iconic floral aldehyde fragrance.'},
+    {id:2,name:'Dior J\'adore',price:42,oldPrice:70,emoji:'🌹',category:'women',brand:'Dior',desc:'Elegant floral with jasmine & rose.'},
+    {id:3,name:'YSL Black Opium',price:38,oldPrice:65,emoji:'🌟',category:'women',brand:'YSL',desc:'Warm vanilla & coffee notes.'},
+    {id:4,name:'Lancôme La Vie Est Belle',price:40,oldPrice:68,emoji:'💖',category:'women',brand:'Lancôme',desc:'Sweet iris & gourmand vanilla.'},
+    {id:5,name:'Gucci Bloom',price:35,oldPrice:60,emoji:'🌺',category:'women',brand:'Gucci',desc:'White floral bouquet of jasmine.'},
+    {id:6,name:'Marc Jacobs Daisy',price:30,oldPrice:55,emoji:'🌼',category:'women',brand:'Marc Jacobs',desc:'Fresh, youthful floral scent.'},
+    
+    // MEN'S COLOGNES
+    {id:7,name:'Dior Sauvage',price:48,oldPrice:80,emoji:'⚡',category:'men',brand:'Dior',desc:'Fresh, spicy, and bold.'},
+    {id:8,name:'Versace Eros',price:40,oldPrice:72,emoji:'💎',category:'men',brand:'Versace',desc:'Mint, vanilla, and woody notes.'},
+    {id:9,name:'Hugo Boss The Scent',price:35,oldPrice:62,emoji:'🔥',category:'men',brand:'Hugo Boss',desc:'Warm and sophisticated.'},
+    {id:10,name:'Gucci Guilty',price:38,oldPrice:65,emoji:'👔',category:'men',brand:'Gucci',desc:'Bold, masculine, and aromatic.'},
+    {id:11,name:'YSL Y',price:42,oldPrice:70,emoji:'💫',category:'men',brand:'YSL',desc:'Fresh, aquatic, and woody.'},
+    {id:12,name:'Tom Ford Oud Wood',price:55,oldPrice:95,emoji:'🪵',category:'luxury',brand:'Tom Ford',desc:'Exclusive luxury oud fragrance.'},
+    
+    // BESTSELLERS
+    {id:13,name:'Creed Aventus',price:65,oldPrice:120,emoji:'👑',category:'bestseller',brand:'Creed',desc:'Legendary pineapple & birch.'},
+    {id:14,name:'Chanel Bleu de Chanel',price:50,oldPrice:85,emoji:'💙',category:'bestseller',brand:'Chanel',desc:'Modern, woody, and aromatic.'},
+    {id:15,name:'Dolce & Gabbana Light Blue',price:32,oldPrice:58,emoji:'🌊',category:'bestseller',brand:'D&G',desc:'Fresh, citrus, and Mediterranean.'},
+    
+    // GIFT SETS
+    {id:16,name:'Luxury Gift Set',price:75,oldPrice:120,emoji:'🎁',category:'giftset',brand:'Luxury',desc:'3-piece collection of bestsellers.'},
+    {id:17,name:'Romantic Duo Gift Set',price:55,oldPrice:90,emoji:'💝',category:'giftset',brand:'Romantic',desc:'Pair of his & her perfumes.'},
+    {id:18,name:'Premium Travel Set',price:40,oldPrice:70,emoji:'🧳',category:'giftset',brand:'Premium',desc:'3 travel-sized luxury fragrances.'}
 ];
 
+// ===== STATE =====
 let cart = {};
 let cartDelivery = 'Pickup';
 let currentOrderId = '';
+let currentCategory = 'all';
 
 // ===== SHOW PAGE =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('.nav-bar a, .header-links a').forEach(link => {
+    document.querySelectorAll('.header-links a').forEach(link => {
         link.classList.remove('active');
-        if(link.textContent.toLowerCase().includes(page)) link.classList.add('active');
+        if(link.textContent.toLowerCase() === page) link.classList.add('active');
     });
     window.scrollTo({top:0});
+    if(page === 'shop') filterCategory(currentCategory);
+}
+
+// ===== FILTER PRODUCTS =====
+function filterCategory(category) {
+    currentCategory = category;
+    document.querySelectorAll('.nav-bar a').forEach(link => {
+        link.classList.remove('active');
+        if(link.textContent.toLowerCase() === category || (category === 'all' && link.textContent.toLowerCase() === 'all')) {
+            link.classList.add('active');
+        }
+    });
+    renderProducts(category);
+    // Show shop page
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-shop').classList.add('active');
+    document.querySelectorAll('.header-links a').forEach(link => {
+        link.classList.remove('active');
+        if(link.textContent.toLowerCase() === 'shop') link.classList.add('active');
+    });
 }
 
 // ===== RENDER PRODUCTS =====
-function renderProducts() {
+function renderProducts(category = 'all') {
     const grid = document.getElementById('productGrid');
     const featured = document.getElementById('featuredGrid');
+    
+    let filtered = products;
+    if(category !== 'all') {
+        filtered = products.filter(p => p.category === category);
+    }
+    
     grid.innerHTML = '';
-    products.forEach(p => {
+    filtered.forEach(p => {
+        const bottleIcon = p.category === 'men' ? '🧴' : '🌸';
         grid.innerHTML += `
-            <div class="product-card">
-                <span class="emoji">${p.emoji}</span>
+            <div class="product-card" data-category="${p.category}">
+                <span class="perfume-img">${p.emoji}</span>
                 <h3>${p.name}</h3>
+                <div class="brand-name">${p.brand}</div>
                 <div class="price">$${p.price}.00 <span class="old">$${p.oldPrice}.00</span></div>
                 <div class="desc">${p.desc}</div>
                 <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
@@ -343,13 +384,15 @@ function renderProducts() {
         `;
     });
     
-    // Featured products (first 3)
+    // Featured products (bestsellers on home page)
+    const bestsellers = products.filter(p => p.category === 'bestseller' || p.id <= 6);
     featured.innerHTML = '';
-    products.slice(0, 3).forEach(p => {
+    bestsellers.slice(0, 4).forEach(p => {
         featured.innerHTML += `
             <div class="product-card">
-                <span class="emoji">${p.emoji}</span>
+                <span class="perfume-img">${p.emoji}</span>
                 <h3>${p.name}</h3>
+                <div class="brand-name">${p.brand}</div>
                 <div class="price">$${p.price}.00 <span class="old">$${p.oldPrice}.00</span></div>
                 <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
             </div>
@@ -363,7 +406,8 @@ function filterProducts() {
     const cards = document.querySelectorAll('#productGrid .product-card');
     cards.forEach(card => {
         const name = card.querySelector('h3').textContent.toLowerCase();
-        card.style.display = name.includes(search) ? '' : 'none';
+        const brand = card.querySelector('.brand-name').textContent.toLowerCase();
+        card.style.display = (name.includes(search) || brand.includes(search)) ? '' : 'none';
     });
 }
 
@@ -551,7 +595,7 @@ Thank you! ✦🌹✨`;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    renderProducts();
+    renderProducts('all');
     updateAll();
 });
 </script>

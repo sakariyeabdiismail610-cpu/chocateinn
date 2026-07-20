@@ -1,220 +1,264 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SiiNa Scents</title>
+    <title>SiiNa Perfume</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Georgia',serif;background:#FDF8F0;color:#2D1B2A;width:100%;}
+        body{font-family:'Arial',sans-serif;background:#f8f6f4;color:#1a1a1a;width:100%;}
         
-        header{background:#4A1942;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:3px solid #D4AF37;position:sticky;top:0;z-index:100;}
-        .logo{font-size:22px;font-weight:900;color:#D4AF37;cursor:pointer;font-family:'Georgia',serif;letter-spacing:1px;}
-        .logo span{color:#FDF8F0;}
-        nav a{color:#D5C6E0;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;margin:2px;}
-        nav a:hover,nav a.active{background:#D4AF37;color:#4A1942;}
+        /* ===== HEADER ===== */
+        header{background:#1a1a1a;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:3px solid #c9a87c;position:sticky;top:0;z-index:100;}
+        .logo{font-size:24px;font-weight:900;color:#c9a87c;cursor:pointer;font-family:'Georgia',serif;letter-spacing:2px;}
+        .logo span{color:#fff;}
         
-        .page{display:none;padding:12px;width:100%;}
-        .page.active{display:block;}
+        .header-search{display:flex;align-items:center;flex:1;max-width:350px;margin:0 20px;}
+        .header-search input{width:100%;padding:8px 16px;border:2px solid #c9a87c;border-radius:30px;font-size:14px;background:#fff;outline:none;transition:0.3s;}
+        .header-search input:focus{border-color:#a88960;box-shadow:0 0 0 3px rgba(201,168,124,0.2);}
         
-        .hero{background:linear-gradient(145deg,#2D1B2A,#4A1942);padding:60px 20px 55px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;border-bottom:4px solid #D4AF37;}
-        .hero::before{content:'✦';position:absolute;top:20px;left:30px;font-size:60px;color:#D4AF37;opacity:0.1;}
-        .hero::after{content:'✦';position:absolute;bottom:20px;right:30px;font-size:60px;color:#D4AF37;opacity:0.1;}
-        .hero-content{max-width:700px;width:100%;position:relative;z-index:2;}
-        .hero h1{font-size:52px;color:#D4AF37;font-family:'Georgia',serif;letter-spacing:3px;text-shadow:0 2px 20px rgba(212,175,55,0.15);}
-        .hero h1 span{color:#FDF8F0;}
-        .hero p{font-size:20px;color:#D5C6E0;font-style:italic;margin-top:6px;letter-spacing:2px;}
-        .hero-divider{width:100px;height:2px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);margin:14px auto;border-radius:2px;}
-        .hero .btn{background:#D4AF37;color:#2D1B2A;font-size:16px;font-weight:800;padding:14px 48px;border-radius:4px;border:none;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;letter-spacing:2px;text-transform:uppercase;}
-        .hero .btn:hover{background:#FDF8F0;transform:scale(1.03);box-shadow:0 4px 25px rgba(212,175,55,0.3);}
+        .header-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+        .header-links a{color:#ccc;text-decoration:none;font-size:12px;font-weight:600;transition:0.3s;letter-spacing:0.5px;}
+        .header-links a:hover{color:#c9a87c;}
+        .header-links .cart{color:#c9a87c;font-size:18px;position:relative;cursor:pointer;}
+        .header-links .cart .count{position:absolute;top:-8px;right:-10px;background:#c9a87c;color:#1a1a1a;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
         
-        .featured{padding:40px 12px;max-width:1200px;margin:0 auto;}
-        .featured h2{font-size:24px;color:#4A1942;border-left:4px solid #D4AF37;padding-left:16px;margin-bottom:20px;font-family:'Georgia',serif;letter-spacing:1px;}
-        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-        .featured-card{background:#fff;border-radius:4px;padding:20px 16px;text-align:center;border:1px solid #D5C6E0;transition:0.3s;box-shadow:0 2px 10px rgba(74,25,66,0.05);}
-        .featured-card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(74,25,66,0.12);border-color:#D4AF37;}
-        .featured-card .icon{font-size:34px;display:block;margin-bottom:4px;}
-        .featured-card h3{font-size:16px;color:#4A1942;font-family:'Georgia',serif;}
-        .featured-card p{font-size:13px;color:#6D4C6D;font-family:'Arial',sans-serif;margin-top:4px;}
+        /* ===== NAV ===== */
+        .nav-bar{background:#fff;padding:10px 20px;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;border-bottom:1px solid #e8e0d8;}
+        .nav-bar a{color:#333;text-decoration:none;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:0.3s;padding:4px 0;border-bottom:3px solid transparent;}
+        .nav-bar a:hover,.nav-bar a.active{border-bottom-color:#c9a87c;color:#c9a87c;}
         
-        .order-cta{background:linear-gradient(145deg,#2D1B2A,#4A1942);padding:40px 20px;border-radius:4px;margin:20px 0;border:1px solid #D4AF37;}
-        .order-cta h2{font-size:28px;font-family:'Georgia',serif;color:#D4AF37;letter-spacing:2px;}
-        .order-cta h2 span{color:#FDF8F0;}
-        .order-cta p{font-size:16px;margin:8px 0 16px;color:#D5C6E0;}
-        .order-cta .btn{background:#D4AF37;color:#2D1B2A;font-size:16px;font-weight:800;padding:12px 36px;border-radius:4px;border:none;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;letter-spacing:1px;}
-        .order-cta .btn:hover{background:#FDF8F0;transform:scale(1.03);}
+        /* ===== HERO ===== */
+        .hero{background:linear-gradient(135deg,#2d1b1a,#4a2a28);padding:60px 30px;text-align:center;border-bottom:4px solid #c9a87c;}
+        .hero h1{font-size:52px;color:#c9a87c;font-family:'Georgia',serif;letter-spacing:3px;font-weight:700;}
+        .hero h1 span{color:#fff;}
+        .hero .sub{font-size:18px;color:#d4c5b0;margin:6px 0 4px;letter-spacing:6px;}
+        .hero .offer{font-size:28px;color:#fff;font-weight:900;margin:10px 0;}
+        .hero .offer span{color:#c9a87c;font-size:38px;}
+        .hero .free-ship{display:inline-block;background:#c9a87c;color:#1a1a1a;padding:8px 30px;border-radius:30px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
         
-        .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
-        .product-item{background:#fff;border-radius:4px;padding:18px 14px;text-align:center;border:1px solid #D5C6E0;transition:0.3s;position:relative;box-shadow:0 2px 10px rgba(74,25,66,0.04);}
-        .product-item:hover{transform:translateY(-4px);border-color:#D4AF37;box-shadow:0 6px 25px rgba(74,25,66,0.10);}
-        .product-item .emoji{font-size:42px;display:block;margin-bottom:2px;}
-        .product-item h3{font-size:15px;color:#4A1942;font-family:'Georgia',serif;}
-        .product-item .price{font-size:17px;font-weight:700;color:#D4AF37;font-family:'Arial',sans-serif;margin:4px 0;}
-        .product-item .desc{font-size:12px;color:#6D4C6D;font-family:'Arial',sans-serif;}
-        .add-btn{background:#4A1942;color:#FDF8F0;border:1px solid #D4AF37;padding:6px 20px;border-radius:4px;font-weight:700;font-size:12px;cursor:pointer;transition:0.3s;margin-top:6px;text-transform:uppercase;letter-spacing:1px;}
-        .add-btn:hover{background:#D4AF37;color:#2D1B2A;transform:scale(1.04);}
+        /* ===== SECTION TITLES ===== */
+        .section-title{font-size:24px;color:#1a1a1a;font-family:'Georgia',serif;letter-spacing:1px;margin:30px 0 16px;padding-left:16px;border-left:4px solid #c9a87c;}
+        .section-sub{font-size:14px;color:#777;margin-bottom:20px;padding-left:16px;}
         
-        .contact-info{background:#fff;border-radius:4px;padding:20px;border:1px solid #D5C6E0;margin-bottom:16px;box-shadow:0 2px 10px rgba(74,25,66,0.04);}
-        .contact-info h3{font-size:20px;color:#4A1942;margin-bottom:8px;font-family:'Georgia',serif;}
-        .contact-info p{font-size:14px;padding:4px 0;color:#6D4C6D;font-family:'Arial',sans-serif;}
-        .contact-info .phone{font-size:24px;font-weight:900;color:#D4AF37;background:#FDF8F0;padding:8px 18px;border-radius:4px;display:inline-block;border:2px solid #D4AF37;}
-        .contact-info .tiktok-btn{display:inline-block;background:#2D1B2A;color:#D4AF37;padding:8px 24px;border-radius:4px;text-decoration:none;font-weight:700;font-size:14px;margin-top:6px;transition:0.3s;border:1px solid #D4AF37;}
-        .contact-info .tiktok-btn:hover{background:#D4AF37;color:#2D1B2A;transform:scale(1.03);}
+        /* ===== BRAND GRID ===== */
+        .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:16px;padding:0 16px;margin-bottom:30px;}
+        .brand-item{background:#fff;border-radius:12px;padding:20px 10px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
+        .brand-item:hover{transform:translateY(-4px);border-color:#c9a87c;box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+        .brand-item .icon{font-size:30px;display:block;margin-bottom:4px;}
+        .brand-item .name{font-size:12px;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:0.5px;}
+        .brand-item .view-link{font-size:11px;color:#c9a87c;text-decoration:none;font-weight:600;}
+        .brand-item .view-link:hover{text-decoration:underline;}
         
-        .contact-form{background:#fff;border-radius:4px;padding:20px;border:1px solid #D5C6E0;box-shadow:0 2px 10px rgba(74,25,66,0.04);}
-        .contact-form h3{font-size:20px;color:#4A1942;margin-bottom:8px;font-family:'Georgia',serif;}
-        .contact-form input,.contact-form textarea{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #D5C6E0;border-radius:4px;font-size:14px;background:#FDF8F0;font-family:'Arial',sans-serif;transition:0.3s;}
-        .contact-form input:focus,.contact-form textarea:focus{border-color:#D4AF37;outline:none;box-shadow:0 0 0 3px rgba(212,175,55,0.15);}
-        .contact-form .btn{background:#4A1942;color:#FDF8F0;border:1px solid #D4AF37;padding:10px;font-size:16px;font-weight:700;border-radius:4px;cursor:pointer;width:100%;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
-        .contact-form .btn:hover{background:#D4AF37;color:#2D1B2A;}
+        /* ===== PRODUCT GRID ===== */
+        .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:0 16px;}
+        .product-card{background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
+        .product-card:hover{transform:translateY(-6px);border-color:#c9a87c;box-shadow:0 8px 30px rgba(0,0,0,0.08);}
+        .product-card .emoji{font-size:48px;display:block;margin-bottom:4px;}
+        .product-card h3{font-size:15px;color:#333;font-weight:700;}
+        .product-card .price{font-size:18px;font-weight:900;color:#c9a87c;margin:4px 0;}
+        .product-card .price .old{font-size:14px;color:#999;text-decoration:line-through;font-weight:400;margin-left:6px;}
+        .product-card .desc{font-size:12px;color:#777;}
+        .add-btn{background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:8px 24px;border-radius:30px;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
+        .add-btn:hover{background:#c9a87c;color:#1a1a1a;transform:scale(1.04);}
         
-        .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A1942;color:#D4AF37;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(74,25,66,0.4);transition:0.3s;border:2px solid #D4AF37;font-size:24px;}
-        .cart-float:hover{transform:scale(1.1);background:#D4AF37;color:#4A1942;}
-        .cart-float .count{position:absolute;top:-8px;right:-8px;background:#D4AF37;color:#4A1942;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+        /* ===== BANNER ===== */
+        .banner{background:#1a1a1a;color:#c9a87c;padding:30px 20px;text-align:center;margin:30px 16px;border-radius:12px;border:2px solid #c9a87c;}
+        .banner h2{font-size:32px;font-family:'Georgia',serif;}
+        .banner h2 span{color:#fff;}
+        .banner p{color:#bbb;font-size:16px;margin:6px 0 12px;}
+        .banner .btn{background:#c9a87c;color:#1a1a1a;padding:12px 40px;border-radius:30px;font-weight:800;font-size:16px;border:none;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
+        .banner .btn:hover{transform:scale(1.04);background:#fff;}
         
-        .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#FDF8F0;z-index:2000;box-shadow:-4px 0 40px rgba(74,25,66,0.15);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;border-left:4px solid #D4AF37;}
+        /* ===== CART SIDE ===== */
+        .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 40px rgba(0,0,0,0.15);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
-        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #D4AF37;padding-bottom:12px;margin-bottom:14px;}
-        .cart-side-header h2{font-size:22px;color:#4A1942;font-family:'Georgia',serif;letter-spacing:1px;}
-        .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#6D4C6D;transition:0.3s;padding:0 8px;}
-        .cart-close:hover{color:#4A1942;transform:rotate(90deg);}
-        .cart-side-scroll{flex:1;overflow-y:auto;padding-right:4px;}
-        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #D5C6E0;}
-        .cart-item .name{font-weight:600;font-size:14px;color:#4A1942;flex:1;font-family:'Georgia',serif;}
+        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #c9a87c;padding-bottom:12px;margin-bottom:14px;}
+        .cart-side-header h2{font-size:22px;color:#1a1a1a;font-family:'Georgia',serif;}
+        .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#999;transition:0.3s;padding:0 8px;}
+        .cart-close:hover{color:#1a1a1a;transform:rotate(90deg);}
+        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e8e0d8;}
+        .cart-item .name{font-weight:600;font-size:14px;color:#1a1a1a;flex:1;}
         .cart-item .qty-control{display:flex;align-items:center;gap:6px;}
-        .cart-item .qty-control button{background:#4A1942;color:#D4AF37;border:1px solid #D4AF37;width:26px;height:26px;border-radius:4px;font-size:16px;font-weight:700;cursor:pointer;}
-        .cart-item .qty-control button:hover{background:#D4AF37;color:#4A1942;}
-        .cart-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;color:#4A1942;}
-        .cart-item .item-total{font-weight:700;color:#D4AF37;font-size:14px;min-width:55px;text-align:right;}
-        .cart-empty{color:#6D4C6D;text-align:center;padding:40px 0;font-size:16px;font-family:'Georgia',serif;font-style:italic;}
+        .cart-item .qty-control button{background:#1a1a1a;color:#c9a87c;border:1px solid #c9a87c;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;}
+        .cart-item .qty-control button:hover{background:#c9a87c;color:#1a1a1a;}
+        .cart-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
+        .cart-item .item-total{font-weight:700;color:#c9a87c;font-size:14px;min-width:55px;text-align:right;}
+        .cart-empty{color:#999;text-align:center;padding:40px 0;font-size:16px;}
         
-        .cart-checkout-fields{margin-top:12px;border-top:2px solid #D4AF37;padding-top:14px;}
-        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4A1942;display:block;margin-bottom:3px;font-family:'Georgia',serif;letter-spacing:0.5px;}
-        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #D5C6E0;border-radius:4px;font-size:14px;background:#FDF8F0;font-family:'Arial',sans-serif;}
-        .cart-checkout-fields input:focus{border-color:#D4AF37;outline:none;box-shadow:0 0 0 3px rgba(212,175,55,0.15);}
+        .cart-checkout-fields{margin-top:12px;border-top:2px solid #c9a87c;padding-top:14px;}
+        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#1a1a1a;display:block;margin-bottom:3px;}
+        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #e8e0d8;border-radius:8px;font-size:14px;background:#f8f6f4;}
+        .cart-checkout-fields input:focus{border-color:#c9a87c;outline:none;}
         
         .delivery-option-cart{display:flex;gap:10px;margin-bottom:10px;}
-        .delivery-option-cart button{padding:8px 16px;border-radius:4px;border:1px solid #D4AF37;background:#FDF8F0;color:#4A1942;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;font-family:'Arial',sans-serif;}
-        .delivery-option-cart button.active{background:#4A1942;color:#D4AF37;border-color:#D4AF37;}
-        .delivery-option-cart button:hover{transform:scale(1.02);}
+        .delivery-option-cart button{padding:8px 16px;border-radius:30px;border:2px solid #c9a87c;background:#fff;color:#1a1a1a;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;}
+        .delivery-option-cart button.active{background:#1a1a1a;color:#c9a87c;}
         
-        .cart-side-totals{border-top:2px solid #D4AF37;padding-top:12px;margin-top:10px;}
-        .cart-side-totals .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14px;color:#4A1942;}
-        .cart-side-totals .row.total{font-size:20px;font-weight:900;color:#D4AF37;border-top:2px solid #D4AF37;padding-top:8px;margin-top:4px;}
+        .cart-totals{border-top:2px solid #c9a87c;padding-top:12px;margin-top:10px;}
+        .cart-totals .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14px;}
+        .cart-totals .row.total{font-size:20px;font-weight:900;color:#1a1a1a;border-top:2px solid #1a1a1a;padding-top:8px;margin-top:4px;}
+        .place-order-btn{width:100%;background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:14px;font-size:17px;font-weight:800;border-radius:30px;cursor:pointer;transition:0.3s;margin-top:10px;text-transform:uppercase;letter-spacing:2px;}
+        .place-order-btn:hover{background:#c9a87c;color:#1a1a1a;}
+        .place-order-btn:disabled{background:#e8e0d8;color:#999;border-color:#e8e0d8;cursor:not-allowed;}
         
-        .place-order-btn{width:100%;background:#4A1942;color:#D4AF37;border:2px solid #D4AF37;padding:14px;font-size:17px;font-weight:800;border-radius:4px;cursor:pointer;transition:0.3s;margin-top:10px;text-transform:uppercase;letter-spacing:2px;}
-        .place-order-btn:hover{background:#D4AF37;color:#4A1942;transform:scale(1.02);}
-        .place-order-btn:disabled{background:#D5C6E0;color:#6D4C6D;border-color:#D5C6E0;cursor:not-allowed;}
+        .call-reminder-cart{background:#f8f6f4;padding:12px;border-radius:8px;border:1px solid #c9a87c;margin:10px 0;text-align:center;font-size:13px;}
+        .call-reminder-cart .number{font-size:22px;font-weight:900;color:#c9a87c;}
         
-        .call-reminder-cart{background:#FDF8F0;padding:12px;border-radius:4px;border:1px solid #D4AF37;margin:10px 0;text-align:center;font-size:13px;color:#4A1942;}
-        .call-reminder-cart .number{font-size:22px;font-weight:900;color:#D4AF37;}
+        .order-confirmed{background:#e8f5e9;border:2px solid #4caf50;border-radius:12px;padding:16px;margin:16px 0;text-align:center;}
+        .order-confirmed h3{color:#2e7d32;font-size:18px;}
+        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#1a1a1a;}
         
-        .order-confirmed{background:#FDF8F0;border:2px solid #D4AF37;border-radius:4px;padding:16px;margin:16px 0;text-align:center;}
-        .order-confirmed h3{color:#4A1942;font-size:18px;}
-        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#D4AF37;}
+        .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
+        .cart-overlay.active{display:block;}
         
-        footer{background:#4A1942;color:#D5C6E0;padding:16px 20px;text-align:center;border-top:4px solid #D4AF37;margin-top:12px;}
-        footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;letter-spacing:1px;}
+        .contact-info{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e0d8;margin-bottom:16px;}
+        .contact-info h3{font-size:20px;color:#1a1a1a;margin-bottom:8px;font-family:'Georgia',serif;}
+        .contact-info p{font-size:14px;padding:4px 0;color:#555;}
+        .contact-info .phone{font-size:24px;font-weight:900;color:#c9a87c;background:#f8f6f4;padding:8px 18px;border-radius:8px;display:inline-block;border:2px solid #c9a87c;}
+        .contact-info .tiktok-btn{display:inline-block;background:#1a1a1a;color:#c9a87c;padding:8px 24px;border-radius:30px;text-decoration:none;font-weight:700;font-size:14px;margin-top:6px;transition:0.3s;border:1px solid #c9a87c;}
+        .contact-info .tiktok-btn:hover{background:#c9a87c;color:#1a1a1a;}
         
-        @media(min-width:768px){
-            .featured-grid{grid-template-columns:repeat(4,1fr);}
-            .product-grid{grid-template-columns:repeat(3,1fr);}
-            .hero h1{font-size:68px;}
-            .page{padding:0 30px;}
+        .contact-form{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e0d8;}
+        .contact-form h3{font-size:20px;color:#1a1a1a;margin-bottom:8px;font-family:'Georgia',serif;}
+        .contact-form input,.contact-form textarea{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #e8e0d8;border-radius:8px;font-size:14px;background:#f8f6f4;font-family:'Arial',sans-serif;}
+        .contact-form input:focus,.contact-form textarea:focus{border-color:#c9a87c;outline:none;}
+        .contact-form .btn{background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:10px;font-size:16px;font-weight:700;border-radius:30px;cursor:pointer;width:100%;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
+        .contact-form .btn:hover{background:#c9a87c;color:#1a1a1a;}
+        
+        footer{background:#1a1a1a;color:#c9a87c;padding:20px;text-align:center;border-top:4px solid #c9a87c;margin-top:20px;}
+        footer .copy{font-size:12px;opacity:0.6;}
+        footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:6px 0;}
+        footer .footer-links a{color:#999;text-decoration:none;font-size:12px;transition:0.3s;}
+        footer .footer-links a:hover{color:#c9a87c;}
+        
+        .page{display:none;width:100%;}
+        .page.active{display:block;}
+        
+        @media(max-width:768px){
+            header{flex-direction:column;gap:10px;}
+            .header-search{max-width:100%;margin:0;}
+            .nav-bar{gap:12px;padding:8px 10px;}
+            .nav-bar a{font-size:11px;}
+            .hero h1{font-size:32px;}
+            .hero .offer{font-size:20px;}
+            .product-grid{grid-template-columns:1fr 1fr;}
+            .brand-grid{grid-template-columns:repeat(3,1fr);}
+            .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
         }
         @media(max-width:480px){
-            .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .hero h1{font-size:34px;}
+            .product-grid{grid-template-columns:1fr 1fr;}
+            .brand-grid{grid-template-columns:repeat(2,1fr);}
+            .hero h1{font-size:26px;}
+            .header-links a{font-size:10px;}
         }
     </style>
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
-    <div class="logo" onclick="showPage('home')">SiiNa <span>Scents</span></div>
-    <nav>
-        <a class="active" onclick="showPage('home")'>Home</a>
-        <a onclick="showPage('shop')">Shop</a>
-        <a onclick="showPage('contact')">Contact</a>
-    </nav>
+    <div class="logo" onclick="showPage('home')">SiiNa <span>Perfume</span></div>
+    
+    <div class="header-search">
+        <input type="text" placeholder="Search ex: Cool Water" id="searchInput" oninput="filterProducts()">
+    </div>
+    
+    <div class="header-links">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('shop')">Shop</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+        <span class="cart" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></span>
+    </div>
 </header>
+
+<!-- ===== NAV ===== -->
+<div class="nav-bar">
+    <a href="#" class="active" onclick="showPage('home')">Women's Perfume</a>
+    <a href="#" onclick="showPage('shop')">Men's Cologne</a>
+    <a href="#" onclick="showPage('shop')">Bestsellers</a>
+    <a href="#" onclick="showPage('shop')">Gift Sets</a>
+    <a href="#" onclick="showPage('shop')">Brands</a>
+</div>
 
 <!-- ===== HOME ===== -->
 <div class="page active" id="page-home">
     <div class="hero">
-        <div class="hero-content">
-            <h1>✦ SiiNa <span>Scents</span></h1>
-            <p>Luxury Perfumes &amp; Traditional Cuud</p>
-            <div class="hero-divider"></div>
-            <p style="font-size:16px;color:#D5C6E0;letter-spacing:2px;">From Saudi Arabia, with love ✦</p>
-            <button class="btn" onclick="showPage('shop')">Shop Now</button>
-        </div>
+        <h1>Shop <span>Summer Deals</span></h1>
+        <div class="offer"><span>25-75%</span> OFF</div>
+        <div class="free-ship">✦ FREE SHIPPING ✦</div>
+        <p class="sub">Free shipping on thousands of fragrances. Save up to 80% off retail.</p>
     </div>
     
-    <div class="featured">
-        <h2>✦ Why SiiNa Scents?</h2>
-        <div class="featured-grid">
-            <div class="featured-card"><span class="icon">🇸🇦</span><h3>Authentic Saudi</h3><p>Directly sourced from Saudi Arabia.</p></div>
-            <div class="featured-card"><span class="icon">🌹</span><h3>Premium Quality</h3><p>Only the finest perfumes and cuud.</p></div>
-            <div class="featured-card"><span class="icon">💎</span><h3>Luxury Scents</h3><p>Designed for the modern, elegant woman.</p></div>
-            <div class="featured-card"><span class="icon">📦</span><h3>Delivery to You</h3><p>Order from the comfort of your home.</p></div>
+    <div style="padding:0 16px;">
+        <h2 class="section-title">✦ Most Popular Perfume &amp; Cologne Brands</h2>
+        <div class="brand-grid" id="brandGrid">
+            <div class="brand-item"><span class="icon">🌹</span><div class="name">Chanel</div></div>
+            <div class="brand-item"><span class="icon">✨</span><div class="name">Dior</div></div>
+            <div class="brand-item"><span class="icon">🌟</span><div class="name">Gucci</div></div>
+            <div class="brand-item"><span class="icon">💎</span><div class="name">Versace</div></div>
+            <div class="brand-item"><span class="icon">👑</span><div class="name">YSL</div></div>
+            <div class="brand-item"><span class="icon">🌺</span><div class="name">Lancôme</div></div>
         </div>
+        <div style="text-align:right;padding-right:16px;font-size:14px;color:#c9a87c;font-weight:600;cursor:pointer;">VIEW FULL BRAND LIST →</div>
     </div>
     
-    <div class="order-cta">
-        <h2>✦ Ready to <span>Order</span>?</h2>
-        <p>Call or WhatsApp: <strong style="color:#D4AF37;font-size:24px;letter-spacing:1px;">0634483567</strong></p>
-        <button class="btn" onclick="showPage('shop')">Order Now</button>
+    <!-- Featured Products -->
+    <div style="padding:0 16px;">
+        <h2 class="section-title">✦ Best Sellers</h2>
+        <div class="product-grid" id="featuredGrid"></div>
+    </div>
+    
+    <!-- Banner -->
+    <div class="banner">
+        <h2>✦ <span>FREE SHIPPING</span> ✦</h2>
+        <p>On all orders over $50. Use code: <strong style="color:#fff;">SiiNa10</strong></p>
+        <button class="btn" onclick="showPage('shop')">Shop Now</button>
     </div>
 </div>
 
 <!-- ===== SHOP ===== -->
 <div class="page" id="page-shop">
-    <h2 style="font-size:24px;color:#4A1942;border-left:4px solid #D4AF37;padding-left:16px;margin:12px 0;font-family:'Georgia',serif;letter-spacing:1px;">✦ Our Collection</h2>
-    <p style="font-size:14px;color:#6D4C6D;margin-bottom:12px;font-family:'Arial',sans-serif;">Add your favorite perfumes to the cart ✦</p>
-    
-    <div class="order-confirmed" id="orderConfirmed" style="display:none;">
-        <h3>✦ Order Placed Successfully!</h3>
-        <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
-        <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
+    <div style="padding:0 16px;">
+        <h2 class="section-title">✦ All Perfumes</h2>
+        <p class="section-sub">Find your perfect scent</p>
+        <div class="product-grid" id="productGrid"></div>
     </div>
-    
-    <div class="product-grid" id="productGrid"></div>
 </div>
 
 <!-- ===== CONTACT ===== -->
 <div class="page" id="page-contact">
-    <h2 style="font-size:24px;color:#4A1942;border-left:4px solid #D4AF37;padding-left:16px;margin:12px 0;font-family:'Georgia',serif;letter-spacing:1px;">✦ Contact SiiNa</h2>
-    <div class="contact-info">
-        <h3>Get in Touch</h3>
-        <p>📞 <strong>Phone/WhatsApp:</strong> <span class="phone">0634483567</span></p>
-        <p>📍 <strong>Location:</strong> Hargeisa, Somaliland</p>
-        <p>📧 <strong>Email:</strong> siinascents@gmail.com</p>
-        <p>✦ <strong>Follow on TikTok:</strong></p>
-        <a href="https://www.tiktok.com/@siinaadem" target="_blank" class="tiktok-btn">✦ @siinaadem</a>
-    </div>
-    <div class="contact-form">
-        <h3>Send a Message</h3>
-        <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message..." required></textarea>
-            <button type="submit" class="btn">Send</button>
-        </form>
+    <div style="padding:0 16px;max-width:800px;margin:0 auto;">
+        <h2 class="section-title">✦ Contact SiiNa</h2>
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>📞 <strong>Phone/WhatsApp:</strong> <span class="phone">0634483567</span></p>
+            <p>📍 <strong>Location:</strong> Hargeisa, Somaliland</p>
+            <p>📧 <strong>Email:</strong> siinascents@gmail.com</p>
+            <p>✦ <strong>Follow on TikTok:</strong></p>
+            <a href="https://www.tiktok.com/@siinaadem" target="_blank" class="tiktok-btn">✦ @siinaadem</a>
+        </div>
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
     </div>
 </div>
 
 <!-- ===== CART ===== -->
-<button class="cart-float" id="cartFloat" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></button>
-<div class="cart-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(45,27,42,0.5);z-index:1500;" id="cartOverlay" onclick="toggleCart()"></div>
-
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-side" id="cartSide">
     <div class="cart-side-header">
         <h2>✦ Your Bag</h2>
         <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
-    <div class="cart-side-scroll">
+    <div style="flex:1;overflow-y:auto;">
         <div id="cartItems"><div class="cart-empty">Your bag is empty ✦<br>Add some beautiful scents!</div></div>
-        <div class="cart-side-totals" id="cartTotals" style="display:none;">
+        <div class="cart-totals" id="cartTotals" style="display:none;">
             <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
             <div class="row"><span>Tax (0.12%)</span><span id="tax">$0.00</span></div>
             <div class="row total"><span>Total</span><span id="total">$0.00</span></div>
@@ -240,7 +284,17 @@
     </div>
 </div>
 
-<footer><div class="copy">© 2026 SiiNa Scents — All rights reserved ✦</div></footer>
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-links">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('shop')">Shop</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+    </div>
+    <div class="copy">© 2026 SiiNa Perfume — All rights reserved ✦</div>
+</footer>
 
 <script>
 // ===== CONFIGURATION =====
@@ -249,12 +303,12 @@ const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
 // ===== PRODUCT DATA =====
 const products = [
-    {id:1,name:'Rose Oud',price:25,emoji:'🌹',desc:'A luxurious blend of rose and oud.'},
-    {id:2,name:'Jasmine Dream',price:20,emoji:'🌸',desc:'Sweet jasmine with a hint of vanilla.'},
-    {id:3,name:'Saudi Cuud',price:22,emoji:'🪵',desc:'Traditional and authentic Saudi cuud.'},
-    {id:4,name:'Fresh Bloom',price:15,emoji:'🌺',desc:'Fresh floral scent for everyday wear.'},
-    {id:5,name:'Golden Amber',price:18,emoji:'✨',desc:'Warm amber with a touch of musk.'},
-    {id:6,name:'Midnight Rose',price:22,emoji:'🌙',desc:'Deep and mysterious rose fragrance.'}
+    {id:1,name:'Rose Oud',price:25,oldPrice:45,emoji:'🌹',desc:'Luxurious blend of rose and oud.'},
+    {id:2,name:'Jasmine Dream',price:20,oldPrice:38,emoji:'🌸',desc:'Sweet jasmine with vanilla.'},
+    {id:3,name:'Saudi Cuud',price:22,oldPrice:40,emoji:'🪵',desc:'Traditional authentic Saudi cuud.'},
+    {id:4,name:'Fresh Bloom',price:15,oldPrice:30,emoji:'🌺',desc:'Fresh floral for everyday wear.'},
+    {id:5,name:'Golden Amber',price:18,oldPrice:35,emoji:'✨',desc:'Warm amber with touch of musk.'},
+    {id:6,name:'Midnight Rose',price:22,oldPrice:42,emoji:'🌙',desc:'Deep mysterious rose fragrance.'}
 ];
 
 let cart = {};
@@ -265,9 +319,9 @@ let currentOrderId = '';
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('header nav a').forEach(link => {
+    document.querySelectorAll('.nav-bar a, .header-links a').forEach(link => {
         link.classList.remove('active');
-        if(link.textContent.toLowerCase() === page) link.classList.add('active');
+        if(link.textContent.toLowerCase().includes(page)) link.classList.add('active');
     });
     window.scrollTo({top:0});
 }
@@ -275,18 +329,41 @@ function showPage(page) {
 // ===== RENDER PRODUCTS =====
 function renderProducts() {
     const grid = document.getElementById('productGrid');
+    const featured = document.getElementById('featuredGrid');
     grid.innerHTML = '';
     products.forEach(p => {
-        const d = document.createElement('div');
-        d.className = 'product-item';
-        d.innerHTML = `
-            <span class="emoji">${p.emoji}</span>
-            <h3>${p.name}</h3>
-            <div class="price">$${p.price}.00</div>
-            <div class="desc">${p.desc}</div>
-            <button class="add-btn" onclick="addToCart(${p.id})">+ Add</button>
+        grid.innerHTML += `
+            <div class="product-card">
+                <span class="emoji">${p.emoji}</span>
+                <h3>${p.name}</h3>
+                <div class="price">$${p.price}.00 <span class="old">$${p.oldPrice}.00</span></div>
+                <div class="desc">${p.desc}</div>
+                <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
+            </div>
         `;
-        grid.appendChild(d);
+    });
+    
+    // Featured products (first 3)
+    featured.innerHTML = '';
+    products.slice(0, 3).forEach(p => {
+        featured.innerHTML += `
+            <div class="product-card">
+                <span class="emoji">${p.emoji}</span>
+                <h3>${p.name}</h3>
+                <div class="price">$${p.price}.00 <span class="old">$${p.oldPrice}.00</span></div>
+                <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
+            </div>
+        `;
+    });
+}
+
+// ===== SEARCH =====
+function filterProducts() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('#productGrid .product-card');
+    cards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        card.style.display = name.includes(search) ? '' : 'none';
     });
 }
 
@@ -363,7 +440,7 @@ function toggleCart() {
     const side = document.getElementById('cartSide');
     const overlay = document.getElementById('cartOverlay');
     side.classList.toggle('open');
-    overlay.style.display = side.classList.contains('open') ? 'block' : 'none';
+    overlay.classList.toggle('active');
     if(side.classList.contains('open')) updateAll();
 }
 
@@ -419,7 +496,7 @@ function sendOrder() {
         _subject: `✦ New Order #${currentOrderId} from ${name}`
     };
     
-    const whatsappMessage = `✦ Thank you for your order from SiiNa Scents!
+    const whatsappMessage = `✦ Thank you for your order from SiiNa Perfume!
 
 📋 Order #${currentOrderId}
 👤 Name: ${name}

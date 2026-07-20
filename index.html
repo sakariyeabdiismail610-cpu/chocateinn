@@ -38,7 +38,21 @@
         background-position:0 0, 0 0, 0 0, 0 0, 0 0, 0 0, center center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
         
-        .logo-svg{max-width:500px;width:100%;height:auto;display:block;margin:0 auto;}
+        /* ===== SIMPLE LOGO - NO WEB FONTS ===== */
+        .logo-main{font-size:56px;font-weight:900;color:#FCD12A;font-family:'Arial Black','Helvetica',sans-serif;letter-spacing:-1px;line-height:1.1;}
+        .logo-main .highlight{color:#FCD12A;}
+        .logo-space{display:inline-block;width:12px;}
+        .logo-tagline{font-size:16px;font-weight:300;color:#FCD12A;font-family:Arial,Helvetica,sans-serif;letter-spacing:3px;margin-top:4px;}
+        .logo-divider{width:120px;height:2px;background:#FCD12A;margin:10px auto;opacity:0.4;}
+        
+        /* Chocolate Bar Icon (CSS) */
+        .choco-icon{display:inline-block;width:44px;height:44px;position:relative;transform:rotate(45deg);margin:0 2px;vertical-align:middle;}
+        .choco-icon .bar{width:100%;height:100%;background:#FCD12A;border-radius:2px;position:relative;clip-path:polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 0% 100%);}
+        .choco-icon .bite{position:absolute;top:-6px;right:-4px;width:16px;height:16px;background:#4A2E1B;border-radius:50%;}
+        .choco-icon .grid-h1,.choco-icon .grid-h2{position:absolute;left:3px;right:3px;height:1.5px;background:#4A2E1B;opacity:0.5;}
+        .choco-icon .grid-h1{top:30%;}.choco-icon .grid-h2{top:60%;}
+        .choco-icon .grid-v1,.choco-icon .grid-v2{position:absolute;top:3px;bottom:3px;width:1.5px;background:#4A2E1B;opacity:0.5;}
+        .choco-icon .grid-v1{left:30%;}.choco-icon .grid-v2{left:60%;}
         
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
@@ -87,6 +101,7 @@
         footer{background:#4A2E1B;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
         footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;}
         
+        /* ===== CART ===== */
         .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
         .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
         .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
@@ -151,14 +166,15 @@
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .logo-svg{max-width:560px;}
             .hero{padding:60px 40px 55px;min-height:440px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .logo-svg{max-width:320px;}
+            .logo-main{font-size:34px;}
+            .choco-icon{width:30px;height:30px;}
             .hero{padding:30px 16px 25px;min-height:300px;}
+            .logo-tagline{font-size:12px;letter-spacing:2px;}
         }
     </style>
 </head>
@@ -178,47 +194,27 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <!-- ===== LOGO SVG ===== -->
-            <svg class="logo-svg" viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <style>
-                        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;display=swap');
-                        .logo-text { font-family: 'Comfortaa', cursive, sans-serif; font-weight: 700; fill: #FCD12A; }
-                        .tagline { font-family: Arial, Helvetica, sans-serif; font-weight: 300; fill: #FCD12A; letter-spacing: 3px; }
-                    </style>
-                </defs>
-                
-                <!-- ===== "Chocolate" - ALL TOGETHER (no spaces) ===== -->
-                <text x="10" y="75" class="logo-text" font-size="56" letter-spacing="-2">Chocolate</text>
-                
-                <!-- ===== CHOCOLATE BAR ICON (ON TOP of the 'l') ===== -->
-                <!-- The 'l' is in "Chocolate" at position ~148 -->
-                <g transform="translate(148, 30)">
-                    <g transform="rotate(45)">
-                        <path d="M-6,-2 L16,-2 L16,5 L10,5 L10,16 L4,16 L4,9 L-6,9 Z" fill="#FCD12A"/>
-                        <line x1="-3" y1="2" x2="8" y2="2" stroke="#4A2E1B" stroke-width="1.2"/>
-                        <line x1="-3" y1="7" x2="8" y2="7" stroke="#4A2E1B" stroke-width="1.2"/>
-                        <line x1="-3" y1="12" x2="8" y2="12" stroke="#4A2E1B" stroke-width="1.2"/>
-                        <line x1="2" y1="-2" x2="2" y2="5" stroke="#4A2E1B" stroke-width="1.2"/>
-                        <line x1="7" y1="5" x2="7" y2="12" stroke="#4A2E1B" stroke-width="1.2"/>
-                        <circle cx="13" cy="-4" r="5" fill="#4A2E1B"/>
-                    </g>
-                </g>
-                
-                <!-- ===== SPACE between "Chocolate" and "Inn" ===== -->
-                <text x="215" y="75" class="logo-text" font-size="56" letter-spacing="-2"> </text>
-                
-                <!-- ===== "Inn" - ALL TOGETHER ===== -->
-                <text x="225" y="75" class="logo-text" font-size="56" letter-spacing="-2">Inn</text>
-                
-                <!-- ===== DIVIDER ===== -->
-                <line x1="100" y1="95" x2="500" y2="95" stroke="#FCD12A" stroke-width="1.5" opacity="0.4"/>
-                
-                <!-- ===== TAGLINE ===== -->
-                <text x="300" y="120" text-anchor="middle" class="tagline" font-size="16">Where Chocolate Feels Like Home.</text>
-            </svg>
             
-            <button class="btn" onclick="showPage('order')">☕ Order Now</button>
+            <!-- ===== LOGO ===== -->
+            <div class="logo-main">
+                Chocolate
+                <span class="choco-icon">
+                    <span class="bar"></span>
+                    <span class="bite"></span>
+                    <span class="grid-h1"></span>
+                    <span class="grid-h2"></span>
+                    <span class="grid-v1"></span>
+                    <span class="grid-v2"></span>
+                </span>
+                <span class="logo-space"></span>
+                Inn
+            </div>
+            
+            <div class="logo-divider"></div>
+            
+            <div class="logo-tagline">Where Chocolate Feels Like Home.</div>
+            
+            <button class="btn" onclick="showPage('order')">ORDER NOW</button>
         </div>
     </div>
     

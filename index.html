@@ -16,43 +16,14 @@
         .page{display:none;padding:12px;width:100%;}
         .page.active{display:block;}
         
-        .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center;}
-        .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:
-            radial-gradient(circle at 15% 20%, #5C3A1E 0%, transparent 25%),
-            radial-gradient(circle at 85% 30%, #3D2210 0%, transparent 30%),
-            radial-gradient(circle at 50% 80%, #5C3A1E 0%, transparent 35%),
-            radial-gradient(circle at 10% 70%, #3D2210 0%, transparent 20%),
-            radial-gradient(circle at 90% 75%, #6B4428 0%, transparent 25%),
-            radial-gradient(circle at 30% 50%, #4A2A18 0%, transparent 40%);
-        background-color:#4A2E1B;}
-        .hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:
-            linear-gradient(45deg, transparent 60%, rgba(215,168,110,0.05) 60%, rgba(215,168,110,0.05) 65%, transparent 65%),
-            linear-gradient(-45deg, transparent 60%, rgba(215,168,110,0.05) 60%, rgba(215,168,110,0.05) 65%, transparent 65%),
-            radial-gradient(circle at 12% 85%, rgba(215,168,110,0.08) 0%, transparent 15%),
-            radial-gradient(circle at 88% 15%, rgba(215,168,110,0.08) 0%, transparent 20%),
-            radial-gradient(circle at 5% 40%, rgba(215,168,110,0.06) 0%, transparent 10%),
-            radial-gradient(circle at 95% 60%, rgba(215,168,110,0.06) 0%, transparent 12%),
-            repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(215,168,110,0.04) 20px, rgba(215,168,110,0.04) 21px),
-            repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(215,168,110,0.04) 20px, rgba(215,168,110,0.04) 21px);
-        background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 80px 80px;
-        background-position:0 0, 0 0, 0 0, 0 0, 0 0, 0 0, center center;}
+        .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:350px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
         
-        /* ===== SIMPLE LOGO - NO WEB FONTS ===== */
-        .logo-main{font-size:56px;font-weight:900;color:#FCD12A;font-family:'Arial Black','Helvetica',sans-serif;letter-spacing:-1px;line-height:1.1;}
-        .logo-main .highlight{color:#FCD12A;}
-        .logo-space{display:inline-block;width:12px;}
-        .logo-tagline{font-size:16px;font-weight:300;color:#FCD12A;font-family:Arial,Helvetica,sans-serif;letter-spacing:3px;margin-top:4px;}
-        .logo-divider{width:120px;height:2px;background:#FCD12A;margin:10px auto;opacity:0.4;}
-        
-        /* Chocolate Bar Icon (CSS) */
-        .choco-icon{display:inline-block;width:44px;height:44px;position:relative;transform:rotate(45deg);margin:0 2px;vertical-align:middle;}
-        .choco-icon .bar{width:100%;height:100%;background:#FCD12A;border-radius:2px;position:relative;clip-path:polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 0% 100%);}
-        .choco-icon .bite{position:absolute;top:-6px;right:-4px;width:16px;height:16px;background:#4A2E1B;border-radius:50%;}
-        .choco-icon .grid-h1,.choco-icon .grid-h2{position:absolute;left:3px;right:3px;height:1.5px;background:#4A2E1B;opacity:0.5;}
-        .choco-icon .grid-h1{top:30%;}.choco-icon .grid-h2{top:60%;}
-        .choco-icon .grid-v1,.choco-icon .grid-v2{position:absolute;top:3px;bottom:3px;width:1.5px;background:#4A2E1B;opacity:0.5;}
-        .choco-icon .grid-v1{left:30%;}.choco-icon .grid-v2{left:60%;}
+        /* ===== SIMPLE LOGO ===== */
+        .logo-main{font-size:52px;font-weight:900;color:#FCD12A;font-family:'Georgia',serif;letter-spacing:2px;}
+        .logo-main .choco-icon{display:inline-block;font-size:40px;margin:0 2px;vertical-align:middle;}
+        .logo-tagline{font-size:18px;font-weight:300;color:#FCD12A;font-family:'Georgia',serif;font-style:italic;margin-top:6px;}
+        .logo-divider{width:100px;height:2px;background:#FCD12A;margin:12px auto;opacity:0.5;}
         
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
@@ -101,7 +72,6 @@
         footer{background:#4A2E1B;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
         footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;}
         
-        /* ===== CART ===== */
         .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
         .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
         .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
@@ -166,15 +136,15 @@
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .hero{padding:60px 40px 55px;min-height:440px;}
+            .logo-main{font-size:68px;}
+            .hero{padding:60px 40px 55px;min-height:400px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .logo-main{font-size:34px;}
-            .choco-icon{width:30px;height:30px;}
-            .hero{padding:30px 16px 25px;min-height:300px;}
-            .logo-tagline{font-size:12px;letter-spacing:2px;}
+            .logo-main{font-size:32px;}
+            .logo-tagline{font-size:14px;}
+            .hero{padding:30px 16px 25px;min-height:280px;}
         }
     </style>
 </head>
@@ -195,19 +165,9 @@
     <div class="hero">
         <div class="hero-content">
             
-            <!-- ===== LOGO ===== -->
+            <!-- ===== SIMPLE NORMAL LOGO ===== -->
             <div class="logo-main">
-                Chocolate
-                <span class="choco-icon">
-                    <span class="bar"></span>
-                    <span class="bite"></span>
-                    <span class="grid-h1"></span>
-                    <span class="grid-h2"></span>
-                    <span class="grid-v1"></span>
-                    <span class="grid-v2"></span>
-                </span>
-                <span class="logo-space"></span>
-                Inn
+                🍫 Chocolate Inn
             </div>
             
             <div class="logo-divider"></div>

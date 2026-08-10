@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SiiNa Perfume</title>
+    <title>Maison SiiNa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
@@ -59,6 +59,11 @@
         .banner-section p{color:#aaa;font-size:15px;margin:8px 0 16px;letter-spacing:1px;}
         .banner-section .btn{background:#c9a87c;color:#1a1a1a;border:none;padding:12px 40px;border-radius:0;font-size:12px;font-weight:700;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:2px;}
         .banner-section .btn:hover{background:#fff;transform:scale(1.02);}
+        
+        /* ===== CART - RIGHT SIDE (FIXED) ===== */
+        .cart-float{position:fixed;bottom:30px;right:30px;z-index:1000;background:#1a1a1a;color:#fff;border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.15);transition:0.3s;border:2px solid #c9a87c;font-size:24px;}
+        .cart-float:hover{transform:scale(1.08);background:#c9a87c;color:#1a1a1a;}
+        .cart-float .count{position:absolute;top:-6px;right:-6px;background:#c9a87c;color:#1a1a1a;border-radius:50%;width:22px;height:22px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;}
         
         .cart-side{position:fixed;top:0;right:-420px;width:400px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 40px rgba(0,0,0,0.08);transition:right 0.4s ease;overflow-y:auto;padding:24px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
@@ -130,6 +135,7 @@
             .product-grid{grid-template-columns:1fr 1fr;}
             .product-card .img{max-width:100px;height:100px;}
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
+            .cart-float{bottom:20px;right:20px;width:54px;height:54px;font-size:20px;}
         }
         @media(max-width:480px){.product-grid{grid-template-columns:1fr 1fr;}.hero h1{font-size:28px;}}
     </style>
@@ -138,7 +144,7 @@
 
 <!-- ===== HEADER ===== -->
 <header>
-    <div class="logo" onclick="showPage('home')">SiiNa <span>Perfume</span></div>
+    <div class="logo" onclick="showPage('home')">Maison <span>SiiNa</span></div>
     
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     
@@ -154,7 +160,7 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <div class="hero-label">✦ Since 2024 ✦</div>
+            <div class="hero-label">✦ Maison SiiNa ✦</div>
             <h1>Fragrance<br>that <span>tells</span> a story</h1>
             <div class="hero-divider"></div>
             <p>Discover our curated collection of luxury perfumes<br>from the world's most iconic brands.</p>
@@ -213,7 +219,7 @@
         <div class="contact-info">
             <p>📞 <strong>Phone/WhatsApp:</strong> <span class="phone">0634483567</span></p>
             <p>📍 <strong>Location:</strong> Hargeisa, Somaliland</p>
-            <p>📧 <strong>Email:</strong> siinascents@gmail.com</p>
+            <p>📧 <strong>Email:</strong> maisonsiina@gmail.com</p>
             <p>✦ <strong>Follow on TikTok:</strong></p>
             <a href="https://www.tiktok.com/@siinaadem" target="_blank" class="tiktok-btn">✦ @siinaadem</a>
         </div>
@@ -230,7 +236,13 @@
     </div>
 </div>
 
-<!-- ===== CART ===== -->
+<!-- ===== CART - FLOATING BUTTON (BOTTOM RIGHT) ===== -->
+<button class="cart-float" id="cartFloat" onclick="toggleCart()">
+    🛒
+    <span class="count" id="cartCount">0</span>
+</button>
+
+<!-- ===== CART SIDE ===== -->
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-side" id="cartSide">
     <div class="cart-side-header">
@@ -274,7 +286,7 @@
         <a onclick="filterCategory('bestseller')">Bestsellers</a>
         <a onclick="showPage('contact')">Contact</a>
     </div>
-    <div class="copy">© 2026 SiiNa Perfume — All rights reserved ✦</div>
+    <div class="copy">© 2026 Maison SiiNa — All rights reserved ✦</div>
 </footer>
 
 <script>
@@ -282,29 +294,19 @@
 const SHOP_WHATSAPP = '252634483567';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
-// ===== PRODUCTS WITH YOUR REAL PERFUME IMAGE =====
+// ===== PRODUCTS =====
 const products = [
-    // YOUR NEW PERFUME (Jean Paul Gaultier Le Male)
     {id:1,name:'Le Male',price:45,oldPrice:65,image:'https://i.imgur.com/VKOgsua.jpeg',category:'men',brand:'Jean Paul Gaultier',desc:'Iconic masculine with lavender & vanilla.'},
-    
-    // WOMEN
     {id:2,name:'Chanel No. 5',price:45,oldPrice:75,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'women',brand:'Chanel',desc:'Iconic floral aldehyde.'},
     {id:3,name:'Dior J\'adore',price:42,oldPrice:70,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=150&h=150&fit=crop',category:'women',brand:'Dior',desc:'Elegant floral with jasmine.'},
     {id:4,name:'YSL Black Opium',price:38,oldPrice:65,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'women',brand:'YSL',desc:'Warm vanilla & coffee.'},
     {id:5,name:'Gucci Bloom',price:35,oldPrice:60,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=150&h=150&fit=crop',category:'women',brand:'Gucci',desc:'White floral bouquet.'},
-    
-    // MEN
     {id:6,name:'Dior Sauvage',price:48,oldPrice:80,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=150&h=150&fit=crop',category:'men',brand:'Dior',desc:'Fresh, spicy, and bold.'},
     {id:7,name:'Versace Eros',price:40,oldPrice:72,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'men',brand:'Versace',desc:'Mint, vanilla, woody.'},
-    {id:8,name:'Hugo Boss The Scent',price:35,oldPrice:62,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'men',brand:'Hugo Boss',desc:'Warm & sophisticated.'},
-    
-    // BESTSELLERS
-    {id:9,name:'Creed Aventus',price:65,oldPrice:120,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'bestseller',brand:'Creed',desc:'Legendary pineapple & birch.'},
-    {id:10,name:'Chanel Bleu',price:50,oldPrice:85,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'bestseller',brand:'Chanel',desc:'Modern, woody, aromatic.'},
-    
-    // GIFT SETS
-    {id:11,name:'Luxury Gift Set',price:75,oldPrice:120,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'giftset',brand:'Luxury',desc:'3-piece bestsellers.'},
-    {id:12,name:'Romantic Duo Set',price:55,oldPrice:90,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'giftset',brand:'Romantic',desc:'His & her perfumes.'}
+    {id:8,name:'Creed Aventus',price:65,oldPrice:120,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'bestseller',brand:'Creed',desc:'Legendary pineapple & birch.'},
+    {id:9,name:'Chanel Bleu',price:50,oldPrice:85,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'bestseller',brand:'Chanel',desc:'Modern, woody, aromatic.'},
+    {id:10,name:'Luxury Gift Set',price:75,oldPrice:120,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'giftset',brand:'Luxury',desc:'3-piece bestsellers.'},
+    {id:11,name:'Romantic Duo Set',price:55,oldPrice:90,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'giftset',brand:'Romantic',desc:'His & her perfumes.'}
 ];
 
 let cart = {};
@@ -360,7 +362,6 @@ function renderProducts(category = 'all') {
         `;
     });
     
-    // Featured (best sellers on home)
     const best = products.filter(p => p.category === 'bestseller' || p.id <= 3);
     featured.innerHTML = '';
     best.slice(0, 4).forEach(p => {
@@ -504,7 +505,7 @@ function sendOrder() {
         _subject: `✦ New Order #${currentOrderId} from ${name}`
     };
     
-    const whatsappMessage = `✦ Thank you for your order from SiiNa Perfume!
+    const whatsappMessage = `✦ Thank you for your order from Maison SiiNa!
 
 📋 Order #${currentOrderId}
 👤 Name: ${name}

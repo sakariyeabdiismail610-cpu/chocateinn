@@ -7,140 +7,131 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Arial',sans-serif;background:#f8f6f4;color:#1a1a1a;width:100%;}
         
-        header{background:#1a1a1a;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:3px solid #c9a87c;position:sticky;top:0;z-index:100;}
-        .logo{font-size:24px;font-weight:900;color:#c9a87c;cursor:pointer;font-family:'Georgia',serif;letter-spacing:2px;}
-        .logo span{color:#fff;}
+        header{background:#fff;padding:14px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:1px solid #eee;position:sticky;top:0;z-index:100;}
+        .logo{font-size:22px;font-weight:300;color:#1a1a1a;cursor:pointer;font-family:'Georgia',serif;letter-spacing:4px;}
+        .logo span{color:#c9a87c;font-weight:700;}
         
-        .header-search{display:flex;align-items:center;flex:1;max-width:350px;margin:0 20px;}
-        .header-search input{width:100%;padding:8px 16px;border:2px solid #c9a87c;border-radius:30px;font-size:14px;background:#fff;outline:none;transition:0.3s;}
-        .header-search input:focus{border-color:#a88960;box-shadow:0 0 0 3px rgba(201,168,124,0.2);}
+        .nav-links{display:flex;gap:30px;align-items:center;}
+        .nav-links a{color:#333;text-decoration:none;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;transition:0.3s;cursor:pointer;padding-bottom:2px;border-bottom:2px solid transparent;}
+        .nav-links a:hover,.nav-links a.active{border-bottom-color:#c9a87c;color:#c9a87c;}
+        .nav-links .cart{font-size:18px;position:relative;cursor:pointer;color:#1a1a1a;transition:0.3s;}
+        .nav-links .cart:hover{color:#c9a87c;}
+        .nav-links .cart .count{position:absolute;top:-8px;right:-10px;background:#c9a87c;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
         
-        .header-links{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-        .header-links a{color:#ccc;text-decoration:none;font-size:12px;font-weight:600;transition:0.3s;letter-spacing:0.5px;cursor:pointer;}
-        .header-links a:hover,.header-links a.active{color:#c9a87c;}
-        .header-links .cart{color:#c9a87c;font-size:18px;position:relative;cursor:pointer;}
-        .header-links .cart .count{position:absolute;top:-8px;right:-10px;background:#c9a87c;color:#1a1a1a;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
+        .menu-toggle{display:none;cursor:pointer;font-size:22px;background:none;border:none;}
         
-        .nav-bar{background:#fff;padding:10px 20px;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;border-bottom:1px solid #e8e0d8;}
-        .nav-bar a{color:#333;text-decoration:none;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:0.3s;padding:4px 0;border-bottom:3px solid transparent;cursor:pointer;}
-        .nav-bar a:hover,.nav-bar a.active{border-bottom-color:#c9a87c;color:#c9a87c;}
+        .hero{height:70vh;min-height:450px;background:linear-gradient(135deg,#f8f6f4 50%,#e8e0d8 100%);display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden;}
+        .hero::before{content:'✦';position:absolute;top:-50px;right:-50px;font-size:300px;color:#c9a87c;opacity:0.06;}
+        .hero-content{max-width:600px;text-align:center;position:relative;z-index:2;}
+        .hero-label{font-size:12px;color:#c9a87c;letter-spacing:6px;text-transform:uppercase;font-weight:600;margin-bottom:8px;}
+        .hero h1{font-size:64px;font-family:'Georgia',serif;font-weight:300;letter-spacing:2px;color:#1a1a1a;margin-bottom:4px;}
+        .hero h1 span{color:#c9a87c;font-weight:700;}
+        .hero p{font-size:18px;color:#666;font-weight:300;letter-spacing:2px;margin-bottom:12px;}
+        .hero-divider{width:60px;height:2px;background:#c9a87c;margin:16px auto;opacity:0.5;}
+        .hero .btn{background:transparent;color:#1a1a1a;border:2px solid #1a1a1a;padding:14px 48px;border-radius:0;font-size:13px;font-weight:600;cursor:pointer;transition:0.4s;text-transform:uppercase;letter-spacing:3px;}
+        .hero .btn:hover{background:#1a1a1a;color:#fff;transform:scale(1.02);}
         
-        .hero{background:linear-gradient(135deg,#2d1b1a,#4a2a28);padding:60px 30px;text-align:center;border-bottom:4px solid #c9a87c;}
-        .hero h1{font-size:52px;color:#c9a87c;font-family:'Georgia',serif;letter-spacing:3px;font-weight:700;}
-        .hero h1 span{color:#fff;}
-        .hero .sub{font-size:18px;color:#d4c5b0;margin:6px 0 4px;letter-spacing:6px;}
-        .hero .offer{font-size:28px;color:#fff;font-weight:900;margin:10px 0;}
-        .hero .offer span{color:#c9a87c;font-size:38px;}
-        .hero .free-ship{display:inline-block;background:#c9a87c;color:#1a1a1a;padding:8px 30px;border-radius:30px;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+        .section{padding:60px 30px;max-width:1200px;margin:0 auto;}
+        .section-header{text-align:center;margin-bottom:40px;}
+        .section-header .label{font-size:11px;color:#c9a87c;letter-spacing:4px;text-transform:uppercase;font-weight:600;}
+        .section-header h2{font-size:34px;font-family:'Georgia',serif;font-weight:300;letter-spacing:1px;color:#1a1a1a;margin-top:4px;}
+        .section-header .line{width:40px;height:2px;background:#c9a87c;margin:12px auto 0;opacity:0.5;}
         
-        .section-title{font-size:24px;color:#1a1a1a;font-family:'Georgia',serif;letter-spacing:1px;margin:30px 0 16px;padding-left:16px;border-left:4px solid #c9a87c;}
-        .section-sub{font-size:14px;color:#777;margin-bottom:20px;padding-left:16px;}
+        .filter-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:30px;}
+        .filter-tabs button{background:transparent;border:none;padding:6px 20px;font-size:12px;font-weight:500;color:#999;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:1.5px;}
+        .filter-tabs button:hover{color:#1a1a1a;}
+        .filter-tabs button.active{color:#c9a87c;border-bottom:2px solid #c9a87c;}
         
-        .brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:16px;padding:0 16px;margin-bottom:30px;}
-        .brand-item{background:#fff;border-radius:12px;padding:20px 10px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
-        .brand-item:hover{transform:translateY(-4px);border-color:#c9a87c;box-shadow:0 6px 20px rgba(0,0,0,0.06);}
-        .brand-item .icon{font-size:30px;display:block;margin-bottom:4px;}
-        .brand-item .name{font-size:12px;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:0.5px;}
+        .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;}
+        .product-card{background:#fff;padding:20px 16px;text-align:center;border:1px solid #f0ece8;transition:0.4s;cursor:default;}
+        .product-card:hover{transform:translateY(-6px);border-color:#c9a87c;box-shadow:0 12px 40px rgba(0,0,0,0.05);}
+        .product-card .img{width:100%;max-width:140px;height:140px;object-fit:contain;display:block;margin:0 auto 8px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.06));}
+        .product-card .brand{font-size:10px;color:#c9a87c;text-transform:uppercase;letter-spacing:2px;font-weight:600;}
+        .product-card h3{font-size:15px;color:#1a1a1a;font-weight:500;margin:4px 0;}
+        .product-card .price{font-size:17px;font-weight:700;color:#1a1a1a;}
+        .product-card .price .old{font-size:13px;color:#aaa;text-decoration:line-through;font-weight:400;margin-left:6px;}
+        .product-card .add-btn{background:#1a1a1a;color:#fff;border:none;padding:8px 28px;border-radius:0;font-size:11px;font-weight:600;cursor:pointer;transition:0.3s;margin-top:6px;text-transform:uppercase;letter-spacing:1.5px;}
+        .product-card .add-btn:hover{background:#c9a87c;transform:scale(1.03);}
         
-        .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:0 16px;}
-        .product-card{background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #e8e0d8;transition:0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.03);}
-        .product-card:hover{transform:translateY(-6px);border-color:#c9a87c;box-shadow:0 8px 30px rgba(0,0,0,0.08);}
-        .product-card .perfume-img{font-size:54px;display:block;margin-bottom:4px;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.1));}
-        .product-card .perfume-img.bottle{font-size:58px;}
-        .product-card h3{font-size:15px;color:#333;font-weight:700;}
-        .product-card .brand-name{font-size:12px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
-        .product-card .price{font-size:18px;font-weight:900;color:#c9a87c;margin:4px 0;}
-        .product-card .price .old{font-size:14px;color:#999;text-decoration:line-through;font-weight:400;margin-left:6px;}
-        .product-card .desc{font-size:12px;color:#777;}
-        .add-btn{background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:8px 24px;border-radius:30px;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;margin-top:8px;text-transform:uppercase;letter-spacing:1px;}
-        .add-btn:hover{background:#c9a87c;color:#1a1a1a;transform:scale(1.04);}
+        .banner-section{background:#1a1a1a;padding:50px 30px;text-align:center;margin:20px 0;}
+        .banner-section h2{font-size:38px;font-family:'Georgia',serif;font-weight:300;color:#fff;letter-spacing:2px;}
+        .banner-section h2 span{color:#c9a87c;}
+        .banner-section p{color:#aaa;font-size:15px;margin:8px 0 16px;letter-spacing:1px;}
+        .banner-section .btn{background:#c9a87c;color:#1a1a1a;border:none;padding:12px 40px;border-radius:0;font-size:12px;font-weight:700;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:2px;}
+        .banner-section .btn:hover{background:#fff;transform:scale(1.02);}
         
-        .banner{background:#1a1a1a;color:#c9a87c;padding:30px 20px;text-align:center;margin:30px 16px;border-radius:12px;border:2px solid #c9a87c;}
-        .banner h2{font-size:32px;font-family:'Georgia',serif;}
-        .banner h2 span{color:#fff;}
-        .banner p{color:#bbb;font-size:16px;margin:6px 0 12px;}
-        .banner .btn{background:#c9a87c;color:#1a1a1a;padding:12px 40px;border-radius:30px;font-weight:800;font-size:16px;border:none;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
-        .banner .btn:hover{transform:scale(1.04);background:#fff;}
-        
-        .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 40px rgba(0,0,0,0.15);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
+        .cart-side{position:fixed;top:0;right:-420px;width:400px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 40px rgba(0,0,0,0.08);transition:right 0.4s ease;overflow-y:auto;padding:24px;display:flex;flex-direction:column;}
         .cart-side.open{right:0;}
-        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #c9a87c;padding-bottom:12px;margin-bottom:14px;}
-        .cart-side-header h2{font-size:22px;color:#1a1a1a;font-family:'Georgia',serif;}
-        .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#999;transition:0.3s;padding:0 8px;}
+        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:14px;}
+        .cart-side-header h2{font-size:18px;font-weight:300;letter-spacing:2px;font-family:'Georgia',serif;}
+        .cart-close{background:none;border:none;font-size:24px;cursor:pointer;color:#999;transition:0.3s;padding:0 4px;}
         .cart-close:hover{color:#1a1a1a;transform:rotate(90deg);}
-        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #e8e0d8;}
-        .cart-item .name{font-weight:600;font-size:14px;color:#1a1a1a;flex:1;}
+        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #f5f5f5;}
+        .cart-item .name{font-weight:400;font-size:14px;color:#1a1a1a;flex:1;}
         .cart-item .qty-control{display:flex;align-items:center;gap:6px;}
-        .cart-item .qty-control button{background:#1a1a1a;color:#c9a87c;border:1px solid #c9a87c;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;}
-        .cart-item .qty-control button:hover{background:#c9a87c;color:#1a1a1a;}
-        .cart-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
-        .cart-item .item-total{font-weight:700;color:#c9a87c;font-size:14px;min-width:55px;text-align:right;}
-        .cart-empty{color:#999;text-align:center;padding:40px 0;font-size:16px;}
+        .cart-item .qty-control button{background:#f5f5f5;border:none;width:26px;height:26px;border-radius:0;font-size:16px;font-weight:400;cursor:pointer;transition:0.2s;}
+        .cart-item .qty-control button:hover{background:#e0d8d0;}
+        .cart-item .qty-control .qty{font-weight:500;font-size:15px;min-width:22px;text-align:center;}
+        .cart-item .item-total{font-weight:600;color:#1a1a1a;font-size:14px;min-width:55px;text-align:right;}
+        .cart-empty{color:#999;text-align:center;padding:40px 0;font-size:14px;letter-spacing:1px;}
+        .cart-totals{border-top:1px solid #eee;padding-top:14px;margin-top:10px;}
+        .cart-totals .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14px;color:#555;}
+        .cart-totals .row.total{font-size:18px;font-weight:700;color:#1a1a1a;border-top:1px solid #1a1a1a;padding-top:8px;margin-top:4px;}
+        .place-order-btn{width:100%;background:#1a1a1a;color:#fff;border:none;padding:14px;font-size:14px;font-weight:600;cursor:pointer;transition:0.3s;margin-top:10px;text-transform:uppercase;letter-spacing:2px;}
+        .place-order-btn:hover{background:#c9a87c;}
+        .place-order-btn:disabled{background:#e8e0d8;color:#999;cursor:not-allowed;}
         
-        .cart-checkout-fields{margin-top:12px;border-top:2px solid #c9a87c;padding-top:14px;}
-        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#1a1a1a;display:block;margin-bottom:3px;}
-        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #e8e0d8;border-radius:8px;font-size:14px;background:#f8f6f4;}
-        .cart-checkout-fields input:focus{border-color:#c9a87c;outline:none;}
-        
-        .delivery-option-cart{display:flex;gap:10px;margin-bottom:10px;}
-        .delivery-option-cart button{padding:8px 16px;border-radius:30px;border:2px solid #c9a87c;background:#fff;color:#1a1a1a;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;}
-        .delivery-option-cart button.active{background:#1a1a1a;color:#c9a87c;}
-        
-        .cart-totals{border-top:2px solid #c9a87c;padding-top:12px;margin-top:10px;}
-        .cart-totals .row{display:flex;justify-content:space-between;padding:4px 0;font-size:14px;}
-        .cart-totals .row.total{font-size:20px;font-weight:900;color:#1a1a1a;border-top:2px solid #1a1a1a;padding-top:8px;margin-top:4px;}
-        .place-order-btn{width:100%;background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:14px;font-size:17px;font-weight:800;border-radius:30px;cursor:pointer;transition:0.3s;margin-top:10px;text-transform:uppercase;letter-spacing:2px;}
-        .place-order-btn:hover{background:#c9a87c;color:#1a1a1a;}
-        .place-order-btn:disabled{background:#e8e0d8;color:#999;border-color:#e8e0d8;cursor:not-allowed;}
-        
-        .call-reminder-cart{background:#f8f6f4;padding:12px;border-radius:8px;border:1px solid #c9a87c;margin:10px 0;text-align:center;font-size:13px;}
-        .call-reminder-cart .number{font-size:22px;font-weight:900;color:#c9a87c;}
-        .order-confirmed{background:#e8f5e9;border:2px solid #4caf50;border-radius:12px;padding:16px;margin:16px 0;text-align:center;}
-        .order-confirmed h3{color:#2e7d32;font-size:18px;}
-        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#1a1a1a;}
-        .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
+        .cart-checkout-fields{margin-top:12px;border-top:1px solid #eee;padding-top:14px;}
+        .cart-checkout-fields label{font-weight:500;font-size:12px;color:#1a1a1a;display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:1px;}
+        .cart-checkout-fields input{width:100%;padding:10px 12px;margin-bottom:10px;border:1px solid #eee;border-radius:0;font-size:14px;background:#fafafa;font-family:'Arial',sans-serif;}
+        .cart-checkout-fields input:focus{border-color:#c9a87c;outline:none;background:#fff;}
+        .delivery-option-cart{display:flex;gap:8px;margin-bottom:10px;}
+        .delivery-option-cart button{padding:8px 16px;border:1px solid #eee;background:#fafafa;color:#333;font-weight:500;font-size:12px;cursor:pointer;transition:0.3s;flex:1;text-transform:uppercase;letter-spacing:0.5px;}
+        .delivery-option-cart button.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a;}
+        .call-reminder-cart{background:#f8f6f4;padding:12px;border:1px solid #eee;margin:10px 0;text-align:center;font-size:12px;color:#555;letter-spacing:0.5px;}
+        .call-reminder-cart .number{font-size:20px;font-weight:700;color:#c9a87c;}
+        .order-confirmed{background:#f0f8f0;border:1px solid #c9a87c;padding:16px;margin:16px 0;text-align:center;}
+        .order-confirmed h3{color:#1a1a1a;font-size:16px;font-weight:500;}
+        .order-confirmed .order-id{font-size:20px;font-weight:700;color:#c9a87c;}
+        .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1500;}
         .cart-overlay.active{display:block;}
         
-        .contact-info{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e0d8;margin-bottom:16px;}
-        .contact-info h3{font-size:20px;color:#1a1a1a;margin-bottom:8px;font-family:'Georgia',serif;}
+        .contact-info{max-width:600px;margin:0 auto;padding:20px;border:1px solid #eee;background:#fafafa;}
+        .contact-info h3{font-size:20px;font-weight:300;font-family:'Georgia',serif;margin-bottom:8px;}
         .contact-info p{font-size:14px;padding:4px 0;color:#555;}
-        .contact-info .phone{font-size:24px;font-weight:900;color:#c9a87c;background:#f8f6f4;padding:8px 18px;border-radius:8px;display:inline-block;border:2px solid #c9a87c;}
-        .contact-info .tiktok-btn{display:inline-block;background:#1a1a1a;color:#c9a87c;padding:8px 24px;border-radius:30px;text-decoration:none;font-weight:700;font-size:14px;margin-top:6px;transition:0.3s;border:1px solid #c9a87c;}
-        .contact-info .tiktok-btn:hover{background:#c9a87c;color:#1a1a1a;}
+        .contact-info .phone{font-size:22px;font-weight:700;color:#c9a87c;}
+        .contact-info .tiktok-btn{display:inline-block;background:#1a1a1a;color:#fff;padding:8px 24px;border-radius:0;text-decoration:none;font-weight:500;font-size:13px;margin-top:6px;transition:0.3s;letter-spacing:1px;}
+        .contact-info .tiktok-btn:hover{background:#c9a87c;}
         
-        .contact-form{background:#fff;border-radius:12px;padding:20px;border:1px solid #e8e0d8;}
-        .contact-form h3{font-size:20px;color:#1a1a1a;margin-bottom:8px;font-family:'Georgia',serif;}
-        .contact-form input,.contact-form textarea{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #e8e0d8;border-radius:8px;font-size:14px;background:#f8f6f4;font-family:'Arial',sans-serif;}
+        .contact-form{max-width:600px;margin:20px auto;padding:20px;border:1px solid #eee;background:#fafafa;}
+        .contact-form h3{font-size:20px;font-weight:300;font-family:'Georgia',serif;margin-bottom:8px;}
+        .contact-form input,.contact-form textarea{width:100%;padding:10px 12px;margin-bottom:10px;border:1px solid #eee;border-radius:0;font-size:14px;background:#fff;font-family:'Arial',sans-serif;}
         .contact-form input:focus,.contact-form textarea:focus{border-color:#c9a87c;outline:none;}
-        .contact-form .btn{background:#1a1a1a;color:#c9a87c;border:2px solid #c9a87c;padding:10px;font-size:16px;font-weight:700;border-radius:30px;cursor:pointer;width:100%;transition:0.3s;text-transform:uppercase;letter-spacing:1px;}
-        .contact-form .btn:hover{background:#c9a87c;color:#1a1a1a;}
+        .contact-form .btn{background:#1a1a1a;color:#fff;border:none;padding:10px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:0.3s;text-transform:uppercase;letter-spacing:2px;}
+        .contact-form .btn:hover{background:#c9a87c;}
         
-        footer{background:#1a1a1a;color:#c9a87c;padding:20px;text-align:center;border-top:4px solid #c9a87c;margin-top:20px;}
-        footer .copy{font-size:12px;opacity:0.6;}
-        footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:6px 0;}
-        footer .footer-links a{color:#999;text-decoration:none;font-size:12px;transition:0.3s;cursor:pointer;}
+        footer{background:#f8f6f4;padding:30px;text-align:center;border-top:1px solid #eee;margin-top:30px;}
+        footer .copy{font-size:12px;color:#999;letter-spacing:1px;}
+        footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:8px 0;}
+        footer .footer-links a{color:#666;text-decoration:none;font-size:11px;transition:0.3s;text-transform:uppercase;letter-spacing:1px;cursor:pointer;}
         footer .footer-links a:hover{color:#c9a87c;}
         
         .page{display:none;width:100%;}
         .page.active{display:block;}
         
         @media(max-width:768px){
-            header{flex-direction:column;gap:10px;}
-            .header-search{max-width:100%;margin:0;}
-            .nav-bar{gap:12px;padding:8px 10px;}
-            .nav-bar a{font-size:11px;}
-            .hero h1{font-size:32px;}
-            .hero .offer{font-size:20px;}
+            header{padding:12px 16px;}
+            .nav-links{display:none;width:100%;flex-direction:column;gap:12px;padding:12px 0 4px;}
+            .nav-links.open{display:flex;}
+            .menu-toggle{display:block;}
+            .hero{height:auto;min-height:400px;padding:60px 20px;}
+            .hero h1{font-size:38px;}
+            .section{padding:40px 16px;}
             .product-grid{grid-template-columns:1fr 1fr;}
-            .brand-grid{grid-template-columns:repeat(3,1fr);}
+            .product-card .img{max-width:100px;height:100px;}
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
         }
-        @media(max-width:480px){
-            .product-grid{grid-template-columns:1fr 1fr;}
-            .brand-grid{grid-template-columns:repeat(2,1fr);}
-            .hero h1{font-size:26px;}
-            .header-links a{font-size:10px;}
-        }
+        @media(max-width:480px){.product-grid{grid-template-columns:1fr 1fr;}.hero h1{font-size:28px;}}
     </style>
 </head>
 <body>
@@ -149,60 +140,41 @@
 <header>
     <div class="logo" onclick="showPage('home')">SiiNa <span>Perfume</span></div>
     
-    <div class="header-search">
-        <input type="text" placeholder="Search perfumes..." id="searchInput" oninput="filterProducts()">
-    </div>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     
-    <div class="header-links">
+    <div class="nav-links">
         <a class="active" onclick="showPage('home')">Home</a>
-        <a onclick="showPage('shop')">Shop</a>
+        <a onclick="showPage('shop'); filterCategory('all')">Shop</a>
         <a onclick="showPage('contact')">Contact</a>
         <span class="cart" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></span>
     </div>
 </header>
 
-<!-- ===== NAV ===== -->
-<div class="nav-bar" id="navBar">
-    <a class="active" onclick="filterCategory('all')">All</a>
-    <a onclick="filterCategory('women')">Women's</a>
-    <a onclick="filterCategory('men')">Men's</a>
-    <a onclick="filterCategory('bestseller')">Bestsellers</a>
-    <a onclick="filterCategory('giftset')">Gift Sets</a>
-    <a onclick="filterCategory('luxury')">Luxury</a>
-</div>
-
 <!-- ===== HOME ===== -->
 <div class="page active" id="page-home">
     <div class="hero">
-        <h1>Shop <span>Summer Deals</span></h1>
-        <div class="offer"><span>25-75%</span> OFF</div>
-        <div class="free-ship">✦ FREE SHIPPING ✦</div>
-        <p class="sub">Free shipping on thousands of fragrances. Save up to 80% off retail.</p>
-    </div>
-    
-    <div style="padding:0 16px;">
-        <h2 class="section-title">✦ Most Popular Perfume Brands</h2>
-        <div class="brand-grid" id="brandGrid">
-            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">🌹</span><div class="name">Chanel</div></div>
-            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">✨</span><div class="name">Dior</div></div>
-            <div class="brand-item" onclick="filterCategory('men')"><span class="icon">🌟</span><div class="name">Gucci</div></div>
-            <div class="brand-item" onclick="filterCategory('men')"><span class="icon">💎</span><div class="name">Versace</div></div>
-            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">👑</span><div class="name">YSL</div></div>
-            <div class="brand-item" onclick="filterCategory('women')"><span class="icon">🌺</span><div class="name">Lancôme</div></div>
-            <div class="brand-item" onclick="filterCategory('men')"><span class="icon">⚡</span><div class="name">Hugo Boss</div></div>
-            <div class="brand-item" onclick="filterCategory('luxury')"><span class="icon">💫</span><div class="name">Tom Ford</div></div>
+        <div class="hero-content">
+            <div class="hero-label">✦ Since 2024 ✦</div>
+            <h1>Fragrance<br>that <span>tells</span> a story</h1>
+            <div class="hero-divider"></div>
+            <p>Discover our curated collection of luxury perfumes<br>from the world's most iconic brands.</p>
+            <button class="btn" onclick="showPage('shop')">Explore Collection</button>
         </div>
     </div>
     
-    <!-- Featured Products -->
-    <div style="padding:0 16px;">
-        <h2 class="section-title">✦ Best Sellers</h2>
+    <!-- FEATURED -->
+    <div class="section">
+        <div class="section-header">
+            <div class="label">✦ Best Sellers</div>
+            <h2>Most Loved Scents</h2>
+            <div class="line"></div>
+        </div>
         <div class="product-grid" id="featuredGrid"></div>
     </div>
     
-    <!-- Banner -->
-    <div class="banner">
-        <h2>✦ <span>FREE SHIPPING</span> ✦</h2>
+    <!-- BANNER -->
+    <div class="banner-section">
+        <h2>✦ <span>Free</span> Shipping ✦</h2>
         <p>On all orders over $50. Use code: <strong style="color:#fff;">SiiNa10</strong></p>
         <button class="btn" onclick="showPage('shop')">Shop Now</button>
     </div>
@@ -210,32 +182,49 @@
 
 <!-- ===== SHOP ===== -->
 <div class="page" id="page-shop">
-    <div style="padding:0 16px;">
-        <h2 class="section-title">✦ All Perfumes</h2>
-        <p class="section-sub">Find your perfect scent</p>
+    <div class="section">
+        <div class="section-header">
+            <div class="label">✦ Collection</div>
+            <h2>Find Your Scent</h2>
+            <div class="line"></div>
+        </div>
+        
+        <div class="filter-tabs" id="filterTabs">
+            <button class="active" onclick="filterCategory('all')">All</button>
+            <button onclick="filterCategory('women')">Women</button>
+            <button onclick="filterCategory('men')">Men</button>
+            <button onclick="filterCategory('bestseller')">Bestsellers</button>
+            <button onclick="filterCategory('giftset')">Gift Sets</button>
+        </div>
+        
         <div class="product-grid" id="productGrid"></div>
     </div>
 </div>
 
 <!-- ===== CONTACT ===== -->
 <div class="page" id="page-contact">
-    <div style="padding:0 16px;max-width:800px;margin:0 auto;">
-        <h2 class="section-title">✦ Contact SiiNa</h2>
+    <div class="section" style="max-width:700px;">
+        <div class="section-header">
+            <div class="label">✦ Contact</div>
+            <h2>Get in Touch</h2>
+            <div class="line"></div>
+        </div>
+        
         <div class="contact-info">
-            <h3>Get in Touch</h3>
             <p>📞 <strong>Phone/WhatsApp:</strong> <span class="phone">0634483567</span></p>
             <p>📍 <strong>Location:</strong> Hargeisa, Somaliland</p>
             <p>📧 <strong>Email:</strong> siinascents@gmail.com</p>
             <p>✦ <strong>Follow on TikTok:</strong></p>
             <a href="https://www.tiktok.com/@siinaadem" target="_blank" class="tiktok-btn">✦ @siinaadem</a>
         </div>
+        
         <div class="contact-form">
             <h3>Send a Message</h3>
             <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
                 <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
-                <button type="submit" class="btn">Send Message</button>
+                <button type="submit" class="btn">Send</button>
             </form>
         </div>
     </div>
@@ -245,11 +234,11 @@
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-side" id="cartSide">
     <div class="cart-side-header">
-        <h2>✦ Your Bag</h2>
+        <h2>Your Bag</h2>
         <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
     <div style="flex:1;overflow-y:auto;">
-        <div id="cartItems"><div class="cart-empty">Your bag is empty ✦<br>Add some beautiful scents!</div></div>
+        <div id="cartItems"><div class="cart-empty">Your bag is empty.<br>Discover our collection ✦</div></div>
         <div class="cart-totals" id="cartTotals" style="display:none;">
             <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
             <div class="row"><span>Tax (0.12%)</span><span id="tax">$0.00</span></div>
@@ -257,161 +246,136 @@
         </div>
         
         <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
-            <label>👤 Your Name</label>
+            <label>Name</label>
             <input type="text" id="cartName" placeholder="Enter your name">
-            <label>📱 Your WhatsApp Number</label>
+            <label>WhatsApp</label>
             <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number">
-            <label>📍 Delivery Address</label>
+            <label>Address</label>
             <input type="text" id="cartAddress" placeholder="Type your address">
             
-            <label>🚚 Delivery or Pickup?</label>
+            <label>Delivery</label>
             <div class="delivery-option-cart">
                 <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">Pickup</button>
                 <button id="cartDelivery" onclick="setCartDelivery('Delivery')">Delivery</button>
             </div>
             
-            <div class="call-reminder-cart">✦ After sending payment, call or WhatsApp: <span class="number">0634483567</span></div>
+            <div class="call-reminder-cart">✦ After payment, call or WhatsApp: <span class="number">0634483567</span></div>
         </div>
-        <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">Place Order ✦</button>
+        <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">Place Order</button>
     </div>
 </div>
 
 <footer>
     <div class="footer-links">
         <a onclick="showPage('home')">Home</a>
-        <a onclick="showPage('shop')">Shop</a>
-        <a onclick="showPage('contact')">Contact</a>
-        <a onclick="filterCategory('women')">Women's</a>
-        <a onclick="filterCategory('men')">Men's</a>
+        <a onclick="showPage('shop'); filterCategory('all')">Shop</a>
+        <a onclick="filterCategory('women')">Women</a>
+        <a onclick="filterCategory('men')">Men</a>
         <a onclick="filterCategory('bestseller')">Bestsellers</a>
+        <a onclick="showPage('contact')">Contact</a>
     </div>
     <div class="copy">© 2026 SiiNa Perfume — All rights reserved ✦</div>
 </footer>
 
 <script>
-// ===== CONFIGURATION =====
+// ===== CONFIG =====
 const SHOP_WHATSAPP = '252634483567';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
-// ===== PRODUCT DATA (Worldwide Famous Perfumes) =====
+// ===== PRODUCTS WITH YOUR REAL PERFUME IMAGE =====
 const products = [
-    // WOMEN'S PERFUMES
-    {id:1,name:'Chanel No. 5',price:45,oldPrice:75,emoji:'🌸',category:'women',brand:'Chanel',desc:'Iconic floral aldehyde fragrance.'},
-    {id:2,name:'Dior J\'adore',price:42,oldPrice:70,emoji:'🌹',category:'women',brand:'Dior',desc:'Elegant floral with jasmine & rose.'},
-    {id:3,name:'YSL Black Opium',price:38,oldPrice:65,emoji:'🌟',category:'women',brand:'YSL',desc:'Warm vanilla & coffee notes.'},
-    {id:4,name:'Lancôme La Vie Est Belle',price:40,oldPrice:68,emoji:'💖',category:'women',brand:'Lancôme',desc:'Sweet iris & gourmand vanilla.'},
-    {id:5,name:'Gucci Bloom',price:35,oldPrice:60,emoji:'🌺',category:'women',brand:'Gucci',desc:'White floral bouquet of jasmine.'},
-    {id:6,name:'Marc Jacobs Daisy',price:30,oldPrice:55,emoji:'🌼',category:'women',brand:'Marc Jacobs',desc:'Fresh, youthful floral scent.'},
+    // YOUR NEW PERFUME (Jean Paul Gaultier Le Male)
+    {id:1,name:'Le Male',price:45,oldPrice:65,image:'https://i.imgur.com/VKOgsua.jpeg',category:'men',brand:'Jean Paul Gaultier',desc:'Iconic masculine with lavender & vanilla.'},
     
-    // MEN'S COLOGNES
-    {id:7,name:'Dior Sauvage',price:48,oldPrice:80,emoji:'⚡',category:'men',brand:'Dior',desc:'Fresh, spicy, and bold.'},
-    {id:8,name:'Versace Eros',price:40,oldPrice:72,emoji:'💎',category:'men',brand:'Versace',desc:'Mint, vanilla, and woody notes.'},
-    {id:9,name:'Hugo Boss The Scent',price:35,oldPrice:62,emoji:'🔥',category:'men',brand:'Hugo Boss',desc:'Warm and sophisticated.'},
-    {id:10,name:'Gucci Guilty',price:38,oldPrice:65,emoji:'👔',category:'men',brand:'Gucci',desc:'Bold, masculine, and aromatic.'},
-    {id:11,name:'YSL Y',price:42,oldPrice:70,emoji:'💫',category:'men',brand:'YSL',desc:'Fresh, aquatic, and woody.'},
-    {id:12,name:'Tom Ford Oud Wood',price:55,oldPrice:95,emoji:'🪵',category:'luxury',brand:'Tom Ford',desc:'Exclusive luxury oud fragrance.'},
+    // WOMEN
+    {id:2,name:'Chanel No. 5',price:45,oldPrice:75,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'women',brand:'Chanel',desc:'Iconic floral aldehyde.'},
+    {id:3,name:'Dior J\'adore',price:42,oldPrice:70,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=150&h=150&fit=crop',category:'women',brand:'Dior',desc:'Elegant floral with jasmine.'},
+    {id:4,name:'YSL Black Opium',price:38,oldPrice:65,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'women',brand:'YSL',desc:'Warm vanilla & coffee.'},
+    {id:5,name:'Gucci Bloom',price:35,oldPrice:60,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=150&h=150&fit=crop',category:'women',brand:'Gucci',desc:'White floral bouquet.'},
+    
+    // MEN
+    {id:6,name:'Dior Sauvage',price:48,oldPrice:80,image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=150&h=150&fit=crop',category:'men',brand:'Dior',desc:'Fresh, spicy, and bold.'},
+    {id:7,name:'Versace Eros',price:40,oldPrice:72,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'men',brand:'Versace',desc:'Mint, vanilla, woody.'},
+    {id:8,name:'Hugo Boss The Scent',price:35,oldPrice:62,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'men',brand:'Hugo Boss',desc:'Warm & sophisticated.'},
     
     // BESTSELLERS
-    {id:13,name:'Creed Aventus',price:65,oldPrice:120,emoji:'👑',category:'bestseller',brand:'Creed',desc:'Legendary pineapple & birch.'},
-    {id:14,name:'Chanel Bleu de Chanel',price:50,oldPrice:85,emoji:'💙',category:'bestseller',brand:'Chanel',desc:'Modern, woody, and aromatic.'},
-    {id:15,name:'Dolce & Gabbana Light Blue',price:32,oldPrice:58,emoji:'🌊',category:'bestseller',brand:'D&G',desc:'Fresh, citrus, and Mediterranean.'},
+    {id:9,name:'Creed Aventus',price:65,oldPrice:120,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'bestseller',brand:'Creed',desc:'Legendary pineapple & birch.'},
+    {id:10,name:'Chanel Bleu',price:50,oldPrice:85,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'bestseller',brand:'Chanel',desc:'Modern, woody, aromatic.'},
     
     // GIFT SETS
-    {id:16,name:'Luxury Gift Set',price:75,oldPrice:120,emoji:'🎁',category:'giftset',brand:'Luxury',desc:'3-piece collection of bestsellers.'},
-    {id:17,name:'Romantic Duo Gift Set',price:55,oldPrice:90,emoji:'💝',category:'giftset',brand:'Romantic',desc:'Pair of his & her perfumes.'},
-    {id:18,name:'Premium Travel Set',price:40,oldPrice:70,emoji:'🧳',category:'giftset',brand:'Premium',desc:'3 travel-sized luxury fragrances.'}
+    {id:11,name:'Luxury Gift Set',price:75,oldPrice:120,image:'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=150&h=150&fit=crop',category:'giftset',brand:'Luxury',desc:'3-piece bestsellers.'},
+    {id:12,name:'Romantic Duo Set',price:55,oldPrice:90,image:'https://images.unsplash.com/photo-1541643600914-78b084683601?w=150&h=150&fit=crop',category:'giftset',brand:'Romantic',desc:'His & her perfumes.'}
 ];
 
-// ===== STATE =====
 let cart = {};
 let cartDelivery = 'Pickup';
 let currentOrderId = '';
 let currentCategory = 'all';
 
-// ===== SHOW PAGE =====
+// ===== FUNCTIONS =====
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('.header-links a').forEach(link => {
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
         if(link.textContent.toLowerCase() === page) link.classList.add('active');
     });
+    document.querySelector('.nav-links').classList.remove('open');
     window.scrollTo({top:0});
-    if(page === 'shop') filterCategory(currentCategory);
 }
 
-// ===== FILTER PRODUCTS =====
 function filterCategory(category) {
     currentCategory = category;
-    document.querySelectorAll('.nav-bar a').forEach(link => {
-        link.classList.remove('active');
-        if(link.textContent.toLowerCase() === category || (category === 'all' && link.textContent.toLowerCase() === 'all')) {
-            link.classList.add('active');
+    document.querySelectorAll('.filter-tabs button').forEach(btn => {
+        btn.classList.remove('active');
+        if(btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent.toLowerCase() === 'all')) {
+            btn.classList.add('active');
         }
     });
     renderProducts(category);
-    // Show shop page
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-shop').classList.add('active');
-    document.querySelectorAll('.header-links a').forEach(link => {
+    document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');
         if(link.textContent.toLowerCase() === 'shop') link.classList.add('active');
     });
+    document.querySelector('.nav-links').classList.remove('open');
 }
 
-// ===== RENDER PRODUCTS =====
 function renderProducts(category = 'all') {
     const grid = document.getElementById('productGrid');
     const featured = document.getElementById('featuredGrid');
     
-    let filtered = products;
-    if(category !== 'all') {
-        filtered = products.filter(p => p.category === category);
-    }
-    
+    let filtered = category === 'all' ? products : products.filter(p => p.category === category);
     grid.innerHTML = '';
     filtered.forEach(p => {
-        const bottleIcon = p.category === 'men' ? '🧴' : '🌸';
         grid.innerHTML += `
-            <div class="product-card" data-category="${p.category}">
-                <span class="perfume-img">${p.emoji}</span>
+            <div class="product-card">
+                <img src="${p.image}" alt="${p.name}" class="img" loading="lazy">
+                <div class="brand">${p.brand}</div>
                 <h3>${p.name}</h3>
-                <div class="brand-name">${p.brand}</div>
                 <div class="price">$${p.price}.00 <span class="old">$${p.oldPrice}.00</span></div>
-                <div class="desc">${p.desc}</div>
-                <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
+                <button class="add-btn" onclick="addToCart(${p.id})">Add</button>
             </div>
         `;
     });
     
-    // Featured products (bestsellers on home page)
-    const bestsellers = products.filter(p => p.category === 'bestseller' || p.id <= 6);
+    // Featured (best sellers on home)
+    const best = products.filter(p => p.category === 'bestseller' || p.id <= 3);
     featured.innerHTML = '';
-    bestsellers.slice(0, 4).forEach(p => {
+    best.slice(0, 4).forEach(p => {
         featured.innerHTML += `
             <div class="product-card">
-                <span class="perfume-img">${p.emoji}</span>
+                <img src="${p.image}" alt="${p.name}" class="img" loading="lazy">
+                <div class="brand">${p.brand}</div>
                 <h3>${p.name}</h3>
-                <div class="brand-name">${p.brand}</div>
                 <div class="price">$${p.price}.00 <span class="old">$${p.oldPrice}.00</span></div>
-                <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
+                <button class="add-btn" onclick="addToCart(${p.id})">Add</button>
             </div>
         `;
     });
 }
 
-// ===== SEARCH =====
-function filterProducts() {
-    const search = document.getElementById('searchInput').value.toLowerCase();
-    const cards = document.querySelectorAll('#productGrid .product-card');
-    cards.forEach(card => {
-        const name = card.querySelector('h3').textContent.toLowerCase();
-        const brand = card.querySelector('.brand-name').textContent.toLowerCase();
-        card.style.display = (name.includes(search) || brand.includes(search)) ? '' : 'none';
-    });
-}
-
-// ===== ADD TO CART =====
 function addToCart(id) {
     const p = products.find(i => i.id === id);
     if(!p) return;
@@ -445,13 +409,13 @@ function updateSideCart() {
     const container = document.getElementById('cartItems');
     const arr = Object.values(cart);
     if(arr.length === 0) {
-        container.innerHTML = '<div class="cart-empty">Your bag is empty ✦<br>Add some beautiful scents!</div>';
+        container.innerHTML = '<div class="cart-empty">Your bag is empty.<br>Discover our collection ✦</div>';
         return;
     }
     let html = '';
     arr.forEach(item => {
         const total = item.price * item.qty;
-        html += `<div class="cart-item"><span class="name">${item.emoji} ${item.name}</span><div class="qty-control"><button onclick="changeQty(${item.id},-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty(${item.id},1)">+</button></div><span class="item-total">$${total}.00</span></div>`;
+        html += `<div class="cart-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty(${item.id},-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty(${item.id},1)">+</button></div><span class="item-total">$${total}.00</span></div>`;
     });
     container.innerHTML = html;
 }
@@ -521,7 +485,7 @@ function sendOrder() {
     const address = document.getElementById('cartAddress').value || 'Not provided';
     const arr = Object.values(cart);
     let orderText = '';
-    arr.forEach(item => { orderText += `${item.emoji} ${item.name} × ${item.qty}\n`; });
+    arr.forEach(item => { orderText += `${item.name} × ${item.qty}\n`; });
     let subtotal = 0;
     arr.forEach(item => { subtotal += item.price * item.qty; });
     const tax = subtotal * 0.0012;

@@ -8,7 +8,7 @@
         body{font-family:'Georgia',serif;background:#f5efe8;color:#3e2723;width:100%;}
         
         header{background:#4A2E1B;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
-        .logo-img{height:40px;width:auto;cursor:pointer;display:block;}
+        .logo-img{height:44px;width:auto;cursor:pointer;display:block;}
         nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;margin:2px;}
         nav a:hover,nav a.active{background:#d7a86e;color:#3e2723;}
         
@@ -18,7 +18,7 @@
         .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:350px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
         
-        .hero-logo{max-width:400px;width:100%;height:auto;display:block;margin:0 auto 10px;}
+        .hero-logo{max-width:480px;width:100%;height:auto;display:block;margin:0 auto 10px;}
         .logo-divider{width:100px;height:2px;background:#d7a86e;margin:12px auto;opacity:0.6;}
         .hero-tagline{font-size:18px;font-weight:300;color:#d7a86e;font-family:'Georgia',serif;font-style:italic;margin-top:6px;}
         
@@ -135,39 +135,65 @@
         /* ===== SIZE POPUP MODAL ===== */
         .size-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:3000;justify-content:center;align-items:center;}
         .size-modal.active{display:flex;}
-        .size-modal-content{background:#fff;border-radius:16px;padding:30px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
-        .size-modal-content h3{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin-bottom:6px;}
-        .size-modal-content p{color:#6d5c4e;font-size:14px;margin-bottom:16px;}
-        .size-options{display:flex;gap:12px;justify-content:center;}
-        .size-btn{padding:12px 30px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;border-radius:30px;font-size:16px;font-weight:700;cursor:pointer;transition:0.3s;flex:1;max-width:120px;}
+        .size-modal-content{background:#fff;border-radius:16px;padding:30px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+        .size-modal-content h3{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin-bottom:4px;}
+        .size-modal-content .sub{color:#6d5c4e;font-size:14px;margin-bottom:14px;}
+        .size-options{display:flex;flex-direction:column;gap:10px;}
+        .size-btn{padding:12px 20px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;transition:0.3s;display:flex;justify-content:space-between;align-items:center;}
         .size-btn:hover{background:#4A2E1B;color:#fff;}
-        .size-btn.cancel{background:#e8e0d8;border-color:#e8e0d8;color:#6d5c4e;}
-        .size-btn.cancel:hover{background:#d5cdc5;}
-        .size-btn .size-price{font-weight:400;font-size:13px;display:block;color:#6b3f2a;}
-        .size-btn:hover .size-price{color:#fff;}
+        .size-btn .price-tag{font-weight:400;font-size:14px;color:#6b3f2a;}
+        .size-btn:hover .price-tag{color:#fff;}
+        .size-btn .cheese-tag{font-size:13px;font-weight:400;color:#d7a86e;background:#4A2E1B;padding:2px 10px;border-radius:20px;}
+        .size-btn:hover .cheese-tag{background:#fff;color:#4A2E1B;}
+        .size-btn.cancel{background:#e8e0d8;border-color:#e8e0d8;color:#6d5c4e;justify-content:center;}
+        .size-btn.cancel:hover{background:#d5cdc5;color:#6d5c4e;}
         
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .hero-logo{max-width:500px;}
+            .hero-logo{max-width:550px;}
             .hero{padding:60px 40px 55px;min-height:400px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .hero-logo{max-width:280px;}
+            .hero-logo{max-width:320px;}
             .hero{padding:30px 16px 25px;min-height:280px;}
             .menu-grid{grid-template-columns:1fr 1fr;}
-            .logo-img{height:30px;}
-            .size-options{flex-wrap:wrap;}
-            .size-btn{max-width:100%;}
+            .logo-img{height:32px;}
+            .size-modal-content{padding:20px;}
+            .size-btn{font-size:14px;padding:10px 16px;}
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50'%3E%3Ctext x='0' y='38' font-family='Georgia, serif' font-size='36' font-weight='900' fill='%23d7a86e'%3EChocolate%3C/text%3E%3Ctext x='150' y='38' font-family='Georgia, serif' font-size='28' font-weight='900' fill='%23f5efe8'%3EInn%3C/text%3E%3C/svg%3E" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
+    <svg class="logo-img" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" onclick="showPage('home')">
+        <!-- "Chocol" -->
+        <text x="0" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">Chocol</text>
+        
+        <!-- Letter "a" -->
+        <text x="110" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">a</text>
+        
+        <!-- Letter "t" -->
+        <text x="130" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">t</text>
+        
+        <!-- Letter "e" -->
+        <text x="148" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">e</text>
+        
+        <!-- SPACE -->
+        <text x="166" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E"> </text>
+        
+        <!-- Letter "I" (capital) -->
+        <text x="172" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#d7a86e">I</text>
+        
+        <!-- Letter "n" -->
+        <text x="184" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#d7a86e">n</text>
+        
+        <!-- Letter "n" -->
+        <text x="200" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#d7a86e">n</text>
+    </svg>
     <nav>
         <a class="active" onclick="showPage('home')">Home</a>
         <a onclick="showPage('menu')">Menu</a>
@@ -180,7 +206,33 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 120'%3E%3Ctext x='0' y='70' font-family='Georgia, serif' font-size='72' font-weight='900' fill='%23d7a86e'%3EChocolate%3C/text%3E%3Ctext x='360' y='70' font-family='Georgia, serif' font-size='56' font-weight='900' fill='%23f5efe8'%3EInn%3C/text%3E%3C/svg%3E" alt="Chocolate Inn" class="hero-logo">
+            <!-- ===== HERO LOGO ===== -->
+            <svg class="hero-logo" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+                <!-- "Chocol" -->
+                <text x="0" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">Chocol</text>
+                
+                <!-- Letter "a" -->
+                <text x="230" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">a</text>
+                
+                <!-- Letter "t" -->
+                <text x="270" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">t</text>
+                
+                <!-- Letter "e" -->
+                <text x="310" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">e</text>
+                
+                <!-- SPACE -->
+                <text x="350" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E"> </text>
+                
+                <!-- Letter "I" (capital) -->
+                <text x="360" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#d7a86e">I</text>
+                
+                <!-- Letter "n" -->
+                <text x="385" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#d7a86e">n</text>
+                
+                <!-- Letter "n" -->
+                <text x="410" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#d7a86e">n</text>
+            </svg>
+            
             <div class="logo-divider"></div>
             <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
             <button class="btn" onclick="showPage('order')">ORDER NOW</button>
@@ -330,15 +382,25 @@
 <div class="size-modal" id="sizeModal">
     <div class="size-modal-content">
         <h3 id="sizeItemName">Sandwich Name</h3>
-        <p>Choose your size:</p>
+        <p class="sub">Choose your size and cheese option:</p>
         <div class="size-options">
-            <button class="size-btn" onclick="selectSize('small')">
-                Small
-                <span class="size-price" id="sizeSmallPrice">$0.00</span>
+            <button class="size-btn" onclick="selectSize('half', false)">
+                <span>🥪 Half</span>
+                <span class="price-tag" id="sizeHalfPrice">$0.00</span>
             </button>
-            <button class="size-btn" onclick="selectSize('large')">
-                Large
-                <span class="size-price" id="sizeLargePrice">$0.00</span>
+            <button class="size-btn" onclick="selectSize('half', true)">
+                <span>🥪 Half + 🧀 Cheese</span>
+                <span class="price-tag" id="sizeHalfCheesePrice">$0.00</span>
+                <span class="cheese-tag">+$0.50</span>
+            </button>
+            <button class="size-btn" onclick="selectSize('full', false)">
+                <span>🥪 Full</span>
+                <span class="price-tag" id="sizeFullPrice">$0.00</span>
+            </button>
+            <button class="size-btn" onclick="selectSize('full', true)">
+                <span>🥪 Full + 🧀 Cheese</span>
+                <span class="price-tag" id="sizeFullCheesePrice">$0.00</span>
+                <span class="cheese-tag">+$0.50</span>
             </button>
             <button class="size-btn cancel" onclick="closeSizeModal()">Cancel</button>
         </div>
@@ -418,11 +480,11 @@ let pendingSandwichId = null;
 // ===== MENU DATA =====
 const menuData = {
     sandwiches: [
-        {name:'Steak & Cheese', small:4, large:7},
-        {name:'Chicken Sandwich', small:3.50, large:6},
-        {name:'Meat Ball and Steak', small:4, large:7},
-        {name:'Tuna Melt', small:3, large:5},
-        {name:'Egg & Mayo', small:3, large:5}
+        {name:'Steak & Cheese', half:4, full:7},
+        {name:'Chicken Sandwich', half:3.50, full:6},
+        {name:'Meat Ball and Steak', half:4, full:7},
+        {name:'Tuna Melt', half:3, full:5},
+        {name:'Egg & Mayo', half:3, full:5}
     ],
     salads: [
         {name:'Chicken Salad', price:3},
@@ -516,20 +578,24 @@ const menuData = {
 };
 
 // ===== SIZE MODAL FUNCTIONS =====
-function openSizeModal(itemId, itemName, smallPrice, largePrice) {
-    pendingSandwich = {name: itemName, small: smallPrice, large: largePrice};
+function openSizeModal(itemId, itemName, halfPrice, fullPrice) {
+    pendingSandwich = {name: itemName, half: halfPrice, full: fullPrice};
     pendingSandwichId = itemId;
     document.getElementById('sizeItemName').textContent = itemName;
-    document.getElementById('sizeSmallPrice').textContent = '$' + smallPrice.toFixed(2);
-    document.getElementById('sizeLargePrice').textContent = '$' + largePrice.toFixed(2);
+    document.getElementById('sizeHalfPrice').textContent = '$' + halfPrice.toFixed(2);
+    document.getElementById('sizeHalfCheesePrice').textContent = '$' + (halfPrice + 0.50).toFixed(2);
+    document.getElementById('sizeFullPrice').textContent = '$' + fullPrice.toFixed(2);
+    document.getElementById('sizeFullCheesePrice').textContent = '$' + (fullPrice + 0.50).toFixed(2);
     document.getElementById('sizeModal').classList.add('active');
 }
 
-function selectSize(size) {
+function selectSize(size, cheese) {
     if (!pendingSandwich || !pendingSandwichId) return;
-    const price = size === 'small' ? pendingSandwich.small : pendingSandwich.large;
-    const nameWithSize = pendingSandwich.name + ' (' + size + ')';
-    addToCart(pendingSandwichId + '_' + size, nameWithSize, price);
+    let price = size === 'half' ? pendingSandwich.half : pendingSandwich.full;
+    if (cheese) price += 0.50;
+    const cheeseText = cheese ? ' + 🧀 Cheese' : '';
+    const nameWithSize = pendingSandwich.name + ' (' + size.charAt(0).toUpperCase() + size.slice(1) + cheeseText + ')';
+    addToCart(pendingSandwichId + '_' + size + '_' + (cheese ? 'cheese' : 'nocheese'), nameWithSize, price);
     closeSizeModal();
 }
 
@@ -547,7 +613,7 @@ function renderCategory(containerId, items, type) {
     items.forEach((item, index) => {
         const div = document.createElement('div');
         div.className = 'menu-item';
-        const priceDisplay = type === 'sandwich' ? 'Small $' + item.small.toFixed(2) + ' / Large $' + item.large.toFixed(2) : '$' + item.price.toFixed(2);
+        const priceDisplay = type === 'sandwich' ? 'Half $' + item.half.toFixed(2) + ' / Full $' + item.full.toFixed(2) : '$' + item.price.toFixed(2);
         div.innerHTML = `
             <h3>${item.name}</h3>
             <div class="price">${priceDisplay}</div>
@@ -570,9 +636,9 @@ function renderOrderCategory(containerId, items, type) {
         if (type === 'sandwich') {
             div.innerHTML = `
                 <h3>${item.name}</h3>
-                <div class="price">Small $${item.small.toFixed(2)} / Large $${item.large.toFixed(2)}</div>
+                <div class="price">Half $${item.half.toFixed(2)} / Full $${item.full.toFixed(2)}</div>
                 <span class="badge in">✔ In Stock</span>
-                <br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.small}, ${item.large})">➕ Add to Cart</button>
+                <br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.half}, ${item.full})">➕ Add to Cart</button>
             `;
         } else {
             div.innerHTML = `

@@ -8,7 +8,7 @@
         body{font-family:'Georgia',serif;background:#f5efe8;color:#3e2723;width:100%;}
         
         header{background:#4A2E1B;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
-        .logo-img{height:44px;width:auto;cursor:pointer;display:block;}
+        .logo-img{height:44px;width:auto;cursor:pointer;display:block;object-fit:contain;}
         nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;margin:2px;}
         nav a:hover,nav a.active{background:#d7a86e;color:#3e2723;}
         
@@ -18,7 +18,7 @@
         .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:350px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
         
-        .hero-logo{max-width:480px;width:100%;height:auto;display:block;margin:0 auto 10px;}
+        .hero-logo{max-width:450px;width:100%;height:auto;display:block;margin:0 auto 10px;}
         .logo-divider{width:100px;height:2px;background:#d7a86e;margin:12px auto;opacity:0.6;}
         .hero-tagline{font-size:18px;font-weight:300;color:#d7a86e;font-family:'Georgia',serif;font-style:italic;margin-top:6px;}
         
@@ -151,13 +151,13 @@
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .hero-logo{max-width:550px;}
+            .hero-logo{max-width:500px;}
             .hero{padding:60px 40px 55px;min-height:400px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .hero-logo{max-width:320px;}
+            .hero-logo{max-width:280px;}
             .hero{padding:30px 16px 25px;min-height:280px;}
             .menu-grid{grid-template-columns:1fr 1fr;}
             .logo-img{height:32px;}
@@ -169,34 +169,9 @@
 <body>
 
 <header>
-    <svg class="logo-img" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" onclick="showPage('home')">
-        <!-- "Chocol" -->
-        <text x="0" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">Chocol</text>
-        
-        <!-- Letter "a" -->
-        <text x="110" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">a</text>
-        
-        <!-- Letter "t" -->
-        <text x="130" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">t</text>
-        
-        <!-- Letter "e" -->
-        <text x="148" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E">e</text>
-        
-        <!-- SPACE -->
-        <text x="166" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#5C3A2E"> </text>
-        
-        <!-- Letter "I" (capital) -->
-        <text x="172" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#d7a86e">I</text>
-        
-        <!-- Letter "n" -->
-        <text x="184" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#d7a86e">n</text>
-        
-        <!-- Letter "n" -->
-        <text x="200" y="38" font-family="Georgia, serif" font-size="36" font-weight="900" fill="#d7a86e">n</text>
-    </svg>
+    <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
     <nav>
         <a class="active" onclick="showPage('home')">Home</a>
-        <a onclick="showPage('menu')">Menu</a>
         <a onclick="showPage('order')">Order</a>
         <a onclick="showPage('contact')">Contact</a>
     </nav>
@@ -206,33 +181,7 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <!-- ===== HERO LOGO ===== -->
-            <svg class="hero-logo" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
-                <!-- "Chocol" -->
-                <text x="0" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">Chocol</text>
-                
-                <!-- Letter "a" -->
-                <text x="230" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">a</text>
-                
-                <!-- Letter "t" -->
-                <text x="270" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">t</text>
-                
-                <!-- Letter "e" -->
-                <text x="310" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E">e</text>
-                
-                <!-- SPACE -->
-                <text x="350" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#5C3A2E"> </text>
-                
-                <!-- Letter "I" (capital) -->
-                <text x="360" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#d7a86e">I</text>
-                
-                <!-- Letter "n" -->
-                <text x="385" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#d7a86e">n</text>
-                
-                <!-- Letter "n" -->
-                <text x="410" y="80" font-family="Georgia, serif" font-size="76" font-weight="900" fill="#d7a86e">n</text>
-            </svg>
-            
+            <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="hero-logo">
             <div class="logo-divider"></div>
             <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
             <button class="btn" onclick="showPage('order')">ORDER NOW</button>
@@ -254,53 +203,6 @@
         <p>Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
         <button class="btn" onclick="showPage('order')">📞 Order Now</button>
     </div>
-</div>
-
-<!-- ===== MENU PAGE ===== -->
-<div class="page" id="page-menu">
-    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📋 Our Full Menu</h2>
-    
-    <div class="section-title">🥪 Sandwiches</div>
-    <div class="menu-grid" id="menuSandwiches"></div>
-    
-    <div class="section-title">🥗 Salads</div>
-    <div class="menu-grid" id="menuSalads"></div>
-    
-    <div class="section-title">🧇 Waffles</div>
-    <div class="menu-grid" id="menuWaffles"></div>
-    
-    <div class="section-title">🥞 Crepes</div>
-    <div class="menu-grid" id="menuCrepes"></div>
-    
-    <div class="section-title">☕ Hot Drinks</div>
-    <div class="menu-grid" id="menuHotDrinks"></div>
-    
-    <div class="section-title">🧊 Iced Drinks</div>
-    <div class="menu-grid" id="menuIcedDrinks"></div>
-    
-    <div class="section-title">🍵 Tea & Mojitos</div>
-    <div class="menu-grid" id="menuTea"></div>
-    
-    <div class="section-title">🥤 Frappes</div>
-    <div class="menu-grid" id="menuFrappes"></div>
-    
-    <div class="section-title">🥛 Milkshakes</div>
-    <div class="menu-grid" id="menuMilkshakes"></div>
-    
-    <div class="section-title">🍹 Smoothies</div>
-    <div class="menu-grid" id="menuSmoothies"></div>
-    
-    <div class="section-title">🍵 Matcha</div>
-    <div class="menu-grid" id="menuMatcha"></div>
-    
-    <div class="section-title">🍰 Desserts & Cakes</div>
-    <div class="menu-grid" id="menuDesserts"></div>
-    
-    <div class="section-title">🍪 Cookies</div>
-    <div class="menu-grid" id="menuCookies"></div>
-    
-    <div class="section-title">🥐 Pastries</div>
-    <div class="menu-grid" id="menuPastries"></div>
 </div>
 
 <!-- ===== ORDER PAGE ===== -->
@@ -895,22 +797,6 @@ function showPage(page) {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Render Menu Page
-    renderCategory('menuSandwiches', menuData.sandwiches, 'sandwich');
-    renderCategory('menuSalads', menuData.salads, 'regular');
-    renderCategory('menuWaffles', menuData.waffles, 'regular');
-    renderCategory('menuCrepes', menuData.crepes, 'regular');
-    renderCategory('menuHotDrinks', menuData.hotDrinks, 'regular');
-    renderCategory('menuIcedDrinks', menuData.icedDrinks, 'regular');
-    renderCategory('menuTea', menuData.tea, 'regular');
-    renderCategory('menuFrappes', menuData.frappes, 'regular');
-    renderCategory('menuMilkshakes', menuData.milkshakes, 'regular');
-    renderCategory('menuSmoothies', menuData.smoothies, 'regular');
-    renderCategory('menuMatcha', menuData.matcha, 'regular');
-    renderCategory('menuDesserts', menuData.desserts, 'regular');
-    renderCategory('menuCookies', menuData.cookies, 'regular');
-    renderCategory('menuPastries', menuData.pastries, 'regular');
-    
     // Render Order Page
     renderOrderCategory('orderSandwiches', menuData.sandwiches, 'sandwich');
     renderOrderCategory('orderSalads', menuData.salads, 'regular');

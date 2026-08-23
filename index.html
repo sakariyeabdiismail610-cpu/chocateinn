@@ -17,11 +17,7 @@
         
         .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:350px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
-        
         .hero-logo{max-width:450px;width:100%;height:auto;display:block;margin:0 auto 10px;}
-        .logo-divider{width:100px;height:2px;background:#d7a86e;margin:12px auto;opacity:0.6;}
-        .hero-tagline{font-size:18px;font-weight:300;color:#d7a86e;font-family:'Georgia',serif;font-style:italic;margin-top:6px;}
-        
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
         
@@ -34,14 +30,9 @@
         .featured-card h3{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
         .featured-card p{font-size:12px;color:#6d5c4e;font-family:'Arial',sans-serif;}
         
-        .order-cta{background:#4A2E1B;color:#f5efe8;text-align:center;padding:30px 16px;border-radius:20px;margin:16px 0;border:1px solid rgba(215,168,110,0.15);}
-        .order-cta h2{font-size:26px;font-family:'Georgia',serif;}
-        .order-cta h2 span{color:#d7a86e;}
-        .order-cta p{font-size:15px;margin:6px 0 14px;opacity:0.8;font-family:'Arial',sans-serif;}
-        .order-cta .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;}
-        .order-cta .btn:hover{background:#c4955a;transform:scale(1.05);}
+        .section-title{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin:25px 0 12px;padding-left:12px;border-left:4px solid #d7a86e;}
         
-        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
         .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
         .menu-item:hover{transform:translateY(-3px);}
         .menu-item h3{font-size:14px;color:#4A2E1B;font-family:'Georgia',serif;}
@@ -53,6 +44,13 @@
         .add-btn{background:#4A2E1B;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:11px;cursor:pointer;transition:0.3s;margin-top:6px;font-family:'Arial',sans-serif;}
         .add-btn:hover{background:#6b3f2a;transform:scale(1.05);}
         .add-btn:disabled{background:#a08070;cursor:not-allowed;}
+        
+        .reviews{background:#fff;border-radius:16px;padding:30px 16px;margin:30px 0;border:1px solid #ece3d8;}
+        .reviews h2{font-size:24px;color:#4A2E1B;font-family:'Georgia',serif;text-align:center;margin-bottom:16px;}
+        .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        .review-item{background:#f8f5f0;padding:16px;border-radius:12px;border-left:4px solid #d7a86e;}
+        .review-item .name{font-weight:700;color:#4A2E1B;font-size:14px;}
+        .review-item .text{font-size:13px;color:#6d5c4e;margin-top:4px;font-style:italic;}
         
         .contact-info{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;margin-bottom:12px;}
         .contact-info h3{font-size:18px;color:#4A2E1B;margin-bottom:6px;font-family:'Georgia',serif;}
@@ -66,8 +64,11 @@
         .contact-form .btn{width:100%;background:#4A2E1B;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;font-family:'Arial',sans-serif;}
         .contact-form .btn:hover{background:#6b3f2a;}
         
-        footer{background:#4A2E1B;color:#d7a86e;padding:14px 16px;text-align:center;border-top:4px solid #d7a86e;margin-top:12px;}
+        footer{background:#4A2E1B;color:#d7a86e;padding:20px;text-align:center;border-top:4px solid #d7a86e;margin-top:20px;}
         footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;}
+        footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:6px 0;}
+        footer .footer-links a{color:#d7a86e;text-decoration:none;font-size:12px;cursor:pointer;font-family:'Arial',sans-serif;}
+        footer .footer-links a:hover{color:#fff;}
         
         .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
         .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
@@ -79,16 +80,15 @@
         .cart-side-header h2{font-size:20px;color:#4A2E1B;font-family:'Georgia',serif;}
         .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#6d5c4e;transition:0.3s;padding:0 8px;}
         .cart-close:hover{color:#b71c1c;transform:rotate(90deg);}
-        
         .cart-side-scroll{flex:1;overflow-y:auto;padding-right:4px;}
-        .cart-side-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ebe5;}
-        .cart-side-item .name{font-weight:600;font-size:14px;color:#4A2E1B;flex:1;font-family:'Georgia',serif;}
-        .cart-side-item .qty-control{display:flex;align-items:center;gap:6px;}
-        .cart-side-item .qty-control button{background:#4A2E1B;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;}
-        .cart-side-item .qty-control button:hover{background:#6b3f2a;}
-        .cart-side-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
-        .cart-side-item .item-total{font-weight:700;color:#6b3f2a;font-size:14px;min-width:55px;text-align:right;}
-        .cart-side-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;}
+        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ebe5;}
+        .cart-item .name{font-weight:600;font-size:14px;color:#4A2E1B;flex:1;font-family:'Georgia',serif;}
+        .cart-item .qty-control{display:flex;align-items:center;gap:6px;}
+        .cart-item .qty-control button{background:#4A2E1B;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;}
+        .cart-item .qty-control button:hover{background:#6b3f2a;}
+        .cart-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
+        .cart-item .item-total{font-weight:700;color:#6b3f2a;font-size:14px;min-width:55px;text-align:right;}
+        .cart-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;}
         
         .cart-checkout-fields{margin-top:12px;border-top:2px solid #d7a86e;padding-top:14px;}
         .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4A2E1B;display:block;margin-bottom:3px;font-family:'Georgia',serif;}
@@ -122,7 +122,6 @@
         .prompt-cart{background:#f5efe8;padding:10px;border-radius:10px;border-left:4px solid #d7a86e;margin:8px 0;font-size:13px;}
         .amount-display-cart{background:#4A2E1B;color:#fff;padding:10px;border-radius:12px;text-align:center;margin:8px 0;}
         .amount-display-cart .total{font-size:24px;font-weight:900;color:#d7a86e;}
-        
         .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
         .cart-overlay.active{display:block;}
         
@@ -130,9 +129,6 @@
         .order-confirmed h3{color:#2e7d32;font-size:18px;}
         .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4A2E1B;}
         
-        .section-title{font-size:20px;color:#4A2E1B;font-family:'Georgia',serif;margin:20px 0 10px;padding-left:12px;border-left:4px solid #d7a86e;}
-        
-        /* ===== SIZE POPUP MODAL ===== */
         .size-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:3000;justify-content:center;align-items:center;}
         .size-modal.active{display:flex;}
         .size-modal-content{background:#fff;border-radius:16px;padding:30px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
@@ -142,9 +138,7 @@
         .size-btn{padding:12px 20px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;transition:0.3s;display:flex;justify-content:space-between;align-items:center;}
         .size-btn:hover{background:#4A2E1B;color:#fff;}
         .size-btn .price-tag{font-weight:400;font-size:14px;color:#6b3f2a;}
-        .size-btn:hover .price-tag{color:#fff;}
         .size-btn .cheese-tag{font-size:13px;font-weight:400;color:#d7a86e;background:#4A2E1B;padding:2px 10px;border-radius:20px;}
-        .size-btn:hover .cheese-tag{background:#fff;color:#4A2E1B;}
         .size-btn.cancel{background:#e8e0d8;border-color:#e8e0d8;color:#6d5c4e;justify-content:center;}
         .size-btn.cancel:hover{background:#d5cdc5;color:#6d5c4e;}
         
@@ -154,6 +148,7 @@
             .hero-logo{max-width:500px;}
             .hero{padding:60px 40px 55px;min-height:400px;}
             .page{padding:0 30px;}
+            .review-grid{grid-template-columns:repeat(3,1fr);}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
@@ -161,8 +156,7 @@
             .hero{padding:30px 16px 25px;min-height:280px;}
             .menu-grid{grid-template-columns:1fr 1fr;}
             .logo-img{height:32px;}
-            .size-modal-content{padding:20px;}
-            .size-btn{font-size:14px;padding:10px 16px;}
+            .review-grid{grid-template-columns:1fr;}
         }
     </style>
 </head>
@@ -182,8 +176,6 @@
     <div class="hero">
         <div class="hero-content">
             <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="hero-logo">
-            <div class="logo-divider"></div>
-            <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
             <button class="btn" onclick="showPage('order')">ORDER NOW</button>
         </div>
     </div>
@@ -198,10 +190,22 @@
         </div>
     </div>
     
-    <div class="order-cta">
-        <h2>📱 Ready to Order?</h2>
-        <p>Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
-        <button class="btn" onclick="showPage('order')">📞 Order Now</button>
+    <div class="reviews">
+        <h2>💬 Our Customers' Say</h2>
+        <div class="review-grid">
+            <div class="review-item"><div class="name">Ahmed Ali</div><div class="text">"Best coffee in town! The chocolate croissant is amazing."</div></div>
+            <div class="review-item"><div class="name">Fatima Hassan</div><div class="text">"The sandwiches are so fresh and delicious. Love the atmosphere!"</div></div>
+            <div class="review-item"><div class="name">Omar Said</div><div class="text">"My favorite place to relax and enjoy great food. Highly recommend!"</div></div>
+            <div class="review-item"><div class="name">Sara Abdi</div><div class="text">"The waffles are incredible! Will definitely come back."</div></div>
+            <div class="review-item"><div class="name">Khadar Warsame</div><div class="text">"Great service and amazing coffee. The best in Hargeisa!"</div></div>
+            <div class="review-item"><div class="name">Naima Yusuf</div><div class="text">"Chocolate Inn is my happy place. Everything is perfect."</div></div>
+        </div>
+    </div>
+    
+    <div class="order-cta" style="background:#4A2E1B;color:#f5efe8;padding:30px 16px;border-radius:20px;margin:16px 0;border:1px solid rgba(215,168,110,0.15);text-align:center;">
+        <h2 style="font-size:26px;font-family:'Georgia',serif;">📱 Ready to Order?</h2>
+        <p style="font-size:15px;margin:6px 0 14px;opacity:0.8;font-family:'Arial',sans-serif;">Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
+        <button class="btn" onclick="showPage('order')" style="background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;">📞 Order Now</button>
     </div>
 </div>
 
@@ -280,30 +284,16 @@
     </div>
 </div>
 
-<!-- ===== SIZE POPUP MODAL ===== -->
+<!-- ===== SIZE POPUP ===== -->
 <div class="size-modal" id="sizeModal">
     <div class="size-modal-content">
         <h3 id="sizeItemName">Sandwich Name</h3>
         <p class="sub">Choose your size and cheese option:</p>
         <div class="size-options">
-            <button class="size-btn" onclick="selectSize('half', false)">
-                <span>🥪 Half</span>
-                <span class="price-tag" id="sizeHalfPrice">$0.00</span>
-            </button>
-            <button class="size-btn" onclick="selectSize('half', true)">
-                <span>🥪 Half + 🧀 Cheese</span>
-                <span class="price-tag" id="sizeHalfCheesePrice">$0.00</span>
-                <span class="cheese-tag">+$0.50</span>
-            </button>
-            <button class="size-btn" onclick="selectSize('full', false)">
-                <span>🥪 Full</span>
-                <span class="price-tag" id="sizeFullPrice">$0.00</span>
-            </button>
-            <button class="size-btn" onclick="selectSize('full', true)">
-                <span>🥪 Full + 🧀 Cheese</span>
-                <span class="price-tag" id="sizeFullCheesePrice">$0.00</span>
-                <span class="cheese-tag">+$0.50</span>
-            </button>
+            <button class="size-btn" onclick="selectSize('half', false)"><span>🥪 Half</span><span class="price-tag" id="sizeHalfPrice">$0.00</span></button>
+            <button class="size-btn" onclick="selectSize('half', true)"><span>🥪 Half + 🧀 Cheese</span><span class="price-tag" id="sizeHalfCheesePrice">$0.00</span><span class="cheese-tag">+$0.50</span></button>
+            <button class="size-btn" onclick="selectSize('full', false)"><span>🥪 Full</span><span class="price-tag" id="sizeFullPrice">$0.00</span></button>
+            <button class="size-btn" onclick="selectSize('full', true)"><span>🥪 Full + 🧀 Cheese</span><span class="price-tag" id="sizeFullCheesePrice">$0.00</span><span class="cheese-tag">+$0.50</span></button>
             <button class="size-btn cancel" onclick="closeSizeModal()">Cancel</button>
         </div>
     </div>
@@ -314,10 +304,7 @@
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
 <div class="cart-side" id="cartSide">
-    <div class="cart-side-header">
-        <h2>🛒 Your Order</h2>
-        <button class="cart-close" onclick="toggleCart()">✕</button>
-    </div>
+    <div class="cart-side-header"><h2>🛒 Your Order</h2><button class="cart-close" onclick="toggleCart()">✕</button></div>
     <div class="cart-side-scroll">
         <div id="cartSideItems"><div class="cart-side-empty">Your cart is empty. ☕</div></div>
         <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
@@ -325,42 +312,24 @@
             <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
             <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
         </div>
-        
         <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
-            <label>👤 Your Name</label>
-            <input type="text" id="cartName" placeholder="Enter your name">
-            <label>📱 Your WhatsApp Number</label>
-            <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number">
-            <label>📍 Delivery Address</label>
-            <input type="text" id="cartAddress" placeholder="Type your address">
-            
+            <label>👤 Your Name</label><input type="text" id="cartName" placeholder="Enter your name">
+            <label>📱 Your WhatsApp Number</label><input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number">
+            <label>📍 Delivery Address</label><input type="text" id="cartAddress" placeholder="Type your address">
             <label>🚚 Delivery or Pickup?</label>
             <div class="delivery-option-cart">
                 <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
                 <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
             </div>
-            
             <label>💳 Currency</label>
             <div class="currency-toggle-cart">
                 <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
                 <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
             </div>
-            
-            <div class="amount-display-cart">
-                <div style="font-size:12px;opacity:0.8;">Total Amount</div>
-                <div class="total" id="cartDisplayAmount">$0.00</div>
-            </div>
-            
+            <div class="amount-display-cart"><div style="font-size:12px;opacity:0.8;">Total Amount</div><div class="total" id="cartDisplayAmount">$0.00</div></div>
             <label>📱 Payment Method</label>
-            <div class="pay-option-cart selected" onclick="setCartPayment('ZAAD')" id="cartPayZAAD">
-                <div class="method">📱 ZAAD</div>
-                <div class="number">📞 3665112</div>
-            </div>
-            <div class="pay-option-cart" onclick="setCartPayment('Edahab')" id="cartPayEdahab">
-                <div class="method">📱 Edahab</div>
-                <div class="number">📞 3665112</div>
-            </div>
-            
+            <div class="pay-option-cart selected" onclick="setCartPayment('ZAAD')" id="cartPayZAAD"><div class="method">📱 ZAAD</div><div class="number">📞 3665112</div></div>
+            <div class="pay-option-cart" onclick="setCartPayment('Edahab')" id="cartPayEdahab"><div class="method">📱 Edahab</div><div class="number">📞 3665112</div></div>
             <div class="prompt-cart" id="cartPrompt">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong></div>
             <div class="call-reminder-cart">📞 After payment, call or WhatsApp: <span class="number">3665112</span></div>
         </div>
@@ -368,14 +337,20 @@
     </div>
 </div>
 
-<footer><div class="copy">© 2026 Chocolate Inn — All rights reserved.</div></footer>
+<footer>
+    <div class="footer-links">
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('order')">Order</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
+</footer>
 
 <script>
 // ===== CONFIGURATION =====
 const SHOP_WHATSAPP = '252633665112';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
-// ===== SIZE SELECTION VARIABLES =====
 let pendingSandwich = null;
 let pendingSandwichId = null;
 
@@ -405,23 +380,16 @@ const menuData = {
         {name:'Banana Crepe', price:2}
     ],
     hotDrinks: [
-        {name:'Espresso', price:0.90},
-        {name:'Americano', price:0.90},
-        {name:'Cappuccino', price:1.50},
-        {name:'Latte', price:1.50},
-        {name:'Flat White', price:1.30},
-        {name:'Spanish Latte', price:1.70},
-        {name:'Mocha', price:1.50},
-        {name:'Pistachio Latte', price:2},
+        {name:'Espresso', price:0.90},{name:'Americano', price:0.90},
+        {name:'Cappuccino', price:1.50},{name:'Latte', price:1.50},
+        {name:'Flat White', price:1.30},{name:'Spanish Latte', price:1.70},
+        {name:'Mocha', price:1.50},{name:'Pistachio Latte', price:2},
         {name:'Hot Chocolate', price:1.50}
     ],
     icedDrinks: [
-        {name:'Iced Spanish', price:2.70},
-        {name:'Iced White Mocha', price:2.80},
-        {name:'Iced Vanilla Latte', price:2.80},
-        {name:'Iced Pistachio Latte', price:3.60},
-        {name:'Iced Caramel Latte', price:2.80},
-        {name:'Classic Iced Latte', price:2}
+        {name:'Iced Spanish', price:2.70},{name:'Iced White Mocha', price:2.80},
+        {name:'Iced Vanilla Latte', price:2.80},{name:'Iced Pistachio Latte', price:3.60},
+        {name:'Iced Caramel Latte', price:2.80},{name:'Classic Iced Latte', price:2}
     ],
     tea: [
         {name:'Passion Iced Tea', price:1},
@@ -479,7 +447,7 @@ const menuData = {
     ]
 };
 
-// ===== SIZE MODAL FUNCTIONS =====
+// ===== SIZE MODAL =====
 function openSizeModal(itemId, itemName, halfPrice, fullPrice) {
     pendingSandwich = {name: itemName, half: halfPrice, full: fullPrice};
     pendingSandwichId = itemId;
@@ -490,7 +458,6 @@ function openSizeModal(itemId, itemName, halfPrice, fullPrice) {
     document.getElementById('sizeFullCheesePrice').textContent = '$' + (fullPrice + 0.50).toFixed(2);
     document.getElementById('sizeModal').classList.add('active');
 }
-
 function selectSize(size, cheese) {
     if (!pendingSandwich || !pendingSandwichId) return;
     let price = size === 'half' ? pendingSandwich.half : pendingSandwich.full;
@@ -500,7 +467,6 @@ function selectSize(size, cheese) {
     addToCart(pendingSandwichId + '_' + size + '_' + (cheese ? 'cheese' : 'nocheese'), nameWithSize, price);
     closeSizeModal();
 }
-
 function closeSizeModal() {
     document.getElementById('sizeModal').classList.remove('active');
     pendingSandwich = null;
@@ -509,295 +475,90 @@ function closeSizeModal() {
 
 // ===== RENDER FUNCTIONS =====
 function renderCategory(containerId, items, type) {
-    const container = document.getElementById(containerId);
-    if(!container) return;
+    const container = document.getElementById(containerId); if(!container) return;
     container.innerHTML = '';
     items.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'menu-item';
+        const div = document.createElement('div'); div.className = 'menu-item';
         const priceDisplay = type === 'sandwich' ? 'Half $' + item.half.toFixed(2) + ' / Full $' + item.full.toFixed(2) : '$' + item.price.toFixed(2);
-        div.innerHTML = `
-            <h3>${item.name}</h3>
-            <div class="price">${priceDisplay}</div>
-            <span class="badge in">✔ In Stock</span>
-        `;
+        div.innerHTML = `<h3>${item.name}</h3><div class="price">${priceDisplay}</div><span class="badge in">✔ In Stock</span>`;
         container.appendChild(div);
     });
 }
-
 function renderOrderCategory(containerId, items, type) {
-    const container = document.getElementById(containerId);
-    if(!container) return;
+    const container = document.getElementById(containerId); if(!container) return;
     container.innerHTML = '';
     const idPrefix = containerId.replace('order', '').toLowerCase();
     items.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'menu-item';
+        const div = document.createElement('div'); div.className = 'menu-item';
         const uniqueId = idPrefix + '_' + index;
-        
         if (type === 'sandwich') {
-            div.innerHTML = `
-                <h3>${item.name}</h3>
-                <div class="price">Half $${item.half.toFixed(2)} / Full $${item.full.toFixed(2)}</div>
-                <span class="badge in">✔ In Stock</span>
-                <br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.half}, ${item.full})">➕ Add to Cart</button>
-            `;
+            div.innerHTML = `<h3>${item.name}</h3><div class="price">Half $${item.half.toFixed(2)} / Full $${item.full.toFixed(2)}</div><span class="badge in">✔ In Stock</span><br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.half}, ${item.full})">➕ Add to Cart</button>`;
         } else {
-            div.innerHTML = `
-                <h3>${item.name}</h3>
-                <div class="price">$${item.price.toFixed(2)}</div>
-                <span class="badge in">✔ In Stock</span>
-                <br><button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">➕ Add to Cart</button>
-            `;
+            div.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge in">✔ In Stock</span><br><button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">➕ Add to Cart</button>`;
         }
         container.appendChild(div);
     });
 }
 
 // ===== CART FUNCTIONS =====
-let cart = {};
-let cartCurrency = 'USD';
-let cartPayment = 'ZAAD';
-let cartDelivery = 'Pickup';
-let cartTotal = 0;
-const exchangeRate = 11000;
-let currentOrderId = '';
-
-function addToCart(id, name, price) {
-    if(cart[id]) {
-        cart[id].qty += 1;
-    } else {
-        cart[id] = {name: name, price: price, qty: 1};
-    }
-    updateAll();
-}
-
-function changeQty(id, delta) {
-    if(cart[id]) {
-        cart[id].qty += delta;
-        if(cart[id].qty <= 0) delete cart[id];
-        updateAll();
-    }
-}
-
-function updateAll() {
-    updateCartCount();
-    updateSideCart();
-    updateCartTotals();
-    updatePlaceOrderBtn();
-}
-
-function updateCartCount() {
-    const arr = Object.values(cart);
-    const total = arr.reduce((sum, item) => sum + item.qty, 0);
-    document.getElementById('cartCount').textContent = total;
-}
-
+let cart = {}; let cartCurrency = 'USD'; let cartPayment = 'ZAAD'; let cartDelivery = 'Pickup'; let cartTotal = 0; const exchangeRate = 11000; let currentOrderId = '';
+function addToCart(id, name, price) { if(cart[id]) cart[id].qty += 1; else cart[id] = {name: name, price: price, qty: 1}; updateAll(); }
+function changeQty(id, delta) { if(cart[id]) { cart[id].qty += delta; if(cart[id].qty <= 0) delete cart[id]; updateAll(); } }
+function updateAll() { updateCartCount(); updateSideCart(); updateCartTotals(); updatePlaceOrderBtn(); }
+function updateCartCount() { const arr = Object.values(cart); const total = arr.reduce((sum, item) => sum + item.qty, 0); document.getElementById('cartCount').textContent = total; }
 function updateSideCart() {
-    const container = document.getElementById('cartSideItems');
-    const arr = Object.values(cart);
-    if(arr.length === 0) {
-        container.innerHTML = '<div class="cart-side-empty">Your cart is empty. ☕</div>';
-        return;
-    }
-    let html = '';
-    Object.keys(cart).forEach(id => {
-        const item = cart[id];
-        const total = item.price * item.qty;
-        html += `<div class="cart-side-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty('${id}',-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty('${id}',1)">+</button></div><span class="item-total">$${total.toFixed(2)}</span></div>`;
-    });
+    const container = document.getElementById('cartSideItems'); const arr = Object.values(cart);
+    if(arr.length === 0) { container.innerHTML = '<div class="cart-side-empty">Your cart is empty. ☕</div>'; return; }
+    let html = ''; Object.keys(cart).forEach(id => { const item = cart[id]; const total = item.price * item.qty; html += `<div class="cart-side-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty('${id}',-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty('${id}',1)">+</button></div><span class="item-total">$${total.toFixed(2)}</span></div>`; });
     container.innerHTML = html;
 }
-
 function updateCartTotals() {
-    const arr = Object.values(cart);
-    const totalsDiv = document.getElementById('cartSideTotals');
-    const checkoutFields = document.getElementById('checkoutFields');
-    if(arr.length === 0) {
-        totalsDiv.style.display = 'none';
-        checkoutFields.style.display = 'none';
-        return;
-    }
-    let subtotal = 0;
-    arr.forEach(item => { subtotal += item.price * item.qty; });
-    const tax = subtotal * 0.0012;
-    const total = subtotal + tax;
-    cartTotal = total;
-    document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2);
-    document.getElementById('sideTax').textContent = '$' + tax.toFixed(2);
-    document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
-    totalsDiv.style.display = 'block';
-    checkoutFields.style.display = 'block';
-    updateCartDisplayAmount();
+    const arr = Object.values(cart); const totalsDiv = document.getElementById('cartSideTotals'); const checkoutFields = document.getElementById('checkoutFields');
+    if(arr.length === 0) { totalsDiv.style.display = 'none'; checkoutFields.style.display = 'none'; return; }
+    let subtotal = 0; arr.forEach(item => { subtotal += item.price * item.qty; }); const tax = subtotal * 0.0012; const total = subtotal + tax; cartTotal = total;
+    document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2); document.getElementById('sideTax').textContent = '$' + tax.toFixed(2); document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
+    totalsDiv.style.display = 'block'; checkoutFields.style.display = 'block'; updateCartDisplayAmount();
 }
-
-function updatePlaceOrderBtn() {
-    document.getElementById('placeOrderBtn').disabled = Object.values(cart).length === 0;
-}
-
-function toggleCart() {
-    const side = document.getElementById('cartSide');
-    const overlay = document.getElementById('cartOverlay');
-    side.classList.toggle('open');
-    overlay.classList.toggle('active');
-    if(side.classList.contains('open')) updateAll();
-}
-
-function setCartDelivery(option) {
-    cartDelivery = option;
-    document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup');
-    document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery');
-}
-
-function setCartCurrency(currency) {
-    cartCurrency = currency;
-    document.getElementById('cartUSD').classList.toggle('active', currency === 'USD');
-    document.getElementById('cartSLSH').classList.toggle('active', currency === 'SLSH');
-    updateCartDisplayAmount();
-    updateCartPrompt();
-}
-
-function updateCartDisplayAmount() {
-    const display = document.getElementById('cartDisplayAmount');
-    let amount = cartTotal;
-    let symbol = '$';
-    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
-    display.textContent = symbol + amount.toFixed(2);
-}
-
-function setCartPayment(method) {
-    cartPayment = method;
-    document.getElementById('cartPayZAAD').classList.toggle('selected', method === 'ZAAD');
-    document.getElementById('cartPayEdahab').classList.toggle('selected', method === 'Edahab');
-    updateCartPrompt();
-}
-
-function updateCartPrompt() {
-    const promptAmt = document.getElementById('cartPromptAmount');
-    const promptMethod = document.getElementById('cartPromptMethod');
-    let amount = cartTotal;
-    let symbol = '$';
-    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
-    promptAmt.textContent = symbol + amount.toFixed(2);
-    promptMethod.textContent = cartPayment;
-}
-
-function generateOrderId() {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let result = '';
-    for (let i = 0; i < 6; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
-    return result;
-}
-
+function updatePlaceOrderBtn() { document.getElementById('placeOrderBtn').disabled = Object.values(cart).length === 0; }
+function toggleCart() { const side = document.getElementById('cartSide'); const overlay = document.getElementById('cartOverlay'); side.classList.toggle('open'); overlay.classList.toggle('active'); if(side.classList.contains('open')) updateAll(); }
+function setCartDelivery(option) { cartDelivery = option; document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup'); document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery'); }
+function setCartCurrency(currency) { cartCurrency = currency; document.getElementById('cartUSD').classList.toggle('active', currency === 'USD'); document.getElementById('cartSLSH').classList.toggle('active', currency === 'SLSH'); updateCartDisplayAmount(); updateCartPrompt(); }
+function updateCartDisplayAmount() { const display = document.getElementById('cartDisplayAmount'); let amount = cartTotal; let symbol = '$'; if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; } display.textContent = symbol + amount.toFixed(2); }
+function setCartPayment(method) { cartPayment = method; document.getElementById('cartPayZAAD').classList.toggle('selected', method === 'ZAAD'); document.getElementById('cartPayEdahab').classList.toggle('selected', method === 'Edahab'); updateCartPrompt(); }
+function updateCartPrompt() { const promptAmt = document.getElementById('cartPromptAmount'); const promptMethod = document.getElementById('cartPromptMethod'); let amount = cartTotal; let symbol = '$'; if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; } promptAmt.textContent = symbol + amount.toFixed(2); promptMethod.textContent = cartPayment; }
+function generateOrderId() { const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; let result = ''; for (let i = 0; i < 6; i++) result += chars.charAt(Math.floor(Math.random() * chars.length)); return result; }
 function openCartCheckout() {
-    const arr = Object.values(cart);
-    if(arr.length === 0) return;
-    const name = document.getElementById('cartName').value.trim();
-    if(!name) { alert('Please enter your name.'); document.getElementById('cartName').focus(); return; }
-    const phone = document.getElementById('cartPhone').value.trim();
-    if(!phone) { alert('Please enter your WhatsApp number.'); document.getElementById('cartPhone').focus(); return; }
-    if(cartDelivery === 'Delivery') {
-        const address = document.getElementById('cartAddress').value.trim();
-        if(!address) { alert('Please enter your delivery address.'); document.getElementById('cartAddress').focus(); return; }
-    }
+    const arr = Object.values(cart); if(arr.length === 0) return;
+    const name = document.getElementById('cartName').value.trim(); if(!name) { alert('Please enter your name.'); document.getElementById('cartName').focus(); return; }
+    const phone = document.getElementById('cartPhone').value.trim(); if(!phone) { alert('Please enter your WhatsApp number.'); document.getElementById('cartPhone').focus(); return; }
+    if(cartDelivery === 'Delivery') { const address = document.getElementById('cartAddress').value.trim(); if(!address) { alert('Please enter your delivery address.'); document.getElementById('cartAddress').focus(); return; } }
     sendOrder();
 }
-
 function sendOrder() {
-    const name = document.getElementById('cartName').value || 'Customer';
-    const phone = document.getElementById('cartPhone').value || 'Not provided';
-    const address = document.getElementById('cartAddress').value || 'Not provided';
-    const arr = Object.values(cart);
-    let orderText = '';
-    arr.forEach(item => { orderText += `${item.name} × ${item.qty}\n`; });
-    let amount = cartTotal;
-    let symbol = '$';
-    if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; }
-    const total = symbol + amount.toFixed(2);
-    
+    const name = document.getElementById('cartName').value || 'Customer'; const phone = document.getElementById('cartPhone').value || 'Not provided'; const address = document.getElementById('cartAddress').value || 'Not provided';
+    const arr = Object.values(cart); let orderText = ''; arr.forEach(item => { orderText += `${item.name} × ${item.qty}\n`; });
+    let amount = cartTotal; let symbol = '$'; if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; } const total = symbol + amount.toFixed(2);
     currentOrderId = generateOrderId();
-    
-    const emailData = {
-        orderId: currentOrderId,
-        name: name,
-        phone: phone,
-        address: address,
-        delivery: cartDelivery,
-        order: orderText,
-        total: total,
-        payment: cartPayment,
-        currency: cartCurrency,
-        _subject: `🍫 New Order #${currentOrderId} from ${name}`
-    };
-    
-    const whatsappMessage = `🍫 Thank you for your order from Chocolate Inn!
-
-📋 Order #${currentOrderId}
-👤 Name: ${name}
-📱 Phone: ${phone}
-📍 Address: ${address}
-📦 ${cartDelivery}
-
-📋 Items:
-${orderText}
-💰 Total: ${total}
-💳 Payment: ${cartPayment} to 3665112
-
-✅ Your order has been received.
-
-📞 Call us: 3665112
-
-Thank you! ☕🍫`;
-    
-    const btn = document.querySelector('.place-order-btn');
-    const originalText = btn.textContent;
-    btn.textContent = '⏳ Sending...';
-    btn.disabled = true;
-    
-    fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json','Accept': 'application/json'},
-        body: JSON.stringify(emailData)
-    })
+    const emailData = { orderId: currentOrderId, name: name, phone: phone, address: address, delivery: cartDelivery, order: orderText, total: total, payment: cartPayment, currency: cartCurrency, _subject: `🍫 New Order #${currentOrderId} from ${name}` };
+    const whatsappMessage = `🍫 Thank you for your order from Chocolate Inn!\n\n📋 Order #${currentOrderId}\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Items:\n${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\n✅ Your order has been received.\n\n📞 Call us: 3665112\n\nThank you! ☕🍫`;
+    const btn = document.querySelector('.place-order-btn'); const originalText = btn.textContent; btn.textContent = '⏳ Sending...'; btn.disabled = true;
+    fetch(FORMSPREE_URL, { method: 'POST', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, body: JSON.stringify(emailData) })
     .then(response => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        
-        document.getElementById('confirmOrderId').textContent = currentOrderId;
-        document.getElementById('orderConfirmed').style.display = 'block';
-        
-        const customerPhone = document.getElementById('cartPhone').value.trim();
-        const whatsappNumber = customerPhone.replace(/[^0-9]/g, '');
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappUrl, '_blank');
-        
+        btn.textContent = originalText; btn.disabled = false;
+        document.getElementById('confirmOrderId').textContent = currentOrderId; document.getElementById('orderConfirmed').style.display = 'block';
+        const customerPhone = document.getElementById('cartPhone').value.trim(); const whatsappNumber = customerPhone.replace(/[^0-9]/g, ''); const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`; window.open(whatsappUrl, '_blank');
         alert(`✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp sent to you.\n📧 Shop received your order via email.\n\nThank you! ☕🍫`);
-        
-        cart = {};
-        updateAll();
-        toggleCart();
-        setTimeout(() => { document.getElementById('orderConfirmed').style.display = 'none'; }, 8000);
+        cart = {}; updateAll(); toggleCart(); setTimeout(() => { document.getElementById('orderConfirmed').style.display = 'none'; }, 8000);
     })
-    .catch(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-        alert('⚠️ Issue sending order. Please call 3665112.');
-    });
+    .catch(() => { btn.textContent = originalText; btn.disabled = false; alert('⚠️ Issue sending order. Please call 3665112.'); });
 }
-
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('header nav a').forEach(link => {
-        link.classList.remove('active');
-        if(link.textContent.toLowerCase() === page) link.classList.add('active');
-    });
+    document.querySelectorAll('header nav a').forEach(link => { link.classList.remove('active'); if(link.textContent.toLowerCase() === page) link.classList.add('active'); });
     window.scrollTo({top:0});
 }
-
-// ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Render Order Page
     renderOrderCategory('orderSandwiches', menuData.sandwiches, 'sandwich');
     renderOrderCategory('orderSalads', menuData.salads, 'regular');
     renderOrderCategory('orderWaffles', menuData.waffles, 'regular');
@@ -812,7 +573,6 @@ document.addEventListener('DOMContentLoaded', function() {
     renderOrderCategory('orderDesserts', menuData.desserts, 'regular');
     renderOrderCategory('orderCookies', menuData.cookies, 'regular');
     renderOrderCategory('orderPastries', menuData.pastries, 'regular');
-    
     updateAll();
 });
 </script>

@@ -5,38 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Georgia',serif;background:#f5efe8;color:#3e2723;width:100%;}
+        body{font-family:'Arial',sans-serif;background:#f5efe8;color:#3e2723;width:100%;}
         
-        header{background:#4A2E1B;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
+        header{background:#4A2E1B;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
         .logo-img{height:44px;width:auto;cursor:pointer;display:block;object-fit:contain;}
-        nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;margin:2px;}
-        nav a:hover,nav a.active{background:#d7a86e;color:#3e2723;}
+        nav{display:flex;gap:25px;align-items:center;flex-wrap:wrap;}
+        nav a{color:#fff;text-decoration:none;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;padding-bottom:3px;border-bottom:2px solid transparent;}
+        nav a:hover,nav a.active{border-bottom-color:#d7a86e;color:#d7a86e;}
         
-        .page{display:none;padding:12px;width:100%;}
+        .page{display:none;padding:0;width:100%;}
         .page.active{display:block;}
         
-        .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:350px;display:flex;align-items:center;justify-content:center;}
+        .hero{background:#4A2E1B;color:#f5efe8;padding:60px 20px 50px;text-align:center;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
-        .hero-logo{max-width:450px;width:100%;height:auto;display:block;margin:0 auto 10px;}
-        .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
+        .hero-logo{max-width:450px;width:100%;height:auto;display:block;margin:0 auto 15px;}
+        .hero .call-text{font-size:18px;color:#d7a86e;letter-spacing:4px;text-transform:uppercase;font-weight:300;margin-bottom:4px;}
+        .hero .location{font-size:16px;color:#f5efe8;opacity:0.7;letter-spacing:2px;font-family:'Arial',sans-serif;}
+        .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:16px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
         
-        .featured{padding:30px 12px;max-width:1200px;margin:0 auto;}
-        .featured h2{font-size:22px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:14px;margin-bottom:18px;font-family:'Georgia',serif;}
-        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-        .featured-card{background:#fff;border-radius:16px;padding:18px 14px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
-        .featured-card:hover{transform:translateY(-4px);}
-        .featured-card .icon{font-size:32px;}
-        .featured-card h3{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
-        .featured-card p{font-size:12px;color:#6d5c4e;font-family:'Arial',sans-serif;}
+        .category-tabs{background:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;border-bottom:2px solid #ece3d8;position:sticky;top:68px;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
+        .category-tabs button{background:transparent;border:none;padding:8px 18px;font-size:13px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;border-radius:30px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:0.5px;}
+        .category-tabs button:hover{background:#f5efe8;color:#4A2E1B;}
+        .category-tabs button.active{background:#4A2E1B;color:#d7a86e;}
         
-        .section-title{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin:25px 0 12px;padding-left:12px;border-left:4px solid #d7a86e;}
+        .menu-section{padding:20px 16px;max-width:1200px;margin:0 auto;}
+        .section-title{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin:20px 0 12px;padding-left:12px;border-left:4px solid #d7a86e;}
         
-        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
-        .menu-item{background:#fff;border-radius:12px;padding:12px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
-        .menu-item:hover{transform:translateY(-3px);}
+        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
+        .menu-item{background:#fff;border-radius:12px;padding:14px 12px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
+        .menu-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
         .menu-item h3{font-size:14px;color:#4A2E1B;font-family:'Georgia',serif;}
-        .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;font-family:'Arial',sans-serif;}
+        .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;font-family:'Arial',sans-serif;margin:2px 0;}
         .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:10px;font-weight:700;margin-top:4px;font-family:'Arial',sans-serif;}
         .badge.in{background:#2e7d32;color:#fff;}
         .badge.out{background:#b71c1c;color:#fff;}
@@ -45,29 +45,37 @@
         .add-btn:hover{background:#6b3f2a;transform:scale(1.05);}
         .add-btn:disabled{background:#a08070;cursor:not-allowed;}
         
-        .reviews{background:#fff;border-radius:16px;padding:30px 16px;margin:30px 0;border:1px solid #ece3d8;}
-        .reviews h2{font-size:24px;color:#4A2E1B;font-family:'Georgia',serif;text-align:center;margin-bottom:16px;}
-        .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-        .review-item{background:#f8f5f0;padding:16px;border-radius:12px;border-left:4px solid #d7a86e;}
-        .review-item .name{font-weight:700;color:#4A2E1B;font-size:14px;}
-        .review-item .text{font-size:13px;color:#6d5c4e;margin-top:4px;font-style:italic;}
+        .featured-section{background:#fff;padding:30px 20px;margin:16px 0;border-top:2px solid #ece3d8;border-bottom:2px solid #ece3d8;}
+        .featured-section h2{font-size:24px;color:#4A2E1B;font-family:'Georgia',serif;text-align:center;margin-bottom:16px;}
+        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1200px;margin:0 auto;}
+        .featured-card{background:#f8f5f0;border-radius:12px;padding:16px;text-align:center;border:1px solid #ece3d8;}
+        .featured-card .icon{font-size:36px;display:block;margin-bottom:4px;}
+        .featured-card h3{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
+        .featured-card p{font-size:12px;color:#6d5c4e;}
         
-        .contact-info{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;margin-bottom:12px;}
+        .order-cta{background:#4A2E1B;color:#f5efe8;text-align:center;padding:30px 16px;border-top:4px solid #d7a86e;border-bottom:4px solid #d7a86e;margin:0;}
+        .order-cta h2{font-size:26px;font-family:'Georgia',serif;}
+        .order-cta h2 span{color:#d7a86e;}
+        .order-cta p{font-size:15px;margin:6px 0 14px;opacity:0.8;font-family:'Arial',sans-serif;}
+        .order-cta .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;}
+        .order-cta .btn:hover{background:#c4955a;transform:scale(1.05);}
+        
+        .contact-info{background:#fff;border-radius:12px;padding:20px;border:1px solid #ece3d8;margin-bottom:12px;}
         .contact-info h3{font-size:18px;color:#4A2E1B;margin-bottom:6px;font-family:'Georgia',serif;}
         .contact-info p{font-size:14px;padding:3px 0;color:#6d5c4e;font-family:'Arial',sans-serif;}
         .contact-info .phone{font-size:22px;font-weight:900;color:#4A2E1B;background:#f5efe8;padding:6px 14px;border-radius:8px;display:inline-block;border:2px solid #d7a86e;}
         .open-badge{background:#2e7d32;color:#fff;padding:3px 12px;border-radius:30px;font-weight:700;font-size:13px;display:inline-block;font-family:'Arial',sans-serif;}
         
-        .contact-form{background:#fff;border-radius:12px;padding:16px;border:1px solid #ece3d8;}
+        .contact-form{background:#fff;border-radius:12px;padding:20px;border:1px solid #ece3d8;}
         .contact-form h3{font-size:18px;color:#4A2E1B;margin-bottom:8px;font-family:'Georgia',serif;}
         .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;font-family:'Arial',sans-serif;}
         .contact-form .btn{width:100%;background:#4A2E1B;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;font-family:'Arial',sans-serif;}
         .contact-form .btn:hover{background:#6b3f2a;}
         
-        footer{background:#4A2E1B;color:#d7a86e;padding:20px;text-align:center;border-top:4px solid #d7a86e;margin-top:20px;}
-        footer .copy{font-size:11px;opacity:0.7;font-family:'Arial',sans-serif;}
-        footer .footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin:6px 0;}
-        footer .footer-links a{color:#d7a86e;text-decoration:none;font-size:12px;cursor:pointer;font-family:'Arial',sans-serif;}
+        footer{background:#4A2E1B;color:#d7a86e;padding:25px 20px;text-align:center;border-top:4px solid #d7a86e;}
+        footer .copy{font-size:12px;opacity:0.7;font-family:'Arial',sans-serif;letter-spacing:1px;}
+        footer .footer-links{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:8px 0;}
+        footer .footer-links a{color:#d7a86e;text-decoration:none;font-size:13px;cursor:pointer;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:1px;}
         footer .footer-links a:hover{color:#fff;}
         
         .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
@@ -142,13 +150,27 @@
         .size-btn.cancel{background:#e8e0d8;border-color:#e8e0d8;color:#6d5c4e;justify-content:center;}
         .size-btn.cancel:hover{background:#d5cdc5;color:#6d5c4e;}
         
+        .carousel-container{position:relative;max-width:100%;overflow:hidden;border-radius:16px;margin:20px 0;}
+        .carousel-slides{display:flex;transition:transform 0.5s ease-in-out;}
+        .carousel-slide{min-width:100%;position:relative;}
+        .carousel-slide img{width:100%;height:320px;object-fit:cover;display:block;}
+        .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(74,46,27,0.7);color:#fff;border:none;padding:12px 16px;cursor:pointer;font-size:20px;border-radius:50%;transition:0.3s;z-index:10;}
+        .carousel-btn:hover{background:#4A2E1B;}
+        .carousel-btn.prev{left:10px;}
+        .carousel-btn.next{right:10px;}
+        .carousel-dots{display:flex;justify-content:center;gap:8px;padding:12px 0;}
+        .carousel-dots .dot{width:12px;height:12px;border-radius:50%;background:#ccc;cursor:pointer;transition:0.3s;border:none;}
+        .carousel-dots .dot.active{background:#d7a86e;width:16px;}
+        
         @media(min-width:768px){
-            .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
             .hero-logo{max-width:500px;}
-            .hero{padding:60px 40px 55px;min-height:400px;}
-            .page{padding:0 30px;}
-            .review-grid{grid-template-columns:repeat(3,1fr);}
+            .hero{padding:70px 40px 60px;min-height:420px;}
+            .category-tabs{gap:10px;}
+            .category-tabs button{font-size:14px;padding:8px 22px;}
+            .featured-grid{grid-template-columns:repeat(4,1fr);}
+            .page{padding:0;}
+            .carousel-slide img{height:400px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
@@ -156,7 +178,13 @@
             .hero{padding:30px 16px 25px;min-height:280px;}
             .menu-grid{grid-template-columns:1fr 1fr;}
             .logo-img{height:32px;}
-            .review-grid{grid-template-columns:1fr;}
+            .category-tabs{top:58px;padding:8px 10px;gap:4px;}
+            .category-tabs button{font-size:11px;padding:5px 12px;}
+            header{padding:10px 16px;}
+            nav{gap:12px;}
+            nav a{font-size:12px;}
+            .featured-grid{grid-template-columns:1fr 1fr;}
+            .carousel-slide img{height:200px;}
         }
     </style>
 </head>
@@ -166,8 +194,8 @@
     <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
     <nav>
         <a class="active" onclick="showPage('home')">Home</a>
-        <a onclick="showPage('order')">Order</a>
-        <a onclick="showPage('contact')">Contact</a>
+        <a onclick="showPage('order')">Order Online</a>
+        <a onclick="showPage('contact')">Contact Us</a>
     </nav>
 </header>
 
@@ -175,112 +203,89 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
+            <div class="call-text">Call to order in</div>
             <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="hero-logo">
+            <div class="location">📍 Hargeisa, Somaliland</div>
             <button class="btn" onclick="showPage('order')">ORDER NOW</button>
         </div>
     </div>
     
-    <div class="featured">
+    <!-- ===== CAROUSEL ===== -->
+    <div class="carousel-container">
+        <div class="carousel-slides" id="carouselSlides">
+            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" alt="Delicious Food"></div>
+            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&h=400&fit=crop" alt="Coffee"></div>
+            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1587314168485-3236f6710814?w=800&h=400&fit=crop" alt="Dessert"></div>
+            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="Food"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+    
+    <!-- ===== FEATURED ===== -->
+    <div class="featured-section">
         <h2>⭐ Why Chocolate Inn?</h2>
         <div class="featured-grid">
-            <div class="featured-card"><div class="icon">🍫</div><h3>Premium Chocolate</h3><p>Made with love.</p></div>
-            <div class="featured-card"><div class="icon">☕</div><h3>Fresh Coffee</h3><p>Ethically sourced.</p></div>
-            <div class="featured-card"><div class="icon">🧁</div><h3>Sweet Treats</h3><p>Baked daily.</p></div>
-            <div class="featured-card"><div class="icon">❤️</div><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
+            <div class="featured-card"><span class="icon">🍫</span><h3>Premium Chocolate</h3><p>Made with love.</p></div>
+            <div class="featured-card"><span class="icon">☕</span><h3>Fresh Coffee</h3><p>Ethically sourced.</p></div>
+            <div class="featured-card"><span class="icon">🧁</span><h3>Sweet Treats</h3><p>Baked daily.</p></div>
+            <div class="featured-card"><span class="icon">❤️</span><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
         </div>
     </div>
     
-    <div class="reviews">
-        <h2>💬 Our Customers' Say</h2>
-        <div class="review-grid">
-            <div class="review-item"><div class="name">Ahmed Ali</div><div class="text">"Best coffee in town! The chocolate croissant is amazing."</div></div>
-            <div class="review-item"><div class="name">Fatima Hassan</div><div class="text">"The sandwiches are so fresh and delicious. Love the atmosphere!"</div></div>
-            <div class="review-item"><div class="name">Omar Said</div><div class="text">"My favorite place to relax and enjoy great food. Highly recommend!"</div></div>
-            <div class="review-item"><div class="name">Sara Abdi</div><div class="text">"The waffles are incredible! Will definitely come back."</div></div>
-            <div class="review-item"><div class="name">Khadar Warsame</div><div class="text">"Great service and amazing coffee. The best in Hargeisa!"</div></div>
-            <div class="review-item"><div class="name">Naima Yusuf</div><div class="text">"Chocolate Inn is my happy place. Everything is perfect."</div></div>
-        </div>
-    </div>
-    
-    <div class="order-cta" style="background:#4A2E1B;color:#f5efe8;padding:30px 16px;border-radius:20px;margin:16px 0;border:1px solid rgba(215,168,110,0.15);text-align:center;">
-        <h2 style="font-size:26px;font-family:'Georgia',serif;">📱 Ready to Order?</h2>
-        <p style="font-size:15px;margin:6px 0 14px;opacity:0.8;font-family:'Arial',sans-serif;">Call: <strong style="color:#d7a86e;font-size:22px;">3665112</strong></p>
-        <button class="btn" onclick="showPage('order')" style="background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;">📞 Order Now</button>
+    <div class="order-cta">
+        <h2>📱 Ready to <span>Order</span>?</h2>
+        <p>Call us at: <strong style="color:#d7a86e;font-size:24px;">3665112</strong></p>
+        <button class="btn" onclick="showPage('order')">Order Now</button>
     </div>
 </div>
 
 <!-- ===== ORDER PAGE ===== -->
 <div class="page" id="page-order">
-    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📱 Order Online</h2>
-    <p style="font-size:14px;color:#6d5c4e;margin-bottom:12px;">Click "Add to Cart" to build your order.</p>
-    
-    <div class="order-confirmed" id="orderConfirmed" style="display:none;">
-        <h3>✅ Order Placed Successfully!</h3>
-        <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
-        <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
+    <div class="category-tabs" id="categoryTabs">
+        <button class="active" onclick="filterCategory('all')">All</button>
+        <button onclick="filterCategory('sandwiches')">Sandwiches</button>
+        <button onclick="filterCategory('salads')">Salads</button>
+        <button onclick="filterCategory('waffles')">Waffles</button>
+        <button onclick="filterCategory('crepes')">Crepes</button>
+        <button onclick="filterCategory('hotDrinks')">Hot Drinks</button>
+        <button onclick="filterCategory('icedDrinks')">Iced Drinks</button>
+        <button onclick="filterCategory('desserts')">Desserts</button>
+        <button onclick="filterCategory('pastries')">Pastries</button>
     </div>
     
-    <div class="section-title">🥪 Sandwiches</div>
-    <div class="menu-grid" id="orderSandwiches"></div>
-    
-    <div class="section-title">🥗 Salads</div>
-    <div class="menu-grid" id="orderSalads"></div>
-    
-    <div class="section-title">🧇 Waffles</div>
-    <div class="menu-grid" id="orderWaffles"></div>
-    
-    <div class="section-title">🥞 Crepes</div>
-    <div class="menu-grid" id="orderCrepes"></div>
-    
-    <div class="section-title">☕ Hot Drinks</div>
-    <div class="menu-grid" id="orderHotDrinks"></div>
-    
-    <div class="section-title">🧊 Iced Drinks</div>
-    <div class="menu-grid" id="orderIcedDrinks"></div>
-    
-    <div class="section-title">🍵 Tea & Mojitos</div>
-    <div class="menu-grid" id="orderTea"></div>
-    
-    <div class="section-title">🥤 Frappes</div>
-    <div class="menu-grid" id="orderFrappes"></div>
-    
-    <div class="section-title">🥛 Milkshakes</div>
-    <div class="menu-grid" id="orderMilkshakes"></div>
-    
-    <div class="section-title">🍹 Smoothies</div>
-    <div class="menu-grid" id="orderSmoothies"></div>
-    
-    <div class="section-title">🍵 Matcha</div>
-    <div class="menu-grid" id="orderMatcha"></div>
-    
-    <div class="section-title">🍰 Desserts & Cakes</div>
-    <div class="menu-grid" id="orderDesserts"></div>
-    
-    <div class="section-title">🍪 Cookies</div>
-    <div class="menu-grid" id="orderCookies"></div>
-    
-    <div class="section-title">🥐 Pastries</div>
-    <div class="menu-grid" id="orderPastries"></div>
+    <div class="menu-section">
+        <div class="order-confirmed" id="orderConfirmed" style="display:none;">
+            <h3>✅ Order Placed Successfully!</h3>
+            <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
+            <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
+        </div>
+        
+        <div id="menuContainer"></div>
+    </div>
 </div>
 
 <!-- ===== CONTACT PAGE ===== -->
 <div class="page" id="page-contact">
-    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📞 Contact Us</h2>
-    <div class="contact-info">
-        <h3>Get in Touch</h3>
-        <p>📍 <strong>Address:</strong> 123 Main Street, Your City</p>
-        <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
-        <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
-        <p>📧 <strong>Email:</strong> sakariyeabdiismail@gmail.com</p>
-    </div>
-    <div class="contact-form">
-        <h3>Send a Message</h3>
-        <form onsubmit="alert('✅ Message sent!');return false;">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message..." required></textarea>
-            <button type="submit" class="btn">📨 Send</button>
-        </form>
+    <div style="max-width:800px;margin:30px auto;padding:0 16px;">
+        <h2 style="font-size:28px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:16px;margin-bottom:16px;font-family:'Georgia',serif;">📞 Contact Us</h2>
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p>📍 <strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</p>
+            <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
+            <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
+            <p>📧 <strong>Email:</strong> chocolateinn@gmail.com</p>
+        </div>
+        <div class="contact-form">
+            <h3>Send a Message</h3>
+            <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
+                <button type="submit" class="btn">📨 Send</button>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -340,8 +345,8 @@
 <footer>
     <div class="footer-links">
         <a onclick="showPage('home')">Home</a>
-        <a onclick="showPage('order')">Order</a>
-        <a onclick="showPage('contact')">Contact</a>
+        <a onclick="showPage('order')">Order Online</a>
+        <a onclick="showPage('contact')">Contact Us</a>
     </div>
     <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
 </footer>
@@ -353,99 +358,157 @@ const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
 let pendingSandwich = null;
 let pendingSandwichId = null;
+let currentCategory = 'all';
+let currentSlide = 0;
+let slideInterval;
 
 // ===== MENU DATA =====
 const menuData = {
     sandwiches: [
-        {name:'Steak & Cheese', half:4, full:7},
-        {name:'Chicken Sandwich', half:3.50, full:6},
-        {name:'Meat Ball and Steak', half:4, full:7},
-        {name:'Tuna Melt', half:3, full:5},
-        {name:'Egg & Mayo', half:3, full:5}
+        {name:'Steak & Cheese', half:4, full:7, category:'sandwiches'},
+        {name:'Chicken Sandwich', half:3.50, full:6, category:'sandwiches'},
+        {name:'Meat Ball and Steak', half:4, full:7, category:'sandwiches'},
+        {name:'Tuna Melt', half:3, full:5, category:'sandwiches'},
+        {name:'Egg & Mayo', half:3, full:5, category:'sandwiches'}
     ],
     salads: [
-        {name:'Chicken Salad', price:3},
-        {name:'Tuna & Mayo Salad', price:3},
-        {name:'Meatball Salad', price:3.50},
-        {name:'Steak Salad', price:3.50}
+        {name:'Chicken Salad', price:3, category:'salads'},
+        {name:'Tuna & Mayo Salad', price:3, category:'salads'},
+        {name:'Meatball Salad', price:3.50, category:'salads'},
+        {name:'Steak Salad', price:3.50, category:'salads'}
     ],
     waffles: [
-        {name:'Lotus Strawberry Waffle', price:3.50},
-        {name:'Stroop Waffle', price:2}
+        {name:'Lotus Strawberry Waffle', price:3.50, category:'waffles'},
+        {name:'Stroop Waffle', price:2, category:'waffles'}
     ],
     crepes: [
-        {name:'Triple Chocolate Crepe', price:3.50},
-        {name:'Fettuccine Crepe', price:2.50},
-        {name:'Mighty Crepe', price:3.70},
-        {name:'Banana Crepe', price:2}
+        {name:'Triple Chocolate Crepe', price:3.50, category:'crepes'},
+        {name:'Fettuccine Crepe', price:2.50, category:'crepes'},
+        {name:'Mighty Crepe', price:3.70, category:'crepes'},
+        {name:'Banana Crepe', price:2, category:'crepes'}
     ],
     hotDrinks: [
-        {name:'Espresso', price:0.90},{name:'Americano', price:0.90},
-        {name:'Cappuccino', price:1.50},{name:'Latte', price:1.50},
-        {name:'Flat White', price:1.30},{name:'Spanish Latte', price:1.70},
-        {name:'Mocha', price:1.50},{name:'Pistachio Latte', price:2},
-        {name:'Hot Chocolate', price:1.50}
+        {name:'Espresso', price:0.90, category:'hotDrinks'},
+        {name:'Americano', price:0.90, category:'hotDrinks'},
+        {name:'Cappuccino', price:1.50, category:'hotDrinks'},
+        {name:'Latte', price:1.50, category:'hotDrinks'},
+        {name:'Flat White', price:1.30, category:'hotDrinks'},
+        {name:'Spanish Latte', price:1.70, category:'hotDrinks'},
+        {name:'Mocha', price:1.50, category:'hotDrinks'},
+        {name:'Pistachio Latte', price:2, category:'hotDrinks'},
+        {name:'Hot Chocolate', price:1.50, category:'hotDrinks'}
     ],
     icedDrinks: [
-        {name:'Iced Spanish', price:2.70},{name:'Iced White Mocha', price:2.80},
-        {name:'Iced Vanilla Latte', price:2.80},{name:'Iced Pistachio Latte', price:3.60},
-        {name:'Iced Caramel Latte', price:2.80},{name:'Classic Iced Latte', price:2}
+        {name:'Iced Spanish', price:2.70, category:'icedDrinks'},
+        {name:'Iced White Mocha', price:2.80, category:'icedDrinks'},
+        {name:'Iced Vanilla Latte', price:2.80, category:'icedDrinks'},
+        {name:'Iced Pistachio Latte', price:3.60, category:'icedDrinks'},
+        {name:'Iced Caramel Latte', price:2.80, category:'icedDrinks'},
+        {name:'Classic Iced Latte', price:2, category:'icedDrinks'}
     ],
     tea: [
-        {name:'Passion Iced Tea', price:1},
-        {name:'Classic Lemon Iced Tea', price:1},
-        {name:'Kiwi Iced Tea', price:1}
+        {name:'Passion Iced Tea', price:1, category:'tea'},
+        {name:'Classic Lemon Iced Tea', price:1, category:'tea'},
+        {name:'Kiwi Iced Tea', price:1, category:'tea'}
     ],
     frappes: [
-        {name:'Oreo Ice Cream Frappe', price:2.80},
-        {name:'Lotus Ice Cream Frappe', price:2.80},
-        {name:'Caramel Ice Cream Frappe', price:2.80}
+        {name:'Oreo Ice Cream Frappe', price:2.80, category:'frappes'},
+        {name:'Lotus Ice Cream Frappe', price:2.80, category:'frappes'},
+        {name:'Caramel Ice Cream Frappe', price:2.80, category:'frappes'}
     ],
     milkshakes: [
-        {name:'Red Velvet Shake', price:2.50},
-        {name:'Chocolate Brownie Shake', price:2.50}
+        {name:'Red Velvet Shake', price:2.50, category:'milkshakes'},
+        {name:'Chocolate Brownie Shake', price:2.50, category:'milkshakes'}
     ],
     smoothies: [
-        {name:'Strawberry Banana Smoothie', price:2.50},
-        {name:'Avocado Honey Smoothie', price:2.50},
-        {name:'Mango Passion Smoothie', price:2.50}
+        {name:'Strawberry Banana Smoothie', price:2.50, category:'smoothies'},
+        {name:'Avocado Honey Smoothie', price:2.50, category:'smoothies'},
+        {name:'Mango Passion Smoothie', price:2.50, category:'smoothies'}
     ],
     matcha: [
-        {name:'Iced Matcha', price:2.50},
-        {name:'Hot Matcha', price:2}
+        {name:'Iced Matcha', price:2.50, category:'matcha'},
+        {name:'Hot Matcha', price:2, category:'matcha'}
     ],
     desserts: [
-        {name:'Chocolate Butter & Caramel Cake', price:2.70},
-        {name:'Naked Strawberry Cake', price:2.70},
-        {name:'Chocolate Berry Cake', price:2.70},
-        {name:'Dates Caramel Cake', price:2.70},
-        {name:'Red Velvet Cake', price:2},
-        {name:'Lotus Cheesecake', price:3.50},
-        {name:'Chocolate Cheesecake', price:3.50},
-        {name:'Basusa', price:1.50},
-        {name:'Chocolate Éclair', price:1.50},
-        {name:'Apple Tart', price:1.50},
-        {name:'Brownies with Nuts', price:2},
-        {name:'Opera Chocolate', price:2},
-        {name:'Tiramisu', price:2}
+        {name:'Chocolate Butter & Caramel Cake', price:2.70, category:'desserts'},
+        {name:'Naked Strawberry Cake', price:2.70, category:'desserts'},
+        {name:'Chocolate Berry Cake', price:2.70, category:'desserts'},
+        {name:'Dates Caramel Cake', price:2.70, category:'desserts'},
+        {name:'Red Velvet Cake', price:2, category:'desserts'},
+        {name:'Lotus Cheesecake', price:3.50, category:'desserts'},
+        {name:'Chocolate Cheesecake', price:3.50, category:'desserts'},
+        {name:'Basusa', price:1.50, category:'desserts'},
+        {name:'Chocolate Éclair', price:1.50, category:'desserts'},
+        {name:'Apple Tart', price:1.50, category:'desserts'},
+        {name:'Brownies with Nuts', price:2, category:'desserts'},
+        {name:'Opera Chocolate', price:2, category:'desserts'},
+        {name:'Tiramisu', price:2, category:'desserts'}
     ],
     cookies: [
-        {name:'Lotus Chocolate Chip Cookies', price:0.80},
-        {name:'Double Chocolate Cookies', price:1},
-        {name:'Red Velvet Cookies', price:0.50},
-        {name:'Pistachio Chocolate Chip Cookies', price:1}
+        {name:'Lotus Chocolate Chip Cookies', price:0.80, category:'cookies'},
+        {name:'Double Chocolate Cookies', price:1, category:'cookies'},
+        {name:'Red Velvet Cookies', price:0.50, category:'cookies'},
+        {name:'Pistachio Chocolate Chip Cookies', price:1, category:'cookies'}
     ],
     pastries: [
-        {name:'Butter Croissant', price:1},
-        {name:'Chocolate Croissant', price:1.20},
-        {name:'Almond Croissant', price:1.20},
-        {name:'Cinnamon Rolls Cream Filling', price:1.20},
-        {name:'Cinnamon Rolls Pistachio Filling', price:1.50},
-        {name:'Cinnamon Rolls Chocolate Filling', price:1.20},
-        {name:'Pistachio Supreme', price:1.50},
-        {name:'Pain Au Choco Supreme', price:1.50}
+        {name:'Butter Croissant', price:1, category:'pastries'},
+        {name:'Chocolate Croissant', price:1.20, category:'pastries'},
+        {name:'Almond Croissant', price:1.20, category:'pastries'},
+        {name:'Cinnamon Rolls Cream Filling', price:1.20, category:'pastries'},
+        {name:'Cinnamon Rolls Pistachio Filling', price:1.50, category:'pastries'},
+        {name:'Cinnamon Rolls Chocolate Filling', price:1.20, category:'pastries'},
+        {name:'Pistachio Supreme', price:1.50, category:'pastries'},
+        {name:'Pain Au Choco Supreme', price:1.50, category:'pastries'}
     ]
 };
+
+const allItems = [];
+Object.keys(menuData).forEach(key => {
+    menuData[key].forEach(item => {
+        allItems.push({...item, category: key});
+    });
+});
+
+// ===== CAROUSEL =====
+function initCarousel() {
+    const totalSlides = document.querySelectorAll('.carousel-slide').length;
+    const dotsContainer = document.getElementById('carouselDots');
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+    }
+    startAutoSlide();
+}
+
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+    currentSlide = (currentSlide + direction + total) % total;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+}
+
+function updateCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const container = document.getElementById('carouselSlides');
+    container.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function startAutoSlide() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(() => changeSlide(1), 4000);
+}
 
 // ===== SIZE MODAL =====
 function openSizeModal(itemId, itemName, halfPrice, fullPrice) {
@@ -473,30 +536,79 @@ function closeSizeModal() {
     pendingSandwichId = null;
 }
 
-// ===== RENDER FUNCTIONS =====
-function renderCategory(containerId, items, type) {
-    const container = document.getElementById(containerId); if(!container) return;
-    container.innerHTML = '';
-    items.forEach((item, index) => {
-        const div = document.createElement('div'); div.className = 'menu-item';
-        const priceDisplay = type === 'sandwich' ? 'Half $' + item.half.toFixed(2) + ' / Full $' + item.full.toFixed(2) : '$' + item.price.toFixed(2);
-        div.innerHTML = `<h3>${item.name}</h3><div class="price">${priceDisplay}</div><span class="badge in">✔ In Stock</span>`;
-        container.appendChild(div);
-    });
-}
-function renderOrderCategory(containerId, items, type) {
-    const container = document.getElementById(containerId); if(!container) return;
-    container.innerHTML = '';
-    const idPrefix = containerId.replace('order', '').toLowerCase();
-    items.forEach((item, index) => {
-        const div = document.createElement('div'); div.className = 'menu-item';
-        const uniqueId = idPrefix + '_' + index;
-        if (type === 'sandwich') {
-            div.innerHTML = `<h3>${item.name}</h3><div class="price">Half $${item.half.toFixed(2)} / Full $${item.full.toFixed(2)}</div><span class="badge in">✔ In Stock</span><br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.half}, ${item.full})">➕ Add to Cart</button>`;
-        } else {
-            div.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge in">✔ In Stock</span><br><button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">➕ Add to Cart</button>`;
+// ===== FILTER & RENDER =====
+function filterCategory(category) {
+    currentCategory = category;
+    document.querySelectorAll('.category-tabs button').forEach(btn => {
+        btn.classList.remove('active');
+        if(btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent.toLowerCase() === 'all')) {
+            btn.classList.add('active');
         }
-        container.appendChild(div);
+    });
+    renderMenu(category);
+}
+
+function renderMenu(category = 'all') {
+    const container = document.getElementById('menuContainer');
+    container.innerHTML = '';
+    
+    let items = category === 'all' ? allItems : allItems.filter(item => item.category === category);
+    const grouped = {};
+    items.forEach(item => {
+        const cat = item.category;
+        if(!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(item);
+    });
+    
+    const catNames = {
+        sandwiches: '🥪 Sandwiches',
+        salads: '🥗 Salads',
+        waffles: '🧇 Waffles',
+        crepes: '🥞 Crepes',
+        hotDrinks: '☕ Hot Drinks',
+        icedDrinks: '🧊 Iced Drinks',
+        tea: '🍵 Tea & Mojitos',
+        frappes: '🥤 Frappes',
+        milkshakes: '🥛 Milkshakes',
+        smoothies: '🍹 Smoothies',
+        matcha: '🍵 Matcha',
+        desserts: '🍰 Desserts & Cakes',
+        cookies: '🍪 Cookies',
+        pastries: '🥐 Pastries'
+    };
+    
+    Object.keys(grouped).forEach(cat => {
+        const section = document.createElement('div');
+        section.style.marginBottom = '8px';
+        const title = document.createElement('div');
+        title.className = 'section-title';
+        title.textContent = catNames[cat] || cat;
+        section.appendChild(title);
+        const grid = document.createElement('div');
+        grid.className = 'menu-grid';
+        grouped[cat].forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'menu-item';
+            const uniqueId = cat + '_' + index;
+            if(item.half !== undefined) {
+                div.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <div class="price">Half $${item.half.toFixed(2)} / Full $${item.full.toFixed(2)}</div>
+                    <span class="badge in">✔ In Stock</span>
+                    <br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.half}, ${item.full})">➕ Add to Cart</button>
+                `;
+            } else {
+                div.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <div class="price">$${item.price.toFixed(2)}</div>
+                    <span class="badge in">✔ In Stock</span>
+                    <br><button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">➕ Add to Cart</button>
+                `;
+            }
+            grid.appendChild(div);
+        });
+        section.appendChild(grid);
+        container.appendChild(section);
     });
 }
 
@@ -555,25 +667,13 @@ function sendOrder() {
 function showPage(page) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('header nav a').forEach(link => { link.classList.remove('active'); if(link.textContent.toLowerCase() === page) link.classList.add('active'); });
+    document.querySelectorAll('header nav a').forEach(link => { link.classList.remove('active'); if(link.textContent.toLowerCase() === page || (page === 'order' && link.textContent.toLowerCase() === 'order online')) link.classList.add('active'); });
     window.scrollTo({top:0});
 }
 document.addEventListener('DOMContentLoaded', function() {
-    renderOrderCategory('orderSandwiches', menuData.sandwiches, 'sandwich');
-    renderOrderCategory('orderSalads', menuData.salads, 'regular');
-    renderOrderCategory('orderWaffles', menuData.waffles, 'regular');
-    renderOrderCategory('orderCrepes', menuData.crepes, 'regular');
-    renderOrderCategory('orderHotDrinks', menuData.hotDrinks, 'regular');
-    renderOrderCategory('orderIcedDrinks', menuData.icedDrinks, 'regular');
-    renderOrderCategory('orderTea', menuData.tea, 'regular');
-    renderOrderCategory('orderFrappes', menuData.frappes, 'regular');
-    renderOrderCategory('orderMilkshakes', menuData.milkshakes, 'regular');
-    renderOrderCategory('orderSmoothies', menuData.smoothies, 'regular');
-    renderOrderCategory('orderMatcha', menuData.matcha, 'regular');
-    renderOrderCategory('orderDesserts', menuData.desserts, 'regular');
-    renderOrderCategory('orderCookies', menuData.cookies, 'regular');
-    renderOrderCategory('orderPastries', menuData.pastries, 'regular');
+    renderMenu('all');
     updateAll();
+    initCarousel();
 });
 </script>
 </body>

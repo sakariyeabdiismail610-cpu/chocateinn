@@ -8,8 +8,7 @@
         body{font-family:'Georgia',serif;background:#f5efe8;color:#3e2723;width:100%;}
         
         header{background:#4A2E1B;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
-        .logo{font-size:18px;font-weight:900;color:#fff;cursor:pointer;font-family:'Georgia',serif;display:flex;align-items:center;gap:6px;}
-        .logo span{color:#d7a86e;}
+        .logo-img{height:40px;width:auto;cursor:pointer;display:block;}
         nav a{color:#fff;text-decoration:none;font-weight:600;font-size:13px;padding:5px 10px;border-radius:20px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;margin:2px;}
         nav a:hover,nav a.active{background:#d7a86e;color:#3e2723;}
         
@@ -19,10 +18,9 @@
         .hero{background:#4A2E1B;color:#f5efe8;padding:50px 20px 45px;text-align:center;border-radius:0 0 40px 40px;position:relative;overflow:hidden;min-height:350px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
         
-        .logo-main{font-size:52px;font-weight:900;color:#FCD12A;font-family:'Georgia',serif;letter-spacing:2px;}
-        .logo-main .choco-icon{display:inline-block;font-size:40px;margin:0 2px;vertical-align:middle;}
-        .logo-tagline{font-size:18px;font-weight:300;color:#FCD12A;font-family:'Georgia',serif;font-style:italic;margin-top:6px;}
-        .logo-divider{width:100px;height:2px;background:#FCD12A;margin:12px auto;opacity:0.5;}
+        .hero-logo{max-width:400px;width:100%;height:auto;display:block;margin:0 auto 10px;}
+        .logo-divider{width:100px;height:2px;background:#d7a86e;margin:12px auto;opacity:0.6;}
+        .hero-tagline{font-size:18px;font-weight:300;color:#d7a86e;font-family:'Georgia',serif;font-style:italic;margin-top:6px;}
         
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:18px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
@@ -151,16 +149,16 @@
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .logo-main{font-size:68px;}
+            .hero-logo{max-width:500px;}
             .hero{padding:60px 40px 55px;min-height:400px;}
             .page{padding:0 30px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .logo-main{font-size:32px;}
-            .logo-tagline{font-size:14px;}
+            .hero-logo{max-width:280px;}
             .hero{padding:30px 16px 25px;min-height:280px;}
             .menu-grid{grid-template-columns:1fr 1fr;}
+            .logo-img{height:30px;}
             .size-options{flex-wrap:wrap;}
             .size-btn{max-width:100%;}
         }
@@ -169,7 +167,7 @@
 <body>
 
 <header>
-    <div class="logo" onclick="showPage('home')">🍫 Chocol<span>ate Inn</span></div>
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 50'%3E%3Ctext x='0' y='38' font-family='Georgia, serif' font-size='36' font-weight='900' fill='%23d7a86e'%3EChocolate%3C/text%3E%3Ctext x='150' y='38' font-family='Georgia, serif' font-size='28' font-weight='900' fill='%23f5efe8'%3EInn%3C/text%3E%3C/svg%3E" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
     <nav>
         <a class="active" onclick="showPage('home')">Home</a>
         <a onclick="showPage('menu')">Menu</a>
@@ -182,9 +180,9 @@
 <div class="page active" id="page-home">
     <div class="hero">
         <div class="hero-content">
-            <div class="logo-main">🍫 Chocolate Inn</div>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 120'%3E%3Ctext x='0' y='70' font-family='Georgia, serif' font-size='72' font-weight='900' fill='%23d7a86e'%3EChocolate%3C/text%3E%3Ctext x='360' y='70' font-family='Georgia, serif' font-size='56' font-weight='900' fill='%23f5efe8'%3EInn%3C/text%3E%3C/svg%3E" alt="Chocolate Inn" class="hero-logo">
             <div class="logo-divider"></div>
-            <div class="logo-tagline">Where Chocolate Feels Like Home.</div>
+            <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
             <button class="btn" onclick="showPage('order')">ORDER NOW</button>
         </div>
     </div>

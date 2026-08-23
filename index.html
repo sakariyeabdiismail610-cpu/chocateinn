@@ -132,6 +132,8 @@
         .order-confirmed h3{color:#2e7d32;font-size:18px;}
         .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4A2E1B;}
         
+        .section-title{font-size:20px;color:#4A2E1B;font-family:'Georgia',serif;margin:20px 0 10px;padding-left:12px;border-left:4px solid #d7a86e;}
+        
         @media(min-width:768px){
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .menu-grid{grid-template-columns:repeat(4,1fr);}
@@ -144,6 +146,7 @@
             .logo-main{font-size:32px;}
             .logo-tagline{font-size:14px;}
             .hero{padding:30px 16px 25px;min-height:280px;}
+            .menu-grid{grid-template-columns:1fr 1fr;}
         }
     </style>
 </head>
@@ -189,8 +192,59 @@
 
 <!-- ===== MENU PAGE ===== -->
 <div class="page" id="page-menu">
-    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📋 Our Menu</h2>
-    <div class="menu-grid" id="menuGrid"></div>
+    <h2 style="font-size:24px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:12px;margin:12px 0;font-family:'Georgia',serif;">📋 Our Full Menu</h2>
+    
+    <!-- Sandwiches -->
+    <div class="section-title">🥪 Sandwiches</div>
+    <div class="menu-grid" id="menuSandwiches"></div>
+    
+    <!-- Salads -->
+    <div class="section-title">🥗 Salads</div>
+    <div class="menu-grid" id="menuSalads"></div>
+    
+    <!-- Waffles & Pancakes -->
+    <div class="section-title">🧇 Waffles & Pancakes</div>
+    <div class="menu-grid" id="menuWaffles"></div>
+    
+    <!-- Hot Drinks -->
+    <div class="section-title">☕ Hot Drinks</div>
+    <div class="menu-grid" id="menuHotDrinks"></div>
+    
+    <!-- Iced Drinks -->
+    <div class="section-title">🧊 Iced Drinks</div>
+    <div class="menu-grid" id="menuIcedDrinks"></div>
+    
+    <!-- Tea & Mojitos -->
+    <div class="section-title">🍵 Tea & Mojitos</div>
+    <div class="menu-grid" id="menuTea"></div>
+    
+    <!-- Frappes -->
+    <div class="section-title">🥤 Frappes</div>
+    <div class="menu-grid" id="menuFrappes"></div>
+    
+    <!-- Milkshakes -->
+    <div class="section-title">🥛 Milkshakes</div>
+    <div class="menu-grid" id="menuMilkshakes"></div>
+    
+    <!-- Smoothies -->
+    <div class="section-title">🍹 Smoothies</div>
+    <div class="menu-grid" id="menuSmoothies"></div>
+    
+    <!-- Matcha -->
+    <div class="section-title">🍵 Matcha</div>
+    <div class="menu-grid" id="menuMatcha"></div>
+    
+    <!-- Desserts & Cakes -->
+    <div class="section-title">🍰 Desserts & Cakes</div>
+    <div class="menu-grid" id="menuDesserts"></div>
+    
+    <!-- Cookies -->
+    <div class="section-title">🍪 Cookies</div>
+    <div class="menu-grid" id="menuCookies"></div>
+    
+    <!-- Pastries -->
+    <div class="section-title">🥐 Pastries</div>
+    <div class="menu-grid" id="menuPastries"></div>
 </div>
 
 <!-- ===== ORDER PAGE ===== -->
@@ -204,7 +258,45 @@
         <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
     </div>
     
-    <div class="menu-grid" id="orderMenuGrid"></div>
+    <!-- All categories on Order page -->
+    <div class="section-title">🥪 Sandwiches</div>
+    <div class="menu-grid" id="orderSandwiches"></div>
+    
+    <div class="section-title">🥗 Salads</div>
+    <div class="menu-grid" id="orderSalads"></div>
+    
+    <div class="section-title">🧇 Waffles & Pancakes</div>
+    <div class="menu-grid" id="orderWaffles"></div>
+    
+    <div class="section-title">☕ Hot Drinks</div>
+    <div class="menu-grid" id="orderHotDrinks"></div>
+    
+    <div class="section-title">🧊 Iced Drinks</div>
+    <div class="menu-grid" id="orderIcedDrinks"></div>
+    
+    <div class="section-title">🍵 Tea & Mojitos</div>
+    <div class="menu-grid" id="orderTea"></div>
+    
+    <div class="section-title">🥤 Frappes</div>
+    <div class="menu-grid" id="orderFrappes"></div>
+    
+    <div class="section-title">🥛 Milkshakes</div>
+    <div class="menu-grid" id="orderMilkshakes"></div>
+    
+    <div class="section-title">🍹 Smoothies</div>
+    <div class="menu-grid" id="orderSmoothies"></div>
+    
+    <div class="section-title">🍵 Matcha</div>
+    <div class="menu-grid" id="orderMatcha"></div>
+    
+    <div class="section-title">🍰 Desserts & Cakes</div>
+    <div class="menu-grid" id="orderDesserts"></div>
+    
+    <div class="section-title">🍪 Cookies</div>
+    <div class="menu-grid" id="orderCookies"></div>
+    
+    <div class="section-title">🥐 Pastries</div>
+    <div class="menu-grid" id="orderPastries"></div>
 </div>
 
 <!-- ===== CONTACT PAGE ===== -->
@@ -295,19 +387,144 @@ const SHOP_WHATSAPP = '252633665112';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
 // ===== MENU DATA =====
-const items = [
-    {id:1,name:'Caramel Macchiato',price:5.50,inStock:true},
-    {id:2,name:'Mocha Latte',price:5.00,inStock:false},
-    {id:3,name:'Vanilla Frappe',price:6.25,inStock:true},
-    {id:4,name:'Chocolate Croissant',price:4.75,inStock:false},
-    {id:5,name:'Hazelnut Cappuccino',price:5.25,inStock:true},
-    {id:6,name:'Classic Americano',price:4.00,inStock:true},
-    {id:7,name:'Cinna-bun Roll',price:5.50,inStock:true},
-    {id:8,name:'Espresso Shot',price:3.00,inStock:true},
-    {id:9,name:'Chai Latte',price:5.75,inStock:true},
-    {id:10,name:'Iced Coffee',price:4.50,inStock:true}
-];
+const menuData = {
+    sandwiches: [
+        {name:'Steak & Cheese Small',price:4},
+        {name:'Steak & Cheese Large',price:7},
+        {name:'Chicken Sandwich Small',price:3.50},
+        {name:'Chicken Sandwich Large',price:6},
+        {name:'Meat Ball and Steak Small',price:4},
+        {name:'Meat Ball and Steak Large',price:7},
+        {name:'Tuna Melt Small',price:3},
+        {name:'Tuna Melt Large',price:5},
+        {name:'Egg & Mayo Small',price:3},
+        {name:'Egg & Mayo Large',price:5}
+    ],
+    salads: [
+        {name:'Chicken Salad',price:3},
+        {name:'Tuna & Mayo Salad',price:3},
+        {name:'Meatball Salad',price:3.50},
+        {name:'Steak Salad',price:3.50}
+    ],
+    waffles: [
+        {name:'Lotus Strawberry Waffle',price:3.50},
+        {name:'Stroop Waffle',price:3.50},
+        {name:'Crepes',price:2.50},
+        {name:'Triple Chocolate Crepe',price:3.70},
+        {name:'Fettuccine Crepe',price:2}
+    ],
+    hotDrinks: [
+        {name:'Espresso',price:0.90},
+        {name:'Americano',price:0.90},
+        {name:'Cappuccino',price:1.50},
+        {name:'Latte',price:1.50},
+        {name:'Flat White',price:1.30},
+        {name:'Spanish Latte',price:1.70},
+        {name:'Mocha',price:1.50},
+        {name:'Pistachio Latte',price:2},
+        {name:'Hot Chocolate',price:1.50}
+    ],
+    icedDrinks: [
+        {name:'Iced Spanish',price:2.70},
+        {name:'Iced White Mocha',price:2.80},
+        {name:'Iced Vanilla Latte',price:2.80},
+        {name:'Iced Pistachio Latte',price:3.60},
+        {name:'Iced Caramel Latte',price:2.80},
+        {name:'Classic Iced Latte',price:2}
+    ],
+    tea: [
+        {name:'Passion Iced Tea',price:1},
+        {name:'Classic Lemon Iced Tea',price:1},
+        {name:'Kiwi Iced Tea',price:1}
+    ],
+    frappes: [
+        {name:'Oreo Ice Cream Frappe',price:2.80},
+        {name:'Lotus Ice Cream Frappe',price:2.80},
+        {name:'Caramel Ice Cream Frappe',price:2.80}
+    ],
+    milkshakes: [
+        {name:'Red Velvet Shake',price:2.50},
+        {name:'Chocolate Brownie Shake',price:2.50}
+    ],
+    smoothies: [
+        {name:'Strawberry Banana Smoothie',price:2.50},
+        {name:'Avocado Honey Smoothie',price:2.50},
+        {name:'Mango Passion Smoothie',price:2.50}
+    ],
+    matcha: [
+        {name:'Iced Matcha',price:2.50},
+        {name:'Hot Matcha',price:2}
+    ],
+    desserts: [
+        {name:'Chocolate Butter & Caramel Cake',price:2.70},
+        {name:'Naked Strawberry Cake',price:2.70},
+        {name:'Chocolate Berry Cake',price:2.70},
+        {name:'Dates Caramel Cake',price:2.70},
+        {name:'Red Velvet Cake',price:2},
+        {name:'Lotus Cheesecake',price:3.50},
+        {name:'Chocolate Cheesecake',price:3.50},
+        {name:'Basusa',price:1.50},
+        {name:'Chocolate Éclair',price:1.50},
+        {name:'Apple Tart',price:1.50},
+        {name:'Brownies with Nuts',price:2},
+        {name:'Opera Chocolate',price:2},
+        {name:'Tiramisu',price:2}
+    ],
+    cookies: [
+        {name:'Lotus Chocolate Chip Cookies',price:0.80},
+        {name:'Double Chocolate Cookies',price:1},
+        {name:'Red Velvet Cookies',price:0.50},
+        {name:'Pistachio Chocolate Chip Cookies',price:1}
+    ],
+    pastries: [
+        {name:'Butter Croissant',price:1},
+        {name:'Chocolate Croissant',price:1.20},
+        {name:'Almond Croissant',price:1.20},
+        {name:'Cinnamon Rolls Cream Filling',price:1.20},
+        {name:'Cinnamon Rolls Pistachio Filling',price:1.50},
+        {name:'Cinnamon Rolls Chocolate Filling',price:1.20},
+        {name:'Pistachio Supreme',price:1.50},
+        {name:'Pain Au Choco Supreme',price:1.50}
+    ]
+};
 
+// ===== RENDER FUNCTIONS =====
+function renderCategory(containerId, items) {
+    const container = document.getElementById(containerId);
+    if(!container) return;
+    container.innerHTML = '';
+    items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'menu-item';
+        div.innerHTML = `
+            <h3>${item.name}</h3>
+            <div class="price">$${item.price.toFixed(2)}</div>
+            <span class="badge in">✔ In Stock</span>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function renderOrderCategory(containerId, items) {
+    const container = document.getElementById(containerId);
+    if(!container) return;
+    container.innerHTML = '';
+    const idPrefix = containerId.replace('order', '').toLowerCase();
+    items.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'menu-item';
+        const itemId = idPrefix + '_' + index;
+        div.innerHTML = `
+            <h3>${item.name}</h3>
+            <div class="price">$${item.price.toFixed(2)}</div>
+            <span class="badge in">✔ In Stock</span>
+            <br><button class="add-btn" onclick="addToCart('${itemId}', '${item.name}', ${item.price})">➕ Add to Cart</button>
+        `;
+        container.appendChild(div);
+    });
+}
+
+// ===== CART FUNCTIONS =====
 let cart = {};
 let cartCurrency = 'USD';
 let cartPayment = 'ZAAD';
@@ -316,46 +533,12 @@ let cartTotal = 0;
 const exchangeRate = 11000;
 let currentOrderId = '';
 
-function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('header nav a').forEach(link => {
-        link.classList.remove('active');
-        if(link.textContent.toLowerCase() === page) link.classList.add('active');
-    });
-    window.scrollTo({top:0});
-}
-
-function renderMenu() {
-    const grid = document.getElementById('menuGrid');
-    grid.innerHTML = '';
-    items.forEach(item => {
-        const d = document.createElement('div');
-        d.className = 'menu-item';
-        d.innerHTML = `<h3>${item.name}</h3><div class="price">$${item.price.toFixed(2)}</div><span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔ In Stock':'❌ Sold Out'}</span>`;
-        grid.appendChild(d);
-    });
-    
-    const orderGrid = document.getElementById('orderMenuGrid');
-    orderGrid.innerHTML = '';
-    items.forEach(item => {
-        const d = document.createElement('div');
-        d.className = 'menu-item';
-        d.innerHTML = `
-            <h3>${item.name}</h3>
-            <div class="price">$${item.price.toFixed(2)}</div>
-            <span class="badge ${item.inStock?'in':'out'}">${item.inStock?'✔':'❌'}</span>
-            ${item.inStock ? `<br><button class="add-btn" onclick="addToCart(${item.id})">➕ Add to Cart</button>` : ''}
-        `;
-        orderGrid.appendChild(d);
-    });
-}
-
-function addToCart(id) {
-    const item = items.find(i => i.id === id);
-    if(!item || !item.inStock) return;
-    if(cart[id]) cart[id].qty += 1;
-    else cart[id] = {...item, qty: 1};
+function addToCart(id, name, price) {
+    if(cart[id]) {
+        cart[id].qty += 1;
+    } else {
+        cart[id] = {name: name, price: price, qty: 1};
+    }
     updateAll();
 }
 
@@ -388,9 +571,9 @@ function updateSideCart() {
         return;
     }
     let html = '';
-    arr.forEach(item => {
+    arr.forEach((item, id) => {
         const total = item.price * item.qty;
-        html += `<div class="cart-side-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty(${item.id},-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty(${item.id},1)">+</button></div><span class="item-total">$${total.toFixed(2)}</span></div>`;
+        html += `<div class="cart-side-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty('${id}',-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty('${id}',1)">+</button></div><span class="item-total">$${total.toFixed(2)}</span></div>`;
     });
     container.innerHTML = html;
 }
@@ -571,8 +754,48 @@ Thank you! ☕🍫`;
     });
 }
 
+function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    document.querySelectorAll('header nav a').forEach(link => {
+        link.classList.remove('active');
+        if(link.textContent.toLowerCase() === page) link.classList.add('active');
+    });
+    window.scrollTo({top:0});
+}
+
+// ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
-    renderMenu();
+    // Render Menu Page
+    renderCategory('menuSandwiches', menuData.sandwiches);
+    renderCategory('menuSalads', menuData.salads);
+    renderCategory('menuWaffles', menuData.waffles);
+    renderCategory('menuHotDrinks', menuData.hotDrinks);
+    renderCategory('menuIcedDrinks', menuData.icedDrinks);
+    renderCategory('menuTea', menuData.tea);
+    renderCategory('menuFrappes', menuData.frappes);
+    renderCategory('menuMilkshakes', menuData.milkshakes);
+    renderCategory('menuSmoothies', menuData.smoothies);
+    renderCategory('menuMatcha', menuData.matcha);
+    renderCategory('menuDesserts', menuData.desserts);
+    renderCategory('menuCookies', menuData.cookies);
+    renderCategory('menuPastries', menuData.pastries);
+    
+    // Render Order Page
+    renderOrderCategory('orderSandwiches', menuData.sandwiches);
+    renderOrderCategory('orderSalads', menuData.salads);
+    renderOrderCategory('orderWaffles', menuData.waffles);
+    renderOrderCategory('orderHotDrinks', menuData.hotDrinks);
+    renderOrderCategory('orderIcedDrinks', menuData.icedDrinks);
+    renderOrderCategory('orderTea', menuData.tea);
+    renderOrderCategory('orderFrappes', menuData.frappes);
+    renderOrderCategory('orderMilkshakes', menuData.milkshakes);
+    renderOrderCategory('orderSmoothies', menuData.smoothies);
+    renderOrderCategory('orderMatcha', menuData.matcha);
+    renderOrderCategory('orderDesserts', menuData.desserts);
+    renderOrderCategory('orderCookies', menuData.cookies);
+    renderOrderCategory('orderPastries', menuData.pastries);
+    
     updateAll();
 });
 </script>

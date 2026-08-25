@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Chocolate Inn</title>
 
-    <!-- ===== 1. GOOGLE FONTS ===== -->
+    <!-- ===== GOOGLE FONTS ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
-    <!-- ===== 2. FAVICON ===== -->
+    <!-- ===== FAVICON ===== -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>" />
 
-    <!-- ===== 3. OPEN GRAPH META TAGS ===== -->
+    <!-- ===== OPEN GRAPH META TAGS ===== -->
     <meta property="og:title" content="Chocolate Inn – Where Chocolate Feels Like Home" />
     <meta property="og:description" content="Premium coffee, sweet treats, and warm vibes. Order online in Hargeisa." />
     <meta property="og:image" content="https://i.imgur.com/3mQJaEW.png" />
@@ -21,6 +21,9 @@
     <meta property="og:type" content="website" />
 
     <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +39,9 @@
             line-height: 1.6;
         }
 
-        /* ===== HEADER ===== */
+        /* ============================================================
+           HEADER
+           ============================================================ */
         header {
             background: #2C1810;
             padding: 12px 24px;
@@ -57,7 +62,6 @@
             gap: 12px;
         }
 
-        /* Logo image only - no text next to it */
         .logo-img {
             height: 50px;
             width: auto;
@@ -93,7 +97,9 @@
             color: #D4AF37;
         }
 
-        /* ===== PAGES ===== */
+        /* ============================================================
+           PAGES
+           ============================================================ */
         .page {
             display: none;
             padding: 0;
@@ -115,7 +121,9 @@
             }
         }
 
-        /* ===== HERO ===== */
+        /* ============================================================
+           HERO
+           ============================================================ */
         .hero {
             background: linear-gradient(145deg, #2C1810, #4A2A1C);
             color: #F5EFE6;
@@ -220,7 +228,136 @@
             box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
         }
 
-        /* ===== CATEGORY TABS ===== */
+        /* ============================================================
+           HERO SLIDER
+           ============================================================ */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 400px;
+        }
+
+        .slide {
+            position: relative;
+            min-width: 100%;
+            height: 400px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(44, 24, 16, 0.55) 0%, rgba(0, 0, 0, 0.25) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 15%;
+            left: 8%;
+            z-index: 2;
+            color: #F5EFE6;
+            max-width: 500px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            opacity: 0.92;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 24, 16, 0.6);
+            color: #fff;
+            border: none;
+            padding: 14px 18px;
+            cursor: pointer;
+            font-size: 22px;
+            border-radius: 50%;
+            transition: 0.3s;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slider-btn:hover {
+            background: #D4AF37;
+            color: #2C1810;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .slider-btn.prev {
+            left: 16px;
+        }
+        .slider-btn.next {
+            right: 16px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .slider-dots .dot.active {
+            background: #D4AF37;
+            border-color: #D4AF37;
+            transform: scale(1.15);
+        }
+
+        .slider-dots .dot:hover {
+            background: #D4AF37;
+        }
+
+        /* ============================================================
+           CATEGORY TABS
+           ============================================================ */
         .category-tabs {
             background: #FFFFFF;
             padding: 12px 16px;
@@ -283,7 +420,9 @@
             color: #2C1810;
         }
 
-        /* ===== MENU / PRODUCT CARDS ===== */
+        /* ============================================================
+           MENU / PRODUCT CARDS
+           ============================================================ */
         .menu-section {
             padding: 20px 16px;
             max-width: 1200px;
@@ -395,7 +534,9 @@
             transform: scale(1.02);
         }
 
-        /* ===== FEATURED SECTION ===== */
+        /* ============================================================
+           FEATURED SECTION
+           ============================================================ */
         .featured-section {
             background: #FFFFFF;
             padding: 30px 20px;
@@ -451,7 +592,9 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* ===== ORDER CTA ===== */
+        /* ============================================================
+           ORDER CTA
+           ============================================================ */
         .order-cta {
             background: #2C1810;
             color: #F5EFE6;
@@ -494,7 +637,9 @@
             transform: scale(1.03);
         }
 
-        /* ===== CONTACT PAGE ===== */
+        /* ============================================================
+           CONTACT PAGE
+           ============================================================ */
         .contact-info {
             background: #FFFFFF;
             border-radius: 12px;
@@ -593,7 +738,9 @@
             color: #2C1810;
         }
 
-        /* ===== CART ===== */
+        /* ============================================================
+           CART
+           ============================================================ */
         .cart-float {
             position: fixed;
             bottom: 24px;
@@ -856,6 +1003,9 @@
             display: block;
         }
 
+        /* ============================================================
+           PAYMENT
+           ============================================================ */
         .payment-box {
             background: #FFFFFF;
             border-radius: 12px;
@@ -948,81 +1098,9 @@
             color: #D4AF37;
         }
 
-        /* ===== CAROUSEL ===== */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-            border-radius: 16px;
-            margin: 16px 0 0;
-        }
-
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(44, 24, 16, 0.7);
-            color: #fff;
-            border: none;
-            padding: 12px 16px;
-            cursor: pointer;
-            font-size: 20px;
-            border-radius: 50%;
-            transition: 0.3s;
-            z-index: 10;
-        }
-
-        .carousel-btn:hover {
-            background: #2C1810;
-        }
-
-        .carousel-btn.prev {
-            left: 12px;
-        }
-        .carousel-btn.next {
-            right: 12px;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 0;
-        }
-
-        .carousel-dots .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #C4B8AC;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-        }
-
-        .carousel-dots .dot.active {
-            background: #D4AF37;
-            width: 18px;
-        }
-
-        /* ===== FOOTER ===== */
+        /* ============================================================
+           FOOTER
+           ============================================================ */
         footer {
             background: #2C1810;
             color: #D4AF37;
@@ -1061,7 +1139,9 @@
             color: #fff;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (min-width: 768px) {
             .hero .hero-title {
                 font-size: 68px;
@@ -1080,11 +1160,38 @@
             .featured-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
-            .carousel-slide img {
-                height: 420px;
-            }
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            .slider-wrapper {
+                height: 420px;
+            }
+            .slide {
+                height: 420px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slider-wrapper {
+                height: 320px;
+            }
+            .slide {
+                height: 320px;
+            }
+            .slide-content h2 {
+                font-size: 1.5rem;
+            }
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+            .slide-content {
+                bottom: 12%;
+                left: 6%;
+                max-width: 80%;
+            }
+            .slider-btn {
+                padding: 10px 14px;
+                font-size: 18px;
             }
         }
 
@@ -1138,9 +1245,6 @@
             .featured-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .carousel-slide img {
-                height: 180px;
-            }
             .product-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1151,6 +1255,31 @@
                 font-size: 18px;
                 padding: 4px 12px;
             }
+            .slider-wrapper {
+                height: 240px;
+            }
+            .slide {
+                height: 240px;
+            }
+            .slide-content h2 {
+                font-size: 1.2rem;
+            }
+            .slide-content p {
+                font-size: 0.75rem;
+            }
+            .slide-content {
+                bottom: 10%;
+                left: 5%;
+                max-width: 85%;
+            }
+            .slider-btn {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            .slider-dots .dot {
+                width: 8px;
+                height: 8px;
+            }
         }
     </style>
 </head>
@@ -1159,7 +1288,6 @@
     <!-- ===== HEADER ===== -->
     <header>
         <div class="header-left">
-            <!-- Only the logo image - no text -->
             <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
         </div>
         <nav>
@@ -1179,25 +1307,60 @@
                 </div>
                 <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
                 <div class="location">📍 Hargeisa, Somaliland</div>
-                <!-- OPEN 24/7 REMOVED -->
                 <button class="btn" onclick="showPage('order')">ORDER NOW</button>
             </div>
         </div>
 
-        <!-- CAROUSEL -->
-        <div class="carousel-container">
-            <div class="carousel-slides" id="carouselSlides">
-                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop&q=80" alt="Delicious Food" loading="lazy" /></div>
-                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&h=400&fit=crop&q=80" alt="Coffee" loading="lazy" /></div>
-                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1587314168485-3236f6710814?w=800&h=400&fit=crop&q=80" alt="Dessert" loading="lazy" /></div>
-                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop&q=80" alt="Food" loading="lazy" /></div>
+        <!-- ===== NEW HERO SLIDER ===== -->
+        <div class="slider-container">
+            <div class="slider-wrapper" id="heroSlider">
+                <!-- Slide 1: Chocolate Desserts -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1200&h=600&fit=crop&q=80" alt="Chocolate Desserts" loading="lazy" />
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Decadent Chocolate Delights</h2>
+                        <p>Indulge in our rich, handcrafted chocolate desserts.</p>
+                    </div>
+                </div>
+                <!-- Slide 2: Specialty Coffees -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=600&fit=crop&q=80" alt="Specialty Coffees" loading="lazy" />
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Artisanal Coffee</h2>
+                        <p>From espresso to latte art, crafted to perfection.</p>
+                    </div>
+                </div>
+                <!-- Slide 3: Gourmet Sandwiches -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=1200&h=600&fit=crop&q=80" alt="Gourmet Sandwiches" loading="lazy" />
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Fresh Gourmet Sandwiches</h2>
+                        <p>Made with the finest ingredients, daily.</p>
+                    </div>
+                </div>
+                <!-- Slide 4: Hot Chocolate & Sweet Beverages -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=1200&h=600&fit=crop&q=80" alt="Hot Chocolate" loading="lazy" />
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Warm & Sweet Beverages</h2>
+                        <p>Cozy up with our signature hot chocolates.</p>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-            <div class="carousel-dots" id="carouselDots"></div>
+
+            <!-- Slider Controls -->
+            <button class="slider-btn prev" onclick="changeHeroSlide(-1)">❮</button>
+            <button class="slider-btn next" onclick="changeHeroSlide(1)">❯</button>
+
+            <!-- Slider Dots -->
+            <div class="slider-dots" id="heroSliderDots"></div>
         </div>
 
-        <!-- FEATURED SECTION -->
+        <!-- ===== FEATURED SECTION ===== -->
         <div class="featured-section">
             <h2>⭐ Why Chocolate Inn?</h2>
             <div class="featured-grid">
@@ -1337,13 +1500,19 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // ============================================================
+        // CONFIGURATION
+        // ============================================================
         const SHOP_WHATSAPP = '252633665112';
         const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
         let currentCategory = 'all';
-        let currentSlide = 0;
-        let slideInterval;
+        let heroCurrentSlide = 0;
+        let heroSlideInterval;
 
+        // ============================================================
+        // MENU DATA
+        // ============================================================
         const menuData = {
             sandwiches: [{
                 name: 'Steak & Cheese (Half)',
@@ -1549,48 +1718,57 @@
             }]
         };
 
-        // ===== CAROUSEL =====
-        function initCarousel() {
-            const totalSlides = document.querySelectorAll('.carousel-slide').length;
-            const dotsContainer = document.getElementById('carouselDots');
+        // ============================================================
+        // HERO SLIDER FUNCTIONS
+        // ============================================================
+        function initHeroSlider() {
+            const totalSlides = document.querySelectorAll('#heroSlider .slide').length;
+            const dotsContainer = document.getElementById('heroSliderDots');
+
             dotsContainer.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('button');
+                const dot = document.createElement('span');
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.onclick = () => goToSlide(i);
+                dot.dataset.index = i;
+                dot.addEventListener('click', () => goToHeroSlide(i));
                 dotsContainer.appendChild(dot);
             }
-            startAutoSlide();
+
+            startHeroAutoSlide();
         }
 
-        function changeSlide(direction) {
-            const slides = document.querySelectorAll('.carousel-slide');
+        function changeHeroSlide(direction) {
+            const slides = document.querySelectorAll('#heroSlider .slide');
             const total = slides.length;
-            currentSlide = (currentSlide + direction + total) % total;
-            updateCarousel();
+            heroCurrentSlide = (heroCurrentSlide + direction + total) % total;
+            updateHeroSlider();
         }
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateCarousel();
+        function goToHeroSlide(index) {
+            heroCurrentSlide = index;
+            updateHeroSlider();
         }
 
-        function updateCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.dot');
-            const container = document.getElementById('carouselSlides');
-            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+        function updateHeroSlider() {
+            const slides = document.querySelectorAll('#heroSlider .slide');
+            const dots = document.querySelectorAll('#heroSliderDots .dot');
+            const wrapper = document.getElementById('heroSlider');
+
+            wrapper.style.transform = `translateX(-${heroCurrentSlide * 100}%)`;
+
             dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
+                dot.classList.toggle('active', i === heroCurrentSlide);
             });
         }
 
-        function startAutoSlide() {
-            if (slideInterval) clearInterval(slideInterval);
-            slideInterval = setInterval(() => changeSlide(1), 5000);
+        function startHeroAutoSlide() {
+            if (heroSlideInterval) clearInterval(heroSlideInterval);
+            heroSlideInterval = setInterval(() => changeHeroSlide(1), 5000);
         }
 
-        // ===== CHEESE ADD-ON =====
+        // ============================================================
+        // CHEESE ADD-ON
+        // ============================================================
         function updateItemPrice(uniqueId, basePrice) {
             const checkbox = document.getElementById(`cheese_${uniqueId}`);
             const priceDisplay = document.getElementById(`price_display_${uniqueId}`);
@@ -1600,7 +1778,9 @@
             }
         }
 
-        // ===== FILTER & RENDER =====
+        // ============================================================
+        // FILTER & RENDER
+        // ============================================================
         function filterCategory(category) {
             currentCategory = category;
             document.querySelectorAll('.category-tabs button').forEach(btn => {
@@ -1674,7 +1854,9 @@
             });
         }
 
-        // ===== CART SYSTEM =====
+        // ============================================================
+        // CART SYSTEM
+        // ============================================================
         let cart = {};
         let cartCurrency = 'USD';
         let cartPayment = 'ZAAD';
@@ -1966,7 +2148,9 @@
                 });
         }
 
-        // ===== PAGE NAVIGATION =====
+        // ============================================================
+        // PAGE NAVIGATION
+        // ============================================================
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page-' + page).classList.add('active');
@@ -1980,11 +2164,13 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== INIT =====
+        // ============================================================
+        // INIT
+        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             renderMenu('all');
             updateAll();
-            initCarousel();
+            initHeroSlider();
 
             document.querySelectorAll('.pay-option-cart').forEach(el => {
                 el.addEventListener('click', function() {

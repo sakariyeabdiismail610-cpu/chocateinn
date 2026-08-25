@@ -10,10 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
-    <!-- ===== 2. FAVICON (simple emoji fallback) ===== -->
+    <!-- ===== 2. FAVICON ===== -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>" />
 
-    <!-- ===== 3. OPEN GRAPH META TAGS (for WhatsApp / social sharing) ===== -->
+    <!-- ===== 3. OPEN GRAPH META TAGS ===== -->
     <meta property="og:title" content="Chocolate Inn – Where Chocolate Feels Like Home" />
     <meta property="og:description" content="Premium coffee, sweet treats, and warm vibes. Order online in Hargeisa." />
     <meta property="og:image" content="https://i.imgur.com/3mQJaEW.png" />
@@ -51,7 +51,6 @@
            ============================================================ */
         header {
             background: #2C1810;
-            /* rich deep chocolate */
             padding: 12px 24px;
             display: flex;
             justify-content: space-between;
@@ -70,14 +69,12 @@
             gap: 12px;
         }
 
-        /* The logo image itself contains the full wordmark + icon */
         .logo-img {
             height: 50px;
             width: auto;
             cursor: pointer;
             display: block;
             object-fit: contain;
-            /* no extra background, blends with header */
         }
 
         /* text-based logo removed – image is the main branding */
@@ -186,16 +183,19 @@
             margin-bottom: 4px;
         }
 
+        /* ---- Brand typography match: "Chocolate" in white, "Inn" in gold ---- */
         .hero .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 54px;
             font-weight: 700;
-            color: #D4AF37;
             margin-bottom: 4px;
             letter-spacing: 1px;
         }
-        .hero .hero-title span {
+        .hero .hero-title .choco {
             color: #F5EFE6;
+        }
+        .hero .hero-title .inn {
+            color: #D4AF37;
         }
 
         .hero .hero-tagline {
@@ -318,7 +318,7 @@
         }
 
         /* ============================================================
-           MENU / PRODUCT CARDS (full restoration)
+           MENU / PRODUCT CARDS
            ============================================================ */
         .menu-section {
             padding: 20px 16px;
@@ -391,6 +391,23 @@
             font-weight: 700;
             color: #D4AF37;
             margin: 4px 0 8px;
+        }
+
+        /* ---- Cheese add-on (checkbox) ---- */
+        .cheese-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #2C1810;
+            margin: 4px 0 8px;
+            font-weight: 600;
+        }
+        .cheese-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #D4AF37;
+            cursor: pointer;
         }
 
         .product-card .add-btn {
@@ -1200,7 +1217,6 @@
     ============================================================ -->
     <header>
         <div class="header-left">
-            <!-- Logo image: the graphic contains "Chocolate Inn" + gold bar -->
             <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
         </div>
         <nav>
@@ -1217,7 +1233,9 @@
         <div class="hero">
             <div class="hero-content">
                 <div class="call-text">Call to order in</div>
-                <div class="hero-title">Chocol<span>ate Inn</span></div>
+                <div class="hero-title">
+                    <span class="choco">Chocol</span><span class="inn">ate Inn</span>
+                </div>
                 <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
                 <div class="location">📍 Hargeisa, Somaliland</div>
                 <div class="open-badge-hero">🟢 Open 24/7</div>
@@ -1405,92 +1423,212 @@
         let slideInterval;
 
         // ============================================================
-        // FULL MENU DATA (restored all categories)
+        // FULL MENU DATA (with distinct high-quality images per item)
         // ============================================================
         const menuData = {
-            sandwiches: [
-                { name: 'Steak & Cheese (Half)', price: 4.00, desc: 'Tender steak with melted cheese', category: 'sandwiches',
-                    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=300&h=160&fit=crop' },
-                { name: 'Steak & Cheese (Full)', price: 7.00, desc: 'Tender steak with melted cheese', category: 'sandwiches',
-                    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=300&h=160&fit=crop' },
-                { name: 'Chicken Sandwich (Half)', price: 3.50, desc: 'Grilled chicken with fresh veggies',
-                    category: 'sandwiches', image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&h=160&fit=crop' },
-                { name: 'Chicken Sandwich (Full)', price: 6.00, desc: 'Grilled chicken with fresh veggies',
-                    category: 'sandwiches', image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&h=160&fit=crop' },
-                { name: 'Tuna Melt (Half)', price: 3.00, desc: 'Classic tuna with melted cheese', category: 'sandwiches',
-                    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&h=160&fit=crop' },
-                { name: 'Tuna Melt (Full)', price: 5.00, desc: 'Classic tuna with melted cheese', category: 'sandwiches',
-                    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&h=160&fit=crop' },
-                { name: 'Egg & Mayo (Half)', price: 3.00, desc: 'Creamy egg mayo sandwich', category: 'sandwiches',
-                    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&h=160&fit=crop' },
-                { name: 'Egg & Mayo (Full)', price: 5.00, desc: 'Creamy egg mayo sandwich', category: 'sandwiches',
-                    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=300&h=160&fit=crop' }
-            ],
-            sweets: [
-                { name: 'Lotus Strawberry Waffle', price: 3.50, desc: 'Waffle with lotus & strawberry',
-                    category: 'sweets', image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=300&h=160&fit=crop' },
-                { name: 'Stroop Waffle', price: 2.00, desc: 'Classic stroop waffle', category: 'sweets',
-                    image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=300&h=160&fit=crop' },
-                { name: 'Triple Chocolate Crepe', price: 3.50, desc: 'Rich chocolate crepe', category: 'sweets',
-                    image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=300&h=160&fit=crop' },
-                { name: 'Fettuccine Crepe', price: 2.50, desc: 'Creamy fettuccine crepe', category: 'sweets',
-                    image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=300&h=160&fit=crop' },
-                { name: 'Mighty Crepe', price: 3.70, desc: 'Loaded crepe with toppings', category: 'sweets',
-                    image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=300&h=160&fit=crop' },
-                { name: 'Banana Crepe', price: 2.00, desc: 'Classic banana crepe', category: 'sweets',
-                    image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=300&h=160&fit=crop' }
-            ],
-            coffee: [
-                { name: 'Espresso', price: 0.90, desc: 'Bold intense coffee shot', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Americano', price: 0.90, desc: 'Rich espresso hot water', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Cappuccino', price: 1.50, desc: 'Creamy foam espresso base', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Latte', price: 1.50, desc: 'Smooth milk espresso blend', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Flat White', price: 1.30, desc: 'Velvety microfoam espresso', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Spanish Latte', price: 1.70, desc: 'Sweet condensed milk coffee', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Mocha', price: 1.50, desc: 'Chocolate espresso milk swirl', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Pistachio Latte', price: 2.00, desc: 'Nutty sweet cream coffee', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Hot Chocolate', price: 1.50, desc: 'Rich cocoa steamed milk', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Iced Spanish', price: 2.70, desc: 'Bold iced coffee', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Iced Vanilla Latte', price: 2.80, desc: 'Iced vanilla latte', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' },
-                { name: 'Iced Pistachio Latte', price: 3.60, desc: 'Iced pistachio latte', category: 'coffee',
-                    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&h=160&fit=crop' }
-            ],
-            desserts: [
-                { name: 'Chocolate Butter & Caramel Cake', price: 2.70, desc: 'Rich chocolate with caramel',
-                    category: 'desserts', image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' },
-                { name: 'Naked Strawberry Cake', price: 2.70, desc: 'Fresh strawberry delight', category: 'desserts',
-                    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' },
-                { name: 'Red Velvet Cake', price: 2.00, desc: 'Classic red velvet', category: 'desserts',
-                    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' },
-                { name: 'Lotus Cheesecake', price: 3.50, desc: 'Creamy lotus cheesecake', category: 'desserts',
-                    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' },
-                { name: 'Chocolate Cheesecake', price: 3.50, desc: 'Rich chocolate cheesecake', category: 'desserts',
-                    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' },
-                { name: 'Brownies with Nuts', price: 2.00, desc: 'Fudgy brownies with nuts', category: 'desserts',
-                    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' },
-                { name: 'Tiramisu', price: 2.00, desc: 'Classic Italian tiramisu', category: 'desserts',
-                    image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=160&fit=crop' }
-            ]
+            sandwiches: [{
+                name: 'Steak & Cheese (Half)',
+                price: 4.00,
+                desc: 'Tender steak with melted cheese',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Steak & Cheese (Full)',
+                price: 7.00,
+                desc: 'Tender steak with melted cheese',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Chicken Sandwich (Half)',
+                price: 3.50,
+                desc: 'Grilled chicken with fresh veggies',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Chicken Sandwich (Full)',
+                price: 6.00,
+                desc: 'Grilled chicken with fresh veggies',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Tuna Melt (Half)',
+                price: 3.00,
+                desc: 'Classic tuna with melted cheese',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Tuna Melt (Full)',
+                price: 5.00,
+                desc: 'Classic tuna with melted cheese',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Egg & Mayo (Half)',
+                price: 3.00,
+                desc: 'Creamy egg mayo sandwich',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Egg & Mayo (Full)',
+                price: 5.00,
+                desc: 'Creamy egg mayo sandwich',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
+            }],
+            sweets: [{
+                name: 'Lotus Strawberry Waffle',
+                price: 3.50,
+                desc: 'Waffle with lotus & strawberry',
+                category: 'sweets',
+                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Stroop Waffle',
+                price: 2.00,
+                desc: 'Classic stroop waffle',
+                category: 'sweets',
+                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Triple Chocolate Crepe',
+                price: 3.50,
+                desc: 'Rich chocolate crepe',
+                category: 'sweets',
+                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Fettuccine Crepe',
+                price: 2.50,
+                desc: 'Creamy fettuccine crepe',
+                category: 'sweets',
+                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Mighty Crepe',
+                price: 3.70,
+                desc: 'Loaded crepe with toppings',
+                category: 'sweets',
+                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Banana Crepe',
+                price: 2.00,
+                desc: 'Classic banana crepe',
+                category: 'sweets',
+                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
+            }],
+            coffee: [{
+                name: 'Espresso',
+                price: 0.90,
+                desc: 'Bold intense coffee shot',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Americano',
+                price: 0.90,
+                desc: 'Rich espresso hot water',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Cappuccino',
+                price: 1.50,
+                desc: 'Creamy foam espresso base',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Latte',
+                price: 1.50,
+                desc: 'Smooth milk espresso blend',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Flat White',
+                price: 1.30,
+                desc: 'Velvety microfoam espresso',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Spanish Latte',
+                price: 1.70,
+                desc: 'Sweet condensed milk coffee',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Mocha',
+                price: 1.50,
+                desc: 'Chocolate espresso milk swirl',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Pistachio Latte',
+                price: 2.00,
+                desc: 'Nutty sweet cream coffee',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Hot Chocolate',
+                price: 1.50,
+                desc: 'Rich cocoa steamed milk',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Iced Spanish',
+                price: 2.70,
+                desc: 'Bold iced coffee',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Iced Vanilla Latte',
+                price: 2.80,
+                desc: 'Iced vanilla latte',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Iced Pistachio Latte',
+                price: 3.60,
+                desc: 'Iced pistachio latte',
+                category: 'coffee',
+                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
+            }],
+            desserts: [{
+                name: 'Chocolate Butter & Caramel Cake',
+                price: 2.70,
+                desc: 'Rich chocolate with caramel',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Naked Strawberry Cake',
+                price: 2.70,
+                desc: 'Fresh strawberry delight',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Red Velvet Cake',
+                price: 2.00,
+                desc: 'Classic red velvet',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Lotus Cheesecake',
+                price: 3.50,
+                desc: 'Creamy lotus cheesecake',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Chocolate Cheesecake',
+                price: 3.50,
+                desc: 'Rich chocolate cheesecake',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Brownies with Nuts',
+                price: 2.00,
+                desc: 'Fudgy brownies with nuts',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: 'Tiramisu',
+                price: 2.00,
+                desc: 'Classic Italian tiramisu',
+                category: 'desserts',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
+            }]
         };
-
-        // Flatten for cart lookups
-        const allItems = [];
-        Object.keys(menuData).forEach(cat => {
-            menuData[cat].forEach(item => {
-                allItems.push(item);
-            });
-        });
 
         // ============================================================
         // CAROUSEL
@@ -1533,6 +1671,17 @@
         function startAutoSlide() {
             if (slideInterval) clearInterval(slideInterval);
             slideInterval = setInterval(() => changeSlide(1), 5000);
+        }
+
+        // ============================================================
+        // CHEESE ADD-ON LOGIC
+        // ============================================================
+        function getItemPrice(item, cheeseChecked) {
+            let basePrice = item.price;
+            if (cheeseChecked) {
+                basePrice += 0.50;
+            }
+            return basePrice;
         }
 
         // ============================================================
@@ -1583,11 +1732,28 @@
                     const card = document.createElement('div');
                     card.className = 'product-card';
                     const uniqueId = cat + '_' + index;
+
+                    // Base price display
+                    let priceDisplay = `$${item.price.toFixed(2)}`;
+
+                    // For sandwiches, show cheese add-on option
+                    let cheeseHtml = '';
+                    if (cat === 'sandwiches') {
+                        cheeseHtml = `
+                                <div class="cheese-option">
+                                    <input type="checkbox" id="cheese_${uniqueId}" onchange="updateItemPrice('${uniqueId}', ${item.price})" />
+                                    <label for="cheese_${uniqueId}">Add Extra Cheese (+$0.50)</label>
+                                </div>
+                            `;
+                        // Price will be updated dynamically, so we show base + cheese if checked
+                    }
+
                     card.innerHTML = `
-                            <img src="${item.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=160&fit=crop'}" alt="${item.name}" class="product-image" loading="lazy" />
+                            <img src="${item.image}" alt="${item.name}" class="product-image" loading="lazy" />
                             <div class="product-name">${item.name}</div>
                             <div class="product-desc">${item.desc || ''}</div>
-                            <div class="product-price">$${item.price.toFixed(2)}</div>
+                            <div class="product-price" id="price_display_${uniqueId}">${priceDisplay}</div>
+                            ${cheeseHtml}
                             <button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">+ Add to Order</button>
                         `;
                     grid.appendChild(card);
@@ -1596,6 +1762,18 @@
                 section.appendChild(grid);
                 container.appendChild(section);
             });
+        }
+
+        // ============================================================
+        // UPDATE ITEM PRICE (cheese toggle)
+        // ============================================================
+        function updateItemPrice(uniqueId, basePrice) {
+            const checkbox = document.getElementById(`cheese_${uniqueId}`);
+            const priceDisplay = document.getElementById(`price_display_${uniqueId}`);
+            if (checkbox && priceDisplay) {
+                const totalPrice = checkbox.checked ? basePrice + 0.50 : basePrice;
+                priceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
+            }
         }
 
         // ============================================================
@@ -1609,11 +1787,23 @@
         const exchangeRate = 11000;
         let currentOrderId = '';
 
-        function addToCart(id, name, price) {
+        function addToCart(id, name, basePrice) {
+            // Check if cheese is selected for this item
+            const checkbox = document.getElementById(`cheese_${id}`);
+            const hasCheese = checkbox ? checkbox.checked : false;
+            const finalPrice = hasCheese ? basePrice + 0.50 : basePrice;
+            const itemName = hasCheese ? `${name} + Cheese` : name;
+
             if (cart[id]) {
                 cart[id].qty += 1;
             } else {
-                cart[id] = { name: name, price: price, qty: 1 };
+                cart[id] = {
+                    name: itemName,
+                    price: finalPrice,
+                    basePrice: basePrice,
+                    hasCheese: hasCheese,
+                    qty: 1
+                };
             }
             updateAll();
         }
@@ -1651,9 +1841,10 @@
             Object.keys(cart).forEach(id => {
                 const item = cart[id];
                 const total = item.price * item.qty;
+                const cheeseNote = item.hasCheese ? ' + Cheese' : '';
                 html += `
                         <div class="cart-item">
-                            <span class="name">${item.name}</span>
+                            <span class="name">${item.name}${cheeseNote} × ${item.qty}</span>
                             <div class="qty-control">
                                 <button onclick="changeQty('${id}',-1)">−</button>
                                 <span class="qty">${item.qty}</span>
@@ -1703,12 +1894,13 @@
             arr.forEach(item => {
                 const total = item.price * item.qty;
                 subtotal += total;
-                message += `• ${item.name} × ${item.qty} = $${total.toFixed(2)}\n`;
+                const cheeseNote = item.hasCheese ? ' + Cheese' : '';
+                message += `• ${item.name}${cheeseNote} × ${item.qty} = $${total.toFixed(2)}\n`;
             });
             const tax = subtotal * 0.0012;
             const total = subtotal + tax;
             message += `\n📊 Subtotal: $${subtotal.toFixed(2)}`;
-            message += `\n📊 Tax: $${tax.toFixed(2)}`;
+            message += `\n📊 Tax (0.12%): $${tax.toFixed(2)}`;
             message += `\n💳 Total: $${total.toFixed(2)}`;
             message += `\n\n📞 Payment: ${cartPayment} to 3665112`;
             message += `\n\nThank you! ☕🍫`;
@@ -1810,7 +2002,8 @@
             const arr = Object.values(cart);
             let orderText = '';
             arr.forEach(item => {
-                orderText += `${item.name} × ${item.qty}\n`;
+                const cheeseNote = item.hasCheese ? ' + Cheese' : '';
+                orderText += `${item.name}${cheeseNote} × ${item.qty}\n`;
             });
             let amount = cartTotal;
             let symbol = '$';

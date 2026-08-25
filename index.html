@@ -7,7 +7,6 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Arial',sans-serif;background:#f5efe8;color:#3e2723;width:100%;}
         
-        /* ===== HEADER WITH LOGO ON LEFT ===== */
         header{background:#4A2E1B;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
         .header-left{display:flex;align-items:center;gap:12px;}
         .logo-img{height:44px;width:auto;cursor:pointer;display:block;object-fit:contain;}
@@ -29,21 +28,26 @@
         .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
         
         .category-tabs{background:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;border-bottom:2px solid #ece3d8;position:sticky;top:68px;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
-        .category-tabs button{background:transparent;border:none;padding:8px 18px;font-size:13px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;border-radius:30px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:0.5px;}
+        .category-tabs button{background:transparent;border:none;padding:10px 20px;font-size:13px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;border-radius:30px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:8px;}
+        .category-tabs button .icon{font-size:16px;display:inline-block;width:24px;height:24px;text-align:center;line-height:24px;background:#f5efe8;border-radius:50%;transition:0.3s;}
         .category-tabs button:hover{background:#f5efe8;color:#4A2E1B;}
+        .category-tabs button:hover .icon{background:#4A2E1B;color:#fff;}
         .category-tabs button.active{background:#4A2E1B;color:#d7a86e;}
+        .category-tabs button.active .icon{background:#d7a86e;color:#4A2E1B;}
         
         .menu-section{padding:20px 16px;max-width:1200px;margin:0 auto;}
         .section-title{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin:20px 0 12px;padding-left:12px;border-left:4px solid #d7a86e;}
         
-        .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;}
-        .menu-item{background:#fff;border-radius:12px;padding:14px 12px;text-align:center;border:1px solid #ece3d8;transition:0.3s;}
-        .menu-item:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
-        .menu-item h3{font-size:14px;color:#4A2E1B;font-family:'Georgia',serif;}
-        .menu-item .price{font-size:14px;font-weight:700;color:#6b3f2a;font-family:'Arial',sans-serif;margin:2px 0;}
-        .badge{display:inline-block;padding:2px 10px;border-radius:30px;font-size:10px;font-weight:700;margin-top:4px;font-family:'Arial',sans-serif;}
-        .badge.in{background:#2e7d32;color:#fff;}
-        .badge.out{background:#b71c1c;color:#fff;}
+        .menu-list{display:flex;flex-direction:column;gap:4px;margin-top:8px;}
+        .menu-list-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #f0ebe5;background:#fff;border-radius:4px;transition:0.3s;}
+        .menu-list-item:hover{background:#f8f5f0;}
+        .menu-list-item .item-name{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
+        .menu-list-item .item-price{font-size:15px;font-weight:700;color:#6b3f2a;font-family:'Arial',sans-serif;}
+        .menu-list-item .item-desc{font-size:12px;color:#6d5c4e;font-family:'Arial',sans-serif;display:block;font-style:italic;}
+        .menu-list-item .item-left{display:flex;flex-direction:column;flex:1;}
+        .menu-list-item .add-btn-small{background:#4A2E1B;color:#fff;border:none;padding:5px 16px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;}
+        .menu-list-item .add-btn-small:hover{background:#6b3f2a;transform:scale(1.05);}
+        .menu-list-item .item-right{display:flex;align-items:center;gap:14px;}
         
         .add-btn{background:#4A2E1B;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:11px;cursor:pointer;transition:0.3s;margin-top:6px;font-family:'Arial',sans-serif;}
         .add-btn:hover{background:#6b3f2a;transform:scale(1.05);}
@@ -141,19 +145,6 @@
         .order-confirmed h3{color:#2e7d32;font-size:18px;}
         .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4A2E1B;}
         
-        .size-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:3000;justify-content:center;align-items:center;}
-        .size-modal.active{display:flex;}
-        .size-modal-content{background:#fff;border-radius:16px;padding:30px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
-        .size-modal-content h3{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin-bottom:4px;}
-        .size-modal-content .sub{color:#6d5c4e;font-size:14px;margin-bottom:14px;}
-        .size-options{display:flex;flex-direction:column;gap:10px;}
-        .size-btn{padding:12px 20px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;border-radius:30px;font-size:15px;font-weight:700;cursor:pointer;transition:0.3s;display:flex;justify-content:space-between;align-items:center;}
-        .size-btn:hover{background:#4A2E1B;color:#fff;}
-        .size-btn .price-tag{font-weight:400;font-size:14px;color:#6b3f2a;}
-        .size-btn .cheese-tag{font-size:13px;font-weight:400;color:#d7a86e;background:#4A2E1B;padding:2px 10px;border-radius:20px;}
-        .size-btn.cancel{background:#e8e0d8;border-color:#e8e0d8;color:#6d5c4e;justify-content:center;}
-        .size-btn.cancel:hover{background:#d5cdc5;color:#6d5c4e;}
-        
         .carousel-container{position:relative;max-width:100%;overflow:hidden;border-radius:16px;margin:20px 0;}
         .carousel-slides{display:flex;transition:transform 0.5s ease-in-out;}
         .carousel-slide{min-width:100%;position:relative;}
@@ -167,34 +158,37 @@
         .carousel-dots .dot.active{background:#d7a86e;width:16px;}
         
         @media(min-width:768px){
-            .menu-grid{grid-template-columns:repeat(4,1fr);}
             .hero{padding:70px 40px 60px;min-height:420px;}
             .category-tabs{gap:10px;}
             .category-tabs button{font-size:14px;padding:8px 22px;}
             .featured-grid{grid-template-columns:repeat(4,1fr);}
             .page{padding:0;}
             .carousel-slide img{height:400px;}
+            .menu-list-item{padding:12px 20px;}
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
             .hero{padding:30px 16px 25px;min-height:280px;}
-            .menu-grid{grid-template-columns:1fr 1fr;}
             .logo-img{height:32px;}
             .logo-text{font-size:16px;}
             .logo-tagline{font-size:8px;}
             .category-tabs{top:58px;padding:8px 10px;gap:4px;}
-            .category-tabs button{font-size:11px;padding:5px 12px;}
+            .category-tabs button{font-size:11px;padding:5px 12px;gap:4px;}
+            .category-tabs button .icon{width:18px;height:18px;font-size:12px;line-height:18px;}
             header{padding:10px 16px;}
             nav{gap:12px;}
             nav a{font-size:12px;}
             .featured-grid{grid-template-columns:1fr 1fr;}
             .carousel-slide img{height:200px;}
+            .menu-list-item{padding:8px 10px;}
+            .menu-list-item .item-name{font-size:13px;}
+            .menu-list-item .item-price{font-size:13px;}
+            .menu-list-item .item-desc{font-size:10px;}
         }
     </style>
 </head>
 <body>
 
-<!-- ===== HEADER: LOGO ON LEFT ===== -->
 <header>
     <div class="header-left">
         <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
@@ -221,7 +215,6 @@
         </div>
     </div>
     
-    <!-- ===== CAROUSEL ===== -->
     <div class="carousel-container">
         <div class="carousel-slides" id="carouselSlides">
             <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" alt="Delicious Food"></div>
@@ -234,7 +227,6 @@
         <div class="carousel-dots" id="carouselDots"></div>
     </div>
     
-    <!-- ===== FEATURED ===== -->
     <div class="featured-section">
         <h2>⭐ Why Chocolate Inn?</h2>
         <div class="featured-grid">
@@ -255,15 +247,11 @@
 <!-- ===== ORDER PAGE ===== -->
 <div class="page" id="page-order">
     <div class="category-tabs" id="categoryTabs">
-        <button class="active" onclick="filterCategory('all')">All</button>
-        <button onclick="filterCategory('sandwiches')">Sandwiches</button>
-        <button onclick="filterCategory('salads')">Salads</button>
-        <button onclick="filterCategory('waffles')">Waffles</button>
-        <button onclick="filterCategory('crepes')">Crepes</button>
-        <button onclick="filterCategory('hotDrinks')">Hot Drinks</button>
-        <button onclick="filterCategory('icedDrinks')">Iced Drinks</button>
-        <button onclick="filterCategory('desserts')">Desserts</button>
-        <button onclick="filterCategory('pastries')">Pastries</button>
+        <button class="active" onclick="filterCategory('all')"><span class="icon">✦</span> All</button>
+        <button onclick="filterCategory('hotDrinks')"><span class="icon">☕</span> Hot Drinks</button>
+        <button onclick="filterCategory('icedDrinks')"><span class="icon">🧊</span> Iced Drinks</button>
+        <button onclick="filterCategory('desserts')"><span class="icon">🍰</span> Desserts</button>
+        <button onclick="filterCategory('cakes')"><span class="icon">🎂</span> Cakes</button>
     </div>
     
     <div class="menu-section">
@@ -296,21 +284,6 @@
                 <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
                 <button type="submit" class="btn">📨 Send</button>
             </form>
-        </div>
-    </div>
-</div>
-
-<!-- ===== SIZE POPUP ===== -->
-<div class="size-modal" id="sizeModal">
-    <div class="size-modal-content">
-        <h3 id="sizeItemName">Sandwich Name</h3>
-        <p class="sub">Choose your size and cheese option:</p>
-        <div class="size-options">
-            <button class="size-btn" onclick="selectSize('half', false)"><span>🥪 Half</span><span class="price-tag" id="sizeHalfPrice">$0.00</span></button>
-            <button class="size-btn" onclick="selectSize('half', true)"><span>🥪 Half + 🧀 Cheese</span><span class="price-tag" id="sizeHalfCheesePrice">$0.00</span><span class="cheese-tag">+$0.50</span></button>
-            <button class="size-btn" onclick="selectSize('full', false)"><span>🥪 Full</span><span class="price-tag" id="sizeFullPrice">$0.00</span></button>
-            <button class="size-btn" onclick="selectSize('full', true)"><span>🥪 Full + 🧀 Cheese</span><span class="price-tag" id="sizeFullCheesePrice">$0.00</span><span class="cheese-tag">+$0.50</span></button>
-            <button class="size-btn cancel" onclick="closeSizeModal()">Cancel</button>
         </div>
     </div>
 </div>
@@ -375,110 +348,41 @@ let slideInterval;
 
 // ===== MENU DATA =====
 const menuData = {
-    sandwiches: [
-        {name:'Steak & Cheese', half:4, full:7, category:'sandwiches'},
-        {name:'Chicken Sandwich', half:3.50, full:6, category:'sandwiches'},
-        {name:'Meat Ball and Steak', half:4, full:7, category:'sandwiches'},
-        {name:'Tuna Melt', half:3, full:5, category:'sandwiches'},
-        {name:'Egg & Mayo', half:3, full:5, category:'sandwiches'}
-    ],
-    salads: [
-        {name:'Chicken Salad', price:3, category:'salads'},
-        {name:'Tuna & Mayo Salad', price:3, category:'salads'},
-        {name:'Meatball Salad', price:3.50, category:'salads'},
-        {name:'Steak Salad', price:3.50, category:'salads'}
-    ],
-    waffles: [
-        {name:'Lotus Strawberry Waffle', price:3.50, category:'waffles'},
-        {name:'Stroop Waffle', price:2, category:'waffles'}
-    ],
-    crepes: [
-        {name:'Triple Chocolate Crepe', price:3.50, category:'crepes'},
-        {name:'Fettuccine Crepe', price:2.50, category:'crepes'},
-        {name:'Mighty Crepe', price:3.70, category:'crepes'},
-        {name:'Banana Crepe', price:2, category:'crepes'}
-    ],
     hotDrinks: [
-        {name:'Espresso', price:0.90, category:'hotDrinks'},
-        {name:'Americano', price:0.90, category:'hotDrinks'},
-        {name:'Cappuccino', price:1.50, category:'hotDrinks'},
-        {name:'Latte', price:1.50, category:'hotDrinks'},
-        {name:'Flat White', price:1.30, category:'hotDrinks'},
-        {name:'Spanish Latte', price:1.70, category:'hotDrinks'},
-        {name:'Mocha', price:1.50, category:'hotDrinks'},
-        {name:'Pistachio Latte', price:2, category:'hotDrinks'},
-        {name:'Hot Chocolate', price:1.50, category:'hotDrinks'}
+        {name:'Espresso', price:0.90, desc:'Bold intense coffee shot'},
+        {name:'Americano', price:0.90, desc:'Rich espresso hot water'},
+        {name:'Cappuccino', price:1.50, desc:'Creamy foam espresso base'},
+        {name:'Latte', price:1.50, desc:'Smooth milk espresso blend'},
+        {name:'Flat White', price:1.30, desc:'Velvety microfoam espresso'},
+        {name:'Spanish Latte', price:1.70, desc:'Sweet condensed milk coffee'},
+        {name:'Mocha', price:1.50, desc:'Chocolate espresso milk swirl'},
+        {name:'Pistachio Latte', price:2.00, desc:'Nutty sweet cream coffee'},
+        {name:'Hot Chocolate', price:1.50, desc:'Rich cocoa steamed milk'}
     ],
     icedDrinks: [
-        {name:'Iced Spanish', price:2.70, category:'icedDrinks'},
-        {name:'Iced White Mocha', price:2.80, category:'icedDrinks'},
-        {name:'Iced Vanilla Latte', price:2.80, category:'icedDrinks'},
-        {name:'Iced Pistachio Latte', price:3.60, category:'icedDrinks'},
-        {name:'Iced Caramel Latte', price:2.80, category:'icedDrinks'},
-        {name:'Classic Iced Latte', price:2, category:'icedDrinks'}
-    ],
-    tea: [
-        {name:'Passion Iced Tea', price:1, category:'tea'},
-        {name:'Classic Lemon Iced Tea', price:1, category:'tea'},
-        {name:'Kiwi Iced Tea', price:1, category:'tea'}
-    ],
-    frappes: [
-        {name:'Oreo Ice Cream Frappe', price:2.80, category:'frappes'},
-        {name:'Lotus Ice Cream Frappe', price:2.80, category:'frappes'},
-        {name:'Caramel Ice Cream Frappe', price:2.80, category:'frappes'}
-    ],
-    milkshakes: [
-        {name:'Red Velvet Shake', price:2.50, category:'milkshakes'},
-        {name:'Chocolate Brownie Shake', price:2.50, category:'milkshakes'}
-    ],
-    smoothies: [
-        {name:'Strawberry Banana Smoothie', price:2.50, category:'smoothies'},
-        {name:'Avocado Honey Smoothie', price:2.50, category:'smoothies'},
-        {name:'Mango Passion Smoothie', price:2.50, category:'smoothies'}
-    ],
-    matcha: [
-        {name:'Iced Matcha', price:2.50, category:'matcha'},
-        {name:'Hot Matcha', price:2, category:'matcha'}
+        {name:'Iced Spanish', price:2.70, desc:'Bold intense coffee shot'},
+        {name:'Iced White Mocha', price:2.80, desc:'Rich espresso hot water'},
+        {name:'Iced Vanilla Latte', price:2.80, desc:'Creamy foam espresso base'},
+        {name:'Iced Pistachio Latte', price:3.60, desc:'Smooth milk espresso blend'},
+        {name:'Iced Caramel Latte', price:2.80, desc:'Velvety microfoam espresso'},
+        {name:'Classic Iced Latte', price:2.00, desc:'Sweet condensed milk coffee'}
     ],
     desserts: [
-        {name:'Chocolate Butter & Caramel Cake', price:2.70, category:'desserts'},
-        {name:'Naked Strawberry Cake', price:2.70, category:'desserts'},
-        {name:'Chocolate Berry Cake', price:2.70, category:'desserts'},
-        {name:'Dates Caramel Cake', price:2.70, category:'desserts'},
-        {name:'Red Velvet Cake', price:2, category:'desserts'},
-        {name:'Lotus Cheesecake', price:3.50, category:'desserts'},
-        {name:'Chocolate Cheesecake', price:3.50, category:'desserts'},
-        {name:'Basusa', price:1.50, category:'desserts'},
-        {name:'Chocolate Éclair', price:1.50, category:'desserts'},
-        {name:'Apple Tart', price:1.50, category:'desserts'},
-        {name:'Brownies with Nuts', price:2, category:'desserts'},
-        {name:'Opera Chocolate', price:2, category:'desserts'},
-        {name:'Tiramisu', price:2, category:'desserts'}
-    ],
-    cookies: [
-        {name:'Lotus Chocolate Chip Cookies', price:0.80, category:'cookies'},
-        {name:'Double Chocolate Cookies', price:1, category:'cookies'},
-        {name:'Red Velvet Cookies', price:0.50, category:'cookies'},
-        {name:'Pistachio Chocolate Chip Cookies', price:1, category:'cookies'}
-    ],
-    pastries: [
-        {name:'Butter Croissant', price:1, category:'pastries'},
-        {name:'Chocolate Croissant', price:1.20, category:'pastries'},
-        {name:'Almond Croissant', price:1.20, category:'pastries'},
-        {name:'Cinnamon Rolls Cream Filling', price:1.20, category:'pastries'},
-        {name:'Cinnamon Rolls Pistachio Filling', price:1.50, category:'pastries'},
-        {name:'Cinnamon Rolls Chocolate Filling', price:1.20, category:'pastries'},
-        {name:'Pistachio Supreme', price:1.50, category:'pastries'},
-        {name:'Pain Au Choco Supreme', price:1.50, category:'pastries'}
+        {name:'Chocolate Butter & Caramel Cake', price:2.70, desc:'Rich chocolate with caramel'},
+        {name:'Naked Strawberry Cake', price:2.70, desc:'Fresh strawberry delight'},
+        {name:'Chocolate Berry Cake', price:2.70, desc:'Chocolate and berry fusion'},
+        {name:'Dates Caramel Cake', price:2.70, desc:'Sweet dates with caramel'},
+        {name:'Red Velvet Cake', price:2.00, desc:'Classic red velvet'},
+        {name:'Lotus Cheesecake', price:3.50, desc:'Creamy lotus cheesecake'},
+        {name:'Chocolate Cheesecake', price:3.50, desc:'Rich chocolate cheesecake'},
+        {name:'Basbusa', price:1.50, desc:'Traditional semolina cake'},
+        {name:'Chocolate Éclair', price:1.50, desc:'Cream-filled chocolate pastry'},
+        {name:'Apple Tart', price:1.50, desc:'Classic apple tart'},
+        {name:'Brownies with Nuts', price:2.00, desc:'Fudgy brownies with nuts'},
+        {name:'Opera Chocolate', price:2.00, desc:'Layered chocolate opera cake'},
+        {name:'Tiramisu', price:2.00, desc:'Classic Italian tiramisu'}
     ]
 };
-
-const allItems = [];
-Object.keys(menuData).forEach(key => {
-    menuData[key].forEach(item => {
-        allItems.push({...item, category: key});
-    });
-});
 
 // ===== CAROUSEL =====
 function initCarousel() {
@@ -521,38 +425,12 @@ function startAutoSlide() {
     slideInterval = setInterval(() => changeSlide(1), 4000);
 }
 
-// ===== SIZE MODAL =====
-function openSizeModal(itemId, itemName, halfPrice, fullPrice) {
-    pendingSandwich = {name: itemName, half: halfPrice, full: fullPrice};
-    pendingSandwichId = itemId;
-    document.getElementById('sizeItemName').textContent = itemName;
-    document.getElementById('sizeHalfPrice').textContent = '$' + halfPrice.toFixed(2);
-    document.getElementById('sizeHalfCheesePrice').textContent = '$' + (halfPrice + 0.50).toFixed(2);
-    document.getElementById('sizeFullPrice').textContent = '$' + fullPrice.toFixed(2);
-    document.getElementById('sizeFullCheesePrice').textContent = '$' + (fullPrice + 0.50).toFixed(2);
-    document.getElementById('sizeModal').classList.add('active');
-}
-function selectSize(size, cheese) {
-    if (!pendingSandwich || !pendingSandwichId) return;
-    let price = size === 'half' ? pendingSandwich.half : pendingSandwich.full;
-    if (cheese) price += 0.50;
-    const cheeseText = cheese ? ' + 🧀 Cheese' : '';
-    const nameWithSize = pendingSandwich.name + ' (' + size.charAt(0).toUpperCase() + size.slice(1) + cheeseText + ')';
-    addToCart(pendingSandwichId + '_' + size + '_' + (cheese ? 'cheese' : 'nocheese'), nameWithSize, price);
-    closeSizeModal();
-}
-function closeSizeModal() {
-    document.getElementById('sizeModal').classList.remove('active');
-    pendingSandwich = null;
-    pendingSandwichId = null;
-}
-
 // ===== FILTER & RENDER =====
 function filterCategory(category) {
     currentCategory = category;
     document.querySelectorAll('.category-tabs button').forEach(btn => {
         btn.classList.remove('active');
-        if(btn.textContent.toLowerCase() === category || (category === 'all' && btn.textContent.toLowerCase() === 'all')) {
+        if(btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent.toLowerCase() === 'all')) {
             btn.classList.add('active');
         }
     });
@@ -563,62 +441,46 @@ function renderMenu(category = 'all') {
     const container = document.getElementById('menuContainer');
     container.innerHTML = '';
     
-    let items = category === 'all' ? allItems : allItems.filter(item => item.category === category);
-    const grouped = {};
-    items.forEach(item => {
-        const cat = item.category;
-        if(!grouped[cat]) grouped[cat] = [];
-        grouped[cat].push(item);
-    });
-    
     const catNames = {
-        sandwiches: '🥪 Sandwiches',
-        salads: '🥗 Salads',
-        waffles: '🧇 Waffles',
-        crepes: '🥞 Crepes',
         hotDrinks: '☕ Hot Drinks',
         icedDrinks: '🧊 Iced Drinks',
-        tea: '🍵 Tea & Mojitos',
-        frappes: '🥤 Frappes',
-        milkshakes: '🥛 Milkshakes',
-        smoothies: '🍹 Smoothies',
-        matcha: '🍵 Matcha',
-        desserts: '🍰 Desserts & Cakes',
-        cookies: '🍪 Cookies',
-        pastries: '🥐 Pastries'
+        desserts: '🍰 Desserts & Cakes'
     };
     
-    Object.keys(grouped).forEach(cat => {
+    Object.keys(menuData).forEach(cat => {
+        if (category !== 'all' && cat !== category) return;
+        const items = menuData[cat];
+        if (!items || items.length === 0) return;
+        
         const section = document.createElement('div');
-        section.style.marginBottom = '8px';
+        section.style.marginBottom = '16px';
+        
         const title = document.createElement('div');
         title.className = 'section-title';
         title.textContent = catNames[cat] || cat;
         section.appendChild(title);
-        const grid = document.createElement('div');
-        grid.className = 'menu-grid';
-        grouped[cat].forEach((item, index) => {
+        
+        const list = document.createElement('div');
+        list.className = 'menu-list';
+        
+        items.forEach((item, index) => {
             const div = document.createElement('div');
-            div.className = 'menu-item';
+            div.className = 'menu-list-item';
             const uniqueId = cat + '_' + index;
-            if(item.half !== undefined) {
-                div.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <div class="price">Half $${item.half.toFixed(2)} / Full $${item.full.toFixed(2)}</div>
-                    <span class="badge in">✔ In Stock</span>
-                    <br><button class="add-btn" onclick="openSizeModal('${uniqueId}', '${item.name}', ${item.half}, ${item.full})">➕ Add to Cart</button>
-                `;
-            } else {
-                div.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <div class="price">$${item.price.toFixed(2)}</div>
-                    <span class="badge in">✔ In Stock</span>
-                    <br><button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">➕ Add to Cart</button>
-                `;
-            }
-            grid.appendChild(div);
+            div.innerHTML = `
+                <div class="item-left">
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-desc">${item.desc || ''}</span>
+                </div>
+                <div class="item-right">
+                    <span class="item-price">$${item.price.toFixed(2)}</span>
+                    <button class="add-btn-small" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">Add</button>
+                </div>
+            `;
+            list.appendChild(div);
         });
-        section.appendChild(grid);
+        
+        section.appendChild(list);
         container.appendChild(section);
     });
 }

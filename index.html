@@ -21,9 +21,6 @@
     <meta property="og:type" content="website" />
 
     <style>
-        /* ============================================================
-           RESET & BASE
-           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -39,9 +36,7 @@
             line-height: 1.6;
         }
 
-        /* ============================================================
-           HEADER & NAVIGATION
-           ============================================================ */
+        /* ===== HEADER ===== */
         header {
             background: #2C1810;
             padding: 12px 24px;
@@ -62,40 +57,13 @@
             gap: 12px;
         }
 
+        /* Logo image only - no text next to it */
         .logo-img {
             height: 50px;
             width: auto;
             cursor: pointer;
             display: block;
             object-fit: contain;
-        }
-
-        /* ---- Brand typography in header ---- */
-        .brand-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            cursor: pointer;
-            line-height: 1.2;
-        }
-        .brand-text .choco {
-            color: #F5EFE6;
-        }
-        .brand-text .inn {
-            color: #D4AF37;
-        }
-
-        .brand-tagline {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
-            font-weight: 300;
-            font-style: italic;
-            letter-spacing: 2px;
-            color: #D4AF37;
-            opacity: 0.85;
-            margin-top: -2px;
         }
 
         nav {
@@ -125,9 +93,7 @@
             color: #D4AF37;
         }
 
-        /* ============================================================
-           PAGES
-           ============================================================ */
+        /* ===== PAGES ===== */
         .page {
             display: none;
             padding: 0;
@@ -149,9 +115,7 @@
             }
         }
 
-        /* ============================================================
-           HERO SECTION
-           ============================================================ */
+        /* ===== HERO ===== */
         .hero {
             background: linear-gradient(145deg, #2C1810, #4A2A1C);
             color: #F5EFE6;
@@ -234,20 +198,6 @@
             font-weight: 300;
         }
 
-        .hero .open-badge-hero {
-            display: inline-block;
-            background: #2E7D32;
-            color: #fff;
-            padding: 4px 18px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin: 6px 0 12px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-        }
-
         .hero .btn {
             background: #D4AF37;
             color: #2C1810;
@@ -270,9 +220,7 @@
             box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
         }
 
-        /* ============================================================
-           CATEGORY TABS
-           ============================================================ */
+        /* ===== CATEGORY TABS ===== */
         .category-tabs {
             background: #FFFFFF;
             padding: 12px 16px;
@@ -335,9 +283,7 @@
             color: #2C1810;
         }
 
-        /* ============================================================
-           MENU / PRODUCT CARDS
-           ============================================================ */
+        /* ===== MENU / PRODUCT CARDS ===== */
         .menu-section {
             padding: 20px 16px;
             max-width: 1200px;
@@ -411,7 +357,6 @@
             margin: 4px 0 8px;
         }
 
-        /* ---- Cheese add-on (checkbox) ---- */
         .cheese-option {
             display: flex;
             align-items: center;
@@ -450,9 +395,7 @@
             transform: scale(1.02);
         }
 
-        /* ============================================================
-           FEATURED SECTION (home)
-           ============================================================ */
+        /* ===== FEATURED SECTION ===== */
         .featured-section {
             background: #FFFFFF;
             padding: 30px 20px;
@@ -508,9 +451,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* ============================================================
-           ORDER CTA
-           ============================================================ */
+        /* ===== ORDER CTA ===== */
         .order-cta {
             background: #2C1810;
             color: #F5EFE6;
@@ -553,9 +494,7 @@
             transform: scale(1.03);
         }
 
-        /* ============================================================
-           CONTACT PAGE
-           ============================================================ */
+        /* ===== CONTACT PAGE ===== */
         .contact-info {
             background: #FFFFFF;
             border-radius: 12px;
@@ -654,9 +593,7 @@
             color: #2C1810;
         }
 
-        /* ============================================================
-           CART (floating button + side panel)
-           ============================================================ */
+        /* ===== CART ===== */
         .cart-float {
             position: fixed;
             bottom: 24px;
@@ -700,7 +637,6 @@
             border: 2px solid #FFFDF9;
         }
 
-        /* ===== Cart side panel ===== */
         .cart-side {
             position: fixed;
             top: 0;
@@ -920,9 +856,6 @@
             display: block;
         }
 
-        /* ============================================================
-           PAYMENT / CHECKOUT UI (ZAAD / EDAHAB)
-           ============================================================ */
         .payment-box {
             background: #FFFFFF;
             border-radius: 12px;
@@ -950,7 +883,6 @@
             color: #6D5C4E;
         }
 
-        /* WhatsApp order button */
         .whatsapp-order-btn {
             display: block;
             width: 100%;
@@ -1016,9 +948,7 @@
             color: #D4AF37;
         }
 
-        /* ============================================================
-           CAROUSEL
-           ============================================================ */
+        /* ===== CAROUSEL ===== */
         .carousel-container {
             position: relative;
             max-width: 100%;
@@ -1092,9 +1022,7 @@
             width: 18px;
         }
 
-        /* ============================================================
-           FOOTER
-           ============================================================ */
+        /* ===== FOOTER ===== */
         footer {
             background: #2C1810;
             color: #D4AF37;
@@ -1133,9 +1061,7 @@
             color: #fff;
         }
 
-        /* ============================================================
-           RESPONSIVE BREAKPOINTS
-           ============================================================ */
+        /* ===== RESPONSIVE ===== */
         @media (min-width: 768px) {
             .hero .hero-title {
                 font-size: 68px;
@@ -1160,9 +1086,6 @@
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            .brand-text {
-                font-size: 28px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1186,12 +1109,6 @@
             }
             .logo-img {
                 height: 38px;
-            }
-            .brand-text {
-                font-size: 18px;
-            }
-            .brand-tagline {
-                font-size: 8px;
             }
             .category-tabs {
                 top: 66px;
@@ -1239,16 +1156,11 @@
 </head>
 
 <body>
-    <!-- ============================================================
-    HEADER
-    ============================================================ -->
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="header-left">
+            <!-- Only the logo image - no text -->
             <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
-            <div class="brand-text" onclick="showPage('home')">
-                <span class="choco">Chocol</span><span class="inn">ate Inn</span>
-                <span class="brand-tagline">Where Chocolate Feels Like Home.</span>
-            </div>
         </div>
         <nav>
             <a class="active" onclick="showPage('home')">Home</a>
@@ -1257,9 +1169,7 @@
         </nav>
     </header>
 
-    <!-- ============================================================
-    HOME PAGE
-    ============================================================ -->
+    <!-- ===== HOME PAGE ===== -->
     <div class="page active" id="page-home">
         <div class="hero">
             <div class="hero-content">
@@ -1269,7 +1179,7 @@
                 </div>
                 <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
                 <div class="location">📍 Hargeisa, Somaliland</div>
-                <div class="open-badge-hero">🟢 Open 24/7</div>
+                <!-- OPEN 24/7 REMOVED -->
                 <button class="btn" onclick="showPage('order')">ORDER NOW</button>
             </div>
         </div>
@@ -1305,9 +1215,7 @@
         </div>
     </div>
 
-    <!-- ============================================================
-    ORDER PAGE
-    ============================================================ -->
+    <!-- ===== ORDER PAGE ===== -->
     <div class="page" id="page-order">
         <div class="category-tabs" id="categoryTabs">
             <button class="active" onclick="filterCategory('all')"><span class="icon">✦</span> All</button>
@@ -1327,9 +1235,7 @@
         </div>
     </div>
 
-    <!-- ============================================================
-    CONTACT PAGE
-    ============================================================ -->
+    <!-- ===== CONTACT PAGE ===== -->
     <div class="page" id="page-contact">
         <div style="max-width:800px;margin:30px auto;padding:0 16px;">
             <h2 style="font-size:28px;color:#2C1810;border-left:6px solid #D4AF37;padding-left:16px;margin-bottom:16px;font-family:'Playfair Display',serif;">📞 Contact Us</h2>
@@ -1352,9 +1258,7 @@
         </div>
     </div>
 
-    <!-- ============================================================
-    CART
-    ============================================================ -->
+    <!-- ===== CART ===== -->
     <button class="cart-float" id="cartFloat" onclick="toggleCart()">
         🛒
         <span class="count" id="cartCount">0</span>
@@ -1377,26 +1281,21 @@
             <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
                 <label>👤 Your Name</label>
                 <input type="text" id="cartName" placeholder="Enter your name" />
-
                 <label>📱 Your WhatsApp Number</label>
                 <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number" />
-
                 <label>📍 Delivery Address</label>
                 <input type="text" id="cartAddress" placeholder="Type your address" />
-
                 <label>🚚 Delivery or Pickup?</label>
                 <div class="delivery-option-cart">
                     <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
                     <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
                 </div>
-
                 <label>💳 Currency</label>
                 <div class="currency-toggle-cart">
                     <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
                     <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
                 </div>
 
-                <!-- PAYMENT BOX (ZAAD / EDAHAB) -->
                 <div class="payment-box">
                     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
                         <div>
@@ -1412,7 +1311,6 @@
                     </div>
                 </div>
 
-                <!-- WhatsApp order button -->
                 <a href="#" id="whatsappOrderLink" target="_blank" class="whatsapp-order-btn">💬 Order via WhatsApp</a>
 
                 <div class="amount-display-cart">
@@ -1427,9 +1325,7 @@
         </div>
     </div>
 
-    <!-- ============================================================
-    FOOTER
-    ============================================================ -->
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-links">
             <a onclick="showPage('home')">Home</a>
@@ -1439,13 +1335,8 @@
         <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
     </footer>
 
-    <!-- ============================================================
-    JAVASCRIPT
-    ============================================================ -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ============================================================
-        // CONFIGURATION
-        // ============================================================
         const SHOP_WHATSAPP = '252633665112';
         const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
 
@@ -1453,9 +1344,6 @@
         let currentSlide = 0;
         let slideInterval;
 
-        // ============================================================
-        // FULL MENU DATA
-        // ============================================================
         const menuData = {
             sandwiches: [{
                 name: 'Steak & Cheese (Half)',
@@ -1661,9 +1549,7 @@
             }]
         };
 
-        // ============================================================
-        // CAROUSEL
-        // ============================================================
+        // ===== CAROUSEL =====
         function initCarousel() {
             const totalSlides = document.querySelectorAll('.carousel-slide').length;
             const dotsContainer = document.getElementById('carouselDots');
@@ -1704,20 +1590,17 @@
             slideInterval = setInterval(() => changeSlide(1), 5000);
         }
 
-        // ============================================================
-        // CHEESE ADD-ON LOGIC
-        // ============================================================
-        function getItemPrice(item, cheeseChecked) {
-            let basePrice = item.price;
-            if (cheeseChecked) {
-                basePrice += 0.50;
+        // ===== CHEESE ADD-ON =====
+        function updateItemPrice(uniqueId, basePrice) {
+            const checkbox = document.getElementById(`cheese_${uniqueId}`);
+            const priceDisplay = document.getElementById(`price_display_${uniqueId}`);
+            if (checkbox && priceDisplay) {
+                const totalPrice = checkbox.checked ? basePrice + 0.50 : basePrice;
+                priceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
             }
-            return basePrice;
         }
 
-        // ============================================================
-        // FILTER & RENDER
-        // ============================================================
+        // ===== FILTER & RENDER =====
         function filterCategory(category) {
             currentCategory = category;
             document.querySelectorAll('.category-tabs button').forEach(btn => {
@@ -1791,21 +1674,7 @@
             });
         }
 
-        // ============================================================
-        // UPDATE ITEM PRICE (cheese toggle)
-        // ============================================================
-        function updateItemPrice(uniqueId, basePrice) {
-            const checkbox = document.getElementById(`cheese_${uniqueId}`);
-            const priceDisplay = document.getElementById(`price_display_${uniqueId}`);
-            if (checkbox && priceDisplay) {
-                const totalPrice = checkbox.checked ? basePrice + 0.50 : basePrice;
-                priceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
-            }
-        }
-
-        // ============================================================
-        // CART SYSTEM
-        // ============================================================
+        // ===== CART SYSTEM =====
         let cart = {};
         let cartCurrency = 'USD';
         let cartPayment = 'ZAAD';
@@ -2097,9 +1966,7 @@
                 });
         }
 
-        // ============================================================
-        // PAGE NAVIGATION
-        // ============================================================
+        // ===== PAGE NAVIGATION =====
         function showPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page-' + page).classList.add('active');
@@ -2113,9 +1980,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ============================================================
-        // INIT
-        // ============================================================
+        // ===== INIT =====
         document.addEventListener('DOMContentLoaded', function() {
             renderMenu('all');
             updateAll();

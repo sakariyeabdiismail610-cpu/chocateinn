@@ -1,553 +1,1889 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Chocolate Inn</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== 1. GOOGLE FONTS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- ===== 2. FAVICON (placeholder) ===== -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>">
+
+    <!-- ===== 3. OPEN GRAPH META TAGS (for WhatsApp / social sharing) ===== -->
+    <meta property="og:title" content="Chocolate Inn – Where Chocolate Feels Like Home">
+    <meta property="og:description" content="Premium coffee, sweet treats, and warm vibes. Order online in Hargeisa.">
+    <meta property="og:image" content="https://i.imgur.com/3mQJaEW.png">
+    <meta property="og:url" content="https://sakariyeabdiismail610-cpu.github.io/chocateinn/">
+    <meta property="og:type" content="website">
+
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Arial',sans-serif;background:#f5efe8;color:#3e2723;width:100%;}
-        
-        header{background:#4A2E1B;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
-        .header-left{display:flex;align-items:center;gap:12px;}
-        .logo-img{height:44px;width:auto;cursor:pointer;display:block;object-fit:contain;}
-        .logo-text{color:#f5efe8;font-family:'Georgia',serif;font-size:22px;font-weight:700;letter-spacing:1px;cursor:pointer;}
-        .logo-text .highlight{color:#d7a86e;}
-        .logo-tagline{font-size:10px;color:#d7a86e;letter-spacing:2px;font-style:italic;display:block;font-weight:300;}
-        nav{display:flex;gap:25px;align-items:center;flex-wrap:wrap;}
-        nav a{color:#fff;text-decoration:none;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;padding-bottom:3px;border-bottom:2px solid transparent;}
-        nav a:hover,nav a.active{border-bottom-color:#d7a86e;color:#d7a86e;}
-        
-        .page{display:none;padding:0;width:100%;}
-        .page.active{display:block;}
-        
-        .hero{background:#4A2E1B;color:#f5efe8;padding:60px 20px 50px;text-align:center;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;}
-        .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
-        .hero .call-text{font-size:18px;color:#d7a86e;letter-spacing:4px;text-transform:uppercase;font-weight:300;margin-bottom:4px;}
-        .hero .location{font-size:16px;color:#f5efe8;opacity:0.7;letter-spacing:2px;font-family:'Arial',sans-serif;}
-        .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:16px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
-        .hero .btn:hover{background:#c4955a;transform:scale(1.05);}
-        
-        .category-tabs{background:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;border-bottom:2px solid #ece3d8;position:sticky;top:68px;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
-        .category-tabs button{background:transparent;border:none;padding:10px 20px;font-size:13px;font-weight:700;color:#6d5c4e;cursor:pointer;transition:0.3s;border-radius:30px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:0.5px;display:flex;align-items:center;gap:8px;}
-        .category-tabs button .icon{font-size:16px;display:inline-block;width:24px;height:24px;text-align:center;line-height:24px;background:#f5efe8;border-radius:50%;transition:0.3s;}
-        .category-tabs button:hover{background:#f5efe8;color:#4A2E1B;}
-        .category-tabs button:hover .icon{background:#4A2E1B;color:#fff;}
-        .category-tabs button.active{background:#4A2E1B;color:#d7a86e;}
-        .category-tabs button.active .icon{background:#d7a86e;color:#4A2E1B;}
-        
-        .menu-section{padding:20px 16px;max-width:1200px;margin:0 auto;}
-        .section-title{font-size:22px;color:#4A2E1B;font-family:'Georgia',serif;margin:20px 0 12px;padding-left:12px;border-left:4px solid #d7a86e;}
-        
-        .menu-list{display:flex;flex-direction:column;gap:4px;margin-top:8px;}
-        .menu-list-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #f0ebe5;background:#fff;border-radius:4px;transition:0.3s;}
-        .menu-list-item:hover{background:#f8f5f0;}
-        .menu-list-item .item-name{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
-        .menu-list-item .item-price{font-size:15px;font-weight:700;color:#6b3f2a;font-family:'Arial',sans-serif;}
-        .menu-list-item .item-desc{font-size:12px;color:#6d5c4e;font-family:'Arial',sans-serif;display:block;font-style:italic;}
-        .menu-list-item .item-left{display:flex;flex-direction:column;flex:1;}
-        .menu-list-item .add-btn-small{background:#4A2E1B;color:#fff;border:none;padding:5px 16px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;}
-        .menu-list-item .add-btn-small:hover{background:#6b3f2a;transform:scale(1.05);}
-        .menu-list-item .item-right{display:flex;align-items:center;gap:14px;}
-        
-        .add-btn{background:#4A2E1B;color:#fff;border:none;padding:6px 14px;border-radius:20px;font-weight:700;font-size:11px;cursor:pointer;transition:0.3s;margin-top:6px;font-family:'Arial',sans-serif;}
-        .add-btn:hover{background:#6b3f2a;transform:scale(1.05);}
-        .add-btn:disabled{background:#a08070;cursor:not-allowed;}
-        
-        .featured-section{background:#fff;padding:30px 20px;margin:16px 0;border-top:2px solid #ece3d8;border-bottom:2px solid #ece3d8;}
-        .featured-section h2{font-size:24px;color:#4A2E1B;font-family:'Georgia',serif;text-align:center;margin-bottom:16px;}
-        .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1200px;margin:0 auto;}
-        .featured-card{background:#f8f5f0;border-radius:12px;padding:16px;text-align:center;border:1px solid #ece3d8;}
-        .featured-card .icon{font-size:36px;display:block;margin-bottom:4px;}
-        .featured-card h3{font-size:15px;color:#4A2E1B;font-family:'Georgia',serif;}
-        .featured-card p{font-size:12px;color:#6d5c4e;}
-        
-        .order-cta{background:#4A2E1B;color:#f5efe8;text-align:center;padding:30px 16px;border-top:4px solid #d7a86e;border-bottom:4px solid #d7a86e;margin:0;}
-        .order-cta h2{font-size:26px;font-family:'Georgia',serif;}
-        .order-cta h2 span{color:#d7a86e;}
-        .order-cta p{font-size:15px;margin:6px 0 14px;opacity:0.8;font-family:'Arial',sans-serif;}
-        .order-cta .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:12px 32px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;}
-        .order-cta .btn:hover{background:#c4955a;transform:scale(1.05);}
-        
-        .contact-info{background:#fff;border-radius:12px;padding:20px;border:1px solid #ece3d8;margin-bottom:12px;}
-        .contact-info h3{font-size:18px;color:#4A2E1B;margin-bottom:6px;font-family:'Georgia',serif;}
-        .contact-info p{font-size:14px;padding:3px 0;color:#6d5c4e;font-family:'Arial',sans-serif;}
-        .contact-info .phone{font-size:22px;font-weight:900;color:#4A2E1B;background:#f5efe8;padding:6px 14px;border-radius:8px;display:inline-block;border:2px solid #d7a86e;}
-        .open-badge{background:#2e7d32;color:#fff;padding:3px 12px;border-radius:30px;font-weight:700;font-size:13px;display:inline-block;font-family:'Arial',sans-serif;}
-        
-        .contact-form{background:#fff;border-radius:12px;padding:20px;border:1px solid #ece3d8;}
-        .contact-form h3{font-size:18px;color:#4A2E1B;margin-bottom:8px;font-family:'Georgia',serif;}
-        .contact-form input,.contact-form textarea{width:100%;padding:8px 12px;margin-bottom:8px;border:1px solid #ece3d8;border-radius:8px;font-size:14px;background:#f5efe8;font-family:'Arial',sans-serif;}
-        .contact-form .btn{width:100%;background:#4A2E1B;color:#fff;border:none;padding:10px;font-size:16px;font-weight:700;border-radius:40px;cursor:pointer;font-family:'Arial',sans-serif;}
-        .contact-form .btn:hover{background:#6b3f2a;}
-        
-        footer{background:#4A2E1B;color:#d7a86e;padding:25px 20px;text-align:center;border-top:4px solid #d7a86e;}
-        footer .copy{font-size:12px;opacity:0.7;font-family:'Arial',sans-serif;letter-spacing:1px;}
-        footer .footer-links{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin:8px 0;}
-        footer .footer-links a{color:#d7a86e;text-decoration:none;font-size:13px;cursor:pointer;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:1px;}
-        footer .footer-links a:hover{color:#fff;}
-        
-        .cart-float{position:fixed;bottom:20px;right:20px;z-index:1000;background:#4A2E1B;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.3);transition:0.3s;border:none;font-size:24px;}
-        .cart-float:hover{transform:scale(1.1);background:#6b3f2a;}
-        .cart-float .count{position:absolute;top:-8px;right:-8px;background:#b71c1c;color:#fff;border-radius:50%;width:24px;height:24px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
-        
-        .cart-side{position:fixed;top:0;right:-480px;width:450px;max-width:95%;height:100%;background:#fff;z-index:2000;box-shadow:-4px 0 30px rgba(0,0,0,0.25);transition:right 0.4s ease;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;}
-        .cart-side.open{right:0;}
-        .cart-side-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #d7a86e;padding-bottom:12px;margin-bottom:14px;}
-        .cart-side-header h2{font-size:20px;color:#4A2E1B;font-family:'Georgia',serif;}
-        .cart-close{background:none;border:none;font-size:28px;cursor:pointer;color:#6d5c4e;transition:0.3s;padding:0 8px;}
-        .cart-close:hover{color:#b71c1c;transform:rotate(90deg);}
-        .cart-side-scroll{flex:1;overflow-y:auto;padding-right:4px;}
-        .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0ebe5;}
-        .cart-item .name{font-weight:600;font-size:14px;color:#4A2E1B;flex:1;font-family:'Georgia',serif;}
-        .cart-item .qty-control{display:flex;align-items:center;gap:6px;}
-        .cart-item .qty-control button{background:#4A2E1B;color:#fff;border:none;width:26px;height:26px;border-radius:50%;font-size:16px;font-weight:700;cursor:pointer;}
-        .cart-item .qty-control button:hover{background:#6b3f2a;}
-        .cart-item .qty-control .qty{font-weight:700;font-size:16px;min-width:22px;text-align:center;}
-        .cart-item .item-total{font-weight:700;color:#6b3f2a;font-size:14px;min-width:55px;text-align:right;}
-        .cart-empty{color:#6d5c4e;text-align:center;padding:40px 0;font-size:16px;}
-        
-        .cart-checkout-fields{margin-top:12px;border-top:2px solid #d7a86e;padding-top:14px;}
-        .cart-checkout-fields label{font-weight:600;font-size:13px;color:#4A2E1B;display:block;margin-bottom:3px;font-family:'Georgia',serif;}
-        .cart-checkout-fields input{width:100%;padding:10px 14px;margin-bottom:10px;border:1px solid #ece3d8;border-radius:10px;font-size:14px;background:#f9f6f0;}
-        .cart-checkout-fields input:focus{border-color:#d7a86e;outline:none;background:#fff;}
-        
-        .delivery-option-cart{display:flex;gap:10px;margin-bottom:10px;}
-        .delivery-option-cart button{padding:8px 16px;border-radius:30px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;font-weight:700;font-size:13px;cursor:pointer;transition:0.3s;flex:1;}
-        .delivery-option-cart button.active{background:#4A2E1B;color:#fff;}
-        
-        .currency-toggle-cart{display:flex;gap:8px;margin-bottom:10px;justify-content:center;}
-        .currency-toggle-cart button{padding:6px 16px;border-radius:30px;border:2px solid #4A2E1B;background:#fff;color:#4A2E1B;font-weight:700;font-size:13px;cursor:pointer;}
-        .currency-toggle-cart button.active{background:#4A2E1B;color:#fff;}
-        
-        .pay-option-cart{background:#f9f6f0;border-radius:12px;padding:10px 14px;margin-bottom:6px;border:2px solid transparent;cursor:pointer;}
-        .pay-option-cart:hover{border-color:#d7a86e;}
-        .pay-option-cart.selected{border-color:#4A2E1B;background:#e8ddd0;}
-        .pay-option-cart .method{font-weight:800;font-size:15px;color:#4A2E1B;}
-        .pay-option-cart .number{font-size:15px;font-weight:700;color:#6b3f2a;}
-        
-        .cart-side-totals{border-top:2px solid #d7a86e;padding-top:12px;margin-top:10px;}
-        .cart-side-totals .row{display:flex;justify-content:space-between;padding:3px 0;font-size:14px;}
-        .cart-side-totals .row.total{font-size:18px;font-weight:900;color:#4A2E1B;border-top:2px solid #4A2E1B;padding-top:8px;margin-top:4px;}
-        
-        .cart-side .place-order-btn{width:100%;background:#4A2E1B;color:#fff;border:none;padding:14px;font-size:17px;font-weight:800;border-radius:50px;cursor:pointer;transition:0.3s;margin-top:10px;}
-        .cart-side .place-order-btn:hover{background:#6b3f2a;transform:scale(1.02);}
-        .cart-side .place-order-btn:disabled{background:#a08070;cursor:not-allowed;}
-        
-        .call-reminder-cart{background:#fff3e0;padding:10px;border-radius:10px;border:1px solid #d7a86e;margin:10px 0;text-align:center;font-size:13px;}
-        .call-reminder-cart .number{font-size:22px;font-weight:900;color:#b71c1c;}
-        .prompt-cart{background:#f5efe8;padding:10px;border-radius:10px;border-left:4px solid #d7a86e;margin:8px 0;font-size:13px;}
-        .amount-display-cart{background:#4A2E1B;color:#fff;padding:10px;border-radius:12px;text-align:center;margin:8px 0;}
-        .amount-display-cart .total{font-size:24px;font-weight:900;color:#d7a86e;}
-        .cart-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1500;}
-        .cart-overlay.active{display:block;}
-        
-        .order-confirmed{background:#e8f5e9;border:2px solid #2e7d32;border-radius:12px;padding:16px;margin:16px 0;text-align:center;}
-        .order-confirmed h3{color:#2e7d32;font-size:18px;}
-        .order-confirmed .order-id{font-size:22px;font-weight:900;color:#4A2E1B;}
-        
-        .carousel-container{position:relative;max-width:100%;overflow:hidden;border-radius:16px;margin:20px 0;}
-        .carousel-slides{display:flex;transition:transform 0.5s ease-in-out;}
-        .carousel-slide{min-width:100%;position:relative;}
-        .carousel-slide img{width:100%;height:320px;object-fit:cover;display:block;}
-        .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(74,46,27,0.7);color:#fff;border:none;padding:12px 16px;cursor:pointer;font-size:20px;border-radius:50%;transition:0.3s;z-index:10;}
-        .carousel-btn:hover{background:#4A2E1B;}
-        .carousel-btn.prev{left:10px;}
-        .carousel-btn.next{right:10px;}
-        .carousel-dots{display:flex;justify-content:center;gap:8px;padding:12px 0;}
-        .carousel-dots .dot{width:12px;height:12px;border-radius:50%;background:#ccc;cursor:pointer;transition:0.3s;border:none;}
-        .carousel-dots .dot.active{background:#d7a86e;width:16px;}
-        
-        @media(min-width:768px){
-            .hero{padding:70px 40px 60px;min-height:420px;}
-            .category-tabs{gap:10px;}
-            .category-tabs button{font-size:14px;padding:8px 22px;}
-            .featured-grid{grid-template-columns:repeat(4,1fr);}
-            .page{padding:0;}
-            .carousel-slide img{height:400px;}
-            .menu-list-item{padding:12px 20px;}
+        /* ============================================================
+               RESET & BASE
+               ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        @media(max-width:480px){
-            .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .hero{padding:30px 16px 25px;min-height:280px;}
-            .logo-img{height:32px;}
-            .logo-text{font-size:16px;}
-            .logo-tagline{font-size:8px;}
-            .category-tabs{top:58px;padding:8px 10px;gap:4px;}
-            .category-tabs button{font-size:11px;padding:5px 12px;gap:4px;}
-            .category-tabs button .icon{width:18px;height:18px;font-size:12px;line-height:18px;}
-            header{padding:10px 16px;}
-            nav{gap:12px;}
-            nav a{font-size:12px;}
-            .featured-grid{grid-template-columns:1fr 1fr;}
-            .carousel-slide img{height:200px;}
-            .menu-list-item{padding:8px 10px;}
-            .menu-list-item .item-name{font-size:13px;}
-            .menu-list-item .item-price{font-size:13px;}
-            .menu-list-item .item-desc{font-size:10px;}
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #FFFDF9;
+            color: #2C1810;
+            width: 100%;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           COLOR PALETTE
+             Primary:      #2C1810  (Deep Warm Brown)
+             Accent/Gold:  #D4AF37  (Warm Gold / Caramel)
+             Background:   #FFFDF9  (Cream / Off-White)
+             Cards / White: #FFFFFF
+             Text Light:   #F5EFE6
+           ============================================================ */
+
+        /* ============================================================
+           HEADER & NAVIGATION
+           ============================================================ */
+        header {
+            background: #2C1810;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #D4AF37;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.15);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Fixed logo size */
+        .logo-img {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+            display: block;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            color: #F5EFE6;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            line-height: 1.2;
+        }
+
+        .logo-text .highlight {
+            color: #D4AF37;
+        }
+
+        .logo-tagline {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 2px;
+            color: #D4AF37;
+            opacity: 0.85;
+            margin-top: -2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #F5EFE6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            transition: 0.3s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav a:hover,
+        nav a.active {
+            border-bottom-color: #D4AF37;
+            color: #D4AF37;
+        }
+
+        /* ============================================================
+           PAGES
+           ============================================================ */
+        .page {
+            display: none;
+            padding: 0;
+            width: 100%;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================================
+           HERO SECTION
+           ============================================================ */
+        .hero {
+            background: linear-gradient(145deg, #2C1810, #4A2A1C);
+            color: #F5EFE6;
+            padding: 60px 20px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 4px solid #D4AF37;
+        }
+
+        .hero::before {
+            content: '✦';
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 80px;
+            color: #D4AF37;
+            opacity: 0.06;
+        }
+
+        .hero::after {
+            content: '✦';
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 80px;
+            color: #D4AF37;
+            opacity: 0.06;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .hero .call-text {
+            font-size: 16px;
+            color: #D4AF37;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .hero .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .hero .hero-title span {
+            color: #F5EFE6;
+        }
+
+        .hero .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: #D4AF37;
+            opacity: 0.85;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .hero .location {
+            font-size: 16px;
+            color: #F5EFE6;
+            opacity: 0.7;
+            letter-spacing: 2px;
+            font-weight: 300;
+            margin-bottom: 4px;
+        }
+
+        .hero .open-badge-hero {
+            display: inline-block;
+            background: #2E7D32;
+            color: #fff;
+            padding: 4px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 6px 0 12px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hero .btn {
+            background: #D4AF37;
+            color: #2C1810;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 14px 48px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+        }
+
+        .hero .btn:hover {
+            background: #c49d2e;
+            transform: scale(1.03);
+            box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
+        }
+
+        /* ============================================================
+           CATEGORY TABS
+           ============================================================ */
+        .category-tabs {
+            background: #FFFFFF;
+            padding: 12px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            border-bottom: 2px solid #EDE6DE;
+            position: sticky;
+            top: 76px;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(44, 24, 16, 0.04);
+        }
+
+        .category-tabs button {
+            background: transparent;
+            border: none;
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #6D5C4E;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-tabs button .icon {
+            font-size: 16px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height: 24px;
+            background: #F5EFE6;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .category-tabs button:hover {
+            background: #F5EFE6;
+            color: #2C1810;
+        }
+
+        .category-tabs button:hover .icon {
+            background: #2C1810;
+            color: #fff;
+        }
+
+        .category-tabs button.active {
+            background: #2C1810;
+            color: #D4AF37;
+        }
+
+        .category-tabs button.active .icon {
+            background: #D4AF37;
+            color: #2C1810;
+        }
+
+        /* ============================================================
+           MENU SECTION
+           ============================================================ */
+        .menu-section {
+            padding: 20px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #2C1810;
+            margin: 20px 0 12px;
+            padding-left: 16px;
+            border-left: 4px solid #D4AF37;
+        }
+
+        /* Clean menu list (Cafe Laasgeel style) */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .menu-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            border-bottom: 1px solid #EDE6DE;
+            background: #FFFFFF;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .menu-list-item:hover {
+            background: #F8F4EE;
+        }
+
+        .menu-list-item .item-name {
+            font-size: 15px;
+            color: #2C1810;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .menu-list-item .item-price {
+            font-size: 15px;
+            font-weight: 700;
+            color: #6B3F2A;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .menu-list-item .item-desc {
+            font-size: 12px;
+            color: #6D5C4E;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            font-style: italic;
+        }
+
+        .menu-list-item .item-left {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .menu-list-item .add-btn-small {
+            background: #2C1810;
+            color: #fff;
+            border: none;
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-list-item .add-btn-small:hover {
+            background: #D4AF37;
+            color: #2C1810;
+            transform: scale(1.04);
+        }
+
+        .menu-list-item .item-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* ============================================================
+           FEATURED SECTION
+           ============================================================ */
+        .featured-section {
+            background: #FFFFFF;
+            padding: 30px 20px;
+            margin: 16px 0;
+            border-top: 2px solid #EDE6DE;
+            border-bottom: 2px solid #EDE6DE;
+        }
+
+        .featured-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: #2C1810;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .featured-card {
+            background: #F8F4EE;
+            border-radius: 12px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 1px solid #EDE6DE;
+            transition: 0.3s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+            border-color: #D4AF37;
+            box-shadow: 0 6px 20px rgba(44, 24, 16, 0.06);
+        }
+
+        .featured-card .icon {
+            font-size: 38px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .featured-card h3 {
+            font-size: 16px;
+            color: #2C1810;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .featured-card p {
+            font-size: 13px;
+            color: #6D5C4E;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ============================================================
+           ORDER CTA
+           ============================================================ */
+        .order-cta {
+            background: #2C1810;
+            color: #F5EFE6;
+            text-align: center;
+            padding: 30px 16px;
+            border-top: 4px solid #D4AF37;
+            border-bottom: 4px solid #D4AF37;
+        }
+
+        .order-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+        }
+
+        .order-cta h2 span {
+            color: #D4AF37;
+        }
+
+        .order-cta p {
+            font-size: 16px;
+            margin: 6px 0 14px;
+            opacity: 0.85;
+        }
+
+        .order-cta .btn {
+            background: #D4AF37;
+            color: #2C1810;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 12px 36px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .order-cta .btn:hover {
+            background: #c49d2e;
+            transform: scale(1.03);
+        }
+
+        /* ============================================================
+           CONTACT PAGE
+           ============================================================ */
+        .contact-info {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #EDE6DE;
+            margin-bottom: 12px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #2C1810;
+            margin-bottom: 6px;
+        }
+
+        .contact-info p {
+            font-size: 15px;
+            padding: 4px 0;
+            color: #4A3A2E;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-info .phone {
+            font-size: 24px;
+            font-weight: 900;
+            color: #D4AF37;
+            background: #FFFDF9;
+            padding: 6px 18px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 2px solid #D4AF37;
+        }
+
+        .contact-info .open-badge {
+            background: #2E7D32;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-form {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #EDE6DE;
+        }
+
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: #2C1810;
+            margin-bottom: 8px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #EDE6DE;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #F8F4EE;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #D4AF37;
+            outline: none;
+            background: #FFFFFF;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            background: #2C1810;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .contact-form .btn:hover {
+            background: #D4AF37;
+            color: #2C1810;
+        }
+
+        /* ============================================================
+           CART (floating button + side panel)
+           ============================================================ */
+        .cart-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+            background: #2C1810;
+            color: #fff;
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(44, 24, 16, 0.35);
+            transition: 0.3s;
+            border: 2px solid #D4AF37;
+            font-size: 26px;
+        }
+
+        .cart-float:hover {
+            transform: scale(1.08);
+            background: #D4AF37;
+            color: #2C1810;
+        }
+
+        .cart-float .count {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            background: #D4AF37;
+            color: #2C1810;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FFFDF9;
+        }
+
+        /* ===== Cart side panel ===== */
+        .cart-side {
+            position: fixed;
+            top: 0;
+            right: -480px;
+            width: 450px;
+            max-width: 95%;
+            height: 100%;
+            background: #FFFDF9;
+            z-index: 2000;
+            box-shadow: -4px 0 40px rgba(44, 24, 16, 0.12);
+            transition: right 0.4s ease;
+            overflow-y: auto;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid #D4AF37;
+        }
+
+        .cart-side.open {
+            right: 0;
+        }
+
+        .cart-side-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+        }
+
+        .cart-side-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: #2C1810;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #6D5C4E;
+            transition: 0.3s;
+            padding: 0 4px;
+        }
+
+        .cart-close:hover {
+            color: #2C1810;
+            transform: rotate(90deg);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #EDE6DE;
+        }
+
+        .cart-item .name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #2C1810;
+            flex: 1;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cart-item .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cart-item .qty-control button {
+            background: #2C1810;
+            color: #fff;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-item .qty-control button:hover {
+            background: #D4AF37;
+            color: #2C1810;
+        }
+
+        .cart-item .qty-control .qty {
+            font-weight: 700;
+            font-size: 16px;
+            min-width: 24px;
+            text-align: center;
+            color: #2C1810;
+        }
+
+        .cart-item .item-total {
+            font-weight: 700;
+            color: #6B3F2A;
+            font-size: 14px;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        .cart-empty {
+            color: #6D5C4E;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .cart-checkout-fields {
+            margin-top: 12px;
+            border-top: 2px solid #D4AF37;
+            padding-top: 14px;
+        }
+
+        .cart-checkout-fields label {
+            font-weight: 600;
+            font-size: 13px;
+            color: #2C1810;
+            display: block;
+            margin-bottom: 3px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-checkout-fields input {
+            width: 100%;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #EDE6DE;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #F8F4EE;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.3s;
+        }
+
+        .cart-checkout-fields input:focus {
+            border-color: #D4AF37;
+            outline: none;
+            background: #FFFFFF;
+        }
+
+        .cart-side-totals {
+            border-top: 2px solid #D4AF37;
+            padding-top: 12px;
+            margin-top: 10px;
+        }
+
+        .cart-side-totals .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 14px;
+            color: #2C1810;
+        }
+
+        .cart-side-totals .row.total {
+            font-size: 20px;
+            font-weight: 900;
+            color: #D4AF37;
+            border-top: 2px solid #D4AF37;
+            padding-top: 8px;
+            margin-top: 4px;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            background: #2C1810;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 17px;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .place-order-btn:hover {
+            background: #D4AF37;
+            color: #2C1810;
+            transform: scale(1.02);
+        }
+
+        .place-order-btn:disabled {
+            background: #C4B8AC;
+            color: #6D5C4E;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 24, 16, 0.3);
+            z-index: 1500;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        /* ============================================================
+           PAYMENT / CHECKOUT UI
+           ============================================================ */
+        .payment-box {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 18px 16px;
+            border: 2px solid #D4AF37;
+            margin-top: 12px;
+        }
+
+        .payment-box .method {
+            font-weight: 800;
+            font-size: 16px;
+            color: #2C1810;
+        }
+
+        .payment-box .number {
+            font-size: 22px;
+            font-weight: 900;
+            color: #D4AF37;
+            display: block;
+            margin: 4px 0;
+        }
+
+        .payment-box .note {
+            font-size: 13px;
+            color: #6D5C4E;
+        }
+
+        .call-reminder-cart {
+            background: #F8F4EE;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #D4AF37;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #2C1810;
+        }
+
+        .call-reminder-cart .number {
+            font-size: 22px;
+            font-weight: 900;
+            color: #D4AF37;
+        }
+
+        .prompt-cart {
+            background: #F8F4EE;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 4px solid #D4AF37;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .amount-display-cart {
+            background: #2C1810;
+            color: #fff;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 8px 0;
+        }
+
+        .amount-display-cart .total {
+            font-size: 26px;
+            font-weight: 900;
+            color: #D4AF37;
+        }
+
+        /* ============================================================
+           CAROUSEL
+           ============================================================ */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 16px;
+            margin: 16px 0 0;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 24, 16, 0.7);
+            color: #fff;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: #2C1810;
+        }
+
+        .carousel-btn.prev {
+            left: 12px;
+        }
+
+        .carousel-btn.next {
+            right: 12px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 0;
+        }
+
+        .carousel-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #C4B8AC;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .carousel-dots .dot.active {
+            background: #D4AF37;
+            width: 18px;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        footer {
+            background: #2C1810;
+            color: #D4AF37;
+            padding: 25px 20px;
+            text-align: center;
+            border-top: 4px solid #D4AF37;
+        }
+
+        footer .copy {
+            font-size: 13px;
+            opacity: 0.7;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 8px 0 10px;
+        }
+
+        footer .footer-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        footer .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* ============================================================
+           RESPONSIVE BREAKPOINTS
+           ============================================================ */
+        @media (min-width: 768px) {
+            .hero .hero-title {
+                font-size: 68px;
+            }
+
+            .hero {
+                padding: 80px 40px 60px;
+                min-height: 440px;
+            }
+
+            .category-tabs {
+                gap: 10px;
+            }
+
+            .category-tabs button {
+                font-size: 14px;
+                padding: 8px 24px;
+            }
+
+            .featured-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .carousel-slide img {
+                height: 420px;
+            }
+
+            .menu-list-item {
+                padding: 12px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cart-side {
+                width: 100%;
+                max-width: 100%;
+                right: -100%;
+            }
+
+            .cart-side.open {
+                right: 0;
+            }
+
+            .hero .hero-title {
+                font-size: 32px;
+            }
+
+            .hero .hero-tagline {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 30px 16px 25px;
+                min-height: 280px;
+            }
+
+            .logo-img {
+                height: 38px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .logo-tagline {
+                font-size: 8px;
+            }
+
+            .category-tabs {
+                top: 66px;
+                padding: 8px 10px;
+                gap: 4px;
+            }
+
+            .category-tabs button {
+                font-size: 10px;
+                padding: 4px 12px;
+                gap: 4px;
+            }
+
+            .category-tabs button .icon {
+                width: 18px;
+                height: 18px;
+                font-size: 11px;
+                line-height: 18px;
+            }
+
+            header {
+                padding: 10px 16px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .carousel-slide img {
+                height: 180px;
+            }
+
+            .menu-list-item {
+                padding: 8px 10px;
+            }
+
+            .menu-list-item .item-name {
+                font-size: 13px;
+            }
+
+            .menu-list-item .item-price {
+                font-size: 13px;
+            }
+
+            .menu-list-item .item-desc {
+                font-size: 10px;
+            }
+
+            .contact-info .phone {
+                font-size: 18px;
+                padding: 4px 12px;
+            }
         }
     </style>
 </head>
+
 <body>
-
-<header>
-    <div class="header-left">
-        <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
-        <div class="logo-text" onclick="showPage('home')">
-            Chocol<span class="highlight">ate Inn</span>
-            <span class="logo-tagline">Where Chocolate Feels Like Home.</span>
-        </div>
-    </div>
-    <nav>
-        <a class="active" onclick="showPage('home')">Home</a>
-        <a onclick="showPage('order')">Order Online</a>
-        <a onclick="showPage('contact')">Contact Us</a>
-    </nav>
-</header>
-
-<!-- ===== HOME PAGE ===== -->
-<div class="page active" id="page-home">
-    <div class="hero">
-        <div class="hero-content">
-            <div class="call-text">Call to order in</div>
-            <div style="font-size:48px;font-weight:900;color:#d7a86e;font-family:'Georgia',serif;margin-bottom:4px;">Chocol<span style="color:#f5efe8;">ate Inn</span></div>
-            <div style="font-size:16px;color:#f5efe8;opacity:0.7;letter-spacing:2px;">📍 Hargeisa, Somaliland</div>
-            <button class="btn" onclick="showPage('order')">ORDER NOW</button>
-        </div>
-    </div>
-    
-    <div class="carousel-container">
-        <div class="carousel-slides" id="carouselSlides">
-            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop" alt="Delicious Food"></div>
-            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&h=400&fit=crop" alt="Coffee"></div>
-            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1587314168485-3236f6710814?w=800&h=400&fit=crop" alt="Dessert"></div>
-            <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop" alt="Food"></div>
-        </div>
-        <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
-        <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
-        <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-    
-    <div class="featured-section">
-        <h2>⭐ Why Chocolate Inn?</h2>
-        <div class="featured-grid">
-            <div class="featured-card"><span class="icon">🍫</span><h3>Premium Chocolate</h3><p>Made with love.</p></div>
-            <div class="featured-card"><span class="icon">☕</span><h3>Fresh Coffee</h3><p>Ethically sourced.</p></div>
-            <div class="featured-card"><span class="icon">🧁</span><h3>Sweet Treats</h3><p>Baked daily.</p></div>
-            <div class="featured-card"><span class="icon">❤️</span><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
-        </div>
-    </div>
-    
-    <div class="order-cta">
-        <h2>📱 Ready to <span>Order</span>?</h2>
-        <p>Call us at: <strong style="color:#d7a86e;font-size:24px;">3665112</strong></p>
-        <button class="btn" onclick="showPage('order')">Order Now</button>
-    </div>
-</div>
-
-<!-- ===== ORDER PAGE ===== -->
-<div class="page" id="page-order">
-    <div class="category-tabs" id="categoryTabs">
-        <button class="active" onclick="filterCategory('all')"><span class="icon">✦</span> All</button>
-        <button onclick="filterCategory('hotDrinks')"><span class="icon">☕</span> Hot Drinks</button>
-        <button onclick="filterCategory('icedDrinks')"><span class="icon">🧊</span> Iced Drinks</button>
-        <button onclick="filterCategory('desserts')"><span class="icon">🍰</span> Desserts</button>
-        <button onclick="filterCategory('cakes')"><span class="icon">🎂</span> Cakes</button>
-    </div>
-    
-    <div class="menu-section">
-        <div class="order-confirmed" id="orderConfirmed" style="display:none;">
-            <h3>✅ Order Placed Successfully!</h3>
-            <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
-            <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
-        </div>
-        
-        <div id="menuContainer"></div>
-    </div>
-</div>
-
-<!-- ===== CONTACT PAGE ===== -->
-<div class="page" id="page-contact">
-    <div style="max-width:800px;margin:30px auto;padding:0 16px;">
-        <h2 style="font-size:28px;color:#4A2E1B;border-left:6px solid #d7a86e;padding-left:16px;margin-bottom:16px;font-family:'Georgia',serif;">📞 Contact Us</h2>
-        <div class="contact-info">
-            <h3>Get in Touch</h3>
-            <p>📍 <strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</p>
-            <p>📞 <strong>Phone:</strong> <span class="phone">3665112</span></p>
-            <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
-            <p>📧 <strong>Email:</strong> chocolateinn@gmail.com</p>
-        </div>
-        <div class="contact-form">
-            <h3>Send a Message</h3>
-            <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
-                <button type="submit" class="btn">📨 Send</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- ===== CART ===== -->
-<button class="cart-float" id="cartFloat" onclick="toggleCart()">🛒<span class="count" id="cartCount">0</span></button>
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-
-<div class="cart-side" id="cartSide">
-    <div class="cart-side-header"><h2>🛒 Your Order</h2><button class="cart-close" onclick="toggleCart()">✕</button></div>
-    <div class="cart-side-scroll">
-        <div id="cartSideItems"><div class="cart-side-empty">Your cart is empty. ☕</div></div>
-        <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
-            <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
-            <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
-            <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
-        </div>
-        <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
-            <label>👤 Your Name</label><input type="text" id="cartName" placeholder="Enter your name">
-            <label>📱 Your WhatsApp Number</label><input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number">
-            <label>📍 Delivery Address</label><input type="text" id="cartAddress" placeholder="Type your address">
-            <label>🚚 Delivery or Pickup?</label>
-            <div class="delivery-option-cart">
-                <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
-                <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header>
+        <div class="header-left">
+            <!-- FIXED LOGO: direct Imgur URL -->
+            <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
+            <div class="logo-text" onclick="showPage('home')">
+                Chocol<span class="highlight">ate Inn</span>
+                <span class="logo-tagline">Where Chocolate Feels Like Home.</span>
             </div>
-            <label>💳 Currency</label>
-            <div class="currency-toggle-cart">
-                <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
-                <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
-            </div>
-            <div class="amount-display-cart"><div style="font-size:12px;opacity:0.8;">Total Amount</div><div class="total" id="cartDisplayAmount">$0.00</div></div>
-            <label>📱 Payment Method</label>
-            <div class="pay-option-cart selected" onclick="setCartPayment('ZAAD')" id="cartPayZAAD"><div class="method">📱 ZAAD</div><div class="number">📞 3665112</div></div>
-            <div class="pay-option-cart" onclick="setCartPayment('Edahab')" id="cartPayEdahab"><div class="method">📱 Edahab</div><div class="number">📞 3665112</div></div>
-            <div class="prompt-cart" id="cartPrompt">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong>3665112</strong></div>
-            <div class="call-reminder-cart">📞 After payment, call or WhatsApp: <span class="number">3665112</span></div>
         </div>
-        <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">🛒 Place Order</button>
+        <nav>
+            <a class="active" onclick="showPage('home')">Home</a>
+            <a onclick="showPage('order')">Order Online</a>
+            <a onclick="showPage('contact')">Contact Us</a>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+    HOME PAGE
+    ============================================================ -->
+    <div class="page active" id="page-home">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="call-text">Call to order in</div>
+                <div class="hero-title">Chocol<span>ate Inn</span></div>
+                <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
+                <div class="location">📍 Hargeisa, Somaliland</div>
+                <div class="open-badge-hero">🟢 Open 24/7</div>
+                <button class="btn" onclick="showPage('order')">ORDER NOW</button>
+            </div>
+        </div>
+
+        <!-- CAROUSEL -->
+        <div class="carousel-container">
+            <div class="carousel-slides" id="carouselSlides">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop&q=80" alt="Delicious Food" loading="lazy"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&h=400&fit=crop&q=80" alt="Coffee" loading="lazy"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1587314168485-3236f6710814?w=800&h=400&fit=crop&q=80" alt="Dessert" loading="lazy"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop&q=80" alt="Food" loading="lazy"></div>
+            </div>
+            <button class="carousel-btn prev" onclick="changeSlide(-1)">❮</button>
+            <button class="carousel-btn next" onclick="changeSlide(1)">❯</button>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <!-- FEATURED SECTION -->
+        <div class="featured-section">
+            <h2>⭐ Why Chocolate Inn?</h2>
+            <div class="featured-grid">
+                <div class="featured-card"><span class="icon">🍫</span><h3>Premium Chocolate</h3><p>Made with love.</p></div>
+                <div class="featured-card"><span class="icon">☕</span><h3>Fresh Coffee</h3><p>Ethically sourced.</p></div>
+                <div class="featured-card"><span class="icon">🧁</span><h3>Sweet Treats</h3><p>Baked daily.</p></div>
+                <div class="featured-card"><span class="icon">❤️</span><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
+            </div>
+        </div>
+
+        <div class="order-cta">
+            <h2>📱 Ready to <span>Order</span>?</h2>
+            <p>Call us at: <strong style="color:#D4AF37;font-size:24px;"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></strong></p>
+            <button class="btn" onclick="showPage('order')">Order Now</button>
+        </div>
     </div>
-</div>
 
-<footer>
-    <div class="footer-links">
-        <a onclick="showPage('home')">Home</a>
-        <a onclick="showPage('order')">Order Online</a>
-        <a onclick="showPage('contact')">Contact Us</a>
+    <!-- ============================================================
+    ORDER PAGE
+    ============================================================ -->
+    <div class="page" id="page-order">
+        <div class="category-tabs" id="categoryTabs">
+            <button class="active" onclick="filterCategory('all')"><span class="icon">✦</span> All</button>
+            <button onclick="filterCategory('hotDrinks')"><span class="icon">☕</span> Hot Drinks</button>
+            <button onclick="filterCategory('icedDrinks')"><span class="icon">🧊</span> Iced Drinks</button>
+            <button onclick="filterCategory('desserts')"><span class="icon">🍰</span> Desserts</button>
+        </div>
+
+        <div class="menu-section">
+            <div class="order-confirmed" id="orderConfirmed" style="display:none;">
+                <h3>✅ Order Placed Successfully!</h3>
+                <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
+                <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br>📧 Shop received your order via email.</p>
+            </div>
+            <div id="menuContainer"></div>
+        </div>
     </div>
-    <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
-</footer>
 
-<script>
-// ===== CONFIGURATION =====
-const SHOP_WHATSAPP = '252633665112';
-const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
+    <!-- ============================================================
+    CONTACT PAGE
+    ============================================================ -->
+    <div class="page" id="page-contact">
+        <div style="max-width:800px;margin:30px auto;padding:0 16px;">
+            <h2 style="font-size:28px;color:#2C1810;border-left:6px solid #D4AF37;padding-left:16px;margin-bottom:16px;font-family:'Playfair Display',serif;">📞 Contact Us</h2>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>📍 <strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</p>
+                <p>📞 <strong>Phone:</strong> <span class="phone"><a href="tel:3665112" style="color:inherit;text-decoration:none;">3665112</a></span></p>
+                <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
+                <p>📧 <strong>Email:</strong> <a href="mailto:chocolateinn@gmail.com" style="color:#D4AF37;text-decoration:none;font-weight:600;">chocolateinn@gmail.com</a></p>
+            </div>
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
+                    <button type="submit" class="btn">📨 Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-let pendingSandwich = null;
-let pendingSandwichId = null;
-let currentCategory = 'all';
-let currentSlide = 0;
-let slideInterval;
+    <!-- ============================================================
+    CART
+    ============================================================ -->
+    <button class="cart-float" id="cartFloat" onclick="toggleCart()">
+        🛒
+        <span class="count" id="cartCount">0</span>
+    </button>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-// ===== MENU DATA =====
-const menuData = {
-    hotDrinks: [
-        {name:'Espresso', price:0.90, desc:'Bold intense coffee shot'},
-        {name:'Americano', price:0.90, desc:'Rich espresso hot water'},
-        {name:'Cappuccino', price:1.50, desc:'Creamy foam espresso base'},
-        {name:'Latte', price:1.50, desc:'Smooth milk espresso blend'},
-        {name:'Flat White', price:1.30, desc:'Velvety microfoam espresso'},
-        {name:'Spanish Latte', price:1.70, desc:'Sweet condensed milk coffee'},
-        {name:'Mocha', price:1.50, desc:'Chocolate espresso milk swirl'},
-        {name:'Pistachio Latte', price:2.00, desc:'Nutty sweet cream coffee'},
-        {name:'Hot Chocolate', price:1.50, desc:'Rich cocoa steamed milk'}
-    ],
-    icedDrinks: [
-        {name:'Iced Spanish', price:2.70, desc:'Bold intense coffee shot'},
-        {name:'Iced White Mocha', price:2.80, desc:'Rich espresso hot water'},
-        {name:'Iced Vanilla Latte', price:2.80, desc:'Creamy foam espresso base'},
-        {name:'Iced Pistachio Latte', price:3.60, desc:'Smooth milk espresso blend'},
-        {name:'Iced Caramel Latte', price:2.80, desc:'Velvety microfoam espresso'},
-        {name:'Classic Iced Latte', price:2.00, desc:'Sweet condensed milk coffee'}
-    ],
-    desserts: [
-        {name:'Chocolate Butter & Caramel Cake', price:2.70, desc:'Rich chocolate with caramel'},
-        {name:'Naked Strawberry Cake', price:2.70, desc:'Fresh strawberry delight'},
-        {name:'Chocolate Berry Cake', price:2.70, desc:'Chocolate and berry fusion'},
-        {name:'Dates Caramel Cake', price:2.70, desc:'Sweet dates with caramel'},
-        {name:'Red Velvet Cake', price:2.00, desc:'Classic red velvet'},
-        {name:'Lotus Cheesecake', price:3.50, desc:'Creamy lotus cheesecake'},
-        {name:'Chocolate Cheesecake', price:3.50, desc:'Rich chocolate cheesecake'},
-        {name:'Basbusa', price:1.50, desc:'Traditional semolina cake'},
-        {name:'Chocolate Éclair', price:1.50, desc:'Cream-filled chocolate pastry'},
-        {name:'Apple Tart', price:1.50, desc:'Classic apple tart'},
-        {name:'Brownies with Nuts', price:2.00, desc:'Fudgy brownies with nuts'},
-        {name:'Opera Chocolate', price:2.00, desc:'Layered chocolate opera cake'},
-        {name:'Tiramisu', price:2.00, desc:'Classic Italian tiramisu'}
-    ]
-};
+    <div class="cart-side" id="cartSide">
+        <div class="cart-side-header">
+            <h2>🛒 Your Order</h2>
+            <button class="cart-close" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-side-scroll" style="flex:1;overflow-y:auto;padding-right:4px;">
+            <div id="cartSideItems"><div class="cart-empty">Your cart is empty. ☕</div></div>
+            <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
+                <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
+                <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
+                <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
+            </div>
 
-// ===== CAROUSEL =====
-function initCarousel() {
-    const totalSlides = document.querySelectorAll('.carousel-slide').length;
-    const dotsContainer = document.getElementById('carouselDots');
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => goToSlide(i);
-        dotsContainer.appendChild(dot);
-    }
-    startAutoSlide();
-}
+            <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
+                <label>👤 Your Name</label>
+                <input type="text" id="cartName" placeholder="Enter your name">
 
-function changeSlide(direction) {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const total = slides.length;
-    currentSlide = (currentSlide + direction + total) % total;
-    updateCarousel();
-}
+                <label>📱 Your WhatsApp Number</label>
+                <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number">
 
-function goToSlide(index) {
-    currentSlide = index;
-    updateCarousel();
-}
+                <label>📍 Delivery Address</label>
+                <input type="text" id="cartAddress" placeholder="Type your address">
 
-function updateCarousel() {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-    const container = document.getElementById('carouselSlides');
-    container.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-    });
-}
+                <label>🚚 Delivery or Pickup?</label>
+                <div class="delivery-option-cart">
+                    <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
+                    <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
+                </div>
 
-function startAutoSlide() {
-    if (slideInterval) clearInterval(slideInterval);
-    slideInterval = setInterval(() => changeSlide(1), 4000);
-}
+                <label>💳 Currency</label>
+                <div class="currency-toggle-cart">
+                    <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
+                    <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
+                </div>
 
-// ===== FILTER & RENDER =====
-function filterCategory(category) {
-    currentCategory = category;
-    document.querySelectorAll('.category-tabs button').forEach(btn => {
-        btn.classList.remove('active');
-        if(btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent.toLowerCase() === 'all')) {
-            btn.classList.add('active');
+                <!-- PAYMENT BOX (ZAAD / EDAHAB) -->
+                <div class="payment-box">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                        <div>
+                            <div class="method">📱 ZAAD</div>
+                            <div class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></div>
+                            <div class="note">Send via ZAAD to this number</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div class="method">📱 Edahab</div>
+                            <div class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></div>
+                            <div class="note">Send via Edahab to this number</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="amount-display-cart">
+                    <div style="font-size:12px;opacity:0.8;">Total Amount</div>
+                    <div class="total" id="cartDisplayAmount">$0.00</div>
+                </div>
+
+                <div class="call-reminder-cart">📞 After payment, call or WhatsApp: <span class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></span></div>
+                <div class="prompt-cart">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong><a href="tel:3665112" style="color:#2C1810;text-decoration:none;">3665112</a></strong></div>
+            </div>
+            <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">🛒 Place Order</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer>
+        <div class="footer-links">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('order')">Order Online</a>
+            <a onclick="showPage('contact')">Contact Us</a>
+        </div>
+        <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
+    </footer>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        // ============================================================
+        // CONFIGURATION
+        // ============================================================
+        const SHOP_WHATSAPP = '252633665112';
+        const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
+
+        let currentCategory = 'all';
+        let currentSlide = 0;
+        let slideInterval;
+
+        // ============================================================
+        // MENU DATA (from your PDF)
+        // ============================================================
+        const menuData = {
+            hotDrinks: [
+                { name: 'Espresso', price: 0.90, desc: 'Bold intense coffee shot' },
+                { name: 'Americano', price: 0.90, desc: 'Rich espresso hot water' },
+                { name: 'Cappuccino', price: 1.50, desc: 'Creamy foam espresso base' },
+                { name: 'Latte', price: 1.50, desc: 'Smooth milk espresso blend' },
+                { name: 'Flat White', price: 1.30, desc: 'Velvety microfoam espresso' },
+                { name: 'Spanish Latte', price: 1.70, desc: 'Sweet condensed milk coffee' },
+                { name: 'Mocha', price: 1.50, desc: 'Chocolate espresso milk swirl' },
+                { name: 'Pistachio Latte', price: 2.00, desc: 'Nutty sweet cream coffee' },
+                { name: 'Hot Chocolate', price: 1.50, desc: 'Rich cocoa steamed milk' }
+            ],
+            icedDrinks: [
+                { name: 'Iced Spanish', price: 2.70, desc: 'Bold intense coffee shot' },
+                { name: 'Iced White Mocha', price: 2.80, desc: 'Rich espresso hot water' },
+                { name: 'Iced Vanilla Latte', price: 2.80, desc: 'Creamy foam espresso base' },
+                { name: 'Iced Pistachio Latte', price: 3.60, desc: 'Smooth milk espresso blend' },
+                { name: 'Iced Caramel Latte', price: 2.80, desc: 'Velvety microfoam espresso' },
+                { name: 'Classic Iced Latte', price: 2.00, desc: 'Sweet condensed milk coffee' }
+            ],
+            desserts: [
+                { name: 'Chocolate Butter & Caramel Cake', price: 2.70, desc: 'Rich chocolate with caramel' },
+                { name: 'Naked Strawberry Cake', price: 2.70, desc: 'Fresh strawberry delight' },
+                { name: 'Chocolate Berry Cake', price: 2.70, desc: 'Chocolate and berry fusion' },
+                { name: 'Dates Caramel Cake', price: 2.70, desc: 'Sweet dates with caramel' },
+                { name: 'Red Velvet Cake', price: 2.00, desc: 'Classic red velvet' },
+                { name: 'Lotus Cheesecake', price: 3.50, desc: 'Creamy lotus cheesecake' },
+                { name: 'Chocolate Cheesecake', price: 3.50, desc: 'Rich chocolate cheesecake' },
+                { name: 'Basbusa', price: 1.50, desc: 'Traditional semolina cake' },
+                { name: 'Chocolate Éclair', price: 1.50, desc: 'Cream-filled chocolate pastry' },
+                { name: 'Apple Tart', price: 1.50, desc: 'Classic apple tart' },
+                { name: 'Brownies with Nuts', price: 2.00, desc: 'Fudgy brownies with nuts' },
+                { name: 'Opera Chocolate', price: 2.00, desc: 'Layered chocolate opera cake' },
+                { name: 'Tiramisu', price: 2.00, desc: 'Classic Italian tiramisu' }
+            ]
+        };
+
+        // ============================================================
+        // CAROUSEL
+        // ============================================================
+        function initCarousel() {
+            const totalSlides = document.querySelectorAll('.carousel-slide').length;
+            const dotsContainer = document.getElementById('carouselDots');
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            startAutoSlide();
         }
-    });
-    renderMenu(category);
-}
 
-function renderMenu(category = 'all') {
-    const container = document.getElementById('menuContainer');
-    container.innerHTML = '';
-    
-    const catNames = {
-        hotDrinks: '☕ Hot Drinks',
-        icedDrinks: '🧊 Iced Drinks',
-        desserts: '🍰 Desserts & Cakes'
-    };
-    
-    Object.keys(menuData).forEach(cat => {
-        if (category !== 'all' && cat !== category) return;
-        const items = menuData[cat];
-        if (!items || items.length === 0) return;
-        
-        const section = document.createElement('div');
-        section.style.marginBottom = '16px';
-        
-        const title = document.createElement('div');
-        title.className = 'section-title';
-        title.textContent = catNames[cat] || cat;
-        section.appendChild(title);
-        
-        const list = document.createElement('div');
-        list.className = 'menu-list';
-        
-        items.forEach((item, index) => {
-            const div = document.createElement('div');
-            div.className = 'menu-list-item';
-            const uniqueId = cat + '_' + index;
-            div.innerHTML = `
-                <div class="item-left">
-                    <span class="item-name">${item.name}</span>
-                    <span class="item-desc">${item.desc || ''}</span>
-                </div>
-                <div class="item-right">
-                    <span class="item-price">$${item.price.toFixed(2)}</span>
-                    <button class="add-btn-small" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">Add</button>
-                </div>
-            `;
-            list.appendChild(div);
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const total = slides.length;
+            currentSlide = (currentSlide + direction + total) % total;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+            const container = document.getElementById('carouselSlides');
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function startAutoSlide() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(() => changeSlide(1), 5000);
+        }
+
+        // ============================================================
+        // FILTER & RENDER MENU
+        // ============================================================
+        function filterCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.category-tabs button').forEach(btn => {
+                btn.classList.remove('active');
+                const btnText = btn.textContent.trim().toLowerCase();
+                if (category === 'all' && btnText === 'all') {
+                    btn.classList.add('active');
+                } else if (btnText === category || btnText.includes(category)) {
+                    btn.classList.add('active');
+                }
+            });
+            renderMenu(category);
+        }
+
+        function renderMenu(category = 'all') {
+            const container = document.getElementById('menuContainer');
+            container.innerHTML = '';
+
+            const catNames = {
+                hotDrinks: '☕ Hot Drinks',
+                icedDrinks: '🧊 Iced Drinks',
+                desserts: '🍰 Desserts & Cakes'
+            };
+
+            Object.keys(menuData).forEach(cat => {
+                if (category !== 'all' && cat !== category) return;
+                const items = menuData[cat];
+                if (!items || items.length === 0) return;
+
+                const section = document.createElement('div');
+                section.style.marginBottom = '16px';
+
+                const title = document.createElement('div');
+                title.className = 'section-title';
+                title.textContent = catNames[cat] || cat;
+                section.appendChild(title);
+
+                const list = document.createElement('div');
+                list.className = 'menu-list';
+
+                items.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'menu-list-item';
+                    const uniqueId = cat + '_' + index;
+                    div.innerHTML = `
+                            <div class="item-left">
+                                <span class="item-name">${item.name}</span>
+                                <span class="item-desc">${item.desc || ''}</span>
+                            </div>
+                            <div class="item-right">
+                                <span class="item-price">$${item.price.toFixed(2)}</span>
+                                <button class="add-btn-small" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">Add</button>
+                            </div>
+                        `;
+                    list.appendChild(div);
+                });
+
+                section.appendChild(list);
+                container.appendChild(section);
+            });
+        }
+
+        // ============================================================
+        // CART SYSTEM
+        // ============================================================
+        let cart = {};
+        let cartCurrency = 'USD';
+        let cartPayment = 'ZAAD';
+        let cartDelivery = 'Pickup';
+        let cartTotal = 0;
+        const exchangeRate = 11000;
+        let currentOrderId = '';
+
+        function addToCart(id, name, price) {
+            if (cart[id]) {
+                cart[id].qty += 1;
+            } else {
+                cart[id] = { name: name, price: price, qty: 1 };
+            }
+            updateAll();
+        }
+
+        function changeQty(id, delta) {
+            if (cart[id]) {
+                cart[id].qty += delta;
+                if (cart[id].qty <= 0) delete cart[id];
+                updateAll();
+            }
+        }
+
+        function updateAll() {
+            updateCartCount();
+            updateSideCart();
+            updateCartTotals();
+            updatePlaceOrderBtn();
+        }
+
+        function updateCartCount() {
+            const arr = Object.values(cart);
+            const total = arr.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').textContent = total;
+        }
+
+        function updateSideCart() {
+            const container = document.getElementById('cartSideItems');
+            const arr = Object.values(cart);
+            if (arr.length === 0) {
+                container.innerHTML = '<div class="cart-empty">Your cart is empty. ☕</div>';
+                return;
+            }
+            let html = '';
+            Object.keys(cart).forEach(id => {
+                const item = cart[id];
+                const total = item.price * item.qty;
+                html += `
+                        <div class="cart-item">
+                            <span class="name">${item.name}</span>
+                            <div class="qty-control">
+                                <button onclick="changeQty('${id}',-1)">−</button>
+                                <span class="qty">${item.qty}</span>
+                                <button onclick="changeQty('${id}',1)">+</button>
+                            </div>
+                            <span class="item-total">$${total.toFixed(2)}</span>
+                        </div>
+                    `;
+            });
+            container.innerHTML = html;
+        }
+
+        function updateCartTotals() {
+            const arr = Object.values(cart);
+            const totalsDiv = document.getElementById('cartSideTotals');
+            const checkoutFields = document.getElementById('checkoutFields');
+            if (arr.length === 0) {
+                totalsDiv.style.display = 'none';
+                checkoutFields.style.display = 'none';
+                return;
+            }
+            let subtotal = 0;
+            arr.forEach(item => { subtotal += item.price * item.qty; });
+            const tax = subtotal * 0.0012;
+            const total = subtotal + tax;
+            cartTotal = total;
+            document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2);
+            document.getElementById('sideTax').textContent = '$' + tax.toFixed(2);
+            document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
+            totalsDiv.style.display = 'block';
+            checkoutFields.style.display = 'block';
+            updateCartDisplayAmount();
+        }
+
+        function updatePlaceOrderBtn() {
+            document.getElementById('placeOrderBtn').disabled = Object.values(cart).length === 0;
+        }
+
+        function toggleCart() {
+            const side = document.getElementById('cartSide');
+            const overlay = document.getElementById('cartOverlay');
+            side.classList.toggle('open');
+            overlay.classList.toggle('active');
+            if (side.classList.contains('open')) updateAll();
+        }
+
+        function setCartDelivery(option) {
+            cartDelivery = option;
+            document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup');
+            document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery');
+        }
+
+        function setCartCurrency(currency) {
+            cartCurrency = currency;
+            document.getElementById('cartUSD').classList.toggle('active', currency === 'USD');
+            document.getElementById('cartSLSH').classList.toggle('active', currency === 'SLSH');
+            updateCartDisplayAmount();
+            updateCartPrompt();
+        }
+
+        function updateCartDisplayAmount() {
+            const display = document.getElementById('cartDisplayAmount');
+            let amount = cartTotal;
+            let symbol = '$';
+            if (cartCurrency === 'SLSH') {
+                amount = cartTotal * exchangeRate;
+                symbol = 'SLSH ';
+            }
+            display.textContent = symbol + amount.toFixed(2);
+        }
+
+        function setCartPayment(method) {
+            cartPayment = method;
+            document.getElementById('cartPromptMethod').textContent = method;
+            updateCartPrompt();
+        }
+
+        function updateCartPrompt() {
+            const promptAmt = document.getElementById('cartPromptAmount');
+            let amount = cartTotal;
+            let symbol = '$';
+            if (cartCurrency === 'SLSH') {
+                amount = cartTotal * exchangeRate;
+                symbol = 'SLSH ';
+            }
+            promptAmt.textContent = symbol + amount.toFixed(2);
+        }
+
+        function generateOrderId() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < 6; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function openCartCheckout() {
+            const arr = Object.values(cart);
+            if (arr.length === 0) return;
+            const name = document.getElementById('cartName').value.trim();
+            if (!name) {
+                alert('Please enter your name.');
+                document.getElementById('cartName').focus();
+                return;
+            }
+            const phone = document.getElementById('cartPhone').value.trim();
+            if (!phone) {
+                alert('Please enter your WhatsApp number.');
+                document.getElementById('cartPhone').focus();
+                return;
+            }
+            if (cartDelivery === 'Delivery') {
+                const address = document.getElementById('cartAddress').value.trim();
+                if (!address) {
+                    alert('Please enter your delivery address.');
+                    document.getElementById('cartAddress').focus();
+                    return;
+                }
+            }
+            sendOrder();
+        }
+
+        function sendOrder() {
+            const name = document.getElementById('cartName').value || 'Customer';
+            const phone = document.getElementById('cartPhone').value || 'Not provided';
+            const address = document.getElementById('cartAddress').value || 'Not provided';
+            const arr = Object.values(cart);
+            let orderText = '';
+            arr.forEach(item => {
+                orderText += `${item.name} × ${item.qty}\n`;
+            });
+            let amount = cartTotal;
+            let symbol = '$';
+            if (cartCurrency === 'SLSH') {
+                amount = cartTotal * exchangeRate;
+                symbol = 'SLSH ';
+            }
+            const total = symbol + amount.toFixed(2);
+
+            currentOrderId = generateOrderId();
+
+            const emailData = {
+                orderId: currentOrderId,
+                name: name,
+                phone: phone,
+                address: address,
+                delivery: cartDelivery,
+                order: orderText,
+                total: total,
+                payment: cartPayment,
+                currency: cartCurrency,
+                _subject: `🍫 New Order #${currentOrderId} from ${name}`
+            };
+
+            const whatsappMessage =
+                `🍫 Thank you for your order from Chocolate Inn!\n\n📋 Order #${currentOrderId}\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Items:\n${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\n✅ Your order has been received.\n\n📞 Call us: 3665112\n\nThank you! ☕🍫`;
+
+            const btn = document.querySelector('.place-order-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '⏳ Sending...';
+            btn.disabled = true;
+
+            fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(emailData)
+                })
+                .then(response => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+
+                    document.getElementById('confirmOrderId').textContent = currentOrderId;
+                    document.getElementById('orderConfirmed').style.display = 'block';
+
+                    const customerPhone = document.getElementById('cartPhone').value.trim();
+                    const whatsappNumber = customerPhone.replace(/[^0-9]/g, '');
+                    const whatsappUrl =
+                        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                    window.open(whatsappUrl, '_blank');
+
+                    alert(
+                        `✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp sent to you.\n📧 Shop received your order via email.\n\nThank you! ☕🍫`);
+
+                    cart = {};
+                    updateAll();
+                    toggleCart();
+                    setTimeout(() => {
+                        document.getElementById('orderConfirmed').style.display = 'none';
+                    }, 8000);
+                })
+                .catch(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    alert('⚠️ Issue sending order. Please call 3665112.');
+                });
+        }
+
+        // ============================================================
+        // PAGE NAVIGATION
+        // ============================================================
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            document.querySelectorAll('header nav a').forEach(link => {
+                link.classList.remove('active');
+                const linkText = link.textContent.toLowerCase().trim();
+                if (linkText === page || (page === 'order' && linkText === 'order online')) {
+                    link.classList.add('active');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMenu('all');
+            updateAll();
+            initCarousel();
+
+            // Payment method selection
+            document.querySelectorAll('.pay-option-cart').forEach(el => {
+                el.addEventListener('click', function() {
+                    document.querySelectorAll('.pay-option-cart').forEach(p => p.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const method = this.querySelector('.method').textContent.trim().replace('📱', '').trim();
+                    setCartPayment(method);
+                });
+            });
         });
-        
-        section.appendChild(list);
-        container.appendChild(section);
-    });
-}
-
-// ===== CART FUNCTIONS =====
-let cart = {}; let cartCurrency = 'USD'; let cartPayment = 'ZAAD'; let cartDelivery = 'Pickup'; let cartTotal = 0; const exchangeRate = 11000; let currentOrderId = '';
-function addToCart(id, name, price) { if(cart[id]) cart[id].qty += 1; else cart[id] = {name: name, price: price, qty: 1}; updateAll(); }
-function changeQty(id, delta) { if(cart[id]) { cart[id].qty += delta; if(cart[id].qty <= 0) delete cart[id]; updateAll(); } }
-function updateAll() { updateCartCount(); updateSideCart(); updateCartTotals(); updatePlaceOrderBtn(); }
-function updateCartCount() { const arr = Object.values(cart); const total = arr.reduce((sum, item) => sum + item.qty, 0); document.getElementById('cartCount').textContent = total; }
-function updateSideCart() {
-    const container = document.getElementById('cartSideItems'); const arr = Object.values(cart);
-    if(arr.length === 0) { container.innerHTML = '<div class="cart-side-empty">Your cart is empty. ☕</div>'; return; }
-    let html = ''; Object.keys(cart).forEach(id => { const item = cart[id]; const total = item.price * item.qty; html += `<div class="cart-side-item"><span class="name">${item.name}</span><div class="qty-control"><button onclick="changeQty('${id}',-1)">−</button><span class="qty">${item.qty}</span><button onclick="changeQty('${id}',1)">+</button></div><span class="item-total">$${total.toFixed(2)}</span></div>`; });
-    container.innerHTML = html;
-}
-function updateCartTotals() {
-    const arr = Object.values(cart); const totalsDiv = document.getElementById('cartSideTotals'); const checkoutFields = document.getElementById('checkoutFields');
-    if(arr.length === 0) { totalsDiv.style.display = 'none'; checkoutFields.style.display = 'none'; return; }
-    let subtotal = 0; arr.forEach(item => { subtotal += item.price * item.qty; }); const tax = subtotal * 0.0012; const total = subtotal + tax; cartTotal = total;
-    document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2); document.getElementById('sideTax').textContent = '$' + tax.toFixed(2); document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
-    totalsDiv.style.display = 'block'; checkoutFields.style.display = 'block'; updateCartDisplayAmount();
-}
-function updatePlaceOrderBtn() { document.getElementById('placeOrderBtn').disabled = Object.values(cart).length === 0; }
-function toggleCart() { const side = document.getElementById('cartSide'); const overlay = document.getElementById('cartOverlay'); side.classList.toggle('open'); overlay.classList.toggle('active'); if(side.classList.contains('open')) updateAll(); }
-function setCartDelivery(option) { cartDelivery = option; document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup'); document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery'); }
-function setCartCurrency(currency) { cartCurrency = currency; document.getElementById('cartUSD').classList.toggle('active', currency === 'USD'); document.getElementById('cartSLSH').classList.toggle('active', currency === 'SLSH'); updateCartDisplayAmount(); updateCartPrompt(); }
-function updateCartDisplayAmount() { const display = document.getElementById('cartDisplayAmount'); let amount = cartTotal; let symbol = '$'; if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; } display.textContent = symbol + amount.toFixed(2); }
-function setCartPayment(method) { cartPayment = method; document.getElementById('cartPayZAAD').classList.toggle('selected', method === 'ZAAD'); document.getElementById('cartPayEdahab').classList.toggle('selected', method === 'Edahab'); updateCartPrompt(); }
-function updateCartPrompt() { const promptAmt = document.getElementById('cartPromptAmount'); const promptMethod = document.getElementById('cartPromptMethod'); let amount = cartTotal; let symbol = '$'; if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; } promptAmt.textContent = symbol + amount.toFixed(2); promptMethod.textContent = cartPayment; }
-function generateOrderId() { const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'; let result = ''; for (let i = 0; i < 6; i++) result += chars.charAt(Math.floor(Math.random() * chars.length)); return result; }
-function openCartCheckout() {
-    const arr = Object.values(cart); if(arr.length === 0) return;
-    const name = document.getElementById('cartName').value.trim(); if(!name) { alert('Please enter your name.'); document.getElementById('cartName').focus(); return; }
-    const phone = document.getElementById('cartPhone').value.trim(); if(!phone) { alert('Please enter your WhatsApp number.'); document.getElementById('cartPhone').focus(); return; }
-    if(cartDelivery === 'Delivery') { const address = document.getElementById('cartAddress').value.trim(); if(!address) { alert('Please enter your delivery address.'); document.getElementById('cartAddress').focus(); return; } }
-    sendOrder();
-}
-function sendOrder() {
-    const name = document.getElementById('cartName').value || 'Customer'; const phone = document.getElementById('cartPhone').value || 'Not provided'; const address = document.getElementById('cartAddress').value || 'Not provided';
-    const arr = Object.values(cart); let orderText = ''; arr.forEach(item => { orderText += `${item.name} × ${item.qty}\n`; });
-    let amount = cartTotal; let symbol = '$'; if(cartCurrency === 'SLSH') { amount = cartTotal * exchangeRate; symbol = 'SLSH '; } const total = symbol + amount.toFixed(2);
-    currentOrderId = generateOrderId();
-    const emailData = { orderId: currentOrderId, name: name, phone: phone, address: address, delivery: cartDelivery, order: orderText, total: total, payment: cartPayment, currency: cartCurrency, _subject: `🍫 New Order #${currentOrderId} from ${name}` };
-    const whatsappMessage = `🍫 Thank you for your order from Chocolate Inn!\n\n📋 Order #${currentOrderId}\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Items:\n${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\n✅ Your order has been received.\n\n📞 Call us: 3665112\n\nThank you! ☕🍫`;
-    const btn = document.querySelector('.place-order-btn'); const originalText = btn.textContent; btn.textContent = '⏳ Sending...'; btn.disabled = true;
-    fetch(FORMSPREE_URL, { method: 'POST', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, body: JSON.stringify(emailData) })
-    .then(response => {
-        btn.textContent = originalText; btn.disabled = false;
-        document.getElementById('confirmOrderId').textContent = currentOrderId; document.getElementById('orderConfirmed').style.display = 'block';
-        const customerPhone = document.getElementById('cartPhone').value.trim(); const whatsappNumber = customerPhone.replace(/[^0-9]/g, ''); const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`; window.open(whatsappUrl, '_blank');
-        alert(`✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp sent to you.\n📧 Shop received your order via email.\n\nThank you! ☕🍫`);
-        cart = {}; updateAll(); toggleCart(); setTimeout(() => { document.getElementById('orderConfirmed').style.display = 'none'; }, 8000);
-    })
-    .catch(() => { btn.textContent = originalText; btn.disabled = false; alert('⚠️ Issue sending order. Please call 3665112.'); });
-}
-function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page-' + page).classList.add('active');
-    document.querySelectorAll('header nav a').forEach(link => { link.classList.remove('active'); if(link.textContent.toLowerCase() === page || (page === 'order' && link.textContent.toLowerCase() === 'order online')) link.classList.add('active'); });
-    window.scrollTo({top:0});
-}
-document.addEventListener('DOMContentLoaded', function() {
-    renderMenu('all');
-    updateAll();
-    initCarousel();
-});
-</script>
+    </script>
 </body>
 </html>

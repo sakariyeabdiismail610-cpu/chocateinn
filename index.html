@@ -7,8 +7,13 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Arial',sans-serif;background:#f5efe8;color:#3e2723;width:100%;}
         
+        /* ===== HEADER WITH LOGO ON LEFT ===== */
         header{background:#4A2E1B;padding:12px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;border-bottom:4px solid #d7a86e;position:sticky;top:0;z-index:100;}
+        .header-left{display:flex;align-items:center;gap:12px;}
         .logo-img{height:44px;width:auto;cursor:pointer;display:block;object-fit:contain;}
+        .logo-text{color:#f5efe8;font-family:'Georgia',serif;font-size:22px;font-weight:700;letter-spacing:1px;cursor:pointer;}
+        .logo-text .highlight{color:#d7a86e;}
+        .logo-tagline{font-size:10px;color:#d7a86e;letter-spacing:2px;font-style:italic;display:block;font-weight:300;}
         nav{display:flex;gap:25px;align-items:center;flex-wrap:wrap;}
         nav a{color:#fff;text-decoration:none;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:0.3s;font-family:'Arial',sans-serif;padding-bottom:3px;border-bottom:2px solid transparent;}
         nav a:hover,nav a.active{border-bottom-color:#d7a86e;color:#d7a86e;}
@@ -18,7 +23,6 @@
         
         .hero{background:#4A2E1B;color:#f5efe8;padding:60px 20px 50px;text-align:center;position:relative;overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;}
         .hero-content{position:relative;z-index:2;max-width:700px;width:100%;}
-        .hero-logo{max-width:450px;width:100%;height:auto;display:block;margin:0 auto 15px;}
         .hero .call-text{font-size:18px;color:#d7a86e;letter-spacing:4px;text-transform:uppercase;font-weight:300;margin-bottom:4px;}
         .hero .location{font-size:16px;color:#f5efe8;opacity:0.7;letter-spacing:2px;font-family:'Arial',sans-serif;}
         .hero .btn{background:#d7a86e;color:#4A2E1B;font-size:16px;font-weight:800;padding:14px 44px;border-radius:50px;border:none;cursor:pointer;transition:0.3s;margin-top:16px;font-family:'Arial',sans-serif;text-transform:uppercase;letter-spacing:2px;}
@@ -164,7 +168,6 @@
         
         @media(min-width:768px){
             .menu-grid{grid-template-columns:repeat(4,1fr);}
-            .hero-logo{max-width:500px;}
             .hero{padding:70px 40px 60px;min-height:420px;}
             .category-tabs{gap:10px;}
             .category-tabs button{font-size:14px;padding:8px 22px;}
@@ -174,10 +177,11 @@
         }
         @media(max-width:480px){
             .cart-side{width:100%;max-width:100%;right:-100%;}.cart-side.open{right:0;}
-            .hero-logo{max-width:280px;}
             .hero{padding:30px 16px 25px;min-height:280px;}
             .menu-grid{grid-template-columns:1fr 1fr;}
             .logo-img{height:32px;}
+            .logo-text{font-size:16px;}
+            .logo-tagline{font-size:8px;}
             .category-tabs{top:58px;padding:8px 10px;gap:4px;}
             .category-tabs button{font-size:11px;padding:5px 12px;}
             header{padding:10px 16px;}
@@ -190,8 +194,15 @@
 </head>
 <body>
 
+<!-- ===== HEADER: LOGO ON LEFT ===== -->
 <header>
-    <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
+    <div class="header-left">
+        <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')">
+        <div class="logo-text" onclick="showPage('home')">
+            Chocol<span class="highlight">ate Inn</span>
+            <span class="logo-tagline">Where Chocolate Feels Like Home.</span>
+        </div>
+    </div>
     <nav>
         <a class="active" onclick="showPage('home')">Home</a>
         <a onclick="showPage('order')">Order Online</a>
@@ -204,8 +215,8 @@
     <div class="hero">
         <div class="hero-content">
             <div class="call-text">Call to order in</div>
-            <img src="https://imgur.com/a/8twYfyW#3mQJaEW" alt="Chocolate Inn" class="hero-logo">
-            <div class="location">📍 Hargeisa, Somaliland</div>
+            <div style="font-size:48px;font-weight:900;color:#d7a86e;font-family:'Georgia',serif;margin-bottom:4px;">Chocol<span style="color:#f5efe8;">ate Inn</span></div>
+            <div style="font-size:16px;color:#f5efe8;opacity:0.7;letter-spacing:2px;">📍 Hargeisa, Somaliland</div>
             <button class="btn" onclick="showPage('order')">ORDER NOW</button>
         </div>
     </div>

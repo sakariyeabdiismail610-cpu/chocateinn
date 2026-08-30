@@ -13,13 +13,6 @@
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>" />
 
-    <!-- ===== OPEN GRAPH META TAGS ===== -->
-    <meta property="og:title" content="Chocolate Inn – Where Chocolate Feels Like Home" />
-    <meta property="og:description" content="Premium coffee, sweet treats, and warm vibes. Order online in Hargeisa." />
-    <meta property="og:image" content="https://i.imgur.com/3mQJaEW.png" />
-    <meta property="og:url" content="https://sakariyeabdiismail610-cpu.github.io/chocateinn/" />
-    <meta property="og:type" content="website" />
-
     <style>
         /* ============================================================
            RESET & BASE
@@ -37,10 +30,11 @@
             width: 100%;
             overflow-x: hidden;
             line-height: 1.6;
+            padding-top: 70px; /* Space for fixed header */
         }
 
         /* ============================================================
-           HEADER
+           HEADER - DYNAMIC HIDE/SHOW ON SCROLL
            ============================================================ */
         header {
             background: #2C1810;
@@ -50,10 +44,26 @@
             align-items: center;
             flex-wrap: wrap;
             border-bottom: 3px solid #D4AF37;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             box-shadow: 0 2px 12px rgba(44, 24, 16, 0.15);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+            transform: translateY(0);
+            will-change: transform;
+        }
+
+        /* When scrolling down, header slides up and hides */
+        header.hidden {
+            transform: translateY(-100%);
+            box-shadow: none;
+        }
+
+        /* When scrolling up, header slides back down */
+        header.visible {
+            transform: translateY(0);
         }
 
         .header-left {
@@ -381,7 +391,7 @@
         }
 
         /* ============================================================
-           CATEGORY TABS
+           CATEGORY TABS - Also slides with header
            ============================================================ */
         .category-tabs {
             background: #FFFFFF;
@@ -392,9 +402,20 @@
             gap: 4px;
             border-bottom: 2px solid #EDE6DE;
             position: sticky;
-            top: 60px;
+            top: 0;
             z-index: 99;
             box-shadow: 0 2px 8px rgba(44, 24, 16, 0.04);
+            transition: top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* When header is hidden, category tabs move up */
+        .category-tabs.header-hidden {
+            top: 0;
+        }
+
+        /* When header is visible, category tabs sit below it */
+        .category-tabs.header-visible {
+            top: 60px;
         }
 
         .category-tabs button {
@@ -960,6 +981,40 @@
             background: #FFFFFF;
         }
 
+        .delivery-option-cart,
+        .currency-toggle-cart {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .delivery-option-cart button,
+        .currency-toggle-cart button {
+            flex: 1;
+            padding: 6px 12px;
+            border: 2px solid #EDE6DE;
+            border-radius: 8px;
+            background: #FFFDF9;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+            transition: 0.3s;
+            color: #6D5C4E;
+        }
+
+        .delivery-option-cart button:hover,
+        .currency-toggle-cart button:hover {
+            border-color: #D4AF37;
+        }
+
+        .delivery-option-cart button.active,
+        .currency-toggle-cart button.active {
+            background: #D4AF37;
+            color: #2C1810;
+            border-color: #D4AF37;
+        }
+
         .cart-side-totals {
             border-top: 2px solid #D4AF37;
             padding-top: 10px;
@@ -1123,6 +1178,27 @@
             color: #D4AF37;
         }
 
+        .order-confirmed {
+            background: #E8F5E9;
+            border: 2px solid #2E7D32;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 10px 0;
+            text-align: center;
+            color: #1B5E20;
+        }
+
+        .order-confirmed h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+        }
+
+        .order-confirmed .order-id {
+            font-weight: 900;
+            font-size: 16px;
+            color: #D4AF37;
+        }
+
         /* ============================================================
            FOOTER
            ============================================================ */
@@ -1173,6 +1249,9 @@
            RESPONSIVE
            ============================================================ */
         @media (min-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
             .hero .brand-title {
                 font-size: 54px;
             }
@@ -1183,6 +1262,8 @@
             .category-tabs {
                 gap: 8px;
                 padding: 10px 20px;
+            }
+            .category-tabs.header-visible {
                 top: 70px;
             }
             .category-tabs button {
@@ -1241,6 +1322,9 @@
         }
 
         @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
             .hero .brand-title {
                 font-size: 28px;
             }
@@ -1299,9 +1383,11 @@
                 height: 32px;
             }
             .category-tabs {
-                top: 54px;
                 padding: 6px 8px;
                 gap: 3px;
+            }
+            .category-tabs.header-visible {
+                top: 54px;
             }
             .category-tabs button {
                 font-size: 9px;
@@ -1375,8 +1461,8 @@
 </head>
 
 <body>
-    <!-- ===== HEADER ===== -->
-    <header>
+    <!-- ===== HEADER - DYNAMIC HIDE/SHOW ===== -->
+    <header id="mainHeader">
         <div class="header-left">
             <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
             <div class="brand-text" onclick="showPage('home')">
@@ -1598,10 +1684,99 @@
         // ============================================================
         const SHOP_WHATSAPP = '252633665112';
         const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
+        const EXCHANGE_RATE = 11000;
 
         let currentCategory = 'all';
         let heroCurrentSlide = 0;
         let heroSlideInterval;
+        let cart = {};
+        let cartCurrency = 'USD';
+        let cartPayment = 'ZAAD';
+        let cartDelivery = 'Pickup';
+        let cartTotal = 0;
+        let currentOrderId = '';
+
+        // ============================================================
+        // DYNAMIC HEADER - HIDE ON SCROLL DOWN, SHOW ON SCROLL UP
+        // ============================================================
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function handleHeaderScroll() {
+            const header = document.getElementById('mainHeader');
+            const tabs = document.getElementById('categoryTabs');
+            const currentScrollY = window.scrollY;
+            const scrollThreshold = 20; // Minimum scroll before hiding
+
+            // Only hide/show after scrolling past threshold
+            if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
+                lastScrollY = currentScrollY;
+                return;
+            }
+
+            // Determine scroll direction
+            if (currentScrollY > lastScrollY) {
+                // Scrolling DOWN - hide header
+                header.classList.remove('visible');
+                header.classList.add('hidden');
+                if (tabs) {
+                    tabs.classList.remove('header-visible');
+                    tabs.classList.add('header-hidden');
+                }
+            } else {
+                // Scrolling UP - show header
+                header.classList.remove('hidden');
+                header.classList.add('visible');
+                if (tabs) {
+                    tabs.classList.remove('header-hidden');
+                    tabs.classList.add('header-visible');
+                }
+            }
+
+            lastScrollY = currentScrollY;
+        }
+
+        function initDynamicHeader() {
+            const header = document.getElementById('mainHeader');
+            const tabs = document.getElementById('categoryTabs');
+
+            // Set initial states
+            header.classList.add('visible');
+            if (tabs) {
+                tabs.classList.add('header-visible');
+            }
+
+            // Use requestAnimationFrame for smooth performance
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        handleHeaderScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Handle resize for responsive adjustments
+            window.addEventListener('resize', function() {
+                updateCategoryTabsPosition();
+            });
+        }
+
+        function updateCategoryTabsPosition() {
+            const header = document.getElementById('mainHeader');
+            const tabs = document.getElementById('categoryTabs');
+            if (!tabs) return;
+
+            const isHeaderHidden = header.classList.contains('hidden');
+            if (isHeaderHidden) {
+                tabs.classList.remove('header-visible');
+                tabs.classList.add('header-hidden');
+            } else {
+                tabs.classList.remove('header-hidden');
+                tabs.classList.add('header-visible');
+            }
+        }
 
         // ============================================================
         // MENU DATA
@@ -1994,14 +2169,6 @@
         // ============================================================
         // CART SYSTEM
         // ============================================================
-        let cart = {};
-        let cartCurrency = 'USD';
-        let cartPayment = 'ZAAD';
-        let cartDelivery = 'Pickup';
-        let cartTotal = 0;
-        const exchangeRate = 11000;
-        let currentOrderId = '';
-
         function addToCart(id, name, basePrice) {
             const checkbox = document.getElementById(`cheese_${id}`);
             const hasCheese = checkbox ? checkbox.checked : false;
@@ -2091,6 +2258,7 @@
             totalsDiv.style.display = 'block';
             checkoutFields.style.display = 'block';
             updateCartDisplayAmount();
+            updateCartPrompt();
         }
 
         function updatePlaceOrderBtn() {
@@ -2150,7 +2318,7 @@
             let amount = cartTotal;
             let symbol = '$';
             if (cartCurrency === 'SLSH') {
-                amount = cartTotal * exchangeRate;
+                amount = cartTotal * EXCHANGE_RATE;
                 symbol = 'SLSH ';
             }
             display.textContent = symbol + amount.toFixed(2);
@@ -2168,7 +2336,7 @@
             let amount = cartTotal;
             let symbol = '$';
             if (cartCurrency === 'SLSH') {
-                amount = cartTotal * exchangeRate;
+                amount = cartTotal * EXCHANGE_RATE;
                 symbol = 'SLSH ';
             }
             promptAmt.textContent = symbol + amount.toFixed(2);
@@ -2222,7 +2390,7 @@
             let amount = cartTotal;
             let symbol = '$';
             if (cartCurrency === 'SLSH') {
-                amount = cartTotal * exchangeRate;
+                amount = cartTotal * EXCHANGE_RATE;
                 symbol = 'SLSH ';
             }
             const total = symbol + amount.toFixed(2);
@@ -2308,15 +2476,8 @@
             renderMenu('all');
             updateAll();
             initHeroSlider();
-
-            document.querySelectorAll('.pay-option-cart').forEach(el => {
-                el.addEventListener('click', function() {
-                    document.querySelectorAll('.pay-option-cart').forEach(p => p.classList.remove('selected'));
-                    this.classList.add('selected');
-                    const method = this.querySelector('.method').textContent.trim().replace('📱', '').trim();
-                    setCartPayment(method);
-                });
-            });
+            initDynamicHeader();
+            setCartPayment('ZAAD');
         });
     </script>
 </body>

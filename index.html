@@ -30,7 +30,7 @@
             width: 100%;
             overflow-x: hidden;
             line-height: 1.6;
-            padding-top: 70px; /* Space for fixed header */
+            padding-top: 70px;
         }
 
         /* ============================================================
@@ -55,13 +55,11 @@
             will-change: transform;
         }
 
-        /* When scrolling down, header slides up and hides */
         header.hidden {
             transform: translateY(-100%);
             box-shadow: none;
         }
 
-        /* When scrolling up, header slides back down */
         header.visible {
             transform: translateY(0);
         }
@@ -391,7 +389,7 @@
         }
 
         /* ============================================================
-           CATEGORY TABS - Also slides with header
+           CATEGORY TABS
            ============================================================ */
         .category-tabs {
             background: #FFFFFF;
@@ -408,12 +406,10 @@
             transition: top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* When header is hidden, category tabs move up */
         .category-tabs.header-hidden {
             top: 0;
         }
 
-        /* When header is visible, category tabs sit below it */
         .category-tabs.header-visible {
             top: 60px;
         }
@@ -1461,7 +1457,7 @@
 </head>
 
 <body>
-    <!-- ===== HEADER - DYNAMIC HIDE/SHOW ===== -->
+    <!-- ===== HEADER ===== -->
     <header id="mainHeader">
         <div class="header-left">
             <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
@@ -1697,7 +1693,7 @@
         let currentOrderId = '';
 
         // ============================================================
-        // DYNAMIC HEADER - HIDE ON SCROLL DOWN, SHOW ON SCROLL UP
+        // DYNAMIC HEADER
         // ============================================================
         let lastScrollY = window.scrollY;
         let ticking = false;
@@ -1706,17 +1702,14 @@
             const header = document.getElementById('mainHeader');
             const tabs = document.getElementById('categoryTabs');
             const currentScrollY = window.scrollY;
-            const scrollThreshold = 20; // Minimum scroll before hiding
+            const scrollThreshold = 20;
 
-            // Only hide/show after scrolling past threshold
             if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
                 lastScrollY = currentScrollY;
                 return;
             }
 
-            // Determine scroll direction
             if (currentScrollY > lastScrollY) {
-                // Scrolling DOWN - hide header
                 header.classList.remove('visible');
                 header.classList.add('hidden');
                 if (tabs) {
@@ -1724,7 +1717,6 @@
                     tabs.classList.add('header-hidden');
                 }
             } else {
-                // Scrolling UP - show header
                 header.classList.remove('hidden');
                 header.classList.add('visible');
                 if (tabs) {
@@ -1740,13 +1732,11 @@
             const header = document.getElementById('mainHeader');
             const tabs = document.getElementById('categoryTabs');
 
-            // Set initial states
             header.classList.add('visible');
             if (tabs) {
                 tabs.classList.add('header-visible');
             }
 
-            // Use requestAnimationFrame for smooth performance
             window.addEventListener('scroll', function() {
                 if (!ticking) {
                     window.requestAnimationFrame(function() {
@@ -1757,7 +1747,6 @@
                 }
             }, { passive: true });
 
-            // Handle resize for responsive adjustments
             window.addEventListener('resize', function() {
                 updateCategoryTabsPosition();
             });
@@ -1779,206 +1768,218 @@
         }
 
         // ============================================================
-        // MENU DATA
+        // MENU DATA - UPDATED WITH MEATBALL & STEAK
         // ============================================================
         const menuData = {
             sandwiches: [{
-                name: 'Steak & Cheese (Half)',
+                name: '🥩 Steak & Cheese (Half)',
                 price: 4.00,
                 desc: 'Tender steak with melted cheese',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Steak & Cheese (Full)',
+                name: '🥩 Steak & Cheese (Full)',
                 price: 7.00,
                 desc: 'Tender steak with melted cheese',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Chicken Sandwich (Half)',
+                name: '🍝 Meatball Sub (Half)',
+                price: 4.00,
+                desc: 'Juicy meatballs with marinara & cheese',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1598364857454-dbf7719f737e?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: '🍝 Meatball Sub (Full)',
+                price: 7.00,
+                desc: 'Juicy meatballs with marinara & cheese',
+                category: 'sandwiches',
+                image: 'https://images.unsplash.com/photo-1598364857454-dbf7719f737e?w=400&h=250&fit=crop&q=80'
+            }, {
+                name: '🍗 Chicken Sandwich (Half)',
                 price: 3.50,
                 desc: 'Grilled chicken with fresh veggies',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Chicken Sandwich (Full)',
+                name: '🍗 Chicken Sandwich (Full)',
                 price: 6.00,
                 desc: 'Grilled chicken with fresh veggies',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Tuna Melt (Half)',
+                name: '🐟 Tuna Melt (Half)',
                 price: 3.00,
                 desc: 'Classic tuna with melted cheese',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Tuna Melt (Full)',
+                name: '🐟 Tuna Melt (Full)',
                 price: 5.00,
                 desc: 'Classic tuna with melted cheese',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Egg & Mayo (Half)',
+                name: '🥚 Egg & Mayo (Half)',
                 price: 3.00,
                 desc: 'Creamy egg mayo sandwich',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Egg & Mayo (Full)',
+                name: '🥚 Egg & Mayo (Full)',
                 price: 5.00,
                 desc: 'Creamy egg mayo sandwich',
                 category: 'sandwiches',
                 image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
             }],
             sweets: [{
-                name: 'Lotus Strawberry Waffle',
+                name: '🧇 Lotus Strawberry Waffle',
                 price: 3.50,
                 desc: 'Waffle with lotus & strawberry',
                 category: 'sweets',
                 image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Stroop Waffle',
+                name: '🧇 Stroop Waffle',
                 price: 2.00,
                 desc: 'Classic stroop waffle',
                 category: 'sweets',
                 image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Triple Chocolate Crepe',
+                name: '🍫 Triple Chocolate Crepe',
                 price: 3.50,
                 desc: 'Rich chocolate crepe',
                 category: 'sweets',
                 image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Fettuccine Crepe',
+                name: '🍝 Fettuccine Crepe',
                 price: 2.50,
                 desc: 'Creamy fettuccine crepe',
                 category: 'sweets',
                 image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Mighty Crepe',
+                name: '⭐ Mighty Crepe',
                 price: 3.70,
                 desc: 'Loaded crepe with toppings',
                 category: 'sweets',
                 image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Banana Crepe',
+                name: '🍌 Banana Crepe',
                 price: 2.00,
                 desc: 'Classic banana crepe',
                 category: 'sweets',
                 image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
             }],
             coffee: [{
-                name: 'Espresso',
+                name: '☕ Espresso',
                 price: 0.90,
                 desc: 'Bold intense coffee shot',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Americano',
+                name: '☕ Americano',
                 price: 0.90,
                 desc: 'Rich espresso hot water',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Cappuccino',
+                name: '☕ Cappuccino',
                 price: 1.50,
                 desc: 'Creamy foam espresso base',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Latte',
+                name: '☕ Latte',
                 price: 1.50,
                 desc: 'Smooth milk espresso blend',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Flat White',
+                name: '☕ Flat White',
                 price: 1.30,
                 desc: 'Velvety microfoam espresso',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Spanish Latte',
+                name: '☕ Spanish Latte',
                 price: 1.70,
                 desc: 'Sweet condensed milk coffee',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Mocha',
+                name: '☕ Mocha',
                 price: 1.50,
                 desc: 'Chocolate espresso milk swirl',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Pistachio Latte',
+                name: '☕ Pistachio Latte',
                 price: 2.00,
                 desc: 'Nutty sweet cream coffee',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Hot Chocolate',
+                name: '🍫 Hot Chocolate',
                 price: 1.50,
                 desc: 'Rich cocoa steamed milk',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Iced Spanish',
+                name: '🧊 Iced Spanish',
                 price: 2.70,
                 desc: 'Bold iced coffee',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Iced Vanilla Latte',
+                name: '🧊 Iced Vanilla Latte',
                 price: 2.80,
                 desc: 'Iced vanilla latte',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Iced Pistachio Latte',
+                name: '🧊 Iced Pistachio Latte',
                 price: 3.60,
                 desc: 'Iced pistachio latte',
                 category: 'coffee',
                 image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
             }],
             desserts: [{
-                name: 'Chocolate Butter & Caramel Cake',
+                name: '🍰 Chocolate Butter & Caramel Cake',
                 price: 2.70,
                 desc: 'Rich chocolate with caramel',
                 category: 'desserts',
                 image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Naked Strawberry Cake',
+                name: '🍓 Naked Strawberry Cake',
                 price: 2.70,
                 desc: 'Fresh strawberry delight',
                 category: 'desserts',
                 image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Red Velvet Cake',
+                name: '❤️ Red Velvet Cake',
                 price: 2.00,
                 desc: 'Classic red velvet',
                 category: 'desserts',
                 image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Lotus Cheesecake',
+                name: '🍪 Lotus Cheesecake',
                 price: 3.50,
                 desc: 'Creamy lotus cheesecake',
                 category: 'desserts',
                 image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Chocolate Cheesecake',
+                name: '🍫 Chocolate Cheesecake',
                 price: 3.50,
                 desc: 'Rich chocolate cheesecake',
                 category: 'desserts',
                 image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Brownies with Nuts',
+                name: '🍫 Brownies with Nuts',
                 price: 2.00,
                 desc: 'Fudgy brownies with nuts',
                 category: 'desserts',
                 image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
             }, {
-                name: 'Tiramisu',
+                name: '🍰 Tiramisu',
                 price: 2.00,
                 desc: 'Classic Italian tiramisu',
                 category: 'desserts',
@@ -2123,7 +2124,7 @@
         }
 
         // ============================================================
-        // CONTACT FORM (EMAIL)
+        // CONTACT FORM
         // ============================================================
         function sendContactMessage(event) {
             event.preventDefault();

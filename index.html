@@ -40,21 +40,11 @@
         }
 
         /* ============================================================
-           CUSTOM COLOR CLASSES
-           ============================================================ */
-        .text-white {
-            color: #ffffff !important;
-        }
-        .text-gold {
-            color: #d4af37 !important;
-        }
-
-        /* ============================================================
            HEADER
            ============================================================ */
         header {
             background: #2C1810;
-            padding: 12px 24px;
+            padding: 10px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -69,33 +59,39 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-img {
-            height: 50px;
+            height: 40px;
             width: auto;
             cursor: pointer;
             display: block;
             object-fit: contain;
         }
 
-        .brand-logo {
+        .brand-text {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
             letter-spacing: 1px;
             cursor: pointer;
             line-height: 1.2;
         }
+        .brand-text .choco {
+            color: #ffffff;
+        }
+        .brand-text .inn {
+            color: #D4AF37;
+        }
 
         .brand-tagline {
             display: block;
             font-family: 'Montserrat', sans-serif;
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 300;
             font-style: italic;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             color: #D4AF37;
             opacity: 0.85;
             margin-top: -2px;
@@ -103,7 +99,7 @@
 
         nav {
             display: flex;
-            gap: 24px;
+            gap: 12px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -112,12 +108,12 @@
             color: #F5EFE6;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
+            letter-spacing: 0.8px;
             cursor: pointer;
             transition: 0.3s;
-            padding-bottom: 4px;
+            padding-bottom: 3px;
             border-bottom: 2px solid transparent;
             font-family: 'Montserrat', sans-serif;
         }
@@ -158,11 +154,11 @@
         .hero {
             background: linear-gradient(145deg, #2C1810, #4A2A1C);
             color: #F5EFE6;
-            padding: 60px 20px 50px;
+            padding: 40px 16px 35px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            min-height: 380px;
+            min-height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -172,18 +168,18 @@
         .hero::before {
             content: '✦';
             position: absolute;
-            top: 30px;
-            left: 40px;
-            font-size: 80px;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
             color: #D4AF37;
             opacity: 0.06;
         }
         .hero::after {
             content: '✦';
             position: absolute;
-            bottom: 30px;
-            right: 40px;
-            font-size: 80px;
+            bottom: 20px;
+            right: 20px;
+            font-size: 60px;
             color: #D4AF37;
             opacity: 0.06;
         }
@@ -196,55 +192,66 @@
         }
 
         .hero .call-text {
-            font-size: 16px;
+            font-size: 13px;
             color: #D4AF37;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             font-weight: 300;
             font-family: 'Montserrat', sans-serif;
             margin-bottom: 4px;
         }
 
-        .hero .brand-logo {
-            font-size: 54px;
+        .hero .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
             margin-bottom: 4px;
             letter-spacing: 1px;
+        }
+        .hero .brand-title .choco {
+            color: #ffffff;
+        }
+        .hero .brand-title .inn {
+            color: #D4AF37;
         }
 
         .hero .hero-tagline {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 15px;
             font-style: italic;
             color: #D4AF37;
             opacity: 0.85;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             letter-spacing: 1px;
         }
 
         .hero .location {
-            font-size: 16px;
+            font-size: 13px;
             color: #F5EFE6;
             opacity: 0.7;
             letter-spacing: 2px;
             font-weight: 300;
+            margin-bottom: 2px;
         }
 
         .hero .btn {
             background: #D4AF37;
             color: #2C1810;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 800;
-            padding: 14px 48px;
+            padding: 12px 36px;
             border-radius: 50px;
             border: none;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 8px;
+            margin-top: 6px;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
+            display: inline-block;
         }
+
         .hero .btn:hover {
             background: #c49d2e;
             transform: scale(1.03);
@@ -264,13 +271,13 @@
         .slider-wrapper {
             display: flex;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 400px;
+            height: 250px;
         }
 
         .slide {
             position: relative;
             min-width: 100%;
-            height: 400px;
+            height: 250px;
             flex-shrink: 0;
             overflow: hidden;
         }
@@ -295,25 +302,25 @@
 
         .slide-content {
             position: absolute;
-            bottom: 15%;
-            left: 8%;
+            bottom: 12%;
+            left: 6%;
             z-index: 2;
             color: #F5EFE6;
-            max-width: 500px;
+            max-width: 80%;
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         }
 
         .slide-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             letter-spacing: 0.5px;
         }
 
         .slide-content p {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.05rem;
+            font-size: 0.85rem;
             font-weight: 300;
             opacity: 0.92;
         }
@@ -325,9 +332,9 @@
             background: rgba(44, 24, 16, 0.6);
             color: #fff;
             border: none;
-            padding: 14px 18px;
+            padding: 8px 12px;
             cursor: pointer;
-            font-size: 22px;
+            font-size: 16px;
             border-radius: 50%;
             transition: 0.3s;
             z-index: 10;
@@ -338,29 +345,28 @@
         .slider-btn:hover {
             background: #D4AF37;
             color: #2C1810;
-            transform: translateY(-50%) scale(1.05);
         }
 
         .slider-btn.prev {
-            left: 16px;
+            left: 10px;
         }
         .slider-btn.next {
-            right: 16px;
+            right: 10px;
         }
 
         .slider-dots {
             position: absolute;
-            bottom: 20px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px;
+            gap: 8px;
             z-index: 10;
         }
 
         .slider-dots .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.4);
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -374,23 +380,19 @@
             transform: scale(1.15);
         }
 
-        .slider-dots .dot:hover {
-            background: #D4AF37;
-        }
-
         /* ============================================================
            CATEGORY TABS
            ============================================================ */
         .category-tabs {
             background: #FFFFFF;
-            padding: 12px 16px;
+            padding: 8px 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px;
+            gap: 4px;
             border-bottom: 2px solid #EDE6DE;
             position: sticky;
-            top: 76px;
+            top: 60px;
             z-index: 99;
             box-shadow: 0 2px 8px rgba(44, 24, 16, 0.04);
         }
@@ -398,8 +400,8 @@
         .category-tabs button {
             background: transparent;
             border: none;
-            padding: 10px 20px;
-            font-size: 13px;
+            padding: 6px 14px;
+            font-size: 10px;
             font-weight: 700;
             color: #6D5C4E;
             cursor: pointer;
@@ -410,16 +412,16 @@
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
         }
 
         .category-tabs button .icon {
-            font-size: 16px;
+            font-size: 12px;
             display: inline-block;
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             text-align: center;
-            line-height: 24px;
+            line-height: 18px;
             background: #F5EFE6;
             border-radius: 50%;
             transition: 0.3s;
@@ -447,31 +449,31 @@
            MENU / PRODUCT CARDS
            ============================================================ */
         .menu-section {
-            padding: 20px 16px;
+            padding: 16px 12px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 18px;
             color: #2C1810;
-            margin: 30px 0 14px;
-            padding-left: 16px;
+            margin: 20px 0 10px;
+            padding-left: 12px;
             border-left: 4px solid #D4AF37;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-top: 4px;
         }
 
         .product-card {
             background: #FFFFFF;
             border-radius: 12px;
-            padding: 16px 14px;
+            padding: 12px 10px;
             border: 1px solid #EDE6DE;
             transition: 0.3s;
             display: flex;
@@ -489,23 +491,23 @@
 
         .product-card .product-image {
             width: 100%;
-            height: 160px;
+            height: 120px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             background: #F8F4EE;
         }
 
         .product-card .product-name {
             font-family: 'Playfair Display', serif;
-            font-size: 17px;
+            font-size: 14px;
             color: #2C1810;
             font-weight: 700;
             margin-bottom: 2px;
         }
 
         .product-card .product-desc {
-            font-size: 13px;
+            font-size: 11px;
             color: #6D5C4E;
             font-family: 'Montserrat', sans-serif;
             margin-bottom: 4px;
@@ -513,24 +515,24 @@
         }
 
         .product-card .product-price {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
             color: #D4AF37;
-            margin: 4px 0 8px;
+            margin: 2px 0 6px;
         }
 
         .cheese-option {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 13px;
+            gap: 4px;
+            font-size: 11px;
             color: #2C1810;
-            margin: 4px 0 8px;
+            margin: 2px 0 6px;
             font-weight: 600;
         }
         .cheese-option input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             accent-color: #D4AF37;
             cursor: pointer;
         }
@@ -539,16 +541,16 @@
             background: #2C1810;
             color: #fff;
             border: none;
-            padding: 8px 22px;
+            padding: 6px 16px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 11px;
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
             width: 100%;
-            max-width: 160px;
+            max-width: 140px;
         }
 
         .product-card .add-btn:hover {
@@ -562,24 +564,24 @@
            ============================================================ */
         .featured-section {
             background: #FFFFFF;
-            padding: 30px 20px;
-            margin: 16px 0;
+            padding: 20px 16px;
+            margin: 12px 0;
             border-top: 2px solid #EDE6DE;
             border-bottom: 2px solid #EDE6DE;
         }
 
         .featured-section h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 20px;
             color: #2C1810;
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .featured-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 10px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -587,7 +589,7 @@
         .featured-card {
             background: #F8F4EE;
             border-radius: 12px;
-            padding: 18px 14px;
+            padding: 14px 10px;
             text-align: center;
             border: 1px solid #EDE6DE;
             transition: 0.3s;
@@ -600,17 +602,17 @@
         }
 
         .featured-card .icon {
-            font-size: 38px;
+            font-size: 28px;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .featured-card h3 {
-            font-size: 16px;
+            font-size: 13px;
             color: #2C1810;
             font-family: 'Playfair Display', serif;
         }
         .featured-card p {
-            font-size: 13px;
+            font-size: 11px;
             color: #6D5C4E;
             font-family: 'Montserrat', sans-serif;
         }
@@ -622,30 +624,30 @@
             background: #2C1810;
             color: #F5EFE6;
             text-align: center;
-            padding: 30px 16px;
+            padding: 20px 16px;
             border-top: 4px solid #D4AF37;
             border-bottom: 4px solid #D4AF37;
         }
 
         .order-cta h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 22px;
         }
         .order-cta h2 span {
             color: #D4AF37;
         }
         .order-cta p {
-            font-size: 16px;
-            margin: 6px 0 14px;
+            font-size: 14px;
+            margin: 4px 0 10px;
             opacity: 0.85;
         }
 
         .order-cta .btn {
             background: #D4AF37;
             color: #2C1810;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 800;
-            padding: 12px 36px;
+            padding: 10px 28px;
             border-radius: 50px;
             border: none;
             cursor: pointer;
@@ -666,31 +668,31 @@
         .contact-info {
             background: #FFFFFF;
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
             border: 1px solid #EDE6DE;
             margin-bottom: 12px;
         }
 
         .contact-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 18px;
             color: #2C1810;
             margin-bottom: 6px;
         }
 
         .contact-info p {
-            font-size: 15px;
-            padding: 4px 0;
+            font-size: 13px;
+            padding: 3px 0;
             color: #4A3A2E;
             font-family: 'Montserrat', sans-serif;
         }
 
         .contact-info .phone {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 900;
             color: #D4AF37;
             background: #FFFDF9;
-            padding: 6px 18px;
+            padding: 4px 14px;
             border-radius: 8px;
             display: inline-block;
             border: 2px solid #D4AF37;
@@ -699,10 +701,10 @@
         .contact-info .open-badge {
             background: #2E7D32;
             color: #fff;
-            padding: 4px 16px;
+            padding: 3px 12px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 12px;
             display: inline-block;
             font-family: 'Montserrat', sans-serif;
         }
@@ -710,25 +712,25 @@
         .contact-form {
             background: #FFFFFF;
             border-radius: 12px;
-            padding: 20px;
+            padding: 16px;
             border: 1px solid #EDE6DE;
         }
 
         .contact-form h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 18px;
             color: #2C1810;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .contact-form input,
         .contact-form textarea {
             width: 100%;
-            padding: 10px 14px;
-            margin-bottom: 10px;
+            padding: 8px 12px;
+            margin-bottom: 8px;
             border: 1px solid #EDE6DE;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             background: #F8F4EE;
             font-family: 'Montserrat', sans-serif;
             transition: 0.3s;
@@ -746,8 +748,8 @@
             background: #2C1810;
             color: #fff;
             border: none;
-            padding: 12px;
-            font-size: 16px;
+            padding: 10px;
+            font-size: 14px;
             font-weight: 700;
             border-radius: 40px;
             cursor: pointer;
@@ -766,14 +768,14 @@
            ============================================================ */
         .cart-float {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            bottom: 20px;
+            right: 20px;
             z-index: 1000;
             background: #2C1810;
             color: #fff;
             border-radius: 50%;
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -781,7 +783,7 @@
             box-shadow: 0 4px 20px rgba(44, 24, 16, 0.35);
             transition: 0.3s;
             border: 2px solid #D4AF37;
-            font-size: 26px;
+            font-size: 22px;
         }
 
         .cart-float:hover {
@@ -797,9 +799,9 @@
             background: #D4AF37;
             color: #2C1810;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
             font-weight: 900;
             display: flex;
             align-items: center;
@@ -810,16 +812,16 @@
         .cart-side {
             position: fixed;
             top: 0;
-            right: -480px;
-            width: 450px;
-            max-width: 95%;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
             height: 100%;
             background: #FFFDF9;
             z-index: 2000;
             box-shadow: -4px 0 40px rgba(44, 24, 16, 0.12);
             transition: right 0.4s ease;
             overflow-y: auto;
-            padding: 24px 20px;
+            padding: 20px 16px;
             display: flex;
             flex-direction: column;
             border-left: 4px solid #D4AF37;
@@ -834,20 +836,20 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #D4AF37;
-            padding-bottom: 12px;
-            margin-bottom: 14px;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .cart-side-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
+            font-size: 18px;
             color: #2C1810;
         }
 
         .cart-close {
             background: none;
             border: none;
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
             color: #6D5C4E;
             transition: 0.3s;
@@ -863,13 +865,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #EDE6DE;
         }
 
         .cart-item .name {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             color: #2C1810;
             flex: 1;
             font-family: 'Playfair Display', serif;
@@ -878,17 +880,17 @@
         .cart-item .qty-control {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         .cart-item .qty-control button {
             background: #2C1810;
             color: #fff;
             border: none;
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: 0.3s;
@@ -901,8 +903,8 @@
 
         .cart-item .qty-control .qty {
             font-weight: 700;
-            font-size: 16px;
-            min-width: 24px;
+            font-size: 14px;
+            min-width: 20px;
             text-align: center;
             color: #2C1810;
         }
@@ -910,31 +912,31 @@
         .cart-item .item-total {
             font-weight: 700;
             color: #6B3F2A;
-            font-size: 14px;
-            min-width: 60px;
+            font-size: 13px;
+            min-width: 50px;
             text-align: right;
         }
 
         .cart-empty {
             color: #6D5C4E;
             text-align: center;
-            padding: 40px 0;
-            font-size: 16px;
+            padding: 30px 0;
+            font-size: 14px;
             font-style: italic;
         }
 
         .cart-checkout-fields {
-            margin-top: 12px;
+            margin-top: 10px;
             border-top: 2px solid #D4AF37;
-            padding-top: 14px;
+            padding-top: 10px;
         }
 
         .cart-checkout-fields label {
             font-weight: 600;
-            font-size: 13px;
+            font-size: 11px;
             color: #2C1810;
             display: block;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -942,11 +944,11 @@
 
         .cart-checkout-fields input {
             width: 100%;
-            padding: 10px 14px;
-            margin-bottom: 10px;
+            padding: 8px 12px;
+            margin-bottom: 8px;
             border: 1px solid #EDE6DE;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             background: #F8F4EE;
             font-family: 'Montserrat', sans-serif;
             transition: 0.3s;
@@ -960,24 +962,24 @@
 
         .cart-side-totals {
             border-top: 2px solid #D4AF37;
-            padding-top: 12px;
-            margin-top: 10px;
+            padding-top: 10px;
+            margin-top: 8px;
         }
 
         .cart-side-totals .row {
             display: flex;
             justify-content: space-between;
-            padding: 4px 0;
-            font-size: 14px;
+            padding: 3px 0;
+            font-size: 13px;
             color: #2C1810;
         }
 
         .cart-side-totals .row.total {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 900;
             color: #D4AF37;
             border-top: 2px solid #D4AF37;
-            padding-top: 8px;
+            padding-top: 6px;
             margin-top: 4px;
         }
 
@@ -986,16 +988,16 @@
             background: #2C1810;
             color: #fff;
             border: none;
-            padding: 14px;
-            font-size: 17px;
+            padding: 12px;
+            font-size: 14px;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 10px;
+            margin-top: 8px;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         .place-order-btn:hover {
@@ -1032,27 +1034,27 @@
         .payment-box {
             background: #FFFFFF;
             border-radius: 12px;
-            padding: 18px 16px;
+            padding: 14px 12px;
             border: 2px solid #D4AF37;
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .payment-box .method {
             font-weight: 800;
-            font-size: 16px;
+            font-size: 14px;
             color: #2C1810;
         }
 
         .payment-box .number {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 900;
             color: #D4AF37;
             display: block;
-            margin: 4px 0;
+            margin: 2px 0;
         }
 
         .payment-box .note {
-            font-size: 13px;
+            font-size: 11px;
             color: #6D5C4E;
         }
 
@@ -1062,13 +1064,13 @@
             background: #25D366;
             color: #fff;
             border: none;
-            padding: 12px;
-            font-size: 15px;
+            padding: 10px;
+            font-size: 13px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 8px;
+            margin-top: 6px;
             text-align: center;
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
@@ -1082,41 +1084,41 @@
 
         .call-reminder-cart {
             background: #F8F4EE;
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
             border: 1px solid #D4AF37;
-            margin: 10px 0;
+            margin: 8px 0;
             text-align: center;
-            font-size: 13px;
+            font-size: 12px;
             color: #2C1810;
         }
 
         .call-reminder-cart .number {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 900;
             color: #D4AF37;
         }
 
         .prompt-cart {
             background: #F8F4EE;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 8px;
             border-left: 4px solid #D4AF37;
-            margin: 8px 0;
-            font-size: 13px;
+            margin: 6px 0;
+            font-size: 12px;
         }
 
         .amount-display-cart {
             background: #2C1810;
             color: #fff;
-            padding: 12px;
+            padding: 10px;
             border-radius: 12px;
             text-align: center;
-            margin: 8px 0;
+            margin: 6px 0;
         }
 
         .amount-display-cart .total {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 900;
             color: #D4AF37;
         }
@@ -1127,38 +1129,35 @@
         footer {
             background: #2C1810;
             color: #D4AF37;
-            padding: 25px 20px;
+            padding: 20px 16px;
             text-align: center;
             border-top: 4px solid #D4AF37;
         }
 
-        footer .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
+        footer .brand-text {
+            font-size: 16px;
         }
 
         footer .copy {
-            font-size: 13px;
+            font-size: 11px;
             opacity: 0.7;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         footer .footer-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 16px;
             flex-wrap: wrap;
-            margin: 8px 0 10px;
+            margin: 4px 0 6px;
         }
 
         footer .footer-links a {
             color: #D4AF37;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 11px;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -1174,154 +1173,202 @@
            RESPONSIVE
            ============================================================ */
         @media (min-width: 768px) {
-            .hero .brand-logo {
-                font-size: 68px;
+            .hero .brand-title {
+                font-size: 54px;
             }
             .hero {
-                padding: 80px 40px 60px;
-                min-height: 440px;
+                padding: 60px 40px 50px;
+                min-height: 380px;
             }
             .category-tabs {
-                gap: 10px;
+                gap: 8px;
+                padding: 10px 20px;
+                top: 70px;
             }
             .category-tabs button {
+                font-size: 12px;
+                padding: 8px 20px;
+            }
+            .category-tabs button .icon {
+                width: 22px;
+                height: 22px;
                 font-size: 14px;
-                padding: 8px 24px;
+                line-height: 22px;
             }
             .featured-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
             }
             .slider-wrapper {
-                height: 420px;
+                height: 360px;
             }
             .slide {
-                height: 420px;
-            }
-            header .brand-logo {
-                font-size: 28px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .slider-wrapper {
-                height: 320px;
-            }
-            .slide {
-                height: 320px;
+                height: 360px;
             }
             .slide-content h2 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
             .slide-content p {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             .slide-content {
-                bottom: 12%;
-                left: 6%;
-                max-width: 80%;
+                max-width: 50%;
             }
-            .slider-btn {
-                padding: 10px 14px;
-                font-size: 18px;
+            .brand-text {
+                font-size: 24px;
+            }
+            .brand-tagline {
+                font-size: 10px;
+            }
+            .logo-img {
+                height: 50px;
+            }
+            .cart-side {
+                width: 450px;
+                right: -480px;
+                padding: 24px 20px;
+            }
+            header {
+                padding: 12px 30px;
+            }
+            nav a {
+                font-size: 14px;
+                gap: 24px;
             }
         }
 
         @media (max-width: 480px) {
-            .cart-side {
-                width: 100%;
-                max-width: 100%;
-                right: -100%;
-            }
-            .cart-side.open {
-                right: 0;
-            }
-            .hero .brand-logo {
-                font-size: 32px;
+            .hero .brand-title {
+                font-size: 28px;
             }
             .hero .hero-tagline {
-                font-size: 14px;
+                font-size: 13px;
             }
             .hero {
-                padding: 30px 16px 25px;
-                min-height: 280px;
-            }
-            .logo-img {
-                height: 38px;
-            }
-            header .brand-logo {
-                font-size: 18px;
-            }
-            header .brand-tagline {
-                font-size: 8px;
-            }
-            .category-tabs {
-                top: 66px;
-                padding: 8px 10px;
-                gap: 4px;
-            }
-            .category-tabs button {
-                font-size: 10px;
-                padding: 4px 12px;
-                gap: 4px;
-            }
-            .category-tabs button .icon {
-                width: 18px;
-                height: 18px;
-                font-size: 11px;
-                line-height: 18px;
-            }
-            header {
-                padding: 10px 16px;
-            }
-            nav {
-                gap: 12px;
-            }
-            nav a {
-                font-size: 11px;
-            }
-            .featured-grid {
-                grid-template-columns: 1fr 1fr;
+                padding: 25px 12px 20px;
+                min-height: 200px;
             }
             .product-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 8px;
             }
             .product-card .product-image {
-                height: 120px;
+                height: 100px;
             }
-            .contact-info .phone {
-                font-size: 18px;
-                padding: 4px 12px;
+            .product-card .product-name {
+                font-size: 12px;
+            }
+            .product-card .product-price {
+                font-size: 13px;
             }
             .slider-wrapper {
-                height: 240px;
+                height: 180px;
             }
             .slide {
-                height: 240px;
+                height: 180px;
             }
             .slide-content h2 {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             .slide-content p {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
             .slide-content {
-                bottom: 10%;
-                left: 5%;
-                max-width: 85%;
+                bottom: 8%;
+                left: 4%;
+                max-width: 90%;
             }
             .slider-btn {
-                padding: 6px 10px;
-                font-size: 14px;
+                padding: 4px 8px;
+                font-size: 12px;
             }
             .slider-dots .dot {
                 width: 8px;
                 height: 8px;
             }
-            footer .brand-logo {
+            .brand-text {
+                font-size: 14px;
+            }
+            .brand-tagline {
+                font-size: 7px;
+            }
+            .logo-img {
+                height: 32px;
+            }
+            .category-tabs {
+                top: 54px;
+                padding: 6px 8px;
+                gap: 3px;
+            }
+            .category-tabs button {
+                font-size: 9px;
+                padding: 4px 10px;
+                gap: 3px;
+            }
+            .category-tabs button .icon {
+                width: 14px;
+                height: 14px;
+                font-size: 9px;
+                line-height: 14px;
+            }
+            header {
+                padding: 8px 12px;
+            }
+            nav {
+                gap: 8px;
+            }
+            nav a {
+                font-size: 9px;
+                letter-spacing: 0.5px;
+            }
+            .featured-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .featured-card {
+                padding: 10px 8px;
+            }
+            .featured-card .icon {
+                font-size: 22px;
+            }
+            .featured-card h3 {
+                font-size: 12px;
+            }
+            .contact-info .phone {
                 font-size: 16px;
+                padding: 3px 10px;
+            }
+            .cart-float {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+                bottom: 16px;
+                right: 16px;
+            }
+            .cart-float .count {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+            }
+            .order-cta h2 {
+                font-size: 18px;
+            }
+            .order-cta .btn {
+                font-size: 12px;
+                padding: 8px 20px;
+            }
+            .hero .btn {
+                font-size: 12px;
+                padding: 10px 28px;
+            }
+            .section-title {
+                font-size: 16px;
+            }
+            footer .brand-text {
+                font-size: 14px;
             }
         }
     </style>
@@ -1332,16 +1379,16 @@
     <header>
         <div class="header-left">
             <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
-            <div class="brand-logo" onclick="showPage('home')">
-                <span class="text-white">Chocolate</span>
-                <span class="text-gold">Inn</span>
+            <div class="brand-text" onclick="showPage('home')">
+                <span class="choco">Chocolate</span>
+                <span class="inn">Inn</span>
                 <span class="brand-tagline">Where Chocolate Feels Like Home.</span>
             </div>
         </div>
         <nav>
             <a class="active" onclick="showPage('home')">Home</a>
-            <a onclick="showPage('order')">Order Online</a>
-            <a onclick="showPage('contact')">Contact Us</a>
+            <a onclick="showPage('order')">Order</a>
+            <a onclick="showPage('contact')">Contact</a>
         </nav>
     </header>
 
@@ -1350,10 +1397,10 @@
         <div class="hero">
             <div class="hero-content">
                 <div class="call-text">Call to order in</div>
-                <h1 class="brand-logo">
-                    <span class="text-white">Chocolate</span>
-                    <span class="text-gold">Inn</span>
-                </h1>
+                <div class="brand-title">
+                    <span class="choco">Chocolate</span>
+                    <span class="inn">Inn</span>
+                </div>
                 <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
                 <div class="location">📍 Hargeisa, Somaliland</div>
                 <button class="btn" onclick="showPage('order')">ORDER NOW</button>
@@ -1364,7 +1411,7 @@
         <div class="slider-container">
             <div class="slider-wrapper" id="heroSlider">
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1200&h=600&fit=crop&q=80" alt="Chocolate Desserts" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=400&fit=crop&q=80" alt="Chocolate Desserts" loading="lazy" />
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
                         <h2>Decadent Chocolate Delights</h2>
@@ -1372,7 +1419,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&h=600&fit=crop&q=80" alt="Specialty Coffees" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=400&fit=crop&q=80" alt="Specialty Coffees" loading="lazy" />
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
                         <h2>Artisanal Coffee</h2>
@@ -1380,7 +1427,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=1200&h=600&fit=crop&q=80" alt="Gourmet Sandwiches" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800&h=400&fit=crop&q=80" alt="Gourmet Sandwiches" loading="lazy" />
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
                         <h2>Fresh Gourmet Sandwiches</h2>
@@ -1388,7 +1435,7 @@
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=1200&h=600&fit=crop&q=80" alt="Hot Chocolate" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=800&h=400&fit=crop&q=80" alt="Hot Chocolate" loading="lazy" />
                     <div class="slide-overlay"></div>
                     <div class="slide-content">
                         <h2>Warm & Sweet Beverages</h2>
@@ -1414,7 +1461,7 @@
 
         <div class="order-cta">
             <h2>📱 Ready to <span>Order</span>?</h2>
-            <p>Call us at: <strong style="color:#D4AF37;font-size:24px;"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></strong></p>
+            <p>Call us at: <strong style="color:#D4AF37;font-size:20px;"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></strong></p>
             <button class="btn" onclick="showPage('order')">Order Now</button>
         </div>
     </div>
@@ -1441,8 +1488,8 @@
 
     <!-- ===== CONTACT PAGE ===== -->
     <div class="page" id="page-contact">
-        <div style="max-width:800px;margin:30px auto;padding:0 16px;">
-            <h2 style="font-size:28px;color:#2C1810;border-left:6px solid #D4AF37;padding-left:16px;margin-bottom:16px;font-family:'Playfair Display',serif;">📞 Contact Us</h2>
+        <div style="max-width:800px;margin:20px auto;padding:0 12px;">
+            <h2 style="font-size:22px;color:#2C1810;border-left:6px solid #D4AF37;padding-left:14px;margin-bottom:12px;font-family:'Playfair Display',serif;">📞 Contact Us</h2>
             <div class="contact-info">
                 <h3>Get in Touch</h3>
                 <p>📍 <strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</p>
@@ -1452,12 +1499,13 @@
             </div>
             <div class="contact-form">
                 <h3>Send a Message</h3>
-                <form onsubmit="alert('✅ Message sent! We will get back to you soon.');return false;">
+                <form id="contactForm" onsubmit="sendContactMessage(event)">
                     <input type="text" placeholder="Your Name" required />
                     <input type="email" placeholder="Your Email" required />
-                    <textarea placeholder="Your Message..." required style="min-height:100px;"></textarea>
+                    <textarea placeholder="Your Message..." required style="min-height:80px;"></textarea>
                     <button type="submit" class="btn">📨 Send</button>
                 </form>
+                <p id="formFeedback" style="margin-top:8px;color:#2E7D32;font-weight:600;display:none;">✅ Message sent! We'll get back to you soon.</p>
             </div>
         </div>
     </div>
@@ -1501,7 +1549,7 @@
                 </div>
 
                 <div class="payment-box">
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
                         <div>
                             <div class="method">📱 ZAAD</div>
                             <div class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></div>
@@ -1518,7 +1566,7 @@
                 <a href="#" id="whatsappOrderLink" target="_blank" class="whatsapp-order-btn">💬 Order via WhatsApp</a>
 
                 <div class="amount-display-cart">
-                    <div style="font-size:12px;opacity:0.8;">Total Amount</div>
+                    <div style="font-size:11px;opacity:0.8;">Total Amount</div>
                     <div class="total" id="cartDisplayAmount">$0.00</div>
                 </div>
 
@@ -1533,12 +1581,12 @@
     <footer>
         <div class="footer-links">
             <a onclick="showPage('home')">Home</a>
-            <a onclick="showPage('order')">Order Online</a>
-            <a onclick="showPage('contact')">Contact Us</a>
+            <a onclick="showPage('order')">Order</a>
+            <a onclick="showPage('contact')">Contact</a>
         </div>
-        <div class="brand-logo">
-            <span class="text-white">Chocolate</span>
-            <span class="text-gold">Inn</span>
+        <div class="brand-text">
+            <span class="choco">Chocolate</span>
+            <span class="inn">Inn</span>
         </div>
         <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
     </footer>
@@ -1857,7 +1905,7 @@
                 if (!items || items.length === 0) return;
 
                 const section = document.createElement('div');
-                section.style.marginBottom = '24px';
+                section.style.marginBottom = '16px';
 
                 const title = document.createElement('div');
                 title.className = 'section-title';
@@ -1897,6 +1945,50 @@
                 section.appendChild(grid);
                 container.appendChild(section);
             });
+        }
+
+        // ============================================================
+        // CONTACT FORM (EMAIL)
+        // ============================================================
+        function sendContactMessage(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('formFeedback');
+            const btn = form.querySelector('.btn');
+
+            const data = {
+                name: form.querySelector('input[type="text"]').value,
+                email: form.querySelector('input[type="email"]').value,
+                message: form.querySelector('textarea').value,
+                _subject: `📧 New Contact Message from Chocolate Inn`
+            };
+
+            btn.textContent = '⏳ Sending...';
+            btn.disabled = true;
+
+            fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    btn.textContent = '📨 Send';
+                    btn.disabled = false;
+                    if (response.ok) {
+                        feedback.style.display = 'block';
+                        form.reset();
+                        setTimeout(() => {
+                            feedback.style.display = 'none';
+                        }, 5000);
+                    } else {
+                        alert('⚠️ There was an issue sending your message. Please try again.');
+                    }
+                })
+                .catch(() => {
+                    btn.textContent = '📨 Send';
+                    btn.disabled = false;
+                    alert('⚠️ There was an issue sending your message. Please try again.');
+                });
         }
 
         // ============================================================
@@ -2202,7 +2294,7 @@
             document.querySelectorAll('header nav a').forEach(link => {
                 link.classList.remove('active');
                 const linkText = link.textContent.toLowerCase().trim();
-                if (linkText === page || (page === 'order' && linkText === 'order online')) {
+                if (linkText === page || (page === 'order' && linkText === 'order')) {
                     link.classList.add('active');
                 }
             });

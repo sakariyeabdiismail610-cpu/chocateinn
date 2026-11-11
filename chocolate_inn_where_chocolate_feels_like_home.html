@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Inn | Where Chocolate Feels Like Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        choc: {
+                            bg: '#FDF7F2',           /* Warm Cream / Vanilla */
+                            card: '#F6EAE1',         /* Soft Milk Chocolate Tint Card */
+                            surface: '#FFFFFF',      /* Pure White Surface */
+                            dark: '#2E180D',         /* Deep Dark Chocolate */
+                            darkLight: '#422415',    /* Rich Milk Chocolate */
+                            caramel: '#D48C46',      /* Warm Caramel / Golden Amber Accent */
+                            caramelLight: '#F3E4D4', /* Soft Caramel Tint */
+                            textDark: '#23120A',     /* Soft Charcoal Espresso */
+                            muted: '#7A6458',        /* Muted Cocoa Gray */
+                            border: '#E8D6C8'        /* Subtle Warm Border */
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        sans: ['"Outfit"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDF7F2;
+            color: #23120A;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDF7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2E180D;
+            border-radius: 999px;
+        }
+        .choc-shadow {
+            box-shadow: 0 10px 30px -10px rgba(46, 24, 13, 0.12);
+        }
+        .caramel-glow {
+            box-shadow: 0 10px 25px -5px rgba(212, 140, 70, 0.35);
+        }
+        .glass-nav {
+            background: rgba(253, 247, 242, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-choc-caramel selection:text-white flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-choc-border/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-choc-dark text-choc-caramel flex items-center justify-center font-display font-bold text-xl group-hover:bg-choc-caramel group-hover:text-white transition-all shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-2xl tracking-tight text-choc-dark">Chocolate Inn</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-choc-caramel font-semibold -mt-1">Where Chocolate Feels Like Home</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#menu" class="text-xs font-bold uppercase tracking-wider text-choc-textDark hover:text-choc-caramel transition-colors">Menu</a>
+                <a href="#choc-quiz" class="text-xs font-bold uppercase tracking-wider text-choc-textDark hover:text-choc-caramel transition-colors">Chocolate Sommelier</a>
+                <a href="#specialties" class="text-xs font-bold uppercase tracking-wider text-choc-textDark hover:text-choc-caramel transition-colors">Our Delights</a>
+                <a href="#visit" class="text-xs font-bold uppercase tracking-wider text-choc-textDark hover:text-choc-caramel transition-colors">Location & Hours</a>
+            </nav>
+
+            <!-- Quick Contact & Cart Actions -->
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/2523665112" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold bg-green-600 text-white hover:bg-green-700 transition-colors shadow">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                </a>
+
+                <button onclick="toggleCart()" class="relative p-2.5 text-choc-dark hover:text-choc-caramel transition-colors rounded-full bg-choc-card/80 border border-choc-border" aria-label="Cart">
+                    <i class="fa-solid fa-basket-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-choc-caramel text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center hidden shadow">0</span>
+                </button>
+
+                <button onclick="openModal('quickOrderModal')" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-choc-dark text-choc-bg hover:bg-choc-caramel transition-all shadow-md">
+                    Order Pickup
+                </button>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-choc-dark focus:outline-none">
+                    <i id="mobileIcon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-choc-bg border-b border-choc-border px-6 py-6 space-y-4">
+            <a href="#menu" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-choc-dark">Full Menu</a>
+            <a href="#choc-quiz" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-choc-dark">Chocolate Sommelier</a>
+            <a href="#specialties" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-choc-dark">House Specialties</a>
+            <a href="#visit" onclick="toggleMobileMenu()" class="block text-sm font-semibold text-choc-dark">Visit Hargeisa Branch</a>
+            <a href="https://wa.me/2523665112" target="_blank" class="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-green-600 text-white font-bold text-xs uppercase tracking-wider">
+                <i class="fa-brands fa-whatsapp text-base"></i> Order via WhatsApp (3665112)
+            </a>
+            <button onclick="toggleMobileMenu(); openModal('quickOrderModal')" class="w-full py-3 rounded-full bg-choc-caramel text-white font-bold text-xs uppercase tracking-wider">
+                Express Pickup
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <!-- Chocolate Hero Section -->
+        <section class="relative min-h-[85vh] flex items-center justify-center py-16 px-4 overflow-hidden">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-8 text-left z-10">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-choc-caramelLight border border-choc-caramel/30">
+                        <span class="w-2.5 h-2.5 rounded-full bg-choc-caramel animate-pulse"></span>
+                        <span class="text-xs uppercase tracking-widest text-choc-dark font-bold">Open 24/7 in Hargeisa</span>
+                    </div>
+
+                    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold text-choc-dark leading-[1.08]">
+                        Where Chocolate <br/>
+                        <span class="italic font-normal text-choc-caramel">Feels Like Home.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-choc-muted max-w-xl font-normal leading-relaxed">
+                        Indulge in handcrafted belgian chocolate crepes, golden crisp waffles, rich dark mochas, and artisanal espresso. Served warm every hour of the day.
+                    </p>
+
+                    <!-- Express Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#menu" class="px-8 py-4 rounded-full bg-choc-dark text-white font-bold text-xs uppercase tracking-wider hover:bg-choc-caramel transition-all shadow-lg">
+                            Explore Menu
+                        </a>
+                        <button onclick="openModal('quickOrderModal')" class="px-8 py-4 rounded-full bg-choc-caramel text-white font-bold text-xs uppercase tracking-wider hover:bg-choc-dark transition-all caramel-glow">
+                            <i class="fa-solid fa-bolt mr-2"></i> Fast Takeaway
+                        </button>
+                    </div>
+
+                    <!-- Payment Badges -->
+                    <div class="pt-4 flex items-center gap-4 text-xs font-semibold text-choc-muted border-t border-choc-border/60 max-w-md">
+                        <span class="text-choc-dark font-bold">Easy Local Pay:</span>
+                        <span class="px-3 py-1 rounded-full bg-choc-card text-choc-dark border border-choc-border"><i class="fa-solid fa-mobile-screen mr-1 text-choc-caramel"></i> ZAAD</span>
+                        <span class="px-3 py-1 rounded-full bg-choc-card text-choc-dark border border-choc-border"><i class="fa-solid fa-wallet mr-1 text-choc-caramel"></i> eDahab</span>
+                    </div>
+                </div>
+
+                <!-- Hero Right Image Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md">
+                        <div class="absolute -top-6 -left-6 w-full h-full bg-choc-caramelLight rounded-3xl -rotate-3"></div>
+                        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Decadent Chocolate Waffle and Coffee" 
+                             class="relative rounded-3xl shadow-2xl object-cover h-[500px] w-full border-4 border-choc-surface"
+                             onerror="this.src='https://placehold.co/800x1000/2E180D/D48C46?text=Chocolate+Inn'">
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-6 -left-4 bg-choc-surface p-4 rounded-2xl shadow-2xl border border-choc-border flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-choc-dark text-choc-caramel flex items-center justify-center font-bold text-xl">
+                                🍫
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-choc-dark">Signature Favorite</p>
+                                <p class="text-[11px] text-choc-muted">Loaded Belgian Nutella Waffle</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Chocolate Sommelier Interactive Matcher -->
+        <section id="choc-quiz" class="py-20 bg-choc-card border-y border-choc-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
+                    <span class="text-xs uppercase tracking-widest text-choc-caramel font-bold">Interactive Matcher</span>
+                    <h2 class="font-display text-4xl font-extrabold text-choc-dark">Find Your Chocolate Cravings</h2>
+                    <p class="text-choc-muted text-sm">Select your current mood to get our chef's recommended treat.</p>
+                </div>
+
+                <!-- Mood Selector Grid -->
+                <div class="max-w-4xl mx-auto bg-choc-surface p-8 sm:p-10 rounded-3xl border border-choc-border choc-shadow">
+                    <h3 class="text-xs uppercase tracking-wider text-choc-dark font-bold mb-4">Step 1: How sweet is your craving today?</h3>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                        <button onclick="selectMood('decadent', this)" class="mood-btn p-5 rounded-2xl border-2 border-choc-dark bg-choc-caramelLight text-choc-dark text-center transition-all">
+                            <i class="fa-solid fa-cookie text-2xl mb-2 text-choc-caramel"></i>
+                            <p class="text-xs font-bold">Warm & Decadent</p>
+                        </button>
+                        <button onclick="selectMood('coffee', this)" class="mood-btn p-5 rounded-2xl border-2 border-choc-border hover:border-choc-dark text-choc-textDark text-center transition-all">
+                            <i class="fa-solid fa-mug-saucer text-2xl mb-2 text-choc-dark"></i>
+                            <p class="text-xs font-bold">Rich & Caffeine Boost</p>
+                        </button>
+                        <button onclick="selectMood('fruity', this)" class="mood-btn p-5 rounded-2xl border-2 border-choc-border hover:border-choc-dark text-choc-textDark text-center transition-all">
+                            <i class="fa-solid fa-stroopwafel text-2xl mb-2 text-choc-dark"></i>
+                            <p class="text-xs font-bold">Fruity & Sweet Crepe</p>
+                        </button>
+                        <button onclick="selectMood('savory', this)" class="mood-btn p-5 rounded-2xl border-2 border-choc-border hover:border-choc-dark text-choc-textDark text-center transition-all">
+                            <i class="fa-solid fa-bread-slice text-2xl mb-2 text-choc-dark"></i>
+                            <p class="text-xs font-bold">Savory Sandwich</p>
+                        </button>
+                    </div>
+
+                    <!-- Recommended Dish Box -->
+                    <div id="moodRecommendation" class="bg-choc-card p-6 sm:p-8 rounded-2xl border border-choc-border grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        <div class="md:col-span-4">
+                            <img id="recImg" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop" class="w-full h-44 object-cover rounded-xl" alt="Match Dish">
+                        </div>
+                        <div class="md:col-span-8 space-y-3">
+                            <span class="text-[10px] uppercase tracking-widest text-choc-caramel font-bold">Top Recommendation</span>
+                            <h4 id="recTitle" class="font-display text-2xl font-bold text-choc-dark">Triple Chocolate Lava Cake</h4>
+                            <p id="recDesc" class="text-xs text-choc-muted leading-relaxed">Warm molten dark chocolate center served with vanilla gelato and drizzled melted Belgian cocoa.</p>
+                            <div class="pt-2 flex items-center justify-between">
+                                <span id="recPrice" class="font-display font-bold text-xl text-choc-dark">$6.50</span>
+                                <button onclick="addRecommendationToCart()" class="px-6 py-2.5 rounded-full bg-choc-dark text-choc-bg font-bold text-xs uppercase tracking-wider hover:bg-choc-caramel transition-colors shadow">
+                                    Add to Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Menu with Search & Category Filters -->
+        <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-choc-caramel font-bold">Our Kitchen & Bar</span>
+                    <h2 class="font-display text-4xl font-extrabold text-choc-dark mt-1">Chocolate Inn Menu</h2>
+                    <p class="text-choc-muted text-sm mt-1">From molten desserts to single-origin espresso and savory gourmet bites.</p>
+                </div>
+
+                <!-- Live Search Bar -->
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-choc-muted text-sm"></i>
+                    <input type="text" id="menuSearch" oninput="filterMenuItems()" placeholder="Search crepes, mochas, waffles..." class="w-full bg-choc-card border border-choc-border rounded-full pl-10 pr-4 py-3 text-xs text-choc-textDark focus:outline-none focus:border-choc-dark transition-colors">
+                </div>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center gap-3 mb-10">
+                <button onclick="setCategoryFilter('all', this)" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-dark text-white transition-all">All Items</button>
+                <button onclick="setCategoryFilter('waffles-crepes', this)" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-card text-choc-muted hover:text-choc-dark border border-choc-border transition-all">🧇 Crepes & Waffles</button>
+                <button onclick="setCategoryFilter('chocolate', this)" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-card text-choc-muted hover:text-choc-dark border border-choc-border transition-all">🍫 Chocolate Delights</button>
+                <button onclick="setCategoryFilter('coffee', this)" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-card text-choc-muted hover:text-choc-dark border border-choc-border transition-all">☕ Espresso & Drinks</button>
+                <button onclick="setCategoryFilter('savory', this)" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-card text-choc-muted hover:text-choc-dark border border-choc-border transition-all">🥪 Sandwiches</button>
+            </div>
+
+            <!-- Menu Cards Container -->
+            <div id="menuCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Special 24/7 Home Experience Banner -->
+        <section id="specialties" class="py-20 bg-choc-dark text-choc-bg rounded-3xl max-w-7xl mx-auto my-8 px-6 sm:px-12 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-choc-caramel font-bold">Always Warm & Welcoming</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-white leading-tight">Your 24/7 Haven in Hargeisa.</h2>
+                    <p class="text-choc-border text-sm font-light leading-relaxed">
+                        Whether you need a late-night sweet fix, an early morning double espresso, or a quiet space to meet friends, Chocolate Inn is always open for you.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-2xl bg-choc-darkLight border border-choc-caramel/20">
+                            <i class="fa-solid fa-clock text-choc-caramel text-xl mb-1"></i>
+                            <h4 class="text-xs font-bold text-white uppercase">Open 24 Hours</h4>
+                            <p class="text-[11px] text-choc-border">Every single day of the week</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-choc-darkLight border border-choc-caramel/20">
+                            <i class="fa-solid fa-truck-fast text-choc-caramel text-xl mb-1"></i>
+                            <h4 class="text-xs font-bold text-white uppercase">ZAAD & eDahab</h4>
+                            <p class="text-[11px] text-choc-border">Instant payment on delivery</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Callout Box -->
+                <div class="lg:col-span-6 bg-choc-surface text-choc-textDark p-8 rounded-3xl border border-choc-border shadow-2xl space-y-6">
+                    <h3 class="font-display text-2xl font-bold text-choc-dark">Order Directly on WhatsApp</h3>
+                    <p class="text-xs text-choc-muted leading-relaxed">
+                        Prefer ordering directly via chat? Send us your order or location on WhatsApp to get your hot beverages and waffles delivered immediately!
+                    </p>
+                    
+                    <div class="p-4 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-green-700 tracking-wider">Direct Order Line</span>
+                            <p class="font-display font-bold text-xl text-green-900">+252 3665112</p>
+                        </div>
+                        <a href="https://wa.me/2523665112" target="_blank" class="px-5 py-3 rounded-full bg-green-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-green-700 transition-colors shadow">
+                            Chat Now
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Location & Contact Info -->
+        <section id="visit" class="py-20 bg-choc-card/70 border-t border-choc-border">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="text-xs uppercase tracking-widest text-choc-caramel font-bold">Visit Us</span>
+                    <h2 class="font-display text-4xl font-extrabold text-choc-dark">Chocolate Inn Hargeisa</h2>
+                    <p class="text-choc-muted text-sm leading-relaxed">
+                        Step into our warm chocolate lounge for rich aromas, cozy seating, and unbeatable cocoa treats.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-choc-caramelLight text-choc-dark flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-choc-dark">Location</h4>
+                                <p class="text-xs text-choc-muted mt-0.5">Main Street, Hargeisa, Somaliland</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-choc-caramelLight text-choc-dark flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-choc-dark">Phone & ZAAD / eDahab</h4>
+                                <p class="text-xs text-choc-muted mt-0.5">+252 3665112 (Merchant Number: 3665112)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-choc-caramelLight text-choc-dark flex items-center justify-center font-bold">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-choc-dark">Opening Hours</h4>
+                                <p class="text-xs text-choc-muted mt-0.5">Open 24 Hours / 7 Days a week</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simple Message Form -->
+                <div class="bg-choc-surface p-8 rounded-3xl border border-choc-border shadow-xl space-y-4">
+                    <h3 class="font-display text-xl font-bold text-choc-dark">Get in Touch</h3>
+                    <form onsubmit="handleContact(event)" class="space-y-3">
+                        <input type="text" required placeholder="Your Name" class="w-full bg-choc-card border border-choc-border rounded-xl px-4 py-3 text-xs text-choc-textDark focus:outline-none focus:border-choc-dark">
+                        <input type="email" required placeholder="Email Address (e.g. customer@gmail.com)" class="w-full bg-choc-card border border-choc-border rounded-xl px-4 py-3 text-xs text-choc-textDark focus:outline-none focus:border-choc-dark">
+                        <textarea rows="3" required placeholder="Your question or feedback..." class="w-full bg-choc-card border border-choc-border rounded-xl px-4 py-3 text-xs text-choc-textDark focus:outline-none focus:border-choc-dark"></textarea>
+                        <button type="submit" class="w-full py-3 rounded-full bg-choc-dark text-white font-bold text-xs uppercase tracking-wider hover:bg-choc-caramel transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-choc-dark text-choc-bg py-12 text-xs border-t border-choc-darkLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-choc-caramel text-white flex items-center justify-center font-bold text-sm">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <div>
+                    <span class="font-display font-bold text-lg text-white block">Chocolate Inn</span>
+                    <span class="text-[9px] text-choc-caramel uppercase font-bold tracking-widest">Where Chocolate Feels Like Home</span>
+                </div>
+            </div>
+            <p class="text-choc-border/70 text-center">Hargeisa, Somaliland &bull; Phone: 3665112 &bull; chocolateinn@gmail.com</p>
+            <div class="flex gap-4 text-base text-choc-caramel">
+                <a href="https://wa.me/2523665112" target="_blank" class="hover:text-white"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Cart Slide-Over Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div id="cartOverlay" onclick="toggleCart()" class="absolute inset-0 bg-choc-dark/50 backdrop-blur-sm transition-opacity"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-choc-surface border-l border-choc-border shadow-2xl flex flex-col">
+                <div class="p-6 border-b border-choc-border flex items-center justify-between bg-choc-card/40">
+                    <h3 class="font-display text-lg font-bold text-choc-dark">Your Chocolate Basket</h3>
+                    <button onclick="toggleCart()" class="text-choc-muted hover:text-choc-textDark">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cartList" class="flex-grow overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic rendering -->
+                </div>
+
+                <!-- Cart Checkout Section with Payment Options -->
+                <div class="p-6 border-t border-choc-border bg-choc-card/60 space-y-4">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-choc-muted">Subtotal</span>
+                        <span id="cartSubtotal" class="font-display text-2xl font-bold text-choc-dark">$0.00</span>
+                    </div>
+
+                    <!-- Payment Instruction Box -->
+                    <div class="p-3 bg-choc-surface rounded-xl border border-choc-border text-[11px] space-y-1">
+                        <div class="flex justify-between font-bold text-choc-dark">
+                            <span><i class="fa-solid fa-mobile-screen text-choc-caramel mr-1"></i> ZAAD / eDahab:</span>
+                            <span class="text-choc-caramel font-extrabold">3665112</span>
+                        </div>
+                        <p class="text-choc-muted">Send payment to 3665112 or confirm cash on pickup.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="checkoutWhatsApp()" class="py-3 rounded-full bg-green-600 text-white font-bold text-xs uppercase tracking-wider hover:bg-green-700 transition-colors flex items-center justify-center gap-1 shadow">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Order
+                        </button>
+                        <button onclick="checkoutDirect()" class="py-3 rounded-full bg-choc-dark text-white font-bold text-xs uppercase tracking-wider hover:bg-choc-caramel transition-colors shadow">
+                            Express Pickup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Takeaway Pickup Modal -->
+    <div id="quickOrderModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-choc-dark/70 backdrop-blur-sm hidden">
+        <div class="bg-choc-surface p-8 rounded-3xl border border-choc-border max-w-md w-full relative shadow-2xl space-y-4">
+            <button onclick="closeModal('quickOrderModal')" class="absolute top-6 right-6 text-choc-muted hover:text-choc-textDark">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="font-display text-2xl font-bold text-choc-dark">Takeaway Pickup</h3>
+            <p class="text-xs text-choc-muted">Location: Main Street, Hargeisa | Open 24/7</p>
+
+            <form onsubmit="handleExpressOrder(event)" class="space-y-3 pt-2">
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-choc-dark mb-1">Select Pickup Time</label>
+                    <select class="w-full bg-choc-card border border-choc-border rounded-xl px-4 py-2.5 text-xs text-choc-textDark">
+                        <option>Ready in 10-15 Minutes</option>
+                        <option>Ready in 30 Minutes</option>
+                        <option>Custom Time (Specify in notes)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-choc-dark mb-1">Your Name</label>
+                    <input type="text" required placeholder="Full Name" class="w-full bg-choc-card border border-choc-border rounded-xl px-4 py-2.5 text-xs text-choc-textDark">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-choc-dark mb-1">Phone Number (ZAAD / eDahab)</label>
+                    <input type="tel" required placeholder="063 XXXXXXX" class="w-full bg-choc-card border border-choc-border rounded-xl px-4 py-2.5 text-xs text-choc-textDark">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-full bg-choc-caramel text-white font-bold text-xs uppercase tracking-wider hover:bg-choc-dark transition-colors shadow">
+                    Confirm Pickup Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-choc-dark text-white px-6 py-3 rounded.2xl shadow-2xl font-semibold text-xs flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-cookie-bite text-choc-caramel"></i>
+        <span id="toastMsg">Notification message</span>
+    </div>
+
+    <script>
+        // Chocolate Inn Complete Menu Dataset
+        const menuItems = [
+            {
+                id: 1,
+                name: "Belgian Nutella & Banana Crepe",
+                category: "waffles-crepes",
+                price: 5.50,
+                desc: "Thin warm golden crepe stuffed with melted Nutella, fresh sliced banana, and chocolate drizzle.",
+                img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 2,
+                name: "Loaded Chocolate Waffle",
+                category: "waffles-crepes",
+                price: 6.00,
+                desc: "Crispy Belgian waffle topped with Belgian dark chocolate, strawberries, and vanilla ice cream.",
+                img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 3,
+                name: "Signature Hot Chocolate Inn",
+                category: "chocolate",
+                price: 4.50,
+                desc: "Rich steaming melted cocoa topped with toasted marshmallows and whipped cream.",
+                img: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 4,
+                name: "Triple Chocolate Lava Cake",
+                category: "chocolate",
+                price: 6.50,
+                desc: "Warm cake with a molten chocolate center served alongside cold vanilla ice cream.",
+                img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 5,
+                name: "Iced Dark Chocolate Mocha",
+                category: "coffee",
+                price: 5.00,
+                desc: "Double espresso shot blended with dark cocoa sauce, cold milk, and ice.",
+                img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 6,
+                name: "Caramel Macchiato",
+                category: "coffee",
+                price: 4.80,
+                desc: "Freshly steamed milk with vanilla syrup, marked with espresso and caramel drizzle.",
+                img: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 7,
+                name: "Crispy Chicken Club Sandwich",
+                category: "savory",
+                price: 7.50,
+                desc: "Toasted triple-decker sandwich with crispy chicken, cheese, fresh lettuce, and house sauce.",
+                img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop"
+            },
+            {
+                id: 8,
+                name: "Gourmet Grilled Cheese & Ham",
+                category: "savory",
+                price: 6.00,
+                desc: "Melted mozzarella & cheddar on butter-toasted brioche bread.",
+                img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600&auto=format&fit=crop"
+            }
+        ];
+
+        // Mood Sommelier Dataset
+        const moodProfiles = {
+            decadent: {
+                title: "Triple Chocolate Lava Cake",
+                desc: "Warm molten dark chocolate center served with vanilla gelato and melted cocoa drizzle.",
+                price: "$6.50",
+                img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600&auto=format&fit=crop"
+            },
+            coffee: {
+                title: "Iced Dark Chocolate Mocha",
+                desc: "Bold double espresso combined with premium cocoa, cold milk, and whipped cream.",
+                price: "$5.00",
+                img: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600&auto=format&fit=crop"
+            },
+            fruity: {
+                title: "Belgian Nutella & Banana Crepe",
+                desc: "Warm delicate crepe filled with sweet bananas and generous Nutella spread.",
+                price: "$5.50",
+                img: "https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=600&auto=format&fit=crop"
+            },
+            savory: {
+                title: "Crispy Chicken Club Sandwich",
+                desc: "Toasted sandwich loaded with seasoned crispy chicken, cheese, lettuce, and secret sauce.",
+                price: "$7.50",
+                img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop"
+            }
+        };
+
+        let currentCart = [];
+        let activeCategory = 'all';
+
+        window.onload = function() {
+            renderMenuCards();
+        };
+
+        // Render Menu with Category & Search Filters
+        function renderMenuCards() {
+            const grid = document.getElementById('menuCardsGrid');
+            const searchVal = document.getElementById('menuSearch').value.toLowerCase();
+
+            grid.innerHTML = '';
+
+            const filtered = menuItems.filter(item => {
+                const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.desc.toLowerCase().includes(searchVal);
+                const matchesCat = activeCategory === 'all' || item.category === activeCategory;
+                return matchesSearch && matchesCat;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-choc-muted text-xs">No delicious treats found matching your search.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-choc-surface rounded-3xl border border-choc-border overflow-hidden hover:border-choc-caramel transition-all duration-300 flex flex-col justify-between choc-shadow group";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="h-52 overflow-hidden relative">
+                            <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/2E180D/D48C46?text=Chocolate+Inn'">
+                            <span class="absolute top-3 right-3 bg-choc-dark/90 backdrop-blur-md px-3.5 py-1 rounded-full text-choc-caramel font-display font-bold text-xs border border-choc-caramel/30">
+                                $${item.price.toFixed(2)}
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-2">
+                            <h3 class="font-display font-bold text-xl text-choc-dark">${item.name}</h3>
+                            <p class="text-xs text-choc-muted leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-2">
+                        <button onclick="addToBasket(${item.id})" class="w-full py-3 rounded-full bg-choc-card text-choc-dark border border-choc-border hover:bg-choc-dark hover:text-white font-bold text-xs uppercase tracking-wider transition-all">
+                            + Add to Basket
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterMenuItems() {
+            renderMenuCards();
+        }
+
+        function setCategoryFilter(cat, btn) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.className = "cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-card text-choc-muted hover:text-choc-dark border border-choc-border transition-all";
+            });
+            btn.className = "cat-btn px-5 py-2.5 rounded-full text-xs font-bold bg-choc-dark text-white transition-all";
+            renderMenuCards();
+        }
+
+        // Mood Sommelier Quiz Selection
+        function selectMood(key, btn) {
+            document.querySelectorAll('.mood-btn').forEach(b => {
+                b.className = "mood-btn p-5 rounded-2xl border-2 border-choc-border hover:border-choc-dark text-choc-textDark text-center transition-all";
+            });
+            btn.className = "mood-btn p-5 rounded-2xl border-2 border-choc-dark bg-choc-caramelLight text-choc-dark text-center transition-all";
+
+            const profile = moodProfiles[key];
+            document.getElementById('recTitle').innerText = profile.title;
+            document.getElementById('recDesc').innerText = profile.desc;
+            document.getElementById('recPrice').innerText = profile.price;
+            document.getElementById('recImg').src = profile.img;
+        }
+
+        function addRecommendationToCart() {
+            const title = document.getElementById('recTitle').innerText;
+            const price = parseFloat(document.getElementById('recPrice').innerText.replace('$', ''));
+            
+            currentCart.push({
+                id: Date.now(),
+                name: title,
+                price: price,
+                qty: 1
+            });
+            updateCartUI();
+            showToast(`Added ${title} to basket`);
+        }
+
+        // Basket & Cart Logic
+        function addToBasket(id) {
+            const item = menuItems.find(i => i.id === id);
+            const exist = currentCart.find(c => c.id === id);
+            if(exist) {
+                exist.qty += 1;
+            } else {
+                currentCart.push({ ...item, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`Added ${item.name}`);
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const list = document.getElementById('cartList');
+            const subtotal = document.getElementById('cartSubtotal');
+
+            const totalCount = currentCart.reduce((sum, i) => sum + i.qty, 0);
+            const totalSum = currentCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+            if(totalCount > 0) {
+                badge.innerText = totalCount;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            subtotal.innerText = `$${totalSum.toFixed(2)}`;
+
+            if(currentCart.length === 0) {
+                list.innerHTML = `<p class="text-center py-12 text-xs text-choc-muted">Your basket is empty. Add some warm chocolate treats!</p>`;
+                return;
+            }
+
+            list.innerHTML = currentCart.map((i, idx) => `
+                <div class="flex items-center justify-between p-3.5 bg-choc-card rounded-2xl border border-choc-border">
+                    <div>
+                        <h4 class="text-xs font-bold text-choc-dark">${i.name}</h4>
+                        <p class="text-[11px] text-choc-caramel font-extrabold">$${(i.price * i.qty).toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="modifyQty(${idx}, -1)" class="w-6 h-6 rounded bg-choc-surface border border-choc-border text-xs font-bold text-choc-dark">-</button>
+                        <span class="text-xs font-bold">${i.qty}</span>
+                        <button onclick="modifyQty(${idx}, 1)" class="w-6 h-6 rounded bg-choc-surface border border-choc-border text-xs font-bold text-choc-dark">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function modifyQty(idx, delta) {
+            currentCart[idx].qty += delta;
+            if(currentCart[idx].qty <= 0) currentCart.splice(idx, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartDrawer').classList.toggle('hidden');
+        }
+
+        // Direct WhatsApp Checkout Integration
+        function checkoutWhatsApp() {
+            if(currentCart.length === 0) return showToast('Basket is empty!');
+            
+            let itemsText = currentCart.map(i => `• ${i.name} x${i.qty} ($${(i.price * i.qty).toFixed(2)})`).join('%0A');
+            const total = currentCart.reduce((sum, i) => sum + (i.price * i.qty), 0).toFixed(2);
+            
+            const message = `Hello Chocolate Inn! I would like to order:%0A${itemsText}%0A%0ATotal: $${total}%0APayment via ZAAD/eDahab to 3665112.`;
+            
+            window.open(`https://wa.me/2523665112?text=${message}`, '_blank');
+            currentCart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        function checkoutDirect() {
+            if(currentCart.length === 0) return showToast('Basket is empty!');
+            showToast('Order confirmed! Send ZAAD to 3665112 for instant pickup.');
+            currentCart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Modals & UI Controls
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        function handleExpressOrder(e) {
+            e.preventDefault();
+            closeModal('quickOrderModal');
+            showToast('Pickup order received! Preparation started.');
+        }
+
+        function handleContact(e) {
+            e.preventDefault();
+            showToast('Message sent to Chocolate Inn Hargeisa!');
+            e.target.reset();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3200);
+        }
+    </script>
+</body>
+</html>

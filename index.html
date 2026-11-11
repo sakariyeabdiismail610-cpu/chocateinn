@@ -1,2457 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Chocolate Inn</title>
-
-    <!-- ===== GOOGLE FONTS ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-
-    <!-- ===== FAVICON ===== -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍫</text></svg>" />
-
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: #FFFDF9;
-            color: #2C1810;
-            width: 100%;
-            overflow-x: hidden;
-            line-height: 1.6;
-            padding-top: 70px;
-        }
-
-        /* ===== HEADER - DYNAMIC HIDE/SHOW ===== */
-        header {
-            background: #2C1810;
-            padding: 10px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            border-bottom: 3px solid #D4AF37;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.15);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
-            transform: translateY(0);
-            will-change: transform;
-        }
-
-        header.hidden {
-            transform: translateY(-100%);
-            box-shadow: none;
-        }
-
-        header.visible {
-            transform: translateY(0);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            cursor: pointer;
-            display: block;
-            object-fit: contain;
-        }
-
-        .brand-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            cursor: pointer;
-            line-height: 1.2;
-        }
-        .brand-text .choco {
-            color: #ffffff;
-        }
-        .brand-text .inn {
-            color: #D4AF37;
-        }
-
-        .brand-tagline {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 8px;
-            font-weight: 300;
-            font-style: italic;
-            letter-spacing: 1.5px;
-            color: #D4AF37;
-            opacity: 0.85;
-            margin-top: -2px;
-        }
-
-        nav {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #F5EFE6;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            transition: 0.3s;
-            padding-bottom: 3px;
-            border-bottom: 2px solid transparent;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        nav a:hover,
-        nav a.active {
-            border-bottom-color: #D4AF37;
-            color: #D4AF37;
-        }
-
-        /* ===== PAGES ===== */
-        .page {
-            display: none;
-            padding: 0;
-            width: 100%;
-            animation: fadeIn 0.4s ease;
-        }
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chocolate Inn | Where Chocolate Feels Like Home</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            chocolate: {
+              900: '#1A0D08',
+              800: '#2E180D',
+              700: '#4A2A1A',
+              600: '#6E3F27',
+              500: '#9B5B3B',
+              400: '#C2845E',
+              300: '#E0B08E',
+              200: '#F2D7C5',
+              100: '#FDF7F2',
+            },
+            caramel: {
+              DEFAULT: '#D48C46',
+              dark: '#B06D2D',
+              light: '#F5D6B6'
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            background: linear-gradient(145deg, #2C1810, #4A2A1C);
-            color: #F5EFE6;
-            padding: 40px 16px 35px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 280px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 4px solid #D4AF37;
-        }
-
-        .hero::before {
-            content: '✦';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 60px;
-            color: #D4AF37;
-            opacity: 0.06;
-        }
-        .hero::after {
-            content: '✦';
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 60px;
-            color: #D4AF37;
-            opacity: 0.06;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            width: 100%;
-        }
-
-        .hero .call-text {
-            font-size: 13px;
-            color: #D4AF37;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-weight: 300;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 4px;
-        }
-
-        .hero .brand-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 38px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            letter-spacing: 1px;
-        }
-        .hero .brand-title .choco {
-            color: #ffffff;
-        }
-        .hero .brand-title .inn {
-            color: #D4AF37;
-        }
-
-        .hero .hero-tagline {
-            font-family: 'Playfair Display', serif;
-            font-size: 15px;
-            font-style: italic;
-            color: #D4AF37;
-            opacity: 0.85;
-            margin-bottom: 4px;
-            letter-spacing: 1px;
-        }
-
-        .hero .location {
-            font-size: 13px;
-            color: #F5EFE6;
-            opacity: 0.7;
-            letter-spacing: 2px;
-            font-weight: 300;
-            margin-bottom: 2px;
-        }
-
-        .hero .btn {
-            background: #D4AF37;
-            color: #2C1810;
-            font-size: 14px;
-            font-weight: 800;
-            padding: 12px 36px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 6px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.25);
-            display: inline-block;
-        }
-
-        .hero .btn:hover {
-            background: #c49d2e;
-            transform: scale(1.03);
-            box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
-        }
-
-        /* ===== SLIDER ===== */
-        .slider-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin: 0;
-        }
-
-        .slider-wrapper {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            height: 250px;
-        }
-
-        .slide {
-            position: relative;
-            min-width: 100%;
-            height: 250px;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .slide-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(44, 24, 16, 0.55) 0%, rgba(0, 0, 0, 0.25) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .slide-content {
-            position: absolute;
-            bottom: 12%;
-            left: 6%;
-            z-index: 2;
-            color: #F5EFE6;
-            max-width: 80%;
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .slide-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2px;
-            letter-spacing: 0.5px;
-        }
-
-        .slide-content p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 300;
-            opacity: 0.92;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(44, 24, 16, 0.6);
-            color: #fff;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 50%;
-            transition: 0.3s;
-            z-index: 10;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .slider-btn:hover {
-            background: #D4AF37;
-            color: #2C1810;
-        }
-
-        .slider-btn.prev {
-            left: 10px;
-        }
-        .slider-btn.next {
-            right: 10px;
-        }
-
-        .slider-dots {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .slider-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .slider-dots .dot.active {
-            background: #D4AF37;
-            border-color: #D4AF37;
-            transform: scale(1.15);
-        }
-
-        /* ===== CATEGORY TABS ===== */
-        .category-tabs {
-            background: #FFFFFF;
-            padding: 8px 10px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 4px;
-            border-bottom: 2px solid #EDE6DE;
-            position: sticky;
-            top: 0;
-            z-index: 99;
-            box-shadow: 0 2px 8px rgba(44, 24, 16, 0.04);
-            transition: top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .category-tabs.header-hidden {
-            top: 0;
-        }
-
-        .category-tabs.header-visible {
-            top: 60px;
-        }
-
-        .category-tabs button {
-            background: transparent;
-            border: none;
-            padding: 6px 14px;
-            font-size: 10px;
-            font-weight: 700;
-            color: #6D5C4E;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 30px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .category-tabs button .icon {
-            font-size: 12px;
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            text-align: center;
-            line-height: 18px;
-            background: #F5EFE6;
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-
-        .category-tabs button:hover {
-            background: #F5EFE6;
-            color: #2C1810;
-        }
-        .category-tabs button:hover .icon {
-            background: #2C1810;
-            color: #fff;
-        }
-
-        .category-tabs button.active {
-            background: #2C1810;
-            color: #D4AF37;
-        }
-        .category-tabs button.active .icon {
-            background: #D4AF37;
-            color: #2C1810;
-        }
-
-        /* ===== MENU / PRODUCT CARDS ===== */
-        .menu-section {
-            padding: 16px 12px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: #2C1810;
-            margin: 20px 0 10px;
-            padding-left: 12px;
-            border-left: 4px solid #D4AF37;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 4px;
-        }
-
-        .product-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 12px 10px;
-            border: 1px solid #EDE6DE;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(44, 24, 16, 0.03);
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            border-color: #D4AF37;
-            box-shadow: 0 8px 24px rgba(44, 24, 16, 0.06);
-        }
-
-        .product-card .product-image {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            background: #F8F4EE;
-        }
-
-        .product-card .product-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 14px;
-            color: #2C1810;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-
-        .product-card .product-desc {
-            font-size: 11px;
-            color: #6D5C4E;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 4px;
-            flex: 1;
-        }
-
-        .product-card .product-price {
-            font-size: 15px;
-            font-weight: 700;
-            color: #D4AF37;
-            margin: 2px 0 6px;
-        }
-
-        .cheese-option {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 11px;
-            color: #2C1810;
-            margin: 2px 0 6px;
-            font-weight: 600;
-        }
-        .cheese-option input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: #D4AF37;
-            cursor: pointer;
-        }
-
-        .product-card .add-btn {
-            background: #2C1810;
-            color: #fff;
-            border: none;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 11px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
-            width: 100%;
-            max-width: 140px;
-        }
-
-        .product-card .add-btn:hover {
-            background: #D4AF37;
-            color: #2C1810;
-            transform: scale(1.02);
-        }
-
-        /* ===== FEATURED SECTION ===== */
-        .featured-section {
-            background: #FFFFFF;
-            padding: 20px 16px;
-            margin: 12px 0;
-            border-top: 2px solid #EDE6DE;
-            border-bottom: 2px solid #EDE6DE;
-        }
-
-        .featured-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: #2C1810;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .featured-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .featured-card {
-            background: #F8F4EE;
-            border-radius: 12px;
-            padding: 14px 10px;
-            text-align: center;
-            border: 1px solid #EDE6DE;
-            transition: 0.3s;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-4px);
-            border-color: #D4AF37;
-            box-shadow: 0 6px 20px rgba(44, 24, 16, 0.06);
-        }
-
-        .featured-card .icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 2px;
-        }
-        .featured-card h3 {
-            font-size: 13px;
-            color: #2C1810;
-            font-family: 'Playfair Display', serif;
-        }
-        .featured-card p {
-            font-size: 11px;
-            color: #6D5C4E;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* ===== ORDER CTA ===== */
-        .order-cta {
-            background: #2C1810;
-            color: #F5EFE6;
-            text-align: center;
-            padding: 20px 16px;
-            border-top: 4px solid #D4AF37;
-            border-bottom: 4px solid #D4AF37;
-        }
-
-        .order-cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-        }
-        .order-cta h2 span {
-            color: #D4AF37;
-        }
-        .order-cta p {
-            font-size: 14px;
-            margin: 4px 0 10px;
-            opacity: 0.85;
-        }
-
-        .order-cta .btn {
-            background: #D4AF37;
-            color: #2C1810;
-            font-size: 14px;
-            font-weight: 800;
-            padding: 10px 28px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .order-cta .btn:hover {
-            background: #c49d2e;
-            transform: scale(1.03);
-        }
-
-        /* ===== CONTACT PAGE ===== */
-        .contact-info {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid #EDE6DE;
-            margin-bottom: 12px;
-        }
-
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: #2C1810;
-            margin-bottom: 6px;
-        }
-
-        .contact-info p {
-            font-size: 13px;
-            padding: 3px 0;
-            color: #4A3A2E;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .contact-info .phone {
-            font-size: 20px;
-            font-weight: 900;
-            color: #D4AF37;
-            background: #FFFDF9;
-            padding: 4px 14px;
-            border-radius: 8px;
-            display: inline-block;
-            border: 2px solid #D4AF37;
-        }
-
-        .contact-info .open-badge {
-            background: #2E7D32;
-            color: #fff;
-            padding: 3px 12px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 12px;
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .contact-form {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid #EDE6DE;
-        }
-
-        .contact-form h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: #2C1810;
-            margin-bottom: 6px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            border: 1px solid #EDE6DE;
-            border-radius: 8px;
-            font-size: 13px;
-            background: #F8F4EE;
-            font-family: 'Montserrat', sans-serif;
-            transition: 0.3s;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: #D4AF37;
-            outline: none;
-            background: #FFFFFF;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-            background: #2C1810;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            font-size: 14px;
-            font-weight: 700;
-            border-radius: 40px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            transition: 0.3s;
-            letter-spacing: 1px;
-        }
-
-        .contact-form .btn:hover {
-            background: #D4AF37;
-            color: #2C1810;
-        }
-
-        /* ===== CART ===== */
-        .cart-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #2C1810;
-            color: #fff;
-            border-radius: 50%;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(44, 24, 16, 0.35);
-            transition: 0.3s;
-            border: 2px solid #D4AF37;
-            font-size: 22px;
-        }
-
-        .cart-float:hover {
-            transform: scale(1.08);
-            background: #D4AF37;
-            color: #2C1810;
-        }
-
-        .cart-float .count {
-            position: absolute;
-            top: -6px;
-            right: -6px;
-            background: #D4AF37;
-            color: #2C1810;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 10px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #FFFDF9;
-        }
-
-        .cart-side {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 400px;
-            height: 100%;
-            background: #FFFDF9;
-            z-index: 2000;
-            box-shadow: -4px 0 40px rgba(44, 24, 16, 0.12);
-            transition: right 0.4s ease;
-            overflow-y: auto;
-            padding: 20px 16px;
-            display: flex;
-            flex-direction: column;
-            border-left: 4px solid #D4AF37;
-        }
-
-        .cart-side.open {
-            right: 0;
-        }
-
-        .cart-side-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #D4AF37;
-            padding-bottom: 10px;
-            margin-bottom: 12px;
-        }
-
-        .cart-side-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            color: #2C1810;
-        }
-
-        .cart-close {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #6D5C4E;
-            transition: 0.3s;
-            padding: 0 4px;
-        }
-
-        .cart-close:hover {
-            color: #2C1810;
-            transform: rotate(90deg);
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #EDE6DE;
-        }
-
-        .cart-item .name {
-            font-weight: 600;
-            font-size: 13px;
-            color: #2C1810;
-            flex: 1;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .cart-item .qty-control {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .cart-item .qty-control button {
-            background: #2C1810;
-            color: #fff;
-            border: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .cart-item .qty-control button:hover {
-            background: #D4AF37;
-            color: #2C1810;
-        }
-
-        .cart-item .qty-control .qty {
-            font-weight: 700;
-            font-size: 14px;
-            min-width: 20px;
-            text-align: center;
-            color: #2C1810;
-        }
-
-        .cart-item .item-total {
-            font-weight: 700;
-            color: #6B3F2A;
-            font-size: 13px;
-            min-width: 50px;
-            text-align: right;
-        }
-
-        .cart-empty {
-            color: #6D5C4E;
-            text-align: center;
-            padding: 30px 0;
-            font-size: 14px;
-            font-style: italic;
-        }
-
-        .cart-checkout-fields {
-            margin-top: 10px;
-            border-top: 2px solid #D4AF37;
-            padding-top: 10px;
-        }
-
-        .cart-checkout-fields label {
-            font-weight: 600;
-            font-size: 11px;
-            color: #2C1810;
-            display: block;
-            margin-bottom: 2px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .cart-checkout-fields input {
-            width: 100%;
-            padding: 8px 12px;
-            margin-bottom: 8px;
-            border: 1px solid #EDE6DE;
-            border-radius: 8px;
-            font-size: 13px;
-            background: #F8F4EE;
-            font-family: 'Montserrat', sans-serif;
-            transition: 0.3s;
-        }
-
-        .cart-checkout-fields input:focus {
-            border-color: #D4AF37;
-            outline: none;
-            background: #FFFFFF;
-        }
-
-        .delivery-option-cart,
-        .currency-toggle-cart {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .delivery-option-cart button,
-        .currency-toggle-cart button {
-            flex: 1;
-            padding: 6px 12px;
-            border: 2px solid #EDE6DE;
-            border-radius: 8px;
-            background: #FFFDF9;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 12px;
-            font-family: 'Montserrat', sans-serif;
-            transition: 0.3s;
-            color: #6D5C4E;
-        }
-
-        .delivery-option-cart button:hover,
-        .currency-toggle-cart button:hover {
-            border-color: #D4AF37;
-        }
-
-        .delivery-option-cart button.active,
-        .currency-toggle-cart button.active {
-            background: #D4AF37;
-            color: #2C1810;
-            border-color: #D4AF37;
-        }
-
-        .cart-side-totals {
-            border-top: 2px solid #D4AF37;
-            padding-top: 10px;
-            margin-top: 8px;
-        }
-
-        .cart-side-totals .row {
-            display: flex;
-            justify-content: space-between;
-            padding: 3px 0;
-            font-size: 13px;
-            color: #2C1810;
-        }
-
-        .cart-side-totals .row.total {
-            font-size: 17px;
-            font-weight: 900;
-            color: #D4AF37;
-            border-top: 2px solid #D4AF37;
-            padding-top: 6px;
-            margin-top: 4px;
-        }
-
-        .place-order-btn {
-            width: 100%;
-            background: #2C1810;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: 800;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 8px;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .place-order-btn:hover {
-            background: #D4AF37;
-            color: #2C1810;
-            transform: scale(1.02);
-        }
-
-        .place-order-btn:disabled {
-            background: #C4B8AC;
-            color: #6D5C4E;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .cart-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(44, 24, 16, 0.3);
-            z-index: 1500;
-        }
-
-        .cart-overlay.active {
-            display: block;
-        }
-
-        /* ===== PAYMENT ===== */
-        .payment-box {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 14px 12px;
-            border: 2px solid #D4AF37;
-            margin-top: 10px;
-        }
-
-        .payment-box .method {
-            font-weight: 800;
-            font-size: 14px;
-            color: #2C1810;
-        }
-
-        .payment-box .number {
-            font-size: 18px;
-            font-weight: 900;
-            color: #D4AF37;
-            display: block;
-            margin: 2px 0;
-        }
-
-        .payment-box .note {
-            font-size: 11px;
-            color: #6D5C4E;
-        }
-
-        .whatsapp-order-btn {
-            display: block;
-            width: 100%;
-            background: #25D366;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 6px;
-            text-align: center;
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        .whatsapp-order-btn:hover {
-            background: #1ebe5c;
-            transform: scale(1.02);
-        }
-
-        .call-reminder-cart {
-            background: #F8F4EE;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #D4AF37;
-            margin: 8px 0;
-            text-align: center;
-            font-size: 12px;
-            color: #2C1810;
-        }
-
-        .call-reminder-cart .number {
-            font-size: 18px;
-            font-weight: 900;
-            color: #D4AF37;
-        }
-
-        .prompt-cart {
-            background: #F8F4EE;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border-left: 4px solid #D4AF37;
-            margin: 6px 0;
-            font-size: 12px;
-        }
-
-        .amount-display-cart {
-            background: #2C1810;
-            color: #fff;
-            padding: 10px;
-            border-radius: 12px;
-            text-align: center;
-            margin: 6px 0;
-        }
-
-        .amount-display-cart .total {
-            font-size: 22px;
-            font-weight: 900;
-            color: #D4AF37;
-        }
-
-        .order-confirmed {
-            background: #E8F5E9;
-            border: 2px solid #2E7D32;
-            border-radius: 12px;
-            padding: 16px;
-            margin: 10px 0;
-            text-align: center;
-            color: #1B5E20;
-        }
-
-        .order-confirmed h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-        }
-
-        .order-confirmed .order-id {
-            font-weight: 900;
-            font-size: 16px;
-            color: #D4AF37;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: #2C1810;
-            color: #D4AF37;
-            padding: 20px 16px;
-            text-align: center;
-            border-top: 4px solid #D4AF37;
-        }
-
-        footer .brand-text {
-            font-size: 16px;
-        }
-
-        footer .copy {
-            font-size: 11px;
-            opacity: 0.7;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-        }
-
-        footer .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin: 4px 0 6px;
-        }
-
-        footer .footer-links a {
-            color: #D4AF37;
-            text-decoration: none;
-            font-size: 11px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-        }
-
-        footer .footer-links a:hover {
-            color: #fff;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (min-width: 768px) {
-            body {
-                padding-top: 80px;
-            }
-            .hero .brand-title {
-                font-size: 54px;
-            }
-            .hero {
-                padding: 60px 40px 50px;
-                min-height: 380px;
-            }
-            .category-tabs {
-                gap: 8px;
-                padding: 10px 20px;
-            }
-            .category-tabs.header-visible {
-                top: 70px;
-            }
-            .category-tabs button {
-                font-size: 12px;
-                padding: 8px 20px;
-            }
-            .category-tabs button .icon {
-                width: 22px;
-                height: 22px;
-                font-size: 14px;
-                line-height: 22px;
-            }
-            .featured-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 16px;
-            }
-            .slider-wrapper {
-                height: 360px;
-            }
-            .slide {
-                height: 360px;
-            }
-            .slide-content h2 {
-                font-size: 2rem;
-            }
-            .slide-content p {
-                font-size: 1rem;
-            }
-            .slide-content {
-                max-width: 50%;
-            }
-            .brand-text {
-                font-size: 24px;
-            }
-            .brand-tagline {
-                font-size: 10px;
-            }
-            .logo-img {
-                height: 50px;
-            }
-            .cart-side {
-                width: 450px;
-                right: -480px;
-                padding: 24px 20px;
-            }
-            header {
-                padding: 12px 30px;
-            }
-            nav a {
-                font-size: 14px;
-                gap: 24px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding-top: 60px;
-            }
-            .hero .brand-title {
-                font-size: 28px;
-            }
-            .hero .hero-tagline {
-                font-size: 13px;
-            }
-            .hero {
-                padding: 25px 12px 20px;
-                min-height: 200px;
-            }
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .product-card .product-image {
-                height: 100px;
-            }
-            .product-card .product-name {
-                font-size: 12px;
-            }
-            .product-card .product-price {
-                font-size: 13px;
-            }
-            .slider-wrapper {
-                height: 180px;
-            }
-            .slide {
-                height: 180px;
-            }
-            .slide-content h2 {
-                font-size: 1rem;
-            }
-            .slide-content p {
-                font-size: 0.7rem;
-            }
-            .slide-content {
-                bottom: 8%;
-                left: 4%;
-                max-width: 90%;
-            }
-            .slider-btn {
-                padding: 4px 8px;
-                font-size: 12px;
-            }
-            .slider-dots .dot {
-                width: 8px;
-                height: 8px;
-            }
-            .brand-text {
-                font-size: 14px;
-            }
-            .brand-tagline {
-                font-size: 7px;
-            }
-            .logo-img {
-                height: 32px;
-            }
-            .category-tabs {
-                padding: 6px 8px;
-                gap: 3px;
-            }
-            .category-tabs.header-visible {
-                top: 54px;
-            }
-            .category-tabs button {
-                font-size: 9px;
-                padding: 4px 10px;
-                gap: 3px;
-            }
-            .category-tabs button .icon {
-                width: 14px;
-                height: 14px;
-                font-size: 9px;
-                line-height: 14px;
-            }
-            header {
-                padding: 8px 12px;
-            }
-            nav {
-                gap: 8px;
-            }
-            nav a {
-                font-size: 9px;
-                letter-spacing: 0.5px;
-            }
-            .featured-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-            .featured-card {
-                padding: 10px 8px;
-            }
-            .featured-card .icon {
-                font-size: 22px;
-            }
-            .featured-card h3 {
-                font-size: 12px;
-            }
-            .contact-info .phone {
-                font-size: 16px;
-                padding: 3px 10px;
-            }
-            .cart-float {
-                width: 48px;
-                height: 48px;
-                font-size: 18px;
-                bottom: 16px;
-                right: 16px;
-            }
-            .cart-float .count {
-                width: 18px;
-                height: 18px;
-                font-size: 9px;
-            }
-            .order-cta h2 {
-                font-size: 18px;
-            }
-            .order-cta .btn {
-                font-size: 12px;
-                padding: 8px 20px;
-            }
-            .hero .btn {
-                font-size: 12px;
-                padding: 10px 28px;
-            }
-            .section-title {
-                font-size: 16px;
-            }
-            footer .brand-text {
-                font-size: 14px;
-            }
-        }
-    </style>
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FDF7F2;
+      color: #2E180D;
+    }
+    h1, h2, h3, h4, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FDF7F2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C2845E;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9B5B3B;
+    }
+  </style>
 </head>
+<body class="bg-chocolate-100 text-chocolate-800 antialiased selection:bg-caramel selection:text-white">
 
-<body>
-    <!-- ===== HEADER ===== -->
-    <header id="mainHeader">
-        <div class="header-left">
-            <img src="https://i.imgur.com/3mQJaEW.png" alt="Chocolate Inn" class="logo-img" onclick="showPage('home')" />
-            <div class="brand-text" onclick="showPage('home')">
-                <span class="choco">Chocolate</span>
-                <span class="inn">Inn</span>
-                <span class="brand-tagline">Where Chocolate Feels Like Home.</span>
-            </div>
-        </div>
-        <nav>
-            <a class="active" onclick="showPage('home')">Home</a>
-            <a onclick="showPage('order')">Order</a>
-            <a onclick="showPage('contact')">Contact</a>
-        </nav>
-    </header>
+  <!-- Top Announcement Bar -->
+  <div class="bg-chocolate-800 text-chocolate-200 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+    📍 Hargeisa, Somaliland &nbsp;|&nbsp; 🟢 Open 24/7 &nbsp;|&nbsp; 📞 Call to Order: <a href="tel:3665112" class="underline hover:text-caramel">3665112</a>
+  </div>
 
-    <!-- ===== HOME PAGE ===== -->
-    <div class="page active" id="page-home">
-        <div class="hero">
-            <div class="hero-content">
-                <div class="call-text">Call to order in</div>
-                <div class="brand-title">
-                    <span class="choco">Chocolate</span>
-                    <span class="inn">Inn</span>
-                </div>
-                <div class="hero-tagline">Where Chocolate Feels Like Home.</div>
-                <div class="location">📍 Hargeisa, Somaliland</div>
-                <button class="btn" onclick="showPage('order')">ORDER NOW</button>
-            </div>
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-50 bg-chocolate-900/95 backdrop-blur-md text-white border-b border-chocolate-700 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-11 h-11 rounded-full bg-caramel flex items-center justify-center shadow-md transform group-hover:rotate-6 transition duration-300">
+          <span class="text-2xl">🍫</span>
         </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-serif font-bold tracking-wide text-white">Chocolate <span class="text-caramel">Inn</span></span>
+          <p class="text-xs text-chocolate-300 tracking-wider">Where Chocolate Feels Like Home</p>
+        </div>
+      </a>
 
-        <!-- ===== HERO SLIDER ===== -->
-        <div class="slider-container">
-            <div class="slider-wrapper" id="heroSlider">
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=400&fit=crop&q=80" alt="Chocolate Desserts" loading="lazy" />
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <h2>Decadent Chocolate Delights</h2>
-                        <p>Indulge in our rich, handcrafted chocolate desserts.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=400&fit=crop&q=80" alt="Specialty Coffees" loading="lazy" />
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <h2>Artisanal Coffee</h2>
-                        <p>From espresso to latte art, crafted to perfection.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1553909489-cd47e0907980?w=800&h=400&fit=crop&q=80" alt="Gourmet Sandwiches" loading="lazy" />
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <h2>Fresh Gourmet Sandwiches</h2>
-                        <p>Made with the finest ingredients, daily.</p>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=800&h=400&fit=crop&q=80" alt="Hot Chocolate" loading="lazy" />
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <h2>Warm & Sweet Beverages</h2>
-                        <p>Cozy up with our signature hot chocolates.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="slider-btn prev" onclick="changeHeroSlide(-1)">❮</button>
-            <button class="slider-btn next" onclick="changeHeroSlide(1)">❯</button>
-            <div class="slider-dots" id="heroSliderDots"></div>
-        </div>
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 font-medium">
+        <a href="#home" class="hover:text-caramel transition">Home</a>
+        <a href="#menu" class="hover:text-caramel transition">Menu</a>
+        <a href="#quiz" class="hover:text-caramel transition">Taste Quiz</a>
+        <a href="#about" class="hover:text-caramel transition">Our Story</a>
+        <a href="#contact" class="hover:text-caramel transition">Contact</a>
+      </nav>
 
-        <!-- ===== FEATURED SECTION ===== -->
-        <div class="featured-section">
-            <h2>⭐ Why Chocolate Inn?</h2>
-            <div class="featured-grid">
-                <div class="featured-card"><span class="icon">🍫</span><h3>Premium Chocolate</h3><p>Made with love.</p></div>
-                <div class="featured-card"><span class="icon">☕</span><h3>Fresh Coffee</h3><p>Ethically sourced.</p></div>
-                <div class="featured-card"><span class="icon">🧁</span><h3>Sweet Treats</h3><p>Baked daily.</p></div>
-                <div class="featured-card"><span class="icon">❤️</span><h3>Made with Love</h3><p>Every bite crafted with care.</p></div>
-            </div>
-        </div>
+      <!-- Right Action Area -->
+      <div class="flex items-center space-x-4">
+        <!-- Cart Toggle Button -->
+        <button onclick="toggleCart()" class="relative bg-chocolate-800 hover:bg-chocolate-700 text-white p-2.5 rounded-full border border-chocolate-600 transition flex items-center justify-center shadow">
+          <svg class="w-6 h-6 text-caramel" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span id="cart-badge" class="absolute -top-1 -right-1 bg-caramel text-chocolate-900 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+        </button>
 
-        <div class="order-cta">
-            <h2>📱 Ready to <span>Order</span>?</h2>
-            <p>Call us at: <strong style="color:#D4AF37;font-size:20px;"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></strong></p>
-            <button class="btn" onclick="showPage('order')">Order Now</button>
-        </div>
+        <!-- Mobile Menu Toggle -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-chocolate-200 hover:text-white p-2">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <!-- ===== ORDER PAGE ===== -->
-    <div class="page" id="page-order">
-        <div class="category-tabs" id="categoryTabs">
-            <button class="active" onclick="filterCategory('all')"><span class="icon">✦</span> All</button>
-            <button onclick="filterCategory('sandwiches')"><span class="icon">🥪</span> Sandwiches</button>
-            <button onclick="filterCategory('sweets')"><span class="icon">🍫</span> Sweets</button>
-            <button onclick="filterCategory('coffee')"><span class="icon">☕</span> Coffee</button>
-            <button onclick="filterCategory('desserts')"><span class="icon">🍰</span> Desserts</button>
-        </div>
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-chocolate-900 border-t border-chocolate-800 px-6 py-4 space-y-3 font-medium">
+      <a href="#home" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Home</a>
+      <a href="#menu" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Menu</a>
+      <a href="#quiz" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Taste Quiz</a>
+      <a href="#about" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Our Story</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Contact</a>
+    </div>
+  </header>
 
-        <div class="menu-section">
-            <div class="order-confirmed" id="orderConfirmed" style="display:none;">
-                <h3>✅ Order Placed Successfully!</h3>
-                <p>Order #: <span class="order-id" id="confirmOrderId">ABC123</span></p>
-                <p style="margin-top:6px;font-size:14px;">📱 WhatsApp message sent to you.<br />📧 Shop received your order via email.</p>
-            </div>
-            <div id="menuContainer"></div>
+  <!-- Hero Section -->
+  <section id="home" class="relative bg-chocolate-900 text-white py-24 lg:py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1600&fit=crop&q=80');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-chocolate-900 via-chocolate-900/90 to-transparent"></div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="inline-block bg-caramel/20 text-caramel border border-caramel/40 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide">
+          ✨ Hargeisa's Sweetest Spot
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-serif font-bold leading-tight">
+          Where Chocolate <br><span class="text-caramel italic">Feels Like Home</span>.
+        </h1>
+        <p class="text-chocolate-200 text-lg sm:text-xl font-light leading-relaxed">
+          Indulge in rich handcrafted chocolate desserts, artisanal coffees, decadent warm hot chocolates, and freshly baked gourmet treats.
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="#menu" class="bg-caramel hover:bg-caramel-dark text-chocolate-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+            Explore Menu & Order
+          </a>
+          <a href="tel:3665112" class="bg-chocolate-800 hover:bg-chocolate-700 border border-chocolate-600 text-white font-semibold px-8 py-4 rounded-xl shadow transition flex items-center space-x-2">
+            <span>📞 Call 3665112</span>
+          </a>
         </div>
+      </div>
+
+      <!-- Hero Feature Cards -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-chocolate-800/80 backdrop-blur border border-chocolate-700 p-6 rounded-2xl shadow-xl space-y-3">
+          <div class="w-12 h-12 bg-caramel/20 rounded-xl flex items-center justify-center text-2xl">🍫</div>
+          <h3 class="font-serif font-bold text-xl text-white">Handcrafted</h3>
+          <p class="text-chocolate-300 text-sm">Made with love and the finest premium cocoa beans daily.</p>
+        </div>
+        <div class="bg-chocolate-800/80 backdrop-blur border border-chocolate-700 p-6 rounded-2xl shadow-xl space-y-3 mt-6">
+          <div class="w-12 h-12 bg-caramel/20 rounded-xl flex items-center justify-center text-2xl">☕</div>
+          <h3 class="font-serif font-bold text-xl text-white">Artisanal Coffee</h3>
+          <p class="text-chocolate-300 text-sm">From velvet lattes to signature mochas crafted to perfection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Menu Section -->
+  <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Our Selection</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-chocolate-900 mt-2">The Chocolate Inn Menu</h2>
+      <p class="text-chocolate-600 mt-3">Filter by category or search your favorite sweet indulgence below.</p>
     </div>
 
-    <!-- ===== CONTACT PAGE ===== -->
-    <div class="page" id="page-contact">
-        <div style="max-width:800px;margin:20px auto;padding:0 12px;">
-            <h2 style="font-size:22px;color:#2C1810;border-left:6px solid #D4AF37;padding-left:14px;margin-bottom:12px;font-family:'Playfair Display',serif;">📞 Contact Us</h2>
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <p>📍 <strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</p>
-                <p>📞 <strong>Phone:</strong> <span class="phone"><a href="tel:3665112" style="color:inherit;text-decoration:none;">3665112</a></span></p>
-                <p>🕐 <strong>Hours:</strong> <span class="open-badge">🟢 Open 24/7</span></p>
-                <p>📧 <strong>Email:</strong> <a href="mailto:chocolateinn@gmail.com" style="color:#D4AF37;text-decoration:none;font-weight:600;">chocolateinn@gmail.com</a></p>
-            </div>
-            <div class="contact-form">
-                <h3>Send a Message</h3>
-                <form id="contactForm" onsubmit="sendContactMessage(event)">
-                    <input type="text" placeholder="Your Name" required />
-                    <input type="email" placeholder="Your Email" required />
-                    <textarea placeholder="Your Message..." required style="min-height:80px;"></textarea>
-                    <button type="submit" class="btn">📨 Send</button>
-                </form>
-                <p id="formFeedback" style="margin-top:8px;color:#2E7D32;font-weight:600;display:none;">✅ Message sent! We'll get back to you soon.</p>
-            </div>
-        </div>
+    <!-- Search & Filter Controls -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
+      <!-- Category Tabs -->
+      <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="category-tabs">
+        <button onclick="filterMenu('all')" class="category-btn active px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-800 text-white shadow">All Items</button>
+        <button onclick="filterMenu('chocolate')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">🍫 Chocolates & Desserts</button>
+        <button onclick="filterMenu('coffee')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">☕ Coffee & Lattes</button>
+        <button onclick="filterMenu('beverages')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">🥛 Hot Chocolate</button>
+        <button onclick="filterMenu('savory')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">🥪 Sandwiches</button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="w-full md:w-72">
+        <input type="text" id="search-input" oninput="searchMenu()" placeholder="Search menu items..." class="w-full bg-white border border-chocolate-300 rounded-xl px-4 py-2.5 text-chocolate-900 focus:outline-none focus:border-caramel shadow-sm">
+      </div>
     </div>
 
-    <!-- ===== CART ===== -->
-    <button class="cart-float" id="cartFloat" onclick="toggleCart()">
-        🛒
-        <span class="count" id="cartCount">0</span>
-    </button>
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-
-    <div class="cart-side" id="cartSide">
-        <div class="cart-side-header">
-            <h2>🛒 Your Order</h2>
-            <button class="cart-close" onclick="toggleCart()">✕</button>
-        </div>
-        <div class="cart-side-scroll" style="flex:1;overflow-y:auto;padding-right:4px;">
-            <div id="cartSideItems"><div class="cart-empty">Your cart is empty. ☕</div></div>
-            <div class="cart-side-totals" id="cartSideTotals" style="display:none;">
-                <div class="row"><span>Subtotal</span><span id="sideSubtotal">$0.00</span></div>
-                <div class="row"><span>Tax (0.12%)</span><span id="sideTax">$0.00</span></div>
-                <div class="row total"><span>Total</span><span id="sideTotal">$0.00</span></div>
-            </div>
-
-            <div class="cart-checkout-fields" id="checkoutFields" style="display:none;">
-                <label>👤 Your Name</label>
-                <input type="text" id="cartName" placeholder="Enter your name" />
-                <label>📱 Your WhatsApp Number</label>
-                <input type="tel" id="cartPhone" placeholder="Enter your WhatsApp number" />
-                <label>📍 Delivery Address</label>
-                <input type="text" id="cartAddress" placeholder="Type your address" />
-                <label>🚚 Delivery or Pickup?</label>
-                <div class="delivery-option-cart">
-                    <button id="cartPickup" class="active" onclick="setCartDelivery('Pickup')">🏪 Pickup</button>
-                    <button id="cartDelivery" onclick="setCartDelivery('Delivery')">🚚 Delivery</button>
-                </div>
-                <label>💳 Currency</label>
-                <div class="currency-toggle-cart">
-                    <button id="cartUSD" class="active" onclick="setCartCurrency('USD')">USD</button>
-                    <button id="cartSLSH" onclick="setCartCurrency('SLSH')">SLSH</button>
-                </div>
-
-                <div class="payment-box">
-                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
-                        <div>
-                            <div class="method">📱 ZAAD</div>
-                            <div class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></div>
-                            <div class="note">Send via ZAAD to this number</div>
-                        </div>
-                        <div style="text-align:right;">
-                            <div class="method">📱 Edahab</div>
-                            <div class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></div>
-                            <div class="note">Send via Edahab to this number</div>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#" id="whatsappOrderLink" target="_blank" class="whatsapp-order-btn">💬 Order via WhatsApp</a>
-
-                <div class="amount-display-cart">
-                    <div style="font-size:11px;opacity:0.8;">Total Amount</div>
-                    <div class="total" id="cartDisplayAmount">$0.00</div>
-                </div>
-
-                <div class="call-reminder-cart">📞 After payment, call or WhatsApp: <span class="number"><a href="tel:3665112" style="color:#D4AF37;text-decoration:none;">3665112</a></span></div>
-                <div class="prompt-cart">💰 Send <strong id="cartPromptAmount">$0.00</strong> via <strong id="cartPromptMethod">ZAAD</strong> to <strong><a href="tel:3665112" style="color:#2C1810;text-decoration:none;">3665112</a></strong></div>
-            </div>
-            <button class="place-order-btn" id="placeOrderBtn" disabled onclick="openCartCheckout()">🛒 Place Order</button>
-        </div>
+    <!-- Menu Grid -->
+    <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Populated dynamically via JavaScript -->
     </div>
+  </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-links">
-            <a onclick="showPage('home')">Home</a>
-            <a onclick="showPage('order')">Order</a>
-            <a onclick="showPage('contact')">Contact</a>
+  <!-- Interactive Taste Quiz Section -->
+  <section id="quiz" class="bg-chocolate-800 text-white py-20 my-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Find Your Match</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold mt-2">What's Your Chocolate Mood Today?</h2>
+      <p class="text-chocolate-300 mt-2">Answer one quick question to get our personalized recommendation.</p>
+
+      <div id="quiz-container" class="mt-8 bg-chocolate-900/80 border border-chocolate-700 p-8 rounded-3xl shadow-2xl">
+        <div id="quiz-step-1">
+          <h3 class="text-xl font-medium mb-6 text-chocolate-100">How are you feeling right now?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button onclick="selectQuizMood('rich')" class="bg-chocolate-800 hover:bg-caramel hover:text-chocolate-900 border border-chocolate-600 p-5 rounded-2xl transition font-medium">
+              🍫 Need deep rich cocoa & fudge
+            </button>
+            <button onclick="selectQuizMood('warm')" class="bg-chocolate-800 hover:bg-caramel hover:text-chocolate-900 border border-chocolate-600 p-5 rounded-2xl transition font-medium">
+              ☕ Want a cozy warm coffee & milk
+            </button>
+            <button onclick="selectQuizMood('fruity')" class="bg-chocolate-800 hover:bg-caramel hover:text-chocolate-900 border border-chocolate-600 p-5 rounded-2xl transition font-medium">
+              🍓 Craving fruits with sweet chocolate
+            </button>
+          </div>
         </div>
-        <div class="brand-text">
-            <span class="choco">Chocolate</span>
-            <span class="inn">Inn</span>
+
+        <div id="quiz-result" class="hidden space-y-4">
+          <div class="text-4xl">✨</div>
+          <h3 id="quiz-title" class="text-2xl font-serif font-bold text-caramel"></h3>
+          <p id="quiz-desc" class="text-chocolate-300 max-w-lg mx-auto"></p>
+          <button onclick="resetQuiz()" class="mt-4 bg-caramel text-chocolate-900 font-semibold px-6 py-2.5 rounded-xl hover:bg-caramel-light transition">
+            Take Quiz Again
+          </button>
         </div>
-        <div class="copy">© 2026 Chocolate Inn — All rights reserved.</div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <!-- ===== JAVASCRIPT ===== -->
-    <script>
-        // ============================================================
-        // CONFIGURATION
-        // ============================================================
-        const SHOP_WHATSAPP = '252633665112';
-        const FORMSPREE_URL = 'https://formspree.io/f/xbdvonvk';
-        const EXCHANGE_RATE = 11000;
+  <!-- About Section -->
+  <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Our Story</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-chocolate-900">Where Chocolate Feels Like Home</h2>
+        <p class="text-chocolate-700 leading-relaxed">
+          Chocolate Inn was founded with a simple passion: to create a warm, comforting haven in Hargeisa where every bite of chocolate and sip of coffee feels like a comforting embrace. Whether you're catching up with friends or treating yourself after a long day, our doors are open 24/7 for you.
+        </p>
+        <div class="grid grid-cols-2 gap-6 pt-2">
+          <div class="bg-white p-5 rounded-2xl border border-chocolate-200 shadow-sm">
+            <div class="text-2xl font-bold font-serif text-caramel">100%</div>
+            <p class="text-sm text-chocolate-600 mt-1">Handcrafted Delight</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-chocolate-200 shadow-sm">
+            <div class="text-2xl font-bold font-serif text-caramel">24/7</div>
+            <p class="text-sm text-chocolate-600 mt-1">Open All Day & Night</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=800&fit=crop&q=80" alt="Hot Chocolate" class="rounded-3xl shadow-2xl border-4 border-white">
+      </div>
+    </div>
+  </section>
 
-        let currentCategory = 'all';
-        let heroCurrentSlide = 0;
-        let heroSlideInterval;
-        let cart = {};
-        let cartCurrency = 'USD';
-        let cartPayment = 'ZAAD';
-        let cartDelivery = 'Pickup';
-        let cartTotal = 0;
-        let currentOrderId = '';
+  <!-- Contact & Location Section -->
+  <section id="contact" class="bg-chocolate-900 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Get In Touch</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold mt-2">Visit Chocolate Inn</h2>
+        <p class="text-chocolate-300 mt-3">We would love to welcome you. Reach out or drop by anytime!</p>
+      </div>
 
-        // ============================================================
-        // DYNAMIC HEADER
-        // ============================================================
-        let lastScrollY = window.scrollY;
-        let ticking = false;
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Info Card -->
+        <div class="bg-chocolate-800 p-8 sm:p-10 rounded-3xl border border-chocolate-700 space-y-6 shadow-xl">
+          <h3 class="text-2xl font-serif font-bold text-caramel">Contact Details</h3>
+          <div class="space-y-4 text-chocolate-200">
+            <p class="flex items-start space-x-3">
+              <span class="text-xl">📍</span>
+              <span><strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</span>
+            </p>
+            <p class="flex items-start space-x-3">
+              <span class="text-xl">📞</span>
+              <span><strong>Phone / ZAAD / eDahab:</strong> <a href="tel:3665112" class="text-caramel underline font-bold">3665112</a></span>
+            </p>
+            <p class="flex items-start space-x-3">
+              <span class="text-xl">🕐</span>
+              <span><strong>Hours:</strong> Open 24/7 (Everyday)</span>
+            </p>
+            <p class="flex items-start space-x-3">
+              <span class="text-xl">📧</span>
+              <span><strong>Email:</strong> chocolateinn@gmail.com</span>
+            </p>
+          </div>
+          <div class="pt-4 border-t border-chocolate-700">
+            <a href="tel:3665112" class="block w-full text-center bg-caramel hover:bg-caramel-dark text-chocolate-900 font-bold py-3.5 rounded-xl transition shadow">
+              Call Now: 3665112
+            </a>
+          </div>
+        </div>
 
-        function handleHeaderScroll() {
-            const header = document.getElementById('mainHeader');
-            const tabs = document.getElementById('categoryTabs');
-            const currentScrollY = window.scrollY;
-            const scrollThreshold = 20;
+        <!-- Contact Form -->
+        <div class="bg-chocolate-800 p-8 sm:p-10 rounded-3xl border border-chocolate-700 space-y-6 shadow-xl">
+          <h3 class="text-2xl font-serif font-bold text-white">Send Us a Message</h3>
+          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-chocolate-300 mb-1">Your Name</label>
+              <input type="text" required class="w-full bg-chocolate-900 border border-chocolate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-caramel" placeholder="Safia Abdi">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-chocolate-300 mb-1">Phone Number</label>
+              <input type="text" required class="w-full bg-chocolate-900 border border-chocolate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-caramel" placeholder="3665112">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-chocolate-300 mb-1">Your Message</label>
+              <textarea rows="3" required class="w-full bg-chocolate-900 border border-chocolate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-caramel" placeholder="Hello Chocolate Inn..."></textarea>
+            </div>
+            <button type="submit" class="w-full bg-caramel hover:bg-caramel-dark text-chocolate-900 font-bold py-3.5 rounded-xl transition shadow">
+              Send Message
+            </button>
+            <p id="contact-success" class="hidden text-emerald-400 text-center text-sm font-medium">✅ Message sent successfully! We'll get back to you soon.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
-                lastScrollY = currentScrollY;
-                return;
-            }
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-chocolate-900 text-white shadow-2xl flex flex-col border-l border-chocolate-800">
+        
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-chocolate-800 flex items-center justify-between">
+          <h2 class="text-xl font-serif font-bold text-caramel flex items-center space-x-2">
+            <span>🛒</span> <span>Your Order</span>
+          </h2>
+          <button onclick="toggleCart()" class="text-chocolate-400 hover:text-white p-2 text-xl">&times;</button>
+        </div>
 
-            if (currentScrollY > lastScrollY) {
-                header.classList.remove('visible');
-                header.classList.add('hidden');
-                if (tabs) {
-                    tabs.classList.remove('header-visible');
-                    tabs.classList.add('header-hidden');
-                }
-            } else {
-                header.classList.remove('hidden');
-                header.classList.add('visible');
-                if (tabs) {
-                    tabs.classList.remove('header-hidden');
-                    tabs.classList.add('header-visible');
-                }
-            }
+        <!-- Cart Items List -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+          <!-- Dynamically populated -->
+        </div>
 
-            lastScrollY = currentScrollY;
+        <!-- Cart Footer & Checkout -->
+        <div class="p-6 border-t border-chocolate-800 space-y-4 bg-chocolate-950">
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between text-chocolate-300">
+              <span>Subtotal</span>
+              <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="flex justify-between text-chocolate-300">
+              <span>Tax (0%)</span>
+              <span>$0.00</span>
+            </div>
+            <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-chocolate-800">
+              <span>Total</span>
+              <span id="cart-total" class="text-caramel">$0.00</span>
+            </div>
+          </div>
+
+          <!-- Payment Options Box -->
+          <div class="bg-chocolate-900 p-4 rounded-xl border border-chocolate-800 space-y-3">
+            <p class="text-xs font-semibold text-chocolate-300 uppercase tracking-wider">Local Payment (ZAAD / eDahab)</p>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="bg-chocolate-800 p-2.5 rounded-lg border border-chocolate-700 text-center">
+                <div class="font-bold text-caramel">📱 ZAAD</div>
+                <div class="text-white font-mono mt-0.5">3665112</div>
+              </div>
+              <div class="bg-chocolate-800 p-2.5 rounded-lg border border-chocolate-700 text-center">
+                <div class="font-bold text-caramel">📱 eDahab</div>
+                <div class="text-white font-mono mt-0.5">3665112</div>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+            <span>💬 Order via WhatsApp (3665112)</span>
+          </button>
+          
+          <p class="text-xs text-center text-chocolate-400">📞 After payment, please call or WhatsApp <strong>3665112</strong> to confirm.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-chocolate-950 text-chocolate-400 py-12 border-t border-chocolate-900 text-center space-y-4">
+    <div class="flex justify-center space-x-6 text-sm font-medium">
+      <a href="#home" class="hover:text-caramel transition">Home</a>
+      <a href="#menu" class="hover:text-caramel transition">Menu</a>
+      <a href="#about" class="hover:text-caramel transition">Our Story</a>
+      <a href="#contact" class="hover:text-caramel transition">Contact</a>
+    </div>
+    <div class="flex items-center justify-center space-x-2">
+      <span class="text-xl font-serif font-bold text-white">Chocolate <span class="text-caramel">Inn</span></span>
+    </div>
+    <p class="text-xs text-chocolate-500">© 2026 Chocolate Inn — Where Chocolate Feels Like Home. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Menu Items Database
+    const menuItems = [
+      {
+        id: 1,
+        name: 'Signature Hot Chocolate',
+        category: 'beverages',
+        price: 3.50,
+        desc: 'Rich, velvety melted dark chocolate topped with whipped cream & chocolate shavings.',
+        image: 'https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=600&fit=crop&q=80'
+      },
+      {
+        id: 2,
+        name: 'Decadent Chocolate Lava Cake',
+        category: 'chocolate',
+        price: 5.00,
+        desc: 'Warm chocolate cake with a molten, flowing liquid chocolate center.',
+        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&fit=crop&q=80'
+      },
+      {
+        id: 3,
+        name: 'Artisanal Cafe Mocha',
+        category: 'coffee',
+        price: 4.00,
+        desc: 'Fresh espresso combined with decadent chocolate syrup and steamed frothy milk.',
+        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&fit=crop&q=80'
+      },
+      {
+        id: 4,
+        name: 'Nutella & Banana Waffle',
+        category: 'chocolate',
+        price: 6.00,
+        desc: 'Crispy golden waffle smothered in creamy Nutella spread and fresh sliced bananas.',
+        image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600&fit=crop&q=80'
+      },
+      {
+        id: 5,
+        name: 'Caramel Macchiato',
+        category: 'coffee',
+        price: 4.50,
+        desc: 'Freshly steamed milk with vanilla-flavored syrup, marked with espresso and caramel drizzle.',
+        image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=600&fit=crop&q=80'
+      },
+      {
+        id: 6,
+        name: 'Crispy Chicken Club Sandwich',
+        category: 'savory',
+        price: 5.50,
+        desc: 'Gourmet toasted sandwich filled with seasoned crispy chicken, lettuce, tomato & mayo.',
+        image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=600&fit=crop&q=80'
+      },
+      {
+        id: 7,
+        name: 'White Chocolate Raspberry Frappe',
+        category: 'beverages',
+        price: 4.80,
+        desc: 'Blended ice beverage with white chocolate sauce and sweet raspberry syrup.',
+        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&fit=crop&q=80'
+      },
+      {
+        id: 8,
+        name: 'Chocolate Fudge Brownie',
+        category: 'chocolate',
+        price: 3.00,
+        desc: 'Dense, fudgy brownie baked with premium cocoa chunks.',
+        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&fit=crop&q=80'
+      }
+    ];
+
+    let cart = [];
+
+    // Render Menu on Page Load
+    function renderMenu(itemsToRender) {
+      const grid = document.getElementById('menu-grid');
+      grid.innerHTML = '';
+
+      if (itemsToRender.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-chocolate-600">No menu items found.</div>`;
+        return;
+      }
+
+      itemsToRender.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-3xl overflow-hidden border border-chocolate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between';
+        card.innerHTML = `
+          <div>
+            <div class="h-48 overflow-hidden relative">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+              <span class="absolute top-3 right-3 bg-chocolate-900/80 backdrop-blur text-caramel px-3 py-1 rounded-full text-xs font-bold">$${item.price.toFixed(2)}</span>
+            </div>
+            <div class="p-6 space-y-2">
+              <h3 class="font-serif font-bold text-xl text-chocolate-900">${item.name}</h3>
+              <p class="text-chocolate-600 text-sm leading-relaxed">${item.desc}</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <button onclick="addToCart(${item.id})" class="w-full bg-chocolate-900 hover:bg-caramel hover:text-chocolate-900 text-white font-semibold py-3 rounded-xl transition shadow">
+              Add to Order 🍫
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter Menu by Category
+    function filterMenu(category) {
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.remove('bg-chocolate-800', 'text-white', 'shadow');
+        btn.classList.add('bg-chocolate-200', 'text-chocolate-800');
+      });
+      event.target.classList.remove('bg-chocolate-200', 'text-chocolate-800');
+      event.target.classList.add('bg-chocolate-800', 'text-white', 'shadow');
+
+      if (category === 'all') {
+        renderMenu(menuItems);
+      } else {
+        const filtered = menuItems.filter(item => item.category === category);
+        renderMenu(filtered);
+      }
+    }
+
+    // Search Menu
+    function searchMenu() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const filtered = menuItems.filter(item => 
+        item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query)
+      );
+      renderMenu(filtered);
+    }
+
+    // Cart Functions
+    function toggleCart() {
+      const drawer = document.getElementById('cart-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    function addToCart(id) {
+      const item = menuItems.find(i => i.id === id);
+      const existing = cart.find(i => i.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...item, qty: 1 });
+      }
+      updateCartUI();
+      toggleCart();
+    }
+
+    function updateQty(id, change) {
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.qty += change;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.id !== id);
         }
+      }
+      updateCartUI();
+    }
 
-        function initDynamicHeader() {
-            const header = document.getElementById('mainHeader');
-            const tabs = document.getElementById('categoryTabs');
+    function updateCartUI() {
+      const badge = document.getElementById('cart-badge');
+      const container = document.getElementById('cart-items');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const totalEl = document.getElementById('cart-total');
 
-            header.classList.add('visible');
-            if (tabs) {
-                tabs.classList.add('header-visible');
-            }
+      const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
+      badge.textContent = totalCount;
 
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        handleHeaderScroll();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }, { passive: true });
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="text-center py-12 text-chocolate-400">Your cart is empty. 🍫☕</div>`;
+        subtotalEl.textContent = '$0.00';
+        totalEl.textContent = '$0.00';
+        return;
+      }
 
-            window.addEventListener('resize', function() {
-                updateCategoryTabsPosition();
-            });
-        }
+      container.innerHTML = '';
+      let subtotal = 0;
 
-        function updateCategoryTabsPosition() {
-            const header = document.getElementById('mainHeader');
-            const tabs = document.getElementById('categoryTabs');
-            if (!tabs) return;
+      cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between bg-chocolate-800 p-4 rounded-xl border border-chocolate-700';
+        div.innerHTML = `
+          <div>
+            <h4 class="font-bold text-white text-sm">${item.name}</h4>
+            <p class="text-caramel text-xs">$${item.price.toFixed(2)} x ${item.qty}</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 bg-chocolate-700 hover:bg-chocolate-600 rounded-lg text-white font-bold flex items-center justify-center">-</button>
+            <span class="text-sm font-bold w-5 text-center">${item.qty}</span>
+            <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 bg-chocolate-700 hover:bg-chocolate-600 rounded-lg text-white font-bold flex items-center justify-center">+</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
 
-            const isHeaderHidden = header.classList.contains('hidden');
-            if (isHeaderHidden) {
-                tabs.classList.remove('header-visible');
-                tabs.classList.add('header-hidden');
-            } else {
-                tabs.classList.remove('header-hidden');
-                tabs.classList.add('header-visible');
-            }
-        }
+      subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+      totalEl.textContent = `$${subtotal.toFixed(2)}`;
+    }
 
-        // ============================================================
-        // MENU DATA - WITH MEATBALL & STEAK
-        // ============================================================
-        const menuData = {
-            sandwiches: [{
-                name: '🥩 Steak & Cheese (Half)',
-                price: 4.00,
-                desc: 'Tender steak with melted cheese',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🥩 Steak & Cheese (Full)',
-                price: 7.00,
-                desc: 'Tender steak with melted cheese',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍝 Meatball Sub (Half)',
-                price: 4.00,
-                desc: 'Juicy meatballs with marinara & cheese',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1598364857454-dbf7719f737e?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍝 Meatball Sub (Full)',
-                price: 7.00,
-                desc: 'Juicy meatballs with marinara & cheese',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1598364857454-dbf7719f737e?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍗 Chicken Sandwich (Half)',
-                price: 3.50,
-                desc: 'Grilled chicken with fresh veggies',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍗 Chicken Sandwich (Full)',
-                price: 6.00,
-                desc: 'Grilled chicken with fresh veggies',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🐟 Tuna Melt (Half)',
-                price: 3.00,
-                desc: 'Classic tuna with melted cheese',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🐟 Tuna Melt (Full)',
-                price: 5.00,
-                desc: 'Classic tuna with melted cheese',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🥚 Egg & Mayo (Half)',
-                price: 3.00,
-                desc: 'Creamy egg mayo sandwich',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🥚 Egg & Mayo (Full)',
-                price: 5.00,
-                desc: 'Creamy egg mayo sandwich',
-                category: 'sandwiches',
-                image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=400&h=250&fit=crop&q=80'
-            }],
-            sweets: [{
-                name: '🧇 Lotus Strawberry Waffle',
-                price: 3.50,
-                desc: 'Waffle with lotus & strawberry',
-                category: 'sweets',
-                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🧇 Stroop Waffle',
-                price: 2.00,
-                desc: 'Classic stroop waffle',
-                category: 'sweets',
-                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍫 Triple Chocolate Crepe',
-                price: 3.50,
-                desc: 'Rich chocolate crepe',
-                category: 'sweets',
-                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍝 Fettuccine Crepe',
-                price: 2.50,
-                desc: 'Creamy fettuccine crepe',
-                category: 'sweets',
-                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '⭐ Mighty Crepe',
-                price: 3.70,
-                desc: 'Loaded crepe with toppings',
-                category: 'sweets',
-                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍌 Banana Crepe',
-                price: 2.00,
-                desc: 'Classic banana crepe',
-                category: 'sweets',
-                image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400&h=250&fit=crop&q=80'
-            }],
-            coffee: [{
-                name: '☕ Espresso',
-                price: 0.90,
-                desc: 'Bold intense coffee shot',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Americano',
-                price: 0.90,
-                desc: 'Rich espresso hot water',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Cappuccino',
-                price: 1.50,
-                desc: 'Creamy foam espresso base',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Latte',
-                price: 1.50,
-                desc: 'Smooth milk espresso blend',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Flat White',
-                price: 1.30,
-                desc: 'Velvety microfoam espresso',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Spanish Latte',
-                price: 1.70,
-                desc: 'Sweet condensed milk coffee',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Mocha',
-                price: 1.50,
-                desc: 'Chocolate espresso milk swirl',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '☕ Pistachio Latte',
-                price: 2.00,
-                desc: 'Nutty sweet cream coffee',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍫 Hot Chocolate',
-                price: 1.50,
-                desc: 'Rich cocoa steamed milk',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🧊 Iced Spanish',
-                price: 2.70,
-                desc: 'Bold iced coffee',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🧊 Iced Vanilla Latte',
-                price: 2.80,
-                desc: 'Iced vanilla latte',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🧊 Iced Pistachio Latte',
-                price: 3.60,
-                desc: 'Iced pistachio latte',
-                category: 'coffee',
-                image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&h=250&fit=crop&q=80'
-            }],
-            desserts: [{
-                name: '🍰 Chocolate Butter & Caramel Cake',
-                price: 2.70,
-                desc: 'Rich chocolate with caramel',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍓 Naked Strawberry Cake',
-                price: 2.70,
-                desc: 'Fresh strawberry delight',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '❤️ Red Velvet Cake',
-                price: 2.00,
-                desc: 'Classic red velvet',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍪 Lotus Cheesecake',
-                price: 3.50,
-                desc: 'Creamy lotus cheesecake',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍫 Chocolate Cheesecake',
-                price: 3.50,
-                desc: 'Rich chocolate cheesecake',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍫 Brownies with Nuts',
-                price: 2.00,
-                desc: 'Fudgy brownies with nuts',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }, {
-                name: '🍰 Tiramisu',
-                price: 2.00,
-                desc: 'Classic Italian tiramisu',
-                category: 'desserts',
-                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=250&fit=crop&q=80'
-            }]
-        };
+    // Checkout via WhatsApp
+    function checkoutWhatsApp() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      let total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+      let text = "Hello Chocolate Inn! I'd like to place an order:%0A";
+      cart.forEach(i => {
+        text += `- ${i.name} (x${i.qty}): $${(i.price * i.qty).toFixed(2)}%0A`;
+      });
+      text += `%0ATotal Amount: $${total.toFixed(2)}%0APayment via ZAAD/eDahab to 3665112`;
+      window.open(`https://wa.me/252633665112?text=${text}`, '_blank');
+    }
 
-        // ============================================================
-        // HERO SLIDER FUNCTIONS
-        // ============================================================
-        function initHeroSlider() {
-            const totalSlides = document.querySelectorAll('#heroSlider .slide').length;
-            const dotsContainer = document.getElementById('heroSliderDots');
+    // Taste Quiz Logic
+    function selectQuizMood(mood) {
+      const step1 = document.getElementById('quiz-step-1');
+      const result = document.getElementById('quiz-result');
+      const title = document.getElementById('quiz-title');
+      const desc = document.getElementById('quiz-desc');
 
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('span');
-                dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.dataset.index = i;
-                dot.addEventListener('click', () => goToHeroSlide(i));
-                dotsContainer.appendChild(dot);
-            }
+      step1.classList.add('hidden');
+      result.classList.remove('hidden');
 
-            startHeroAutoSlide();
-        }
+      if (mood === 'rich') {
+        title.textContent = 'Recommendation: Decadent Chocolate Lava Cake';
+        desc.textContent = 'Your soul calls for deep, molten warm chocolate goodness. Try our signature lava cake with extra fudge!';
+      } else if (mood === 'warm') {
+        title.textContent = 'Recommendation: Signature Hot Chocolate + Cafe Mocha';
+        desc.textContent = 'Wrap your hands around a warm cup of our velvety hot chocolate or creamy mocha.';
+      } else {
+        title.textContent = 'Recommendation: Nutella & Banana Waffle';
+        desc.textContent = 'Sweet, fruity, and drizzled in rich hazelnut chocolate spread.';
+      }
+    }
 
-        function changeHeroSlide(direction) {
-            const slides = document.querySelectorAll('#heroSlider .slide');
-            const total = slides.length;
-            heroCurrentSlide = (heroCurrentSlide + direction + total) % total;
-            updateHeroSlider();
-        }
+    function resetQuiz() {
+      document.getElementById('quiz-step-1').classList.remove('hidden');
+      document.getElementById('quiz-result').classList.add('hidden');
+    }
 
-        function goToHeroSlide(index) {
-            heroCurrentSlide = index;
-            updateHeroSlider();
-        }
+    // Contact Form Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      document.getElementById('contact-success').classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('contact-success').classList.add('hidden');
+      }, 5000);
+    }
 
-        function updateHeroSlider() {
-            const slides = document.querySelectorAll('#heroSlider .slide');
-            const dots = document.querySelectorAll('#heroSliderDots .dot');
-            const wrapper = document.getElementById('heroSlider');
-
-            wrapper.style.transform = `translateX(-${heroCurrentSlide * 100}%)`;
-
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === heroCurrentSlide);
-            });
-        }
-
-        function startHeroAutoSlide() {
-            if (heroSlideInterval) clearInterval(heroSlideInterval);
-            heroSlideInterval = setInterval(() => changeHeroSlide(1), 5000);
-        }
-
-        // ============================================================
-        // CHEESE ADD-ON
-        // ============================================================
-        function updateItemPrice(uniqueId, basePrice) {
-            const checkbox = document.getElementById(`cheese_${uniqueId}`);
-            const priceDisplay = document.getElementById(`price_display_${uniqueId}`);
-            if (checkbox && priceDisplay) {
-                const totalPrice = checkbox.checked ? basePrice + 0.50 : basePrice;
-                priceDisplay.textContent = `$${totalPrice.toFixed(2)}`;
-            }
-        }
-
-        // ============================================================
-        // FILTER & RENDER
-        // ============================================================
-        function filterCategory(category) {
-            currentCategory = category;
-            document.querySelectorAll('.category-tabs button').forEach(btn => {
-                btn.classList.remove('active');
-                const btnText = btn.textContent.trim().toLowerCase();
-                if (category === 'all' && btnText === 'all') {
-                    btn.classList.add('active');
-                } else if (btnText === category || btnText.includes(category)) {
-                    btn.classList.add('active');
-                }
-            });
-            renderMenu(category);
-        }
-
-        function renderMenu(category = 'all') {
-            const container = document.getElementById('menuContainer');
-            container.innerHTML = '';
-
-            const catNames = {
-                sandwiches: '🥪 Sandwiches & Savory',
-                sweets: '🍫 Specialty Chocolates & Sweets',
-                coffee: '☕ Hot & Cold Coffees',
-                desserts: '🍰 Daily Baked Desserts'
-            };
-
-            Object.keys(menuData).forEach(cat => {
-                if (category !== 'all' && cat !== category) return;
-                const items = menuData[cat];
-                if (!items || items.length === 0) return;
-
-                const section = document.createElement('div');
-                section.style.marginBottom = '16px';
-
-                const title = document.createElement('div');
-                title.className = 'section-title';
-                title.textContent = catNames[cat] || cat;
-                section.appendChild(title);
-
-                const grid = document.createElement('div');
-                grid.className = 'product-grid';
-
-                items.forEach((item, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    const uniqueId = cat + '_' + index;
-
-                    let priceDisplay = `$${item.price.toFixed(2)}`;
-                    let cheeseHtml = '';
-                    if (cat === 'sandwiches') {
-                        cheeseHtml = `
-                                <div class="cheese-option">
-                                    <input type="checkbox" id="cheese_${uniqueId}" onchange="updateItemPrice('${uniqueId}', ${item.price})" />
-                                    <label for="cheese_${uniqueId}">Add Extra Cheese (+$0.50)</label>
-                                </div>
-                            `;
-                    }
-
-                    card.innerHTML = `
-                            <img src="${item.image}" alt="${item.name}" class="product-image" loading="lazy" />
-                            <div class="product-name">${item.name}</div>
-                            <div class="product-desc">${item.desc || ''}</div>
-                            <div class="product-price" id="price_display_${uniqueId}">${priceDisplay}</div>
-                            ${cheeseHtml}
-                            <button class="add-btn" onclick="addToCart('${uniqueId}', '${item.name}', ${item.price})">+ Add to Order</button>
-                        `;
-                    grid.appendChild(card);
-                });
-
-                section.appendChild(grid);
-                container.appendChild(section);
-            });
-        }
-
-        // ============================================================
-        // CONTACT FORM
-        // ============================================================
-        function sendContactMessage(event) {
-            event.preventDefault();
-            const form = document.getElementById('contactForm');
-            const feedback = document.getElementById('formFeedback');
-            const btn = form.querySelector('.btn');
-
-            const data = {
-                name: form.querySelector('input[type="text"]').value,
-                email: form.querySelector('input[type="email"]').value,
-                message: form.querySelector('textarea').value,
-                _subject: `📧 New Contact Message from Chocolate Inn`
-            };
-
-            btn.textContent = '⏳ Sending...';
-            btn.disabled = true;
-
-            fetch(FORMSPREE_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
-                    btn.textContent = '📨 Send';
-                    btn.disabled = false;
-                    if (response.ok) {
-                        feedback.style.display = 'block';
-                        form.reset();
-                        setTimeout(() => {
-                            feedback.style.display = 'none';
-                        }, 5000);
-                    } else {
-                        alert('⚠️ There was an issue sending your message. Please try again.');
-                    }
-                })
-                .catch(() => {
-                    btn.textContent = '📨 Send';
-                    btn.disabled = false;
-                    alert('⚠️ There was an issue sending your message. Please try again.');
-                });
-        }
-
-        // ============================================================
-        // CART SYSTEM
-        // ============================================================
-        function addToCart(id, name, basePrice) {
-            const checkbox = document.getElementById(`cheese_${id}`);
-            const hasCheese = checkbox ? checkbox.checked : false;
-            const finalPrice = hasCheese ? basePrice + 0.50 : basePrice;
-            const itemName = hasCheese ? `${name} + Cheese` : name;
-
-            if (cart[id]) {
-                cart[id].qty += 1;
-            } else {
-                cart[id] = {
-                    name: itemName,
-                    price: finalPrice,
-                    basePrice: basePrice,
-                    hasCheese: hasCheese,
-                    qty: 1
-                };
-            }
-            updateAll();
-        }
-
-        function changeQty(id, delta) {
-            if (cart[id]) {
-                cart[id].qty += delta;
-                if (cart[id].qty <= 0) delete cart[id];
-                updateAll();
-            }
-        }
-
-        function updateAll() {
-            updateCartCount();
-            updateSideCart();
-            updateCartTotals();
-            updatePlaceOrderBtn();
-            updateWhatsAppLink();
-        }
-
-        function updateCartCount() {
-            const arr = Object.values(cart);
-            const total = arr.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cartCount').textContent = total;
-        }
-
-        function updateSideCart() {
-            const container = document.getElementById('cartSideItems');
-            const arr = Object.values(cart);
-            if (arr.length === 0) {
-                container.innerHTML = '<div class="cart-empty">Your cart is empty. ☕</div>';
-                return;
-            }
-            let html = '';
-            Object.keys(cart).forEach(id => {
-                const item = cart[id];
-                const total = item.price * item.qty;
-                const cheeseNote = item.hasCheese ? ' + Cheese' : '';
-                html += `
-                        <div class="cart-item">
-                            <span class="name">${item.name}${cheeseNote} × ${item.qty}</span>
-                            <div class="qty-control">
-                                <button onclick="changeQty('${id}',-1)">−</button>
-                                <span class="qty">${item.qty}</span>
-                                <button onclick="changeQty('${id}',1)">+</button>
-                            </div>
-                            <span class="item-total">$${total.toFixed(2)}</span>
-                        </div>
-                    `;
-            });
-            container.innerHTML = html;
-        }
-
-        function updateCartTotals() {
-            const arr = Object.values(cart);
-            const totalsDiv = document.getElementById('cartSideTotals');
-            const checkoutFields = document.getElementById('checkoutFields');
-            if (arr.length === 0) {
-                totalsDiv.style.display = 'none';
-                checkoutFields.style.display = 'none';
-                return;
-            }
-            let subtotal = 0;
-            arr.forEach(item => { subtotal += item.price * item.qty; });
-            const tax = subtotal * 0.0012;
-            const total = subtotal + tax;
-            cartTotal = total;
-            document.getElementById('sideSubtotal').textContent = '$' + subtotal.toFixed(2);
-            document.getElementById('sideTax').textContent = '$' + tax.toFixed(2);
-            document.getElementById('sideTotal').textContent = '$' + total.toFixed(2);
-            totalsDiv.style.display = 'block';
-            checkoutFields.style.display = 'block';
-            updateCartDisplayAmount();
-            updateCartPrompt();
-        }
-
-        function updatePlaceOrderBtn() {
-            document.getElementById('placeOrderBtn').disabled = Object.values(cart).length === 0;
-        }
-
-        function updateWhatsAppLink() {
-            const arr = Object.values(cart);
-            if (arr.length === 0) {
-                document.getElementById('whatsappOrderLink').href = '#';
-                return;
-            }
-            let message = '🍫 *Chocolate Inn Order* 🍫\n\n';
-            let subtotal = 0;
-            arr.forEach(item => {
-                const total = item.price * item.qty;
-                subtotal += total;
-                const cheeseNote = item.hasCheese ? ' + Cheese' : '';
-                message += `• ${item.name}${cheeseNote} × ${item.qty} = $${total.toFixed(2)}\n`;
-            });
-            const tax = subtotal * 0.0012;
-            const total = subtotal + tax;
-            message += `\n📊 Subtotal: $${subtotal.toFixed(2)}`;
-            message += `\n📊 Tax (0.12%): $${tax.toFixed(2)}`;
-            message += `\n💳 Total: $${total.toFixed(2)}`;
-            message += `\n\n📞 Payment: ${cartPayment} to 3665112`;
-            message += `\n\nThank you! ☕🍫`;
-
-            const encoded = encodeURIComponent(message);
-            document.getElementById('whatsappOrderLink').href = `https://wa.me/${SHOP_WHATSAPP}?text=${encoded}`;
-        }
-
-        function toggleCart() {
-            const side = document.getElementById('cartSide');
-            const overlay = document.getElementById('cartOverlay');
-            side.classList.toggle('open');
-            overlay.classList.toggle('active');
-            if (side.classList.contains('open')) updateAll();
-        }
-
-        function setCartDelivery(option) {
-            cartDelivery = option;
-            document.getElementById('cartPickup').classList.toggle('active', option === 'Pickup');
-            document.getElementById('cartDelivery').classList.toggle('active', option === 'Delivery');
-        }
-
-        function setCartCurrency(currency) {
-            cartCurrency = currency;
-            document.getElementById('cartUSD').classList.toggle('active', currency === 'USD');
-            document.getElementById('cartSLSH').classList.toggle('active', currency === 'SLSH');
-            updateCartDisplayAmount();
-            updateCartPrompt();
-        }
-
-        function updateCartDisplayAmount() {
-            const display = document.getElementById('cartDisplayAmount');
-            let amount = cartTotal;
-            let symbol = '$';
-            if (cartCurrency === 'SLSH') {
-                amount = cartTotal * EXCHANGE_RATE;
-                symbol = 'SLSH ';
-            }
-            display.textContent = symbol + amount.toFixed(2);
-        }
-
-        function setCartPayment(method) {
-            cartPayment = method;
-            document.getElementById('cartPromptMethod').textContent = method;
-            updateCartPrompt();
-            updateWhatsAppLink();
-        }
-
-        function updateCartPrompt() {
-            const promptAmt = document.getElementById('cartPromptAmount');
-            let amount = cartTotal;
-            let symbol = '$';
-            if (cartCurrency === 'SLSH') {
-                amount = cartTotal * EXCHANGE_RATE;
-                symbol = 'SLSH ';
-            }
-            promptAmt.textContent = symbol + amount.toFixed(2);
-        }
-
-        function generateOrderId() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let result = '';
-            for (let i = 0; i < 6; i++) {
-                result += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return result;
-        }
-
-        function openCartCheckout() {
-            const arr = Object.values(cart);
-            if (arr.length === 0) return;
-            const name = document.getElementById('cartName').value.trim();
-            if (!name) {
-                alert('Please enter your name.');
-                document.getElementById('cartName').focus();
-                return;
-            }
-            const phone = document.getElementById('cartPhone').value.trim();
-            if (!phone) {
-                alert('Please enter your WhatsApp number.');
-                document.getElementById('cartPhone').focus();
-                return;
-            }
-            if (cartDelivery === 'Delivery') {
-                const address = document.getElementById('cartAddress').value.trim();
-                if (!address) {
-                    alert('Please enter your delivery address.');
-                    document.getElementById('cartAddress').focus();
-                    return;
-                }
-            }
-            sendOrder();
-        }
-
-        function sendOrder() {
-            const name = document.getElementById('cartName').value || 'Customer';
-            const phone = document.getElementById('cartPhone').value || 'Not provided';
-            const address = document.getElementById('cartAddress').value || 'Not provided';
-            const arr = Object.values(cart);
-            let orderText = '';
-            arr.forEach(item => {
-                const cheeseNote = item.hasCheese ? ' + Cheese' : '';
-                orderText += `${item.name}${cheeseNote} × ${item.qty}\n`;
-            });
-            let amount = cartTotal;
-            let symbol = '$';
-            if (cartCurrency === 'SLSH') {
-                amount = cartTotal * EXCHANGE_RATE;
-                symbol = 'SLSH ';
-            }
-            const total = symbol + amount.toFixed(2);
-
-            currentOrderId = generateOrderId();
-
-            const emailData = {
-                orderId: currentOrderId,
-                name: name,
-                phone: phone,
-                address: address,
-                delivery: cartDelivery,
-                order: orderText,
-                total: total,
-                payment: cartPayment,
-                currency: cartCurrency,
-                _subject: `🍫 New Order #${currentOrderId} from ${name}`
-            };
-
-            const whatsappMessage =
-                `🍫 Thank you for your order from Chocolate Inn!\n\n📋 Order #${currentOrderId}\n👤 Name: ${name}\n📱 Phone: ${phone}\n📍 Address: ${address}\n📦 ${cartDelivery}\n\n📋 Items:\n${orderText}\n💰 Total: ${total}\n💳 Payment: ${cartPayment} to 3665112\n\n✅ Your order has been received.\n\n📞 Call us: 3665112\n\nThank you! ☕🍫`;
-
-            const btn = document.querySelector('.place-order-btn');
-            const originalText = btn.textContent;
-            btn.textContent = '⏳ Sending...';
-            btn.disabled = true;
-
-            fetch(FORMSPREE_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify(emailData)
-                })
-                .then(response => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-
-                    document.getElementById('confirmOrderId').textContent = currentOrderId;
-                    document.getElementById('orderConfirmed').style.display = 'block';
-
-                    const customerPhone = document.getElementById('cartPhone').value.trim();
-                    const whatsappNumber = customerPhone.replace(/[^0-9]/g, '');
-                    const whatsappUrl =
-                        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                    window.open(whatsappUrl, '_blank');
-
-                    alert(
-                        `✅ Order #${currentOrderId} placed!\n\n📱 WhatsApp sent to you.\n📧 Shop received your order via email.\n\nThank you! ☕🍫`);
-
-                    cart = {};
-                    updateAll();
-                    toggleCart();
-                    setTimeout(() => {
-                        document.getElementById('orderConfirmed').style.display = 'none';
-                    }, 8000);
-                })
-                .catch(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                    alert('⚠️ Issue sending order. Please call 3665112.');
-                });
-        }
-
-        // ============================================================
-        // PAGE NAVIGATION
-        // ============================================================
-        function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page-' + page).classList.add('active');
-            document.querySelectorAll('header nav a').forEach(link => {
-                link.classList.remove('active');
-                const linkText = link.textContent.toLowerCase().trim();
-                if (linkText === page || (page === 'order' && linkText === 'order')) {
-                    link.classList.add('active');
-                }
-            });
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ============================================================
-        // INIT
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            renderMenu('all');
-            updateAll();
-            initHeroSlider();
-            initDynamicHeader();
-            setCartPayment('ZAAD');
-        });
-    </script>
+    // Initial render
+    renderMenu(menuItems);
+  </script>
 </body>
 </html>

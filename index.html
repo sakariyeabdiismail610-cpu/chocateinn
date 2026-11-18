@@ -1,659 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chocolate Inn | Where Chocolate Feels Like Home</title>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            chocolate: {
-              900: '#1A0D08',
-              800: '#2E180D',
-              700: '#4A2A1A',
-              600: '#6E3F27',
-              500: '#9B5B3B',
-              400: '#C2845E',
-              300: '#E0B08E',
-              200: '#F2D7C5',
-              100: '#FDF7F2',
-            },
-            caramel: {
-              DEFAULT: '#D48C46',
-              dark: '#B06D2D',
-              light: '#F5D6B6'
-            }
-          },
-          fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #FDF7F2;
-      color: #2E180D;
-    }
-    h1, h2, h3, h4, .font-serif {
-      font-family: 'Playfair Display', serif;
-    }
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #FDF7F2;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C2845E;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #9B5B3B;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NADIIF PRO – Professional Cleaning in Hargeisa, Somaliland | Nadaafad Heer Sare ah</title>
+<meta name="description" content="NADIIF PRO provides professional home, office and commercial cleaning in Hargeisa, Somaliland. Free quotes. Adeeg nadiifin xirfad leh oo Hargeysa ah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B2545;--teal:#0F8F88;--teal2:#14B8AE;--bg:#fff;--grey:#F2F5F7;--ink:#1B2B3F;--mut:#55657A;--line:#DDE4EA;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1626;--grey:#0F1F35;--ink:#E8EEF5;--mut:#9FB0C4;--line:#233752;--card:#12253F;--teal:#2CC4BA}}
+:root[data-theme="dark"]{--bg:#0A1626;--grey:#0F1F35;--ink:#E8EEF5;--mut:#9FB0C4;--line:#233752;--card:#12253F;--teal:#2CC4BA}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0;color:inherit}
+a{color:inherit}svg{display:block}
+.w{max-width:1160px;margin:0 auto;padding:0 20px}
+section{padding:84px 0}.alt{background:var(--grey)}
+h2{font-size:clamp(28px,4vw,40px);color:var(--navy);margin-bottom:14px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:#fff}}
+.lead{color:var(--mut);max-width:62ch;margin:0 0 40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid transparent;cursor:pointer;font-size:15px;font-family:inherit;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.p{background:var(--teal2);color:#06223A}.p:hover{background:#3FD2C8}
+.o{border-color:rgba(255,255,255,.5);color:#fff}.o:hover{background:rgba(255,255,255,.1)}
+:focus-visible{outline:3px solid var(--teal2);outline-offset:3px}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,37,69,.96);backdrop-filter:blur(8px);padding-top:env(safe-area-inset-top,0px);color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 20px Fraunces,serif;letter-spacing:.02em}
+.logo small{display:block;font:500 10px 'Plus Jakarta Sans';color:#8FE3DC;letter-spacing:.04em;margin-top:-2px}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}nav a{text-decoration:none;font-size:14.5px;font-weight:500;opacity:.9}nav a:hover{opacity:1;color:#8FE3DC}
+.act{display:flex;align-items:center;gap:10px}
+.lang{display:flex;background:rgba(255,255,255,.12);border-radius:999px;padding:3px}
+.lang button{background:none;border:0;color:#fff;font:600 12.5px inherit;font-family:inherit;padding:6px 11px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--teal2);color:#06223A}
+.act .btn{padding:9px 18px;font-size:14px}
+.burger{display:none;background:none;border:0;color:#fff;padding:6px;cursor:pointer}
+@media(max-width:980px){.burger{display:block}.act .btn{display:none}
+nav{position:absolute;top:100%;left:0;right:0;background:var(--navy);display:none;padding:10px 20px 20px}nav.open{display:block}nav ul{flex-direction:column;gap:0}nav a{display:block;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}}
+.hero{background:var(--navy);color:#fff;padding:140px 0 90px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:640px;height:640px;right:-160px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,174,.28),transparent 68%)}
+.hg{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative}
+@media(max-width:860px){.hg{grid-template-columns:1fr}.hero{padding-top:116px}}
+.hero h1{font-size:clamp(38px,6vw,64px);margin-bottom:18px}
+.hero p{font-size:18px;color:#C9D6E6;max-width:52ch;margin:0 0 28px}
+.hero .so{color:#8FE3DC;font-weight:600;font-size:15px;margin:-10px 0 24px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.trust{display:flex;gap:10px;align-items:center;font-size:14px;color:#A9BCD3}
+.glass{position:relative;aspect-ratio:4/5;max-width:400px;margin:0 auto;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#17406E,#0F8F88);border:6px solid rgba(255,255,255,.14);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.glass svg{position:absolute;inset:0;width:100%;height:100%}
+.grime{position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(120,110,90,.55),transparent 45%),radial-gradient(circle at 75% 70%,rgba(110,100,80,.6),transparent 50%),rgba(90,90,90,.45);backdrop-filter:blur(6px);animation:wipe 2.2s .5s cubic-bezier(.6,.1,.2,1) forwards;clip-path:inset(0 0 0 0)}
+.grime:after{content:"";position:absolute;top:0;bottom:0;right:0;width:18px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7))}
+@keyframes wipe{to{clip-path:inset(0 0 0 100%)}}
+@media(prefers-reduced-motion:reduce){.grime{animation:none;display:none}*{transition:none!important;scroll-behavior:auto!important}}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--teal2);transform:translateY(-3px)}
+.ic{width:50px;height:50px;border-radius:14px;background:rgba(20,184,174,.14);color:var(--teal);display:grid;place-items:center}
+.card h3{font-size:19px;color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card h3{color:#fff}}
+.card p{margin:0;color:var(--mut);font-size:15px;flex:1}
+.card a.q{color:var(--teal);font-weight:600;font-size:14.5px;text-decoration:none}.card a.q:hover{text-decoration:underline}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:860px){.two{grid-template-columns:1fr;gap:32px}}
+.stack p{color:var(--mut);margin:0 0 16px}
+.tag{border-left:4px solid var(--teal2);padding:6px 0 6px 18px;font:600 20px Fraunces,serif;color:var(--navy);margin-top:24px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag{color:#fff}}
+.steps{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));counter-reset:s}
+.step{counter-increment:s;padding:28px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.step:before{content:counter(s);display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--navy);color:#fff;font:700 18px Fraunces;margin-bottom:14px}
+.step h3{font-size:19px;margin-bottom:6px}.step p{margin:0;color:var(--mut);font-size:15px}
+.gal{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.gal{grid-template-columns:repeat(2,1fr);gap:12px}}
+.tile{position:relative;aspect-ratio:1/1;border-radius:20px;overflow:hidden;display:grid;place-items:center;color:#fff}
+.tile:nth-child(1),.tile:nth-child(6){aspect-ratio:4/3}
+.tile svg.big{width:38%;height:auto;opacity:.95}
+.tile span{position:absolute;left:14px;bottom:12px;font-weight:600;font-size:14px;background:rgba(11,37,69,.7);padding:5px 12px;border-radius:999px}
+.tile:hover svg.big{transform:scale(1.08)}.tile svg.big{transition:transform .3s}
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta h2{color:#fff}.cta p{color:#C9D6E6;margin:0 auto 28px;max-width:56ch}.cta .so{color:#8FE3DC;font-weight:600}
+.cg{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px}
+@media(max-width:860px){.cg{grid-template-columns:1fr}}
+.ci{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}.ci b{display:block}.ci span{color:var(--mut);font-size:15px}
+.ph{background:#FFF3CD;color:#6B5200;padding:1px 7px;border-radius:6px;font-size:13px}
+.wa{background:#25D366;color:#06311A;margin-top:6px}.wa:hover{background:#3BE07A}
+form{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;gap:16px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:560px){.f2{grid-template-columns:1fr}}
+label{font-weight:600;font-size:14px;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal2);box-shadow:0 0 0 3px rgba(20,184,174,.25)}
+.err{color:#C0392B;font-size:13px;min-height:18px;margin-top:3px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#FF8A7A}}
+input[aria-invalid=true],select[aria-invalid=true]{border-color:#C0392B}
+.ok{display:none;background:rgba(20,184,174,.15);border-radius:12px;padding:12px 14px;font-weight:600}
+footer{background:#071A31;color:#B9C7DA;padding:60px 0 28px;font-size:14.5px}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}@media(max-width:860px){.fg{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fg{grid-template-columns:1fr}}
+footer h4{color:#fff;margin:0 0 12px;font-size:15px}footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}footer a{text-decoration:none}footer a:hover{color:#8FE3DC}
+.copy{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;font-size:13px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.wrap{overflow-x:auto}
+</style>
 </head>
-<body class="bg-chocolate-100 text-chocolate-800 antialiased selection:bg-caramel selection:text-white">
+<body>
+<header><div class="w nav">
+<a class="logo" href="#home" aria-label="NADIIF PRO"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#14B8AE"/><path d="M12 29V11l16 18V11" fill="none" stroke="#0B2545" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 5l1.2 3 3 1.2-3 1.2L31 13.4l-1.2-3-3-1.2 3-1.2z" fill="#fff"/></svg><div>NADIIF PRO<small data-t="brand"></small></div></a>
+<nav id="nav" aria-label="Main"><ul>
+<li><a href="#home" data-t="n1"></a></li><li><a href="#services" data-t="n2"></a></li><li><a href="#about" data-t="n3"></a></li><li><a href="#why" data-t="n4"></a></li><li><a href="#contact" data-t="n5"></a></li></ul></nav>
+<div class="act">
+<div class="lang" role="group" aria-label="Language"><button data-l="en" aria-pressed="true">English</button><button data-l="so" aria-pressed="false">Soomaali</button></div>
+<a class="btn p" href="#contact" data-t="quote"></a>
+<button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></div></header>
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-chocolate-800 text-chocolate-200 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
-    📍 Hargeisa, Somaliland &nbsp;|&nbsp; 🟢 Open 24/7 &nbsp;|&nbsp; 📞 Call to Order: <a href="tel:3665112" class="underline hover:text-caramel">3665112</a>
-  </div>
+<main>
+<section class="hero" id="home"><div class="w hg">
+<div>
+<h1 data-t="h1"></h1>
+<p class="so" data-t="so1"></p>
+<p data-t="hp"></p>
+<div class="ctas"><a class="btn p" href="#contact" data-t="book"></a><a class="btn o" href="#services" data-t="explore"></a></div>
+<div class="trust"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8FE3DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span data-t="trust"></span></div>
+</div>
+<div class="glass" role="img" aria-label="Sparkling clean window illustration"><svg viewBox="0 0 400 500" aria-hidden="true"><g stroke="rgba(255,255,255,.55)" stroke-width="6" fill="none"><rect x="40" y="50" width="320" height="400" rx="10"/><path d="M200 50v400M40 250h320"/></g><path d="M70 90l90 -20M70 130l60 -14" stroke="rgba(255,255,255,.4)" stroke-width="10" stroke-linecap="round"/><g fill="#fff"><path d="M290 130l8 22 22 8-22 8-8 22-8-22-22-8 22-8z"/><path d="M110 330l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" opacity=".8"/></g></svg><div class="grime"></div></div>
+</div></section>
 
-  <!-- Navigation Header -->
-  <header class="sticky top-0 z-50 bg-chocolate-900/95 backdrop-blur-md text-white border-b border-chocolate-700 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center space-x-3 group">
-        <div class="w-11 h-11 rounded-full bg-caramel flex items-center justify-center shadow-md transform group-hover:rotate-6 transition duration-300">
-          <span class="text-2xl">🍫</span>
-        </div>
-        <div>
-          <span class="text-xl sm:text-2xl font-serif font-bold tracking-wide text-white">Chocolate <span class="text-caramel">Inn</span></span>
-          <p class="text-xs text-chocolate-300 tracking-wider">Where Chocolate Feels Like Home</p>
-        </div>
-      </a>
+<section id="services"><div class="w">
+<h2 data-t="sh"></h2><p class="lead" data-t="si"></p>
+<div class="grid" id="sg"></div></div></section>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center space-x-8 font-medium">
-        <a href="#home" class="hover:text-caramel transition">Home</a>
-        <a href="#menu" class="hover:text-caramel transition">Menu</a>
-        <a href="#quiz" class="hover:text-caramel transition">Taste Quiz</a>
-        <a href="#about" class="hover:text-caramel transition">Our Story</a>
-        <a href="#contact" class="hover:text-caramel transition">Contact</a>
-      </nav>
+<section class="alt" id="about"><div class="w two">
+<div class="stack"><h2 data-t="ah"></h2><p data-t="a1"></p><p data-t="a2"></p><div class="tag" data-t="tag"></div></div>
+<div class="grid" style="grid-template-columns:1fr 1fr" id="ag"></div>
+</div></section>
 
-      <!-- Right Action Area -->
-      <div class="flex items-center space-x-4">
-        <!-- Cart Toggle Button -->
-        <button onclick="toggleCart()" class="relative bg-chocolate-800 hover:bg-chocolate-700 text-white p-2.5 rounded-full border border-chocolate-600 transition flex items-center justify-center shadow">
-          <svg class="w-6 h-6 text-caramel" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-          </svg>
-          <span id="cart-badge" class="absolute -top-1 -right-1 bg-caramel text-chocolate-900 font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
-        </button>
+<section id="why"><div class="w"><h2 data-t="wh"></h2><p class="lead" data-t="wi"></p><div class="grid" id="wg"></div></div></section>
 
-        <!-- Mobile Menu Toggle -->
-        <button onclick="toggleMobileMenu()" class="md:hidden text-chocolate-200 hover:text-white p-2">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-    </div>
+<section class="alt"><div class="w"><h2 data-t="hh"></h2><div class="steps" id="st"></div></div></section>
 
-    <!-- Mobile Nav Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-chocolate-900 border-t border-chocolate-800 px-6 py-4 space-y-3 font-medium">
-      <a href="#home" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Home</a>
-      <a href="#menu" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Menu</a>
-      <a href="#quiz" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Taste Quiz</a>
-      <a href="#about" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Our Story</a>
-      <a href="#contact" onclick="toggleMobileMenu()" class="block text-chocolate-200 hover:text-caramel py-1">Contact</a>
-    </div>
-  </header>
+<section id="gallery"><div class="w"><h2 data-t="gh"></h2><p class="lead" data-t="gi"></p><div class="gal" id="gl"></div></div></section>
 
-  <!-- Hero Section -->
-  <section id="home" class="relative bg-chocolate-900 text-white py-24 lg:py-32 overflow-hidden">
-    <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=1600&fit=crop&q=80');"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-chocolate-900 via-chocolate-900/90 to-transparent"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-6">
-        <span class="inline-block bg-caramel/20 text-caramel border border-caramel/40 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide">
-          ✨ Hargeisa's Sweetest Spot
-        </span>
-        <h1 class="text-4xl sm:text-6xl font-serif font-bold leading-tight">
-          Where Chocolate <br><span class="text-caramel italic">Feels Like Home</span>.
-        </h1>
-        <p class="text-chocolate-200 text-lg sm:text-xl font-light leading-relaxed">
-          Indulge in rich handcrafted chocolate desserts, artisanal coffees, decadent warm hot chocolates, and freshly baked gourmet treats.
-        </p>
-        <div class="flex flex-wrap gap-4 pt-4">
-          <a href="#menu" class="bg-caramel hover:bg-caramel-dark text-chocolate-900 font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
-            Explore Menu & Order
-          </a>
-          <a href="tel:3665112" class="bg-chocolate-800 hover:bg-chocolate-700 border border-chocolate-600 text-white font-semibold px-8 py-4 rounded-xl shadow transition flex items-center space-x-2">
-            <span>📞 Call 3665112</span>
-          </a>
-        </div>
-      </div>
+<section class="cta"><div class="w"><h2 data-t="ch"></h2><p class="so" data-t="cso"></p><p data-t="ct"></p><a class="btn p" href="#contact" data-t="cb"></a></div></section>
 
-      <!-- Hero Feature Cards -->
-      <div class="grid grid-cols-2 gap-4">
-        <div class="bg-chocolate-800/80 backdrop-blur border border-chocolate-700 p-6 rounded-2xl shadow-xl space-y-3">
-          <div class="w-12 h-12 bg-caramel/20 rounded-xl flex items-center justify-center text-2xl">🍫</div>
-          <h3 class="font-serif font-bold text-xl text-white">Handcrafted</h3>
-          <p class="text-chocolate-300 text-sm">Made with love and the finest premium cocoa beans daily.</p>
-        </div>
-        <div class="bg-chocolate-800/80 backdrop-blur border border-chocolate-700 p-6 rounded-2xl shadow-xl space-y-3 mt-6">
-          <div class="w-12 h-12 bg-caramel/20 rounded-xl flex items-center justify-center text-2xl">☕</div>
-          <h3 class="font-serif font-bold text-xl text-white">Artisanal Coffee</h3>
-          <p class="text-chocolate-300 text-sm">From velvet lattes to signature mochas crafted to perfection.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="contact"><div class="w">
+<h2 data-t="kh"></h2><p class="lead" data-t="ki"></p>
+<div class="cg"><div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><b data-t="ph"></b><a href="tel:+252633665112">+252 63 366 5112</a></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b data-t="em"></b><a href="mailto:talktosakaria@gmail.com">talktosakaria@gmail.com</a></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b data-t="ad"></b><span>Hargeisa, Somaliland</span></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></div><div><b data-t="cp"></b><span>Zakria Abdi Ismail</span></div></div>
+<a class="btn wa" id="wa" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.2 13.9c-.2.6-1.300 1.200-1.800 1.200-.5.1-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.2.1.300 0 .5l-.3.500-.4.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.200.5.100.7-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.300z"/></svg><span data-t="wab"></span></a>
+</div>
+<form id="f" novalidate>
+<div class="f2"><div><label for="nm" data-t="fn"></label><input id="nm" autocomplete="name"><div class="err" id="e1"></div></div>
+<div><label for="tel" data-t="ft"></label><input id="tel" type="tel" autocomplete="tel" placeholder="+252 …"><div class="err" id="e2"></div></div></div>
+<div class="f2"><div><label for="sv" data-t="fs"></label><select id="sv"></select><div class="err" id="e3"></div></div>
+<div><label for="dt" data-t="fd"></label><input id="dt" type="date"></div></div>
+<div><label for="msg" data-t="fm"></label><textarea id="msg" rows="4"></textarea></div>
+<button class="btn p" type="submit" style="justify-self:start;background:var(--navy);color:#fff" data-t="send"></button>
+<div class="ok" id="ok" role="status"></div>
+</form></div></div></section>
+</main>
 
-  <!-- Interactive Menu Section -->
-  <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Our Selection</span>
-      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-chocolate-900 mt-2">The Chocolate Inn Menu</h2>
-      <p class="text-chocolate-600 mt-3">Filter by category or search your favorite sweet indulgence below.</p>
-    </div>
+<footer><div class="w"><div class="fg">
+<div><a class="logo" href="#home" style="color:#fff;margin-bottom:12px"><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#14B8AE"/><path d="M12 29V11l16 18V11" fill="none" stroke="#0B2545" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>NADIIF PRO</a><p data-t="fd1" style="margin:12px 0 0;max-width:34ch"></p></div>
+<div><h4 data-t="fq"></h4><ul><li><a href="#home" data-t="n1"></a></li><li><a href="#services" data-t="n2"></a></li><li><a href="#about" data-t="n3"></a></li><li><a href="#why" data-t="n4"></a></li><li><a href="#contact" data-t="n5"></a></li></ul></div>
+<div><h4 data-t="n2"></h4><ul id="fs"></ul></div>
+<div><h4 data-t="n5"></h4><ul><li>Hargeisa, Somaliland</li><li>Zakria Abdi Ismail</li><li><a href="tel:+252633665112">+252 63 366 5112</a></li><li><a href="mailto:talktosakaria@gmail.com">talktosakaria@gmail.com</a></li><li data-t="soc"></li></ul></div>
+</div><div class="copy"><span>© <span id="yr"></span> NADIIF PRO. <span data-t="rights"></span></span><span data-t="brand"></span></div></div></footer>
 
-    <!-- Search & Filter Controls -->
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
-      <!-- Category Tabs -->
-      <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="category-tabs">
-        <button onclick="filterMenu('all')" class="category-btn active px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-800 text-white shadow">All Items</button>
-        <button onclick="filterMenu('chocolate')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">🍫 Chocolates & Desserts</button>
-        <button onclick="filterMenu('coffee')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">☕ Coffee & Lattes</button>
-        <button onclick="filterMenu('beverages')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">🥛 Hot Chocolate</button>
-        <button onclick="filterMenu('savory')" class="category-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-chocolate-200 text-chocolate-800 hover:bg-chocolate-300">🥪 Sandwiches</button>
-      </div>
-
-      <!-- Search Input -->
-      <div class="w-full md:w-72">
-        <input type="text" id="search-input" oninput="searchMenu()" placeholder="Search menu items..." class="w-full bg-white border border-chocolate-300 rounded-xl px-4 py-2.5 text-chocolate-900 focus:outline-none focus:border-caramel shadow-sm">
-      </div>
-    </div>
-
-    <!-- Menu Grid -->
-    <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Populated dynamically via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Interactive Taste Quiz Section -->
-  <section id="quiz" class="bg-chocolate-800 text-white py-20 my-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Find Your Match</span>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold mt-2">What's Your Chocolate Mood Today?</h2>
-      <p class="text-chocolate-300 mt-2">Answer one quick question to get our personalized recommendation.</p>
-
-      <div id="quiz-container" class="mt-8 bg-chocolate-900/80 border border-chocolate-700 p-8 rounded-3xl shadow-2xl">
-        <div id="quiz-step-1">
-          <h3 class="text-xl font-medium mb-6 text-chocolate-100">How are you feeling right now?</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <button onclick="selectQuizMood('rich')" class="bg-chocolate-800 hover:bg-caramel hover:text-chocolate-900 border border-chocolate-600 p-5 rounded-2xl transition font-medium">
-              🍫 Need deep rich cocoa & fudge
-            </button>
-            <button onclick="selectQuizMood('warm')" class="bg-chocolate-800 hover:bg-caramel hover:text-chocolate-900 border border-chocolate-600 p-5 rounded-2xl transition font-medium">
-              ☕ Want a cozy warm coffee & milk
-            </button>
-            <button onclick="selectQuizMood('fruity')" class="bg-chocolate-800 hover:bg-caramel hover:text-chocolate-900 border border-chocolate-600 p-5 rounded-2xl transition font-medium">
-              🍓 Craving fruits with sweet chocolate
-            </button>
-          </div>
-        </div>
-
-        <div id="quiz-result" class="hidden space-y-4">
-          <div class="text-4xl">✨</div>
-          <h3 id="quiz-title" class="text-2xl font-serif font-bold text-caramel"></h3>
-          <p id="quiz-desc" class="text-chocolate-300 max-w-lg mx-auto"></p>
-          <button onclick="resetQuiz()" class="mt-4 bg-caramel text-chocolate-900 font-semibold px-6 py-2.5 rounded-xl hover:bg-caramel-light transition">
-            Take Quiz Again
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-6">
-        <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Our Story</span>
-        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-chocolate-900">Where Chocolate Feels Like Home</h2>
-        <p class="text-chocolate-700 leading-relaxed">
-          Chocolate Inn was founded with a simple passion: to create a warm, comforting haven in Hargeisa where every bite of chocolate and sip of coffee feels like a comforting embrace. Whether you're catching up with friends or treating yourself after a long day, our doors are open 24/7 for you.
-        </p>
-        <div class="grid grid-cols-2 gap-6 pt-2">
-          <div class="bg-white p-5 rounded-2xl border border-chocolate-200 shadow-sm">
-            <div class="text-2xl font-bold font-serif text-caramel">100%</div>
-            <p class="text-sm text-chocolate-600 mt-1">Handcrafted Delight</p>
-          </div>
-          <div class="bg-white p-5 rounded-2xl border border-chocolate-200 shadow-sm">
-            <div class="text-2xl font-bold font-serif text-caramel">24/7</div>
-            <p class="text-sm text-chocolate-600 mt-1">Open All Day & Night</p>
-          </div>
-        </div>
-      </div>
-      <div class="relative">
-        <img src="https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=800&fit=crop&q=80" alt="Hot Chocolate" class="rounded-3xl shadow-2xl border-4 border-white">
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Location Section -->
-  <section id="contact" class="bg-chocolate-900 text-white py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-caramel font-semibold text-sm uppercase tracking-widest">Get In Touch</span>
-        <h2 class="text-3xl sm:text-5xl font-serif font-bold mt-2">Visit Chocolate Inn</h2>
-        <p class="text-chocolate-300 mt-3">We would love to welcome you. Reach out or drop by anytime!</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Contact Info Card -->
-        <div class="bg-chocolate-800 p-8 sm:p-10 rounded-3xl border border-chocolate-700 space-y-6 shadow-xl">
-          <h3 class="text-2xl font-serif font-bold text-caramel">Contact Details</h3>
-          <div class="space-y-4 text-chocolate-200">
-            <p class="flex items-start space-x-3">
-              <span class="text-xl">📍</span>
-              <span><strong>Address:</strong> 123 Main Street, Hargeisa, Somaliland</span>
-            </p>
-            <p class="flex items-start space-x-3">
-              <span class="text-xl">📞</span>
-              <span><strong>Phone / ZAAD / eDahab:</strong> <a href="tel:3665112" class="text-caramel underline font-bold">3665112</a></span>
-            </p>
-            <p class="flex items-start space-x-3">
-              <span class="text-xl">🕐</span>
-              <span><strong>Hours:</strong> Open 24/7 (Everyday)</span>
-            </p>
-            <p class="flex items-start space-x-3">
-              <span class="text-xl">📧</span>
-              <span><strong>Email:</strong> chocolateinn@gmail.com</span>
-            </p>
-          </div>
-          <div class="pt-4 border-t border-chocolate-700">
-            <a href="tel:3665112" class="block w-full text-center bg-caramel hover:bg-caramel-dark text-chocolate-900 font-bold py-3.5 rounded-xl transition shadow">
-              Call Now: 3665112
-            </a>
-          </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="bg-chocolate-800 p-8 sm:p-10 rounded-3xl border border-chocolate-700 space-y-6 shadow-xl">
-          <h3 class="text-2xl font-serif font-bold text-white">Send Us a Message</h3>
-          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-chocolate-300 mb-1">Your Name</label>
-              <input type="text" required class="w-full bg-chocolate-900 border border-chocolate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-caramel" placeholder="Safia Abdi">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-chocolate-300 mb-1">Phone Number</label>
-              <input type="text" required class="w-full bg-chocolate-900 border border-chocolate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-caramel" placeholder="3665112">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-chocolate-300 mb-1">Your Message</label>
-              <textarea rows="3" required class="w-full bg-chocolate-900 border border-chocolate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-caramel" placeholder="Hello Chocolate Inn..."></textarea>
-            </div>
-            <button type="submit" class="w-full bg-caramel hover:bg-caramel-dark text-chocolate-900 font-bold py-3.5 rounded-xl transition shadow">
-              Send Message
-            </button>
-            <p id="contact-success" class="hidden text-emerald-400 text-center text-sm font-medium">✅ Message sent successfully! We'll get back to you soon.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Slide-Over Shopping Cart Drawer -->
-  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
-    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
-      <div class="w-screen max-w-md bg-chocolate-900 text-white shadow-2xl flex flex-col border-l border-chocolate-800">
-        
-        <!-- Cart Header -->
-        <div class="p-6 border-b border-chocolate-800 flex items-center justify-between">
-          <h2 class="text-xl font-serif font-bold text-caramel flex items-center space-x-2">
-            <span>🛒</span> <span>Your Order</span>
-          </h2>
-          <button onclick="toggleCart()" class="text-chocolate-400 hover:text-white p-2 text-xl">&times;</button>
-        </div>
-
-        <!-- Cart Items List -->
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-          <!-- Dynamically populated -->
-        </div>
-
-        <!-- Cart Footer & Checkout -->
-        <div class="p-6 border-t border-chocolate-800 space-y-4 bg-chocolate-950">
-          <div class="space-y-2 text-sm">
-            <div class="flex justify-between text-chocolate-300">
-              <span>Subtotal</span>
-              <span id="cart-subtotal">$0.00</span>
-            </div>
-            <div class="flex justify-between text-chocolate-300">
-              <span>Tax (0%)</span>
-              <span>$0.00</span>
-            </div>
-            <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-chocolate-800">
-              <span>Total</span>
-              <span id="cart-total" class="text-caramel">$0.00</span>
-            </div>
-          </div>
-
-          <!-- Payment Options Box -->
-          <div class="bg-chocolate-900 p-4 rounded-xl border border-chocolate-800 space-y-3">
-            <p class="text-xs font-semibold text-chocolate-300 uppercase tracking-wider">Local Payment (ZAAD / eDahab)</p>
-            <div class="grid grid-cols-2 gap-3 text-xs">
-              <div class="bg-chocolate-800 p-2.5 rounded-lg border border-chocolate-700 text-center">
-                <div class="font-bold text-caramel">📱 ZAAD</div>
-                <div class="text-white font-mono mt-0.5">3665112</div>
-              </div>
-              <div class="bg-chocolate-800 p-2.5 rounded-lg border border-chocolate-700 text-center">
-                <div class="font-bold text-caramel">📱 eDahab</div>
-                <div class="text-white font-mono mt-0.5">3665112</div>
-              </div>
-            </div>
-          </div>
-
-          <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
-            <span>💬 Order via WhatsApp (3665112)</span>
-          </button>
-          
-          <p class="text-xs text-center text-chocolate-400">📞 After payment, please call or WhatsApp <strong>3665112</strong> to confirm.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-chocolate-950 text-chocolate-400 py-12 border-t border-chocolate-900 text-center space-y-4">
-    <div class="flex justify-center space-x-6 text-sm font-medium">
-      <a href="#home" class="hover:text-caramel transition">Home</a>
-      <a href="#menu" class="hover:text-caramel transition">Menu</a>
-      <a href="#about" class="hover:text-caramel transition">Our Story</a>
-      <a href="#contact" class="hover:text-caramel transition">Contact</a>
-    </div>
-    <div class="flex items-center justify-center space-x-2">
-      <span class="text-xl font-serif font-bold text-white">Chocolate <span class="text-caramel">Inn</span></span>
-    </div>
-    <p class="text-xs text-chocolate-500">© 2026 Chocolate Inn — Where Chocolate Feels Like Home. All rights reserved.</p>
-  </footer>
-
-  <!-- JavaScript Logic -->
-  <script>
-    // Menu Items Database
-    const menuItems = [
-      {
-        id: 1,
-        name: 'Signature Hot Chocolate',
-        category: 'beverages',
-        price: 3.50,
-        desc: 'Rich, velvety melted dark chocolate topped with whipped cream & chocolate shavings.',
-        image: 'https://images.unsplash.com/photo-1542990253-0d0f5be28f91?w=600&fit=crop&q=80'
-      },
-      {
-        id: 2,
-        name: 'Decadent Chocolate Lava Cake',
-        category: 'chocolate',
-        price: 5.00,
-        desc: 'Warm chocolate cake with a molten, flowing liquid chocolate center.',
-        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&fit=crop&q=80'
-      },
-      {
-        id: 3,
-        name: 'Artisanal Cafe Mocha',
-        category: 'coffee',
-        price: 4.00,
-        desc: 'Fresh espresso combined with decadent chocolate syrup and steamed frothy milk.',
-        image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&fit=crop&q=80'
-      },
-      {
-        id: 4,
-        name: 'Nutella & Banana Waffle',
-        category: 'chocolate',
-        price: 6.00,
-        desc: 'Crispy golden waffle smothered in creamy Nutella spread and fresh sliced bananas.',
-        image: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600&fit=crop&q=80'
-      },
-      {
-        id: 5,
-        name: 'Caramel Macchiato',
-        category: 'coffee',
-        price: 4.50,
-        desc: 'Freshly steamed milk with vanilla-flavored syrup, marked with espresso and caramel drizzle.',
-        image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=600&fit=crop&q=80'
-      },
-      {
-        id: 6,
-        name: 'Crispy Chicken Club Sandwich',
-        category: 'savory',
-        price: 5.50,
-        desc: 'Gourmet toasted sandwich filled with seasoned crispy chicken, lettuce, tomato & mayo.',
-        image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?w=600&fit=crop&q=80'
-      },
-      {
-        id: 7,
-        name: 'White Chocolate Raspberry Frappe',
-        category: 'beverages',
-        price: 4.80,
-        desc: 'Blended ice beverage with white chocolate sauce and sweet raspberry syrup.',
-        image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&fit=crop&q=80'
-      },
-      {
-        id: 8,
-        name: 'Chocolate Fudge Brownie',
-        category: 'chocolate',
-        price: 3.00,
-        desc: 'Dense, fudgy brownie baked with premium cocoa chunks.',
-        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&fit=crop&q=80'
-      }
-    ];
-
-    let cart = [];
-
-    // Render Menu on Page Load
-    function renderMenu(itemsToRender) {
-      const grid = document.getElementById('menu-grid');
-      grid.innerHTML = '';
-
-      if (itemsToRender.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-12 text-chocolate-600">No menu items found.</div>`;
-        return;
-      }
-
-      itemsToRender.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-3xl overflow-hidden border border-chocolate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between';
-        card.innerHTML = `
-          <div>
-            <div class="h-48 overflow-hidden relative">
-              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
-              <span class="absolute top-3 right-3 bg-chocolate-900/80 backdrop-blur text-caramel px-3 py-1 rounded-full text-xs font-bold">$${item.price.toFixed(2)}</span>
-            </div>
-            <div class="p-6 space-y-2">
-              <h3 class="font-serif font-bold text-xl text-chocolate-900">${item.name}</h3>
-              <p class="text-chocolate-600 text-sm leading-relaxed">${item.desc}</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <button onclick="addToCart(${item.id})" class="w-full bg-chocolate-900 hover:bg-caramel hover:text-chocolate-900 text-white font-semibold py-3 rounded-xl transition shadow">
-              Add to Order 🍫
-            </button>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // Filter Menu by Category
-    function filterMenu(category) {
-      document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.classList.remove('bg-chocolate-800', 'text-white', 'shadow');
-        btn.classList.add('bg-chocolate-200', 'text-chocolate-800');
-      });
-      event.target.classList.remove('bg-chocolate-200', 'text-chocolate-800');
-      event.target.classList.add('bg-chocolate-800', 'text-white', 'shadow');
-
-      if (category === 'all') {
-        renderMenu(menuItems);
-      } else {
-        const filtered = menuItems.filter(item => item.category === category);
-        renderMenu(filtered);
-      }
-    }
-
-    // Search Menu
-    function searchMenu() {
-      const query = document.getElementById('search-input').value.toLowerCase();
-      const filtered = menuItems.filter(item => 
-        item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query)
-      );
-      renderMenu(filtered);
-    }
-
-    // Cart Functions
-    function toggleCart() {
-      const drawer = document.getElementById('cart-drawer');
-      drawer.classList.toggle('hidden');
-    }
-
-    function addToCart(id) {
-      const item = menuItems.find(i => i.id === id);
-      const existing = cart.find(i => i.id === id);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...item, qty: 1 });
-      }
-      updateCartUI();
-      toggleCart();
-    }
-
-    function updateQty(id, change) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.qty += change;
-        if (item.qty <= 0) {
-          cart = cart.filter(i => i.id !== id);
-        }
-      }
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      const badge = document.getElementById('cart-badge');
-      const container = document.getElementById('cart-items');
-      const subtotalEl = document.getElementById('cart-subtotal');
-      const totalEl = document.getElementById('cart-total');
-
-      const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
-      badge.textContent = totalCount;
-
-      if (cart.length === 0) {
-        container.innerHTML = `<div class="text-center py-12 text-chocolate-400">Your cart is empty. 🍫☕</div>`;
-        subtotalEl.textContent = '$0.00';
-        totalEl.textContent = '$0.00';
-        return;
-      }
-
-      container.innerHTML = '';
-      let subtotal = 0;
-
-      cart.forEach(item => {
-        subtotal += item.price * item.qty;
-        const div = document.createElement('div');
-        div.className = 'flex items-center justify-between bg-chocolate-800 p-4 rounded-xl border border-chocolate-700';
-        div.innerHTML = `
-          <div>
-            <h4 class="font-bold text-white text-sm">${item.name}</h4>
-            <p class="text-caramel text-xs">$${item.price.toFixed(2)} x ${item.qty}</p>
-          </div>
-          <div class="flex items-center space-x-2">
-            <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 bg-chocolate-700 hover:bg-chocolate-600 rounded-lg text-white font-bold flex items-center justify-center">-</button>
-            <span class="text-sm font-bold w-5 text-center">${item.qty}</span>
-            <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 bg-chocolate-700 hover:bg-chocolate-600 rounded-lg text-white font-bold flex items-center justify-center">+</button>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-
-      subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-      totalEl.textContent = `$${subtotal.toFixed(2)}`;
-    }
-
-    // Checkout via WhatsApp
-    function checkoutWhatsApp() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-      let total = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
-      let text = "Hello Chocolate Inn! I'd like to place an order:%0A";
-      cart.forEach(i => {
-        text += `- ${i.name} (x${i.qty}): $${(i.price * i.qty).toFixed(2)}%0A`;
-      });
-      text += `%0ATotal Amount: $${total.toFixed(2)}%0APayment via ZAAD/eDahab to 3665112`;
-      window.open(`https://wa.me/252633665112?text=${text}`, '_blank');
-    }
-
-    // Taste Quiz Logic
-    function selectQuizMood(mood) {
-      const step1 = document.getElementById('quiz-step-1');
-      const result = document.getElementById('quiz-result');
-      const title = document.getElementById('quiz-title');
-      const desc = document.getElementById('quiz-desc');
-
-      step1.classList.add('hidden');
-      result.classList.remove('hidden');
-
-      if (mood === 'rich') {
-        title.textContent = 'Recommendation: Decadent Chocolate Lava Cake';
-        desc.textContent = 'Your soul calls for deep, molten warm chocolate goodness. Try our signature lava cake with extra fudge!';
-      } else if (mood === 'warm') {
-        title.textContent = 'Recommendation: Signature Hot Chocolate + Cafe Mocha';
-        desc.textContent = 'Wrap your hands around a warm cup of our velvety hot chocolate or creamy mocha.';
-      } else {
-        title.textContent = 'Recommendation: Nutella & Banana Waffle';
-        desc.textContent = 'Sweet, fruity, and drizzled in rich hazelnut chocolate spread.';
-      }
-    }
-
-    function resetQuiz() {
-      document.getElementById('quiz-step-1').classList.remove('hidden');
-      document.getElementById('quiz-result').classList.add('hidden');
-    }
-
-    // Contact Form Handler
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      document.getElementById('contact-success').classList.remove('hidden');
-      e.target.reset();
-      setTimeout(() => {
-        document.getElementById('contact-success').classList.add('hidden');
-      }, 5000);
-    }
-
-    // Initial render
-    renderMenu(menuItems);
-  </script>
+<script>
+var WA="252633665112"; /* WhatsApp number, digits only, with country code */
+var T={en:{brand:"Professional cleaning. At your doorstep.",n1:"Home",n2:"Services",n3:"About Us",n4:"Why Choose Us",n5:"Contact",quote:"Get a Free Quote",
+h1:"A Cleaner Space. A Better Feeling.",so1:"",hp:"Professional home and commercial cleaning services in Hargeisa. We take care of the cleaning so you can focus on what matters.",book:"Book a Cleaning",explore:"Explore Our Services",trust:"Free quotes. Flexible scheduling. Homes and businesses.",
+sh:"Our Cleaning Services",si:"We clean your home and your business with skill and care, inside and out.",req:"Request a Quote",
+ah:"A local team that cares about the details",a1:"NADIIF PRO is a cleaning service based in Hargeisa. We clean homes, offices, shops and commercial buildings, inside and out, with a simple focus: do the job properly and treat every space as if it were our own.",a2:"We believe good cleaning comes down to quality, reliability and attention to detail. When you work with us, you can expect clear communication, friendly service and a space you are proud of.",tag:"Cleanliness, quality and trust.",
+wh:"Why Choose NADIIF PRO",wi:"What you can expect every time we clean.",
+hh:"How It Works",gh:"A Look at Clean Spaces",gi:"Illustrations of the spaces we care for. Real project photos will be added soon.",
+ch:"Ready for a Cleaner Space?",cso:"",ct:"Get in touch with NADIIF PRO today and let us take care of the cleaning.",cb:"Request Your Free Quote",
+kh:"Contact Us",ki:"Tell us what you need and we will reply with a free quote.",ph:"Phone",cp:"Contact person",em:"Email",ad:"Location",repl:"(placeholder, add your number)",wab:"Chat on WhatsApp",
+fn:"Full name",ft:"Phone number",fs:"Service required",fd:"Preferred date",fm:"Message",send:"Send Request",choose:"Choose a service",
+e1:"Please enter your name.",e2:"Please enter a valid phone number.",e3:"Please choose a service.",ok:"Thank you. WhatsApp is opening so you can send your request.",
+wm:"Hello NADIIF PRO, I would like a cleaning quote.",fd1:"Professional home and commercial cleaning in Hargeisa, Somaliland.",fq:"Quick links",soc:"Social media: Facebook, Instagram (add links)",rights:"All rights reserved.",
+f_s:"Service",f_n:"Name",f_t:"Phone",f_d:"Date",f_m:"Message"},
+so:{brand:"Nadiifnimo, tayo iyo kalsooni.",n1:"Hoyga",n2:"Adeegyada",n3:"Nagu Saabsan",n4:"Maxaad Noo Doorataa",n5:"Xidhiidh",quote:"Qiime Dalbo",
+h1:"NADIIF PRO – Nadaafad Heer Sare ah.",so1:"",hp:"Waxaan kuu keenaynaa nadaafad, bilic iyo adeeg lagu kalsoonaan karo. Adeeg nadiifin oo guryaha iyo ganacsiyada ah oo ka shaqeeya Hargeysa.",book:"Dalbo Adeeg",explore:"Adeegyadeenna",trust:"Qiime bilaash ah. Waqti dabacsan. Guryo iyo ganacsiyo.",
+sh:"Adeegyadeenna Nadiifinta",si:"Guryahaaga iyo goobahaaga ganacsi waxaan u nadiifinnaa si xirfad iyo taxaddar leh.",req:"Qiime Dalbo",
+ah:"Koox deegaanka ah oo daryeesha faahfaahinta",a1:"NADIIF PRO waa shirkad nadiifin oo ku taal Hargeysa. Waxaan nadiifinnaa guryaha, xafiisyada, dukaamada iyo dhismayaasha ganacsiga, gudaha iyo dibaddaba, annagoo hal hadaf haysanna: shaqada inaan si fiican u qabanno oo goob kasta u daryeelno sidii mid aan leenahay.",a2:"Waxaan aaminsanahay in nadiifintu ku salaysan tahay tayo, aamin ahaansho iyo taxaddar. Markaad nala shaqeyso, waxaad filan kartaa xidhiidh cad, adeeg soo dhaweyn leh iyo goob aad ku faraxdo.",tag:"Nadiifnimo, tayo iyo kalsooni.",
+wh:"Maxaad u Dooranaysaa NADIIF PRO",wi:"Waxa aad heli doonto mar kasta oo aan nadiifinno.",
+hh:"Sida Ay u Shaqeyso",gh:"Fiiri Goobaha Nadiifka ah",gi:"Sawirro muujinaya goobaha aan daryeelno. Sawirro dhab ah oo shaqooyinkeenna ah ayaa dhawaan lagu dari doonaa.",
+ch:"Ma doonaysaa goob nadiif ah oo bilicsan?",cso:"",ct:"Nala soo xidhiidh maanta, annaga ayaana nadiifinta qaban doonna.",cb:"Qiime Bilaash ah Dalbo",
+kh:"Nala Soo Xidhiidh",ki:"Noo sheeg waxaad rabto, waxaana ku soo jawaabi doonaa qiime bilaash ah.",ph:"Taleefan",cp:"Qofka lala xidhiidhayo",em:"Iimaylka",ad:"Goobta",repl:"(meel-ku-meel, ku dar lambarkaaga)",wab:"WhatsApp nagala hadal",
+fn:"Magaca oo dhan",ft:"Lambarka taleefanka",fs:"Adeegga aad u baahan tahay",fd:"Taariikhda aad rabto",fm:"Fariin",send:"Dir Codsiga",choose:"Dooro adeeg",
+e1:"Fadlan geli magacaaga.",e2:"Fadlan geli lambar taleefan sax ah.",e3:"Fadlan dooro adeeg.",ok:"Mahadsanid. WhatsApp ayaa furmaya si aad codsigaaga u dirto.",
+wm:"Salaan NADIIF PRO, waxaan rabaa qiime nadiifin.",fd1:"Adeeg nadiifin xirfad leh oo guryaha iyo ganacsiyada ah, Hargeysa, Soomaaliland.",fq:"Isku-xidhayaal degdeg ah",soc:"Baraha bulshada: Facebook, Instagram (ku dar xidhiidhada)",rights:"Xuquuqdu way daboolan tahay.",
+f_s:"Adeeg",f_n:"Magac",f_t:"Taleefan",f_d:"Taariikh",f_m:"Fariin"}};
+var P={home:"M3 11l9-8 9 8M5 10v10h14V10",deep:"M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z",office:"M4 21V5h10v16M14 9h6v12M8 9h2M8 13h2M8 17h2",bld:"M5 21V3h14v18M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4",kit:"M7 3v8M5 3v5a2 2 0 004 0V3M17 3c-2 2-2 6 0 8v10",floor:"M3 7l9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4",win:"M4 4h16v16H4zM12 4v16M4 12h16",out:"M12 22v-8M7 14a4 4 0 010-8 5 5 0 019 1 4 4 0 01-1 7z",drop:"M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z",shop:"M3 9l2-5h14l2 5M4 9v11h16V9M9 20v-6h6v6",heart:"M12 20s-8-5-8-11a4.500 4.500 0 018-2.500A4.500 4.500 0 0120 9c0 6-8 11-8 11z",clock:"M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2",cal:"M4 6h16v14H4zM4 10h16M8 3v4M16 3v4",tool:"M14 6a4 4 0 00-5 5l-6 6 3 3 6-6a4 4 0 005-5l-3 3-2-2z",smile:"M12 3a9 9 0 100 18 9 9 0 000-18zM8 14s1.500 2 4 2 4-2 4-2M9 9.500h.01M15 9.500h.01",eye:"M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 100 6 3 3 0 000-6z",bldg:"M3 21h18M6 21V8l6-4 6 4v13M10 12h4"};
+function I(k,s){return '<svg width="'+(s||26)+'" height="'+(s||26)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+P[k]+'"/></svg>'}
+var S=[["home","Home Cleaning","Nadiifinta Guriga","Regular cleaning for every room, so your home stays fresh, tidy and comfortable.","Nadiifin joogto ah oo qol kasta ah, si gurigaagu u ahaado mid nadiif ah oo raaxo leh."],
+["deep","Deep Cleaning","Nadiifin Qoto Dheer","A thorough top-to-bottom clean for move-ins, after events or a seasonal refresh.","Nadiifin dhammaystiran oo dusha ilaa hoosta ah, marka aad guri cusub gelayso, xaflad ka dib ama xilli cusub."],
+["office","Office Cleaning","Nadiifinta Xafiisyada","Tidy, hygienic workspaces that let your team work comfortably.","Goobo shaqo oo nadiif ah oo caafimaad leh, kuwaas oo shaqaalahaaga ka dhigaya kuwo raaxo ku shaqeeya."],
+["bld","Commercial Building Cleaning","Nadiifinta Dhismayaasha Ganacsiga","Cleaning for larger buildings, shared areas, stairwells and entrances.","Nadiifin dhismayaal waaweyn, meelaha wadaagga ah, jaranjarooyinka iyo albaabada."],
+["kit","Kitchen and Bathroom Cleaning","Nadiifinta Jikada iyo Musqusha","Careful work on grease, limescale and germs in the rooms that matter most.","Shaqo taxaddar leh oo ka saaraysa saliidda, wasakhda iyo jeermisyada qolalka ugu muhiimsan."],
+["floor","Floor and Tile Cleaning","Nadiifinta Dabaqyada iyo Taayalka","Bring back the shine of your tiles, grout and floors.","Dib u soo celi dhalaalka taayalkaaga iyo dabaqyadaaga."],
+["win","Window and Glass Cleaning","Nadiifinta Daaqadaha iyo Muraayadaha","Clear, streak-free glass for homes, offices and shops.","Muraayado hufan oo aan wasakh ku harin, guryaha, xafiisyada iyo dukaamada."],
+["out","Compound and Outdoor Cleaning","Nadiifinta Barxadda iyo Dibadda","Swept, cleared and tidy outdoor areas around your property.","Barxadaha iyo meelaha dibadda ah oo la xaaqay, la nadiifiyay oo habaysan."],
+["drop","Driveway and Patio Washing","Dhaqista Wadada Gaadhiga iyo Barxadda","Pressure-style washing that lifts dirt from driveways and patios.","Dhaqis xoog leh oo ka saarta wasakhda wadada gaadhiga iyo barxadda."],
+["shop","Shopfront and Entrance Cleaning","Nadiifinta Hor-u-jeedka Dukaanka iyo Albaabka","A clean entrance gives customers a welcoming first impression.","Albaab nadiif ah wuxuu macaamiisha siiyaa soo dhaweyn wanaagsan."]];
+var A=[["eye","Quality","Tayo"],["heart","Reliability","Aamin ahaansho"],["tool","Attention to detail","Taxaddar"],["smile","Satisfaction","Qanacsanaan"]];
+var W=[["eye","Attention to detail","Taxaddar iyo faahfaahin","We clean the corners others miss.","Waxaan nadiifinnaa geesaha dadka kale ka gudbaan."],
+["clock","Reliable service","Adeeg lagu kalsoonaan karo","We show up when we say we will and do the job properly.","Waxaan imaanaa waqtigii aan ballanqaadnay, shaqadana si fiican ayaan u qabannaa."],
+["cal","Flexible bookings","Ballamo dabacsan","Choose a date and time that suit your schedule.","Dooro maalinta iyo saacadda kuugu habboon."],
+["bldg","Residential and commercial","Guryo iyo ganacsiyo","One team for your home, office, shop or building.","Koox keliya oo u adeegta gurigaaga, xafiiskaaga, dukaankaaga ama dhismahaaga."],
+["tool","Professional equipment","Qalab nadiifin oo xirfadle ah","The right tools and products for each surface.","Qalab iyo alaab ku habboon dusha kasta."],
+["smile","Friendly customer service","Adeeg macaamiil oo soo dhaweyn leh","Clear answers and a polite, helpful team.","Jawaabo cad iyo koox edeb leh oo kaalmeysa."]];
+var H=[["Contact us","Nala soo xidhiidh","Message us on WhatsApp, call, or fill in the form with what you need.","Noo soo dir fariin WhatsApp, naga soo wac, ama buuxi foomka adigoo sheegaya waxaad rabto."],
+["Receive your quote","Hel qiimahaaga","We reply with a clear, free quote and agree a time that suits you.","Waxaan ku soo jawaabnaa qiime cad oo bilaash ah, waxaana isla qabsannaa waqti kuu habboon."],
+["We clean your space","Annaga ayaa nadiifinaya goobtaada","Our team arrives, cleans carefully and leaves your space fresh.","Kooxdeennu way timaadaa, si taxaddar leh ayay u nadiifisaa, goobtaadana waa ka tagtaa mid dhalaalaysa."]];
+var G=[["home","Homes","Guryo","#0F8F88,#0B2545"],["office","Offices","Xafiisyo","#17406E,#0F8F88"],["floor","Floors","Dabaqyo","#0B2545,#2A6F8F"],["win","Windows","Daaqado","#14B8AE,#17406E"],["kit","Kitchens and bathrooms","Jikooyin iyo musqulo","#0B2545,#0F8F88"],["out","Outdoor spaces","Meelaha dibadda","#2A8F6F,#0B2545"]];
+var L="en",$=function(s){return document.querySelector(s)};
+function R(){var t=T[L],i=L=="en"?0:1;document.documentElement.lang=L;
+document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=t[e.dataset.t]});
+$("#sg").innerHTML=S.map(function(s,k){return '<article class="card"><div class="ic">'+I(s[0])+'</div><h3>'+s[1+i]+'</h3><p>'+s[3+i]+'</p><a class="q" href="#contact" data-s="'+k+'">'+t.req+'</a></article>'}).join("");
+$("#ag").innerHTML=A.map(function(a){return '<div class="card" style="align-items:flex-start"><div class="ic">'+I(a[0])+'</div><h3>'+a[1+i]+'</h3></div>'}).join("");
+$("#wg").innerHTML=W.map(function(a){return '<div class="card"><div class="ic">'+I(a[0])+'</div><h3>'+a[1+i]+'</h3><p>'+a[3+i]+'</p></div>'}).join("");
+$("#st").innerHTML=H.map(function(a){return '<div class="step"><h3>'+a[i*1==0?0:1]+'</h3><p>'+a[2+i]+'</p></div>'}).join("");
+$("#gl").innerHTML=G.map(function(g){var c=g[3].split(",");return '<figure class="tile" style="margin:0;background:linear-gradient(145deg,'+c[0]+','+c[1]+')" role="img" aria-label="'+g[1+i]+'">'+I(g[0],96).replace('<svg','<svg class="big"')+'<span>'+g[1+i]+'</span></figure>'}).join("");
+var sv=$("#sv"),cur=sv.value;sv.innerHTML='<option value="">'+t.choose+'</option>'+S.map(function(s,k){return '<option value="'+k+'">'+s[1+i]+'</option>'}).join("");sv.value=cur;
+$("#fs").innerHTML=S.slice(0,6).map(function(s,k){return '<li><a href="#contact" data-s="'+k+'">'+s[1+i]+'</a></li>'}).join("");
+document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l==L)});
+$("#wa").href="https://wa.me/"+WA+"?text="+encodeURIComponent(t.wm);
+document.title=L=="en"?"NADIIF PRO – Professional Cleaning in Hargeisa, Somaliland":"NADIIF PRO – Nadaafad Heer Sare ah | Hargeysa, Soomaaliland";
+try{localStorage.setItem("np-lang",L)}catch(e){}}
+document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){L=b.dataset.l;R();v()}});
+document.addEventListener("click",function(e){var a=e.target.closest("[data-s]");if(a)$("#sv").value=a.dataset.s;if(e.target.closest("nav a")){$("#nav").classList.remove("open");$("#bg").setAttribute("aria-expanded","false")}});
+$("#bg").onclick=function(){var o=$("#nav").classList.toggle("open");this.setAttribute("aria-expanded",o)};
+function bad(id,eid,c,k){var el=$(id);el.setAttribute("aria-invalid",c);$(eid).textContent=c?T[L][k]:"";return c}
+function v(){if(!$("#f").dataset.tried)return true;var t=$("#tel").value.replace(/[\s\-()]/g,"");var a=bad("#nm","#e1",!$("#nm").value.trim(),"e1"),b=bad("#tel","#e2",!/^\+?\d{7,15}$/.test(t),"e2"),c=bad("#sv","#e3",!$("#sv").value,"e3");return !(a||b||c)}
+$("#f").addEventListener("input",v);
+$("#f").onsubmit=function(e){e.preventDefault();this.dataset.tried=1;if(!v())return;var t=T[L],i=L=="en"?0:1,m=t.wm+"\n"+t.f_n+": "+$("#nm").value.trim()+"\n"+t.f_t+": "+$("#tel").value.trim()+"\n"+t.f_s+": "+S[$("#sv").value][1+i]+($("#dt").value?"\n"+t.f_d+": "+$("#dt").value:"")+($("#msg").value.trim()?"\n"+t.f_m+": "+$("#msg").value.trim():"");
+var o=$("#ok");o.style.display="block";o.textContent=t.ok;window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(m),"_blank","noopener")};
+$("#dt").min=new Date().toISOString().slice(0,10);$("#yr").textContent=new Date().getFullYear();
+try{if(localStorage.getItem("np-lang")=="so")L="so"}catch(e){}
+R();
+</script>
 </body>
 </html>

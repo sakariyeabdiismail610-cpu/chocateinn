@@ -98,13 +98,34 @@ footer{background:#071A31;color:#B9C7DA;padding:60px 0 28px;font-size:14.5px}
 footer h4{color:#fff;margin:0 0 12px;font-size:15px}footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}footer a{text-decoration:none}footer a:hover{color:#8FE3DC}
 .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;font-size:13px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 .wrap{overflow-x:auto}
-</style>
+.tint{background:color-mix(in srgb,var(--teal) 9%,var(--bg))}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 18px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:600 14px inherit;font-family:inherit;cursor:pointer;white-space:nowrap}
+.tabs button[aria-selected=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.pg{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));animation:up .4s}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.pc{position:relative}.pc.pop{border:2px solid var(--teal2);box-shadow:0 18px 40px rgba(15,143,136,.18)}
+.bdg{position:absolute;top:-13px;right:20px;background:var(--teal2);color:#06223A;font:700 12px 'Plus Jakarta Sans';padding:4px 12px;border-radius:999px}
+.price{font:700 36px Fraunces,serif;color:var(--navy);line-height:1.1}.price small{font:500 14px 'Plus Jakarta Sans';color:var(--mut)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .price{color:#fff}}
+.meta{font-size:13.5px;color:var(--mut)}
+ul.ck{list-style:none;margin:6px 0;padding:0;display:grid;gap:7px;font-size:14.5px;flex:1}ul.ck li{padding-left:24px;position:relative}ul.ck li:before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.acts .btn{padding:10px 18px;font-size:14px}
+.bn{background:var(--navy);color:#fff}.bw{background:#25D366;color:#06311A}.bw:hover{background:#3BE07A}
+.it{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cq{margin-top:36px;background:var(--navy);color:#fff;border-radius:24px;padding:30px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.cq h3{color:#fff;font-size:24px}.cq p{margin:6px 0 0;color:#C9D6E6;max-width:50ch}
+.pol{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:36px}
+.note{margin-top:22px;padding:16px 20px;border-radius:16px;background:var(--card);border:1px dashed var(--teal);color:var(--mut);font-size:14.5px}
+dialog{border:0;border-radius:24px;padding:0;width:calc(100% - 24px);max-width:660px;max-height:92vh;background:var(--bg);color:var(--ink)}
+dialog::backdrop{background:rgba(7,26,49,.65)}
+#qf{border:0;padding:0;background:none}</style>
 </head>
 <body>
 <header><div class="w nav">
-<a class="logo" href="#home" aria-label="NADIIF PRO"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#14B8AE"/><path d="M12 29V11l16 18V11" fill="none" stroke="#0B2545" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 5l1.2 3 3 1.2-3 1.2L31 13.4l-1.2-3-3-1.2 3-1.2z" fill="#fff"/></svg><div>NADIIF PRO<small data-t="brand"></small></div></a>
+<a class="logo" href="#home" aria-label="NADIIF PRO"><svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#14B8AE"/><path d="M12 29V11l16 18V11" fill="none" stroke="#0B2545" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M31 5l1.2 3 3 1.2-3 1.2L31 13.4l-1.2-3-3-1.2 3-1.2z" fill="#fff"/></svg><div><span data-site="name"></span><small data-t="brand"></small></div></a>
 <nav id="nav" aria-label="Main"><ul>
-<li><a href="#home" data-t="n1"></a></li><li><a href="#services" data-t="n2"></a></li><li><a href="#about" data-t="n3"></a></li><li><a href="#why" data-t="n4"></a></li><li><a href="#contact" data-t="n5"></a></li></ul></nav>
+<li><a href="#home" data-t="n1"></a></li><li><a href="#services" data-t="n2"></a></li><li><a href="#pricing" data-t="n6"></a></li><li><a href="#about" data-t="n3"></a></li><li><a href="#why" data-t="n4"></a></li><li><a href="#contact" data-t="n5"></a></li></ul></nav>
 <div class="act">
 <div class="lang" role="group" aria-label="Language"><button data-l="en" aria-pressed="true">English</button><button data-l="so" aria-pressed="false">Soomaali</button></div>
 <a class="btn p" href="#contact" data-t="quote"></a>
@@ -127,6 +148,29 @@ footer h4{color:#fff;margin:0 0 12px;font-size:15px}footer ul{list-style:none;ma
 <h2 data-t="sh"></h2><p class="lead" data-t="si"></p>
 <div class="grid" id="sg"></div></div></section>
 
+<section class="tint" id="pricing"><div class="w">
+<h2 data-t="ztitle"></h2><p class="lead" data-t="zintro"></p>
+<div class="tabs" id="tabs" role="tablist"></div>
+<div id="pp"></div>
+<div class="cq"><div><h3 data-t="zcq"></h3><p data-t="zcqt"></p></div><div class="acts"><button class="btn p" data-q="custom" data-t="zcqb"></button><a class="btn bw" id="cqw" target="_blank" rel="noopener">WhatsApp</a></div></div>
+<div class="pol" id="pol"></div>
+</div></section>
+
+<dialog id="qd" aria-labelledby="qt"><div style="padding:26px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px"><h2 id="qt" data-t="zqt" style="margin:0;font-size:26px"></h2><button id="qx" type="button" class="btn" aria-label="Close" style="padding:6px 13px;background:var(--grey);color:var(--ink)">✕</button></div>
+<form id="qf" novalidate style="display:grid;gap:16px">
+<div><label for="q_pkg" data-t="zpkg"></label><select id="q_pkg"></select></div>
+<div class="f2"><div><label for="q_nm" data-t="fn"></label><input id="q_nm" autocomplete="name"><div class="err" id="q_e1"></div></div><div><label for="q_tel" data-t="ft"></label><input id="q_tel" type="tel" autocomplete="tel"><div class="err" id="q_e2"></div></div></div>
+<div class="f2"><div><label for="q_wa" data-t="zwan"></label><input id="q_wa" type="tel"></div><div><label for="q_type" data-t="ztype"></label><select id="q_type"></select></div></div>
+<div class="f2"><div><label for="q_size" data-t="zsize"></label><input id="q_size"></div><div><label for="q_freq" data-t="zfreq"></label><select id="q_freq"></select></div></div>
+<div class="f2"><div><label for="q_dt" data-t="zstart"></label><input id="q_dt" type="date"></div><div><label for="q_day" data-t="zday"></label><select id="q_day"></select></div></div>
+<div><label for="q_water" data-t="zwater"></label><select id="q_water"></select></div>
+<div><label for="q_notes" data-t="znotes"></label><textarea id="q_notes" rows="3"></textarea></div>
+<button class="btn bw" type="submit" style="justify-self:start" data-t="zsend"></button>
+<div class="meta" data-t="znobook"></div>
+<div class="ok" id="q_ok" role="status"></div>
+</form></div></dialog>
+
 <section class="alt" id="about"><div class="w two">
 <div class="stack"><h2 data-t="ah"></h2><p data-t="a1"></p><p data-t="a2"></p><div class="tag" data-t="tag"></div></div>
 <div class="grid" style="grid-template-columns:1fr 1fr" id="ag"></div>
@@ -143,10 +187,11 @@ footer h4{color:#fff;margin:0 0 12px;font-size:15px}footer ul{list-style:none;ma
 <section id="contact"><div class="w">
 <h2 data-t="kh"></h2><p class="lead" data-t="ki"></p>
 <div class="cg"><div>
-<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><b data-t="ph"></b><a href="tel:+252633665112">+252 63 366 5112</a></div></div>
-<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b data-t="em"></b><a href="mailto:talktosakaria@gmail.com">talktosakaria@gmail.com</a></div></div>
-<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b data-t="ad"></b><span>Hargeisa, Somaliland</span></div></div>
-<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></div><div><b data-t="cp"></b><span>Zakria Abdi Ismail</span></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><b data-t="ph"></b><a data-site="phone"></a></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b data-t="em"></b><a data-site="email"></a></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b data-t="ad"></b><span data-site="loc"></span></div></div>
+<div class="ci"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg></div><div><b data-t="cp"></b><span data-site="owner"></span></div></div>
+<div class="ci" id="hrs" style="display:none"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2"/></svg></div><div><b data-t="zhrs"></b><span id="hrst"></span></div></div>
 <a class="btn wa" id="wa" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.2 13.9c-.2.6-1.300 1.200-1.800 1.200-.5.1-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.2.1.300 0 .5l-.3.500-.4.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.200.5.100.7-.1l.9-1.100c.2-.3.400-.2.700-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.300z"/></svg><span data-t="wab"></span></a>
 </div>
 <form id="f" novalidate>
@@ -154,68 +199,25 @@ footer h4{color:#fff;margin:0 0 12px;font-size:15px}footer ul{list-style:none;ma
 <div><label for="tel" data-t="ft"></label><input id="tel" type="tel" autocomplete="tel" placeholder="+252 …"><div class="err" id="e2"></div></div></div>
 <div class="f2"><div><label for="sv" data-t="fs"></label><select id="sv"></select><div class="err" id="e3"></div></div>
 <div><label for="dt" data-t="fd"></label><input id="dt" type="date"></div></div>
+<div><label for="psz" data-t="zpd"></label><input id="psz"></div>
 <div><label for="msg" data-t="fm"></label><textarea id="msg" rows="4"></textarea></div>
 <button class="btn p" type="submit" style="justify-self:start;background:var(--navy);color:#fff" data-t="send"></button>
+<div class="meta" data-t="znobook"></div>
 <div class="ok" id="ok" role="status"></div>
 </form></div></div></section>
 </main>
 
 <footer><div class="w"><div class="fg">
-<div><a class="logo" href="#home" style="color:#fff;margin-bottom:12px"><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#14B8AE"/><path d="M12 29V11l16 18V11" fill="none" stroke="#0B2545" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>NADIIF PRO</a><p data-t="fd1" style="margin:12px 0 0;max-width:34ch"></p></div>
+<div><a class="logo" href="#home" style="color:#fff;margin-bottom:12px"><svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#14B8AE"/><path d="M12 29V11l16 18V11" fill="none" stroke="#0B2545" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-site="name"></span></a><p data-t="fd1" style="margin:12px 0 0;max-width:34ch"></p></div>
 <div><h4 data-t="fq"></h4><ul><li><a href="#home" data-t="n1"></a></li><li><a href="#services" data-t="n2"></a></li><li><a href="#about" data-t="n3"></a></li><li><a href="#why" data-t="n4"></a></li><li><a href="#contact" data-t="n5"></a></li></ul></div>
 <div><h4 data-t="n2"></h4><ul id="fs"></ul></div>
-<div><h4 data-t="n5"></h4><ul><li>Hargeisa, Somaliland</li><li>Zakria Abdi Ismail</li><li><a href="tel:+252633665112">+252 63 366 5112</a></li><li><a href="mailto:talktosakaria@gmail.com">talktosakaria@gmail.com</a></li><li data-t="soc"></li></ul></div>
-</div><div class="copy"><span>© <span id="yr"></span> NADIIF PRO. <span data-t="rights"></span></span><span data-t="brand"></span></div></div></footer>
+<div><h4 data-t="n5"></h4><ul><li data-site="loc"></li><li data-site="owner"></li><li><a data-site="phone"></a></li><li><a data-site="email"></a></li><li id="hrsf" style="display:none"></li><li id="soc"></li></ul></div>
+</div><div class="copy"><span>© <span id="yr"></span> <span data-site="name"></span>. <span data-t="rights"></span></span><span data-t="brand"></span></div></div></footer>
 
+<script src="siteConfig.js"></script>
 <script>
-var WA="252633665112"; /* WhatsApp number, digits only, with country code */
-var T={en:{brand:"Professional cleaning. At your doorstep.",n1:"Home",n2:"Services",n3:"About Us",n4:"Why Choose Us",n5:"Contact",quote:"Get a Free Quote",
-h1:"A Cleaner Space. A Better Feeling.",so1:"",hp:"Professional home and commercial cleaning services in Hargeisa. We take care of the cleaning so you can focus on what matters.",book:"Book a Cleaning",explore:"Explore Our Services",trust:"Free quotes. Flexible scheduling. Homes and businesses.",
-sh:"Our Cleaning Services",si:"We clean your home and your business with skill and care, inside and out.",req:"Request a Quote",
-ah:"A local team that cares about the details",a1:"NADIIF PRO is a cleaning service based in Hargeisa. We clean homes, offices, shops and commercial buildings, inside and out, with a simple focus: do the job properly and treat every space as if it were our own.",a2:"We believe good cleaning comes down to quality, reliability and attention to detail. When you work with us, you can expect clear communication, friendly service and a space you are proud of.",tag:"Cleanliness, quality and trust.",
-wh:"Why Choose NADIIF PRO",wi:"What you can expect every time we clean.",
-hh:"How It Works",gh:"A Look at Clean Spaces",gi:"Illustrations of the spaces we care for. Real project photos will be added soon.",
-ch:"Ready for a Cleaner Space?",cso:"",ct:"Get in touch with NADIIF PRO today and let us take care of the cleaning.",cb:"Request Your Free Quote",
-kh:"Contact Us",ki:"Tell us what you need and we will reply with a free quote.",ph:"Phone",cp:"Contact person",em:"Email",ad:"Location",repl:"(placeholder, add your number)",wab:"Chat on WhatsApp",
-fn:"Full name",ft:"Phone number",fs:"Service required",fd:"Preferred date",fm:"Message",send:"Send Request",choose:"Choose a service",
-e1:"Please enter your name.",e2:"Please enter a valid phone number.",e3:"Please choose a service.",ok:"Thank you. WhatsApp is opening so you can send your request.",
-wm:"Hello NADIIF PRO, I would like a cleaning quote.",fd1:"Professional home and commercial cleaning in Hargeisa, Somaliland.",fq:"Quick links",soc:"Social media: Facebook, Instagram (add links)",rights:"All rights reserved.",
-f_s:"Service",f_n:"Name",f_t:"Phone",f_d:"Date",f_m:"Message"},
-so:{brand:"Nadiifnimo, tayo iyo kalsooni.",n1:"Hoyga",n2:"Adeegyada",n3:"Nagu Saabsan",n4:"Maxaad Noo Doorataa",n5:"Xidhiidh",quote:"Qiime Dalbo",
-h1:"NADIIF PRO – Nadaafad Heer Sare ah.",so1:"",hp:"Waxaan kuu keenaynaa nadaafad, bilic iyo adeeg lagu kalsoonaan karo. Adeeg nadiifin oo guryaha iyo ganacsiyada ah oo ka shaqeeya Hargeysa.",book:"Dalbo Adeeg",explore:"Adeegyadeenna",trust:"Qiime bilaash ah. Waqti dabacsan. Guryo iyo ganacsiyo.",
-sh:"Adeegyadeenna Nadiifinta",si:"Guryahaaga iyo goobahaaga ganacsi waxaan u nadiifinnaa si xirfad iyo taxaddar leh.",req:"Qiime Dalbo",
-ah:"Koox deegaanka ah oo daryeesha faahfaahinta",a1:"NADIIF PRO waa shirkad nadiifin oo ku taal Hargeysa. Waxaan nadiifinnaa guryaha, xafiisyada, dukaamada iyo dhismayaasha ganacsiga, gudaha iyo dibaddaba, annagoo hal hadaf haysanna: shaqada inaan si fiican u qabanno oo goob kasta u daryeelno sidii mid aan leenahay.",a2:"Waxaan aaminsanahay in nadiifintu ku salaysan tahay tayo, aamin ahaansho iyo taxaddar. Markaad nala shaqeyso, waxaad filan kartaa xidhiidh cad, adeeg soo dhaweyn leh iyo goob aad ku faraxdo.",tag:"Nadiifnimo, tayo iyo kalsooni.",
-wh:"Maxaad u Dooranaysaa NADIIF PRO",wi:"Waxa aad heli doonto mar kasta oo aan nadiifinno.",
-hh:"Sida Ay u Shaqeyso",gh:"Fiiri Goobaha Nadiifka ah",gi:"Sawirro muujinaya goobaha aan daryeelno. Sawirro dhab ah oo shaqooyinkeenna ah ayaa dhawaan lagu dari doonaa.",
-ch:"Ma doonaysaa goob nadiif ah oo bilicsan?",cso:"",ct:"Nala soo xidhiidh maanta, annaga ayaana nadiifinta qaban doonna.",cb:"Qiime Bilaash ah Dalbo",
-kh:"Nala Soo Xidhiidh",ki:"Noo sheeg waxaad rabto, waxaana ku soo jawaabi doonaa qiime bilaash ah.",ph:"Taleefan",cp:"Qofka lala xidhiidhayo",em:"Iimaylka",ad:"Goobta",repl:"(meel-ku-meel, ku dar lambarkaaga)",wab:"WhatsApp nagala hadal",
-fn:"Magaca oo dhan",ft:"Lambarka taleefanka",fs:"Adeegga aad u baahan tahay",fd:"Taariikhda aad rabto",fm:"Fariin",send:"Dir Codsiga",choose:"Dooro adeeg",
-e1:"Fadlan geli magacaaga.",e2:"Fadlan geli lambar taleefan sax ah.",e3:"Fadlan dooro adeeg.",ok:"Mahadsanid. WhatsApp ayaa furmaya si aad codsigaaga u dirto.",
-wm:"Salaan NADIIF PRO, waxaan rabaa qiime nadiifin.",fd1:"Adeeg nadiifin xirfad leh oo guryaha iyo ganacsiyada ah, Hargeysa, Soomaaliland.",fq:"Isku-xidhayaal degdeg ah",soc:"Baraha bulshada: Facebook, Instagram (ku dar xidhiidhada)",rights:"Xuquuqdu way daboolan tahay.",
-f_s:"Adeeg",f_n:"Magac",f_t:"Taleefan",f_d:"Taariikh",f_m:"Fariin"}};
 var P={home:"M3 11l9-8 9 8M5 10v10h14V10",deep:"M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z",office:"M4 21V5h10v16M14 9h6v12M8 9h2M8 13h2M8 17h2",bld:"M5 21V3h14v18M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4",kit:"M7 3v8M5 3v5a2 2 0 004 0V3M17 3c-2 2-2 6 0 8v10",floor:"M3 7l9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4",win:"M4 4h16v16H4zM12 4v16M4 12h16",out:"M12 22v-8M7 14a4 4 0 010-8 5 5 0 019 1 4 4 0 01-1 7z",drop:"M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z",shop:"M3 9l2-5h14l2 5M4 9v11h16V9M9 20v-6h6v6",heart:"M12 20s-8-5-8-11a4.500 4.500 0 018-2.500A4.500 4.500 0 0120 9c0 6-8 11-8 11z",clock:"M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 2",cal:"M4 6h16v14H4zM4 10h16M8 3v4M16 3v4",tool:"M14 6a4 4 0 00-5 5l-6 6 3 3 6-6a4 4 0 005-5l-3 3-2-2z",smile:"M12 3a9 9 0 100 18 9 9 0 000-18zM8 14s1.500 2 4 2 4-2 4-2M9 9.500h.01M15 9.500h.01",eye:"M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12zM12 9a3 3 0 100 6 3 3 0 000-6z",bldg:"M3 21h18M6 21V8l6-4 6 4v13M10 12h4"};
 function I(k,s){return '<svg width="'+(s||26)+'" height="'+(s||26)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+P[k]+'"/></svg>'}
-var S=[["home","Home Cleaning","Nadiifinta Guriga","Regular cleaning for every room, so your home stays fresh, tidy and comfortable.","Nadiifin joogto ah oo qol kasta ah, si gurigaagu u ahaado mid nadiif ah oo raaxo leh."],
-["deep","Deep Cleaning","Nadiifin Qoto Dheer","A thorough top-to-bottom clean for move-ins, after events or a seasonal refresh.","Nadiifin dhammaystiran oo dusha ilaa hoosta ah, marka aad guri cusub gelayso, xaflad ka dib ama xilli cusub."],
-["office","Office Cleaning","Nadiifinta Xafiisyada","Tidy, hygienic workspaces that let your team work comfortably.","Goobo shaqo oo nadiif ah oo caafimaad leh, kuwaas oo shaqaalahaaga ka dhigaya kuwo raaxo ku shaqeeya."],
-["bld","Commercial Building Cleaning","Nadiifinta Dhismayaasha Ganacsiga","Cleaning for larger buildings, shared areas, stairwells and entrances.","Nadiifin dhismayaal waaweyn, meelaha wadaagga ah, jaranjarooyinka iyo albaabada."],
-["kit","Kitchen and Bathroom Cleaning","Nadiifinta Jikada iyo Musqusha","Careful work on grease, limescale and germs in the rooms that matter most.","Shaqo taxaddar leh oo ka saaraysa saliidda, wasakhda iyo jeermisyada qolalka ugu muhiimsan."],
-["floor","Floor and Tile Cleaning","Nadiifinta Dabaqyada iyo Taayalka","Bring back the shine of your tiles, grout and floors.","Dib u soo celi dhalaalka taayalkaaga iyo dabaqyadaaga."],
-["win","Window and Glass Cleaning","Nadiifinta Daaqadaha iyo Muraayadaha","Clear, streak-free glass for homes, offices and shops.","Muraayado hufan oo aan wasakh ku harin, guryaha, xafiisyada iyo dukaamada."],
-["out","Compound and Outdoor Cleaning","Nadiifinta Barxadda iyo Dibadda","Swept, cleared and tidy outdoor areas around your property.","Barxadaha iyo meelaha dibadda ah oo la xaaqay, la nadiifiyay oo habaysan."],
-["drop","Driveway and Patio Washing","Dhaqista Wadada Gaadhiga iyo Barxadda","Pressure-style washing that lifts dirt from driveways and patios.","Dhaqis xoog leh oo ka saarta wasakhda wadada gaadhiga iyo barxadda."],
-["shop","Shopfront and Entrance Cleaning","Nadiifinta Hor-u-jeedka Dukaanka iyo Albaabka","A clean entrance gives customers a welcoming first impression.","Albaab nadiif ah wuxuu macaamiisha siiyaa soo dhaweyn wanaagsan."]];
-var A=[["eye","Quality","Tayo"],["heart","Reliability","Aamin ahaansho"],["tool","Attention to detail","Taxaddar"],["smile","Satisfaction","Qanacsanaan"]];
-var W=[["eye","Attention to detail","Taxaddar iyo faahfaahin","We clean the corners others miss.","Waxaan nadiifinnaa geesaha dadka kale ka gudbaan."],
-["clock","Reliable service","Adeeg lagu kalsoonaan karo","We show up when we say we will and do the job properly.","Waxaan imaanaa waqtigii aan ballanqaadnay, shaqadana si fiican ayaan u qabannaa."],
-["cal","Flexible bookings","Ballamo dabacsan","Choose a date and time that suit your schedule.","Dooro maalinta iyo saacadda kuugu habboon."],
-["bldg","Residential and commercial","Guryo iyo ganacsiyo","One team for your home, office, shop or building.","Koox keliya oo u adeegta gurigaaga, xafiiskaaga, dukaankaaga ama dhismahaaga."],
-["tool","Professional equipment","Qalab nadiifin oo xirfadle ah","The right tools and products for each surface.","Qalab iyo alaab ku habboon dusha kasta."],
-["smile","Friendly customer service","Adeeg macaamiil oo soo dhaweyn leh","Clear answers and a polite, helpful team.","Jawaabo cad iyo koox edeb leh oo kaalmeysa."]];
-var H=[["Contact us","Nala soo xidhiidh","Message us on WhatsApp, call, or fill in the form with what you need.","Noo soo dir fariin WhatsApp, naga soo wac, ama buuxi foomka adigoo sheegaya waxaad rabto."],
-["Receive your quote","Hel qiimahaaga","We reply with a clear, free quote and agree a time that suits you.","Waxaan ku soo jawaabnaa qiime cad oo bilaash ah, waxaana isla qabsannaa waqti kuu habboon."],
-["We clean your space","Annaga ayaa nadiifinaya goobtaada","Our team arrives, cleans carefully and leaves your space fresh.","Kooxdeennu way timaadaa, si taxaddar leh ayay u nadiifisaa, goobtaadana waa ka tagtaa mid dhalaalaysa."]];
-var G=[["home","Homes","Guryo","#0F8F88,#0B2545"],["office","Offices","Xafiisyo","#17406E,#0F8F88"],["floor","Floors","Dabaqyo","#0B2545,#2A6F8F"],["win","Windows","Daaqado","#14B8AE,#17406E"],["kit","Kitchens and bathrooms","Jikooyin iyo musqulo","#0B2545,#0F8F88"],["out","Outdoor spaces","Meelaha dibadda","#2A8F6F,#0B2545"]];
 var L="en",$=function(s){return document.querySelector(s)};
 function R(){var t=T[L],i=L=="en"?0:1;document.documentElement.lang=L;
 document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=t[e.dataset.t]});
@@ -236,9 +238,45 @@ $("#bg").onclick=function(){var o=$("#nav").classList.toggle("open");this.setAtt
 function bad(id,eid,c,k){var el=$(id);el.setAttribute("aria-invalid",c);$(eid).textContent=c?T[L][k]:"";return c}
 function v(){if(!$("#f").dataset.tried)return true;var t=$("#tel").value.replace(/[\s\-()]/g,"");var a=bad("#nm","#e1",!$("#nm").value.trim(),"e1"),b=bad("#tel","#e2",!/^\+?\d{7,15}$/.test(t),"e2"),c=bad("#sv","#e3",!$("#sv").value,"e3");return !(a||b||c)}
 $("#f").addEventListener("input",v);
-$("#f").onsubmit=function(e){e.preventDefault();this.dataset.tried=1;if(!v())return;var t=T[L],i=L=="en"?0:1,m=t.wm+"\n"+t.f_n+": "+$("#nm").value.trim()+"\n"+t.f_t+": "+$("#tel").value.trim()+"\n"+t.f_s+": "+S[$("#sv").value][1+i]+($("#dt").value?"\n"+t.f_d+": "+$("#dt").value:"")+($("#msg").value.trim()?"\n"+t.f_m+": "+$("#msg").value.trim():"");
+$("#f").onsubmit=function(e){e.preventDefault();this.dataset.tried=1;if(!v())return;var t=T[L],i=L=="en"?0:1,m=t.wm+"\n"+t.f_n+": "+$("#nm").value.trim()+"\n"+t.f_t+": "+$("#tel").value.trim()+"\n"+t.f_s+": "+S[$("#sv").value][1+i]+($("#dt").value?"\n"+t.f_d+": "+$("#dt").value:"")+($("#psz").value.trim()?"\n"+t.zpd+": "+$("#psz").value.trim():"")+($("#msg").value.trim()?"\n"+t.f_m+": "+$("#msg").value.trim():"");
 var o=$("#ok");o.style.display="block";o.textContent=t.ok;window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(m),"_blank","noopener")};
 $("#dt").min=new Date().toISOString().slice(0,10);$("#yr").textContent=new Date().getFullYear();
+var TAB="res",li=function(){return L=="en"?0:1},TL=function(a){return a.split("|")[li()]};
+P.chat="M21 12a8 8 0 01-11.500 7.200L4 20l1-4.500A8 8 0 1121 12z";
+function px(id){var q=PRICES[id];return q.p==null?T[L].zcust:(q.f?T[L].zfrom+" ":"")+CUR+q.p}
+function mo(id){return PRICES[id]&&PRICES[id].u?'<small> / '+T[L].zmo+'</small>':''}
+function nx(id){var n=NM[id];return TL(n)+(L=="so"?" ("+n.split("|")[0]+")":"")}
+function pr(id){return PRICES[id]?" – "+px(id)+(PRICES[id].u?" / "+T[L].zmo:""):""}
+function wal(txt){return "https://wa.me/"+WA+"?text="+encodeURIComponent(txt)}
+function acts(id,lbl){return '<div class="acts"><button type="button" class="btn bn" data-q="'+id+'">'+lbl+'</button><a class="btn bw" target="_blank" rel="noopener" href="'+wal(T[L].zwm+"\n"+nx(id)+pr(id))+'">'+I("chat",18)+'WhatsApp</a></div>'}
+function pcard(id){var i=li(),t=T[L],p=PL[id];return '<article class="card pc'+(p[6]?' pop':'')+'">'+(p[6]?'<span class="bdg">'+t.zpop+'</span>':'')+'<div class="ic">'+I(CI[id])+'</div><h3>'+TL(NM[id])+'</h3><div class="meta">'+p[i]+'</div><div class="price">'+px(id)+mo(id)+'</div><div class="meta"><b>'+p[2+i]+'</b></div><div class="meta">'+t.zadv+'</div><ul class="ck">'+p[4+i].split("|").map(function(f){return '<li>'+f+'</li>'}).join("")+'</ul>'+acts(id,t.zchoose)+'</article>'}
+function icard(id,ic){return '<article class="card it"><div style="display:flex;gap:12px;align-items:center"><div class="ic">'+I(ic)+'</div><div><h3 style="font-size:17px">'+TL(NM[id])+'</h3><div class="price" style="font-size:24px">'+px(id)+'</div></div></div>'+acts(id,T[L].zreq)+'</article>'}
+function panel(k){var i=li(),t=T[L],c=CAT.filter(function(x){return x[0]==k})[0],h='<p class="lead" style="margin:0 0 26px">'+c[4+i]+'</p>';
+if(k=="res"||k=="com")h+='<div class="pg">'+IDS[k].map(pcard).join("")+'</div>';
+else if(k=="con"){h+='<div class="pg" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">'+[["Monthly|Bille",0],["3 months|3 bilood",DISCOUNT.m3],["6 months|6 bilood",DISCOUNT.m6],["12 months|12 bilood",DISCOUNT.m12]].map(function(x){return '<article class="card"><div class="ic">'+I("clock")+'</div><h3>'+TL(x[0])+'</h3><div class="price" style="font-size:22px">'+(x[1]?(DISCOUNT.enabled?t.zdis.replace("{d}",x[1]):t.zdis0):t.zstd)+'</div></article>'}).join("")+'</div><div class="note">'+t.znote+'</div><div class="acts" style="margin-top:18px"><button type="button" class="btn bn" data-q="contract">'+t.zcon+'</button></div>'}
+else h+='<div class="pg" style="grid-template-columns:repeat(auto-fill,minmax(270px,1fr))">'+IDS[k].map(function(id){return icard(id,c[1])}).join("")+'</div>';return h}
+function fillQ(){var i=li();[["q_type","type"],["q_freq","freq"],["q_day","day"],["q_water","water"]].forEach(function(x){var s=$("#"+x[0]),c=s.value||0;s.innerHTML=OPT[x[1]].map(function(o,k){return '<option value="'+k+'">'+TL(o)+'</option>'}).join("");s.value=c});
+var s=$("#q_pkg"),c=s.value||"custom";s.innerHTML=CAT.map(function(g){return '<optgroup label="'+g[2+i]+'">'+IDS[g[0]].map(function(id){return '<option value="'+id+'">'+TL(NM[id])+(PRICES[id]?" – "+px(id):"")+'</option>'}).join("")+'</optgroup>'}).join("")+'<option value="custom">'+TL(NM.custom)+'</option>';s.value=c}
+function PR(){var i=li(),t=T[L];$("#tabs").innerHTML=CAT.map(function(c){return '<button type="button" role="tab" aria-selected="'+(c[0]==TAB)+'" data-tab="'+c[0]+'">'+I(c[1],18)+c[2+i]+'</button>'}).join("");
+$("#pp").innerHTML=panel(TAB);$("#cqw").href=wal(t.zcqm);
+$("#pol").innerHTML=POL[L].map(function(l,k){return '<div class="card"><h3>'+t[k?"zp2":"zp1"]+'</h3><ul class="ck">'+l.map(function(x){return '<li>'+x+'</li>'}).join("")+'</ul></div>'}).join("");fillQ()}
+function SS(){document.querySelectorAll("[data-site]").forEach(function(e){var k=e.dataset.site;
+if(k=="name")e.textContent=SITE.name;if(k=="owner")e.textContent=SITE.owner;if(k=="loc")e.textContent=SITE.location;
+if(k=="phone"){e.textContent=SITE.phoneDisplay;e.href="tel:"+SITE.phoneCall}
+if(k=="email"){e.textContent=SITE.email;e.href="mailto:"+SITE.email}});
+var h=SITE.hours[L]||SITE.hours.en||"";$("#hrs").style.display=h?"":"none";$("#hrst").textContent=h;$("#hrsf").style.display=h?"":"none";$("#hrsf").textContent=h;
+var so=[["facebook","Facebook"],["instagram","Instagram"],["tiktok","TikTok"]].filter(function(x){return SITE.social[x[0]]}).map(function(x){return '<a href="'+SITE.social[x[0]]+'" target="_blank" rel="noopener">'+x[1]+'</a>'}).join(" · ");$("#soc").innerHTML=so;$("#soc").style.display=so?"":"none"}
+var _R=R;R=function(){_R();PR();SS()};
+document.addEventListener("click",function(e){var b=e.target.closest("[data-tab]");if(b){TAB=b.dataset.tab;PR();return}b=e.target.closest("[data-q]");if(b){$("#q_pkg").value=b.dataset.q;$("#q_ok").style.display="none";$("#qd").showModal()}});
+$("#qx").onclick=function(){$("#qd").close()};
+$("#qd").addEventListener("click",function(e){if(e.target==this)this.close()});
+function qv(){if(!$("#qf").dataset.tried)return true;var a=bad("#q_nm","#q_e1",!$("#q_nm").value.trim(),"e1"),b=bad("#q_tel","#q_e2",!/^\+?\d{7,15}$/.test($("#q_tel").value.replace(/[\s\-()]/g,"")),"e2");return !(a||b)}
+$("#qf").addEventListener("input",qv);
+$("#qf").onsubmit=function(e){e.preventDefault();this.dataset.tried=1;if(!qv())return;var t=T[L],g=function(id){var s=$(id);return s.tagName=="SELECT"?s.options[s.selectedIndex].text:s.value.trim()},id=$("#q_pkg").value,
+m=[t.zwm2,t.zpkg+": "+nx(id)+pr(id),t.fn+": "+g("#q_nm"),t.ft+": "+g("#q_tel")];
+[["zwan","#q_wa"],["ztype","#q_type"],["zsize","#q_size"],["zfreq","#q_freq"],["zstart","#q_dt"],["zday","#q_day"],["zwater","#q_water"],["znotes","#q_notes"]].forEach(function(x){var v=g(x[1]);if(v)m.push(t[x[0]]+": "+v)});
+var o=$("#q_ok");o.style.display="block";o.textContent=t.ok;window.open(wal(m.join("\n")),"_blank","noopener")};
+$("#q_dt").min=new Date().toISOString().slice(0,10);
 try{if(localStorage.getItem("np-lang")=="so")L="so"}catch(e){}
 R();
 </script>
